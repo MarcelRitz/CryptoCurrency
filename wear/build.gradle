@@ -1,17 +1,19 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+    compileSdkVersion config.compileSdkVersion
+    buildToolsVersion config.buildToolsVersion
     defaultConfig {
         minSdkVersion 25
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
+        resConfigs "en"
     }
     buildTypes {
         release {
-            minifyEnabled false
+            shrinkResources true
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -32,6 +34,7 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile project(':data')
     compile 'com.google.android.support:wearable:2.0.3'
     compile 'com.google.android.gms:play-services-wearable:11.0.2'
     provided 'com.google.android.support:wearable:2.0.3'

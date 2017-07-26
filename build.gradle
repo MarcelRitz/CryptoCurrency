@@ -16,3 +16,12 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+subprojects {
+    ext {
+        config = [
+                compileSdkVersion: 26,
+                buildToolsVersion: "26.0.1",
+        ]
+    }
+}
