@@ -1,5 +1,3 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="dev.cytronix.data">
-
+<manifest package="dev.cytronix.data">
     <application />
 </manifest>
