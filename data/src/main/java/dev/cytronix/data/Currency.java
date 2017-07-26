@@ -2,6 +2,6 @@ package dev.cytronix.data;
 
 public class Currency {
 
-    public static final String BTC = "btc";
-    public static final String ETH = "eth";
+    public static final String BTC = "BTC";
+    public static final String ETH = "ETH";
 }
