@@ -10,8 +10,7 @@ public class Data {
 
     @Override
     public String toString() {
-        return "Data{" +
-                "time=" + time +
-                '}';
+        String time = String.valueOf(this.time);
+        return time.substring(10, time.length());
     }
 }

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">CryptoCurrency</string>
+
+    <!-- Currency -->
+    <string name="currency_btc">BTC</string>
+    <string name="currency_eth">ETH</string>
 </resources>

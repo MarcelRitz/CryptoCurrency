@@ -18,12 +18,12 @@ public class MainActivity extends Activity {
 
         setContentView(R.layout.activity_main);
 
-        watchViewStub = (WatchViewStub) findViewById(R.id.watch_view_stub);
+        watchViewStub = findViewById(R.id.watch_view_stub);
         watchViewStub.setOnLayoutInflatedListener(new WatchViewStub.OnLayoutInflatedListener() {
             @Override
             public void onLayoutInflated(WatchViewStub stub) {
-                TextView textView = (TextView) watchViewStub.findViewById(R.id.textview_main_text);
-                textView.setText("Result="+new Data().getTime());
+                TextView textView = watchViewStub.findViewById(R.id.textview_main_text);
+                textView.setText(new Data().toString());
             }
         });
     }
