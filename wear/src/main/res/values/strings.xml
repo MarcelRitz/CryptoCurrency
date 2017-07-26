@@ -1,7 +1,10 @@
 <resources>
+    <!-- All -->
     <string name="app_name">CryptoCurrency</string>
 
-    <!-- Currency -->
-    <string name="currency_btc">BTC</string>
-    <string name="currency_eth">ETH</string>
+    <!-- Preferences -->
+    <string name="preference_currency_title">Currency</string>
+    <string name="preference_currency_summary">Choose to convert</string>
+    <string name="preference_currency_key">CurrencyKey</string>
+    <string name="preference_currency_default_value">@string/currency_usd</string>
 </resources>

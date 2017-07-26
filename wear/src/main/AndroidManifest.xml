@@ -12,13 +12,12 @@
         android:theme="@android:style/Theme.DeviceDefault"
         tools:ignore="GoogleAppIndexingWarning"
         android:fullBackupContent="@xml/backup_descriptor">
-        <activity android:name=".ui.activity.MainActivity">
+        <activity android:name=".ui.activity.SettingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="android.support.wearable.complications.ComplicationHelperActivity" />
 
         <service
             android:name=".service.UpdateComplicationDataService"

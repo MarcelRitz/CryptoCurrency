@@ -1,0 +1,7 @@
+<resources>
+    <!-- Preferences -->
+    <string-array name="preference_currency">
+        <item>@string/currency_usd</item>
+        <item>@string/currency_chf</item>
+    </string-array>
+</resources>
