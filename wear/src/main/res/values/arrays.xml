@@ -2,6 +2,6 @@
     <!-- Preferences -->
     <string-array name="preference_currency">
         <item>@string/currency_usd</item>
-        <item>@string/currency_chf</item>
+        <item>@string/currency_eur</item>
     </string-array>
 </resources>

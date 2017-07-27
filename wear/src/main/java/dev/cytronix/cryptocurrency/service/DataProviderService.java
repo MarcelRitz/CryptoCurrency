@@ -58,7 +58,7 @@ public class DataProviderService extends ComplicationProviderService {
                 break;
             case ComplicationData.TYPE_LONG_TEXT:
                 builder = new ComplicationData.Builder(ComplicationData.TYPE_LONG_TEXT)
-                        .setLongText(ComplicationText.plainText(String.format(Locale.getDefault(), "%1$s: %2$f", price.getTargetCurrency(), price.getPrice())));
+                        .setLongText(ComplicationText.plainText(String.format(Locale.getDefault(), "%1$s: %2$.2f", price.getTargetCurrency(), price.getPrice())));
                 break;
             default:
                 return;
