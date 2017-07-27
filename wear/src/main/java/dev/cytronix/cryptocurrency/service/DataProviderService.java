@@ -14,9 +14,7 @@ import android.widget.Toast;
 import java.util.Locale;
 
 import dev.cytronix.cryptocurrency.R;
-import dev.cytronix.data.cryptocompare.model.ChfPrice;
-import dev.cytronix.data.cryptocompare.model.Price;
-import dev.cytronix.data.cryptocompare.model.UsdPrice;
+import dev.cytronix.data.cryptowat.model.Price;
 import dev.cytronix.data.presenter.IPricePresenter;
 import dev.cytronix.data.presenter.PricePresenter;
 import dev.cytronix.data.view.PriceView;
@@ -52,30 +50,15 @@ public class DataProviderService extends ComplicationProviderService {
     }
 
     public void update(Price price, int complicationId, int dataType, ComplicationManager complicationManager) {
-        double value = 0;
-
-        if(price instanceof ChfPrice) {
-            value = ((ChfPrice) price).getValue();
-        } else if(price instanceof UsdPrice) {
-            value = ((UsdPrice) price).getValue();
-        }
-
         ComplicationData.Builder builder;
         switch(dataType) {
-            case ComplicationData.TYPE_RANGED_VALUE:
-                builder = new ComplicationData.Builder(ComplicationData.TYPE_RANGED_VALUE)
-                        .setValue((float) value)
-                        .setMinValue(0)
-                        .setMaxValue(10)
-                        .setShortText(ComplicationText.plainText(String.valueOf(value)));
-                break;
             case ComplicationData.TYPE_SHORT_TEXT:
                 builder = new ComplicationData.Builder(ComplicationData.TYPE_SHORT_TEXT)
-                        .setShortText(ComplicationText.plainText(String.valueOf(value)));
+                        .setShortText(ComplicationText.plainText(String.valueOf(price.getPrice())));
                 break;
             case ComplicationData.TYPE_LONG_TEXT:
                 builder = new ComplicationData.Builder(ComplicationData.TYPE_LONG_TEXT)
-                        .setLongText(ComplicationText.plainText(String.format(Locale.getDefault(), "%1$s: %2$f", price.getCurrency(), value)));
+                        .setLongText(ComplicationText.plainText(String.format(Locale.getDefault(), "%1$s: %2$f", price.getTargetCurrency(), price.getPrice())));
                 break;
             default:
                 return;

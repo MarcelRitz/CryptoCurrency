@@ -1,6 +1,6 @@
 package dev.cytronix.data.view;
 
-import dev.cytronix.data.cryptocompare.model.Price;
+import dev.cytronix.data.cryptowat.model.Price;
 
 public interface PriceView {
 

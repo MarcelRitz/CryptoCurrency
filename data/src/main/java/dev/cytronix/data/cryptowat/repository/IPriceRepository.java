@@ -1,4 +1,4 @@
-package dev.cytronix.data.cryptocompare.repository;
+package dev.cytronix.data.cryptowat.repository;
 
 public interface IPriceRepository {
 

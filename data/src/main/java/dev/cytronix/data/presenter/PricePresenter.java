@@ -1,8 +1,9 @@
 package dev.cytronix.data.presenter;
 
-import dev.cytronix.data.cryptocompare.model.Price;
-import dev.cytronix.data.cryptocompare.repository.IPriceRepository;
-import dev.cytronix.data.cryptocompare.repository.PriceRepository;
+import dev.cytronix.data.cryptowat.model.Price;
+import dev.cytronix.data.cryptowat.repository.IPriceRepository;
+import dev.cytronix.data.cryptowat.repository.PriceRepository;
+import dev.cytronix.data.cryptowat.rest.RestClient;
 import dev.cytronix.data.view.PriceView;
 
 public class PricePresenter implements IPricePresenter, PriceRepository.OnPriceRepositoryListener {
@@ -19,7 +20,7 @@ public class PricePresenter implements IPricePresenter, PriceRepository.OnPriceR
     }
 
     private void setRepository() {
-        repository = new PriceRepository(baseCurrency);
+        repository = new PriceRepository(new RestClient().getService(), baseCurrency);
         repository.setOnPriceRepositoryListener(this);
     }
 

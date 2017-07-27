@@ -1,4 +1,4 @@
-package dev.cytronix.data.cryptocompare.rest;
+package dev.cytronix.data.cryptowat.rest;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -9,7 +9,7 @@ public class RestClient {
 
     public RestClient() {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://min-api.cryptocompare.com/")
+                .baseUrl("https://api.cryptowat.ch/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
