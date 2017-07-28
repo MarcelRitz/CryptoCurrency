@@ -35,10 +35,15 @@ public class DataProviderService extends ComplicationProviderService {
 
     @Override
     public void onComplicationUpdate(final int complicationId, final int dataType, final ComplicationManager complicationManager) {
+        update(getString(R.string.complication_loading), complicationId, dataType, complicationManager);
+
         IPricePresenter presenter = new PricePresenter(getCurrency(), new PriceView() {
             @Override
             public void onUpdate(Price price) {
-                update(price, complicationId, dataType, complicationManager);
+                String shortText = String.format(Locale.getDefault(), getString(R.string.complication_short_text), price.getPrice());
+                String longText = String.format(Locale.getDefault(), getString(R.string.complication_long_text), price.getTargetCurrency(), price.getPrice());
+
+                update(shortText, longText, complicationId, dataType, complicationManager);
             }
 
             @Override
@@ -49,16 +54,20 @@ public class DataProviderService extends ComplicationProviderService {
         presenter.getData(toCurrency);
     }
 
-    public void update(Price price, int complicationId, int dataType, ComplicationManager complicationManager) {
+    public void update(String text, int complicationId, int dataType, ComplicationManager complicationManager) {
+        update(text, text, complicationId, dataType, complicationManager);
+    }
+
+    public void update(String shortText, String longText, int complicationId, int dataType, ComplicationManager complicationManager) {
         ComplicationData.Builder builder;
         switch(dataType) {
             case ComplicationData.TYPE_SHORT_TEXT:
                 builder = new ComplicationData.Builder(ComplicationData.TYPE_SHORT_TEXT)
-                        .setShortText(ComplicationText.plainText(String.format(Locale.getDefault(), "%1$.2f",price.getPrice())));
+                        .setShortText(ComplicationText.plainText(shortText));
                 break;
             case ComplicationData.TYPE_LONG_TEXT:
                 builder = new ComplicationData.Builder(ComplicationData.TYPE_LONG_TEXT)
-                        .setLongText(ComplicationText.plainText(String.format(Locale.getDefault(), "%1$s: %2$.2f", price.getTargetCurrency(), price.getPrice())));
+                        .setLongText(ComplicationText.plainText(longText));
                 break;
             default:
                 return;
