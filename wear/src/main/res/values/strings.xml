@@ -1,0 +1,16 @@
+<resources>
+    <!-- All -->
+    <string name="app_name">CryptoCurrency</string>
+
+    <!-- Complication -->
+    <string name="complication_loading">loading..</string>
+    <string name="complication_error">Error</string>
+    <string name="complication_short_text">%1$.2f</string>
+    <string name="complication_long_text">%1$s %2$.2f</string>
+
+    <!-- Preferences -->
+    <string name="preference_currency_title">Currency</string>
+    <string name="preference_currency_summary">Choose to convert</string>
+    <string name="preference_currency_key">CurrencyKey</string>
+    <string name="preference_currency_default_value">@string/currency_usd</string>
+</resources>

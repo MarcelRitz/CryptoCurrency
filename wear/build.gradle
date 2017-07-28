@@ -1,0 +1,41 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion config.compileSdkVersion
+    buildToolsVersion config.buildToolsVersion
+    defaultConfig {
+        minSdkVersion 25
+        targetSdkVersion 26
+        versionCode 1
+        versionName "0.5.0"
+        resConfigs "en"
+    }
+    buildTypes {
+        release {
+            shrinkResources true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+    productFlavors {
+        dev {
+            applicationId 'dev.cytronix.cryptocurrency.dev'
+            versionNameSuffix ' (dev)'
+        }
+        prod {
+            applicationId 'dev.cytronix.cryptocurrency'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile project(':data')
+    compile 'com.google.android.support:wearable:2.0.3'
+    compile 'com.google.android.gms:play-services-wearable:11.0.4'
+    provided 'com.google.android.support:wearable:2.0.3'
+}
