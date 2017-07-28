@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
 public class ExampleInstrumentedTest {
 
     @Test
-    public void useAppContext() throws Exception {
+    public void useAppContext() {
         Context appContext = InstrumentationRegistry.getTargetContext();
 
         assertEquals("dev.cytronix.data.test", appContext.getPackageName());

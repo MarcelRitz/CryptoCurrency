@@ -1,7 +1,5 @@
 package dev.cytronix.data.cryptowat.repository;
 
-import android.util.Log;
-
 import dev.cytronix.data.cryptowat.model.Price;
 import dev.cytronix.data.cryptowat.model.Result;
 import dev.cytronix.data.cryptowat.rest.RestService;
@@ -31,12 +29,12 @@ public class PriceRepository implements IPriceRepository {
                 }
 
                 Result result = response.body();
-                Price price = result.getPrice();
-                if(price == null) {
+                if(result == null) {
                     onFailure(call, new Throwable("Unknown error"));
                     return;
                 }
 
+                Price price = result.getPrice();
                 price.setBaseCurrency(baseCurrency);
                 price.setTargetCurrency(toCurrency);
 
