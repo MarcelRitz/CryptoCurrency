@@ -54,6 +54,9 @@ public class UpdateComplicationDataService extends IntentService {
             case Currency.ETH:
                 cls = EthProviderService.class;
                 break;
+            case Currency.LTC:
+                cls = LtcProviderService.class;
+                break;
             case Currency.BTC:
             default:
                 cls = BtcProviderService.class;
