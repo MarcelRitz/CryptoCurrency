@@ -47,8 +47,7 @@ public class DataProviderService extends ComplicationProviderService {
 
             @Override
             public void onError(String message) {
-                String error = String.format(Locale.getDefault(), getString(R.string.complication_error), message);
-                update(error, complicationId, dataType, complicationManager);
+                update(getString(R.string.complication_error), complicationId, dataType, complicationManager);
             }
         });
         presenter.getData(toCurrency);
