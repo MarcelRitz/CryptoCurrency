@@ -54,7 +54,7 @@ public class DataProviderService extends ComplicationProviderService {
         switch(dataType) {
             case ComplicationData.TYPE_SHORT_TEXT:
                 builder = new ComplicationData.Builder(ComplicationData.TYPE_SHORT_TEXT)
-                        .setShortText(ComplicationText.plainText(String.valueOf(price.getPrice())));
+                        .setShortText(ComplicationText.plainText(String.format(Locale.getDefault(), "%1$.2f",price.getPrice())));
                 break;
             case ComplicationData.TYPE_LONG_TEXT:
                 builder = new ComplicationData.Builder(ComplicationData.TYPE_LONG_TEXT)
