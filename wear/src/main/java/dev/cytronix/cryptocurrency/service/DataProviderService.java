@@ -9,7 +9,6 @@ import android.support.wearable.complications.ComplicationData;
 import android.support.wearable.complications.ComplicationManager;
 import android.support.wearable.complications.ComplicationProviderService;
 import android.support.wearable.complications.ComplicationText;
-import android.widget.Toast;
 
 import java.util.Locale;
 
@@ -48,7 +47,8 @@ public class DataProviderService extends ComplicationProviderService {
 
             @Override
             public void onError(String message) {
-                Toast.makeText(DataProviderService.this, message, Toast.LENGTH_LONG).show();
+                String error = String.format(Locale.getDefault(), getString(R.string.complication_error), message);
+                update(error, complicationId, dataType, complicationManager);
             }
         });
         presenter.getData(toCurrency);

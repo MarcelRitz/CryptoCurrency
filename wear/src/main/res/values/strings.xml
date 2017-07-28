@@ -4,6 +4,7 @@
 
     <!-- Complication -->
     <string name="complication_loading">loading..</string>
+    <string name="complication_error">Error: %1$s</string>
     <string name="complication_short_text">%1$.2f</string>
     <string name="complication_long_text">%1$s %2$.2f</string>
 
