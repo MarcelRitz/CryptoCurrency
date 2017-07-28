@@ -1,7 +1,8 @@
 <resources>
     <!-- Currency -->
     <string name="currency_btc">BTC</string>
-    <string name="currency_eur">EUR</string>
     <string name="currency_eth">ETH</string>
+    <string name="currency_eur">EUR</string>
+    <string name="currency_ltc">LTC</string>
     <string name="currency_usd">USD</string>
 </resources>
