@@ -24,6 +24,8 @@ public class DataProviderService extends ComplicationProviderService {
     private String toCurrency;
 
     public DataProviderService(String toCurrency) {
+        super();
+
         this.toCurrency = toCurrency;
     }
 
