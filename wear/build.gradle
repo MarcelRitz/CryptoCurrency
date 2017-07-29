@@ -1,11 +1,12 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion config.compileSdkVersion
     buildToolsVersion config.buildToolsVersion
     defaultConfig {
         minSdkVersion 25
-        targetSdkVersion 26
+        targetSdkVersion 25
         versionCode 1
         versionName "0.5.0"
         resConfigs "en"
@@ -34,8 +35,17 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile project(':data')
+    compile (project(':data')) {
+        exclude group: 'com.android.support', module: 'support-v4'
+    }
     compile 'com.google.android.support:wearable:2.0.3'
-    compile 'com.google.android.gms:play-services-wearable:11.0.4'
+    compile ('com.google.android.gms:play-services-wearable:11.0.4') {
+        exclude group: 'com.android.support', module: 'support-v4'
+    }
+    compile ('com.google.firebase:firebase-core:11.0.4') {
+        exclude group: 'com.android.support', module: 'support-v4'
+    }
+    compile 'com.android.support:support-v4:25.2.0'
+
     provided 'com.google.android.support:wearable:2.0.3'
 }

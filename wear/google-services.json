@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "724759102835",
+    "firebase_url": "https://cryptocurrency-a91d8.firebaseio.com",
+    "project_id": "cryptocurrency-a91d8",
+    "storage_bucket": "cryptocurrency-a91d8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:724759102835:android:87a86254f223205b",
+        "android_client_info": {
+          "package_name": "dev.cytronix.cryptocurrency.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "724759102835-q8iqbegcsvcufuck13p9d48o6ugpp2j5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.cytronix.cryptocurrency.dev",
+            "certificate_hash": "6ba0a0598da61b4ca55966770b2319497a626253"
+          }
+        },
+        {
+          "client_id": "724759102835-k7gie3llvdmtcaa4vvpmqdpf5g2q5qo9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHEIi1D4-XMewA0xWxf4w5ZAxnutFt3As"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "724759102835-k7gie3llvdmtcaa4vvpmqdpf5g2q5qo9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:724759102835:android:e20a1b6d1a18f371",
+        "android_client_info": {
+          "package_name": "dev.cytronix.cryptocurrency"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "724759102835-krfo6m4f5f6b755d46hd4tme3u8e7koh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.cytronix.cryptocurrency",
+            "certificate_hash": "6ba0a0598da61b4ca55966770b2319497a626253"
+          }
+        },
+        {
+          "client_id": "724759102835-k7gie3llvdmtcaa4vvpmqdpf5g2q5qo9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHEIi1D4-XMewA0xWxf4w5ZAxnutFt3As"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "724759102835-k7gie3llvdmtcaa4vvpmqdpf5g2q5qo9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
