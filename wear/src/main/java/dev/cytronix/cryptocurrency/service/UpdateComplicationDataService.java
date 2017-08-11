@@ -50,6 +50,8 @@ public class UpdateComplicationDataService extends IntentService {
 
     private Class<?> getProviderService(String currency) {
         switch(currency) {
+            case Currency.BCH:
+                return BchProviderService.class;
             case Currency.ETH:
                 return EthProviderService.class;
             case Currency.LTC:

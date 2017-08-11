@@ -1,8 +1,13 @@
 <resources>
     <!-- Currency -->
+    <string name="currency_bch">BCH</string>
     <string name="currency_btc">BTC</string>
     <string name="currency_eth">ETH</string>
     <string name="currency_eur">EUR</string>
     <string name="currency_ltc">LTC</string>
     <string name="currency_usd">USD</string>
+    <string name="currency_bch_text">Bitcoin Cash</string>
+    <string name="currency_btc_text">Bitcoin</string>
+    <string name="currency_eth_text">Ethereum</string>
+    <string name="currency_ltc_text">Litecoin</string>
 </resources>

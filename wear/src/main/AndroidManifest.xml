@@ -24,11 +24,29 @@
             android:name=".service.UpdateComplicationDataService"
             android:exported="false" />
 
+        <!-- BCH -->
+        <service
+            android:name=".service.BchProviderService"
+            android:icon="@drawable/ic_currency_bch"
+            android:label="@string/currency_bch_text"
+            android:permission="com.google.android.wearable.permission.BIND_COMPLICATION_PROVIDER">
+            <intent-filter>
+                <action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.wearable.complications.SUPPORTED_TYPES"
+                android:value="SHORT_TEXT,LONG_TEXT" />
+            <meta-data
+                android:name="android.support.wearable.complications.UPDATE_PERIOD_SECONDS"
+                android:value="3600" />
+        </service>
+
         <!-- BTC -->
         <service
             android:name=".service.BtcProviderService"
             android:icon="@drawable/ic_currency_btc"
-            android:label="@string/currency_btc"
+            android:label="@string/currency_btc_text"
             android:permission="com.google.android.wearable.permission.BIND_COMPLICATION_PROVIDER">
             <intent-filter>
                 <action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />
@@ -46,7 +64,7 @@
         <service
             android:name=".service.EthProviderService"
             android:icon="@drawable/ic_currency_eth"
-            android:label="@string/currency_eth"
+            android:label="@string/currency_eth_text"
             android:permission="com.google.android.wearable.permission.BIND_COMPLICATION_PROVIDER">
             <intent-filter>
                 <action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />
@@ -64,7 +82,7 @@
         <service
             android:name=".service.LtcProviderService"
             android:icon="@drawable/ic_currency_ltc"
-            android:label="@string/currency_ltc"
+            android:label="@string/currency_ltc_text"
             android:permission="com.google.android.wearable.permission.BIND_COMPLICATION_PROVIDER">
             <intent-filter>
                 <action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />
