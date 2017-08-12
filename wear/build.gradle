@@ -6,8 +6,8 @@ android {
     defaultConfig {
         minSdkVersion 25
         targetSdkVersion 26
-        versionCode 6
-        versionName "0.8.0"
+        versionCode 7
+        versionName "0.8.1"
         resConfigs "en", "de"
     }
     buildTypes {
@@ -37,7 +37,7 @@ dependencies {
     compile (project(':data')) {
         exclude group: 'com.android.support', module: 'support-v4'
     }
-    compile ('com.google.android.support:wearable:2.0.4') {
+    compile ('com.google.android.support:wearable:2.0.3') {
         exclude group: 'com.android.support', module: 'support-v4'
     }
     compile ('com.android.support:wear:26.0.0') {
@@ -52,7 +52,7 @@ dependencies {
     compile 'com.android.support:support-v4:26.0.0'
     compile 'com.android.billingclient:billing:dp-1'
 
-    provided 'com.google.android.support:wearable:2.0.4'
+    provided 'com.google.android.support:wearable:2.0.3'
 }
 
 apply plugin: 'com.google.gms.google-services'
