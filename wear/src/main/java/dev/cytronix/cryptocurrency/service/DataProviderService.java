@@ -10,9 +10,13 @@ import android.support.wearable.complications.ComplicationManager;
 import android.support.wearable.complications.ComplicationProviderService;
 import android.support.wearable.complications.ComplicationText;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 import java.util.Locale;
 
 import dev.cytronix.cryptocurrency.R;
+import dev.cytronix.cryptocurrency.analytic.Analytics;
+import dev.cytronix.cryptocurrency.util.AnalyticsUtils;
 import dev.cytronix.data.cryptowat.model.Price;
 import dev.cytronix.data.presenter.IPricePresenter;
 import dev.cytronix.data.presenter.PricePresenter;
@@ -32,6 +36,13 @@ public class DataProviderService extends ComplicationProviderService {
     private String getCurrency() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         return sharedPreferences.getString(getString(R.string.preference_currency_key), getString(R.string.preference_currency_default_value));
+    }
+
+    @Override
+    public void onComplicationActivated(int complicationId, int type, ComplicationManager manager) {
+        super.onComplicationActivated(complicationId, type, manager);
+
+        AnalyticsUtils.trackEvent(this, FirebaseAnalytics.Event.SELECT_CONTENT, Analytics.ITEM_ID_COMPLICATION_ACTIVATED, toCurrency, 1);
     }
 
     @Override
@@ -83,5 +94,12 @@ public class DataProviderService extends ComplicationProviderService {
         builder.setTapAction(pendingIntent);
 
         complicationManager.updateComplicationData(complicationId, builder.build());
+    }
+
+    @Override
+    public void onComplicationDeactivated(int complicationId) {
+        super.onComplicationDeactivated(complicationId);
+
+        AnalyticsUtils.trackEvent(this, FirebaseAnalytics.Event.SELECT_CONTENT, Analytics.ITEM_ID_COMPLICATION_DEACTIVATED, toCurrency, 1);
     }
 }
