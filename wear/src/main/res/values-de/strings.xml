@@ -3,7 +3,11 @@
     <string name="complication_loading">laden..</string>
     <string name="complication_error">Fehler</string>
 
+    <!-- Donation -->
+    <string name="donation_title">Spende</string>
+
     <!-- Preferences -->
+    <string name="preference_title">Einstellungen</string>
     <string name="preference_currency_title">Währung</string>
     <string name="preference_currency_summary">Auswählen zum Umrechnen</string>
 </resources>

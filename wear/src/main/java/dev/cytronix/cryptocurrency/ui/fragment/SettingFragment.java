@@ -8,6 +8,8 @@ import dev.cytronix.cryptocurrency.R;
 
 public class SettingFragment extends PreferenceFragment {
 
+    public static final String TAG = "SettingFragment";
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
