@@ -15,11 +15,15 @@ import com.android.billingclient.api.BillingClientStateListener;
 import com.android.billingclient.api.BillingFlowParams;
 import com.android.billingclient.api.Purchase;
 import com.android.billingclient.api.PurchasesUpdatedListener;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.util.List;
 
 import dev.cytronix.cryptocurrency.R;
+import dev.cytronix.cryptocurrency.analytic.Analytics;
+import dev.cytronix.cryptocurrency.billing.Billing;
 import dev.cytronix.cryptocurrency.ui.activity.SettingActivity;
+import dev.cytronix.cryptocurrency.util.AnalyticsUtils;
 
 public class MainFragment extends BaseFragment implements MenuItem.OnMenuItemClickListener, View.OnClickListener, PurchasesUpdatedListener {
 
@@ -75,10 +79,12 @@ public class MainFragment extends BaseFragment implements MenuItem.OnMenuItemCli
     @Override
     public void onClick(View view) {
         BillingFlowParams billingFlowParams = new BillingFlowParams.Builder()
-                .setSku("skuId").setType(BillingClient.SkuType.INAPP)
+                .setSku(Billing.SKU_DONATION_LOWEST).setType(BillingClient.SkuType.INAPP)
                 .build();
 
-        int responseCode = billingClient.launchBillingFlow(getActivity(), billingFlowParams);
+        billingClient.launchBillingFlow(getActivity(), billingFlowParams);
+
+        AnalyticsUtils.trackEvent(getContext(), FirebaseAnalytics.Event.SELECT_CONTENT, Analytics.ITEM_ID_DONATION, Analytics.ITEM_NAME_DONATION, 1);
     }
 
     @Override
