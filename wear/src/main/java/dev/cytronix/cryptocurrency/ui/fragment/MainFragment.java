@@ -19,6 +19,7 @@ import com.android.billingclient.api.PurchasesUpdatedListener;
 import java.util.List;
 
 import dev.cytronix.cryptocurrency.R;
+import dev.cytronix.cryptocurrency.billing.Billing;
 import dev.cytronix.cryptocurrency.ui.activity.SettingActivity;
 
 public class MainFragment extends BaseFragment implements MenuItem.OnMenuItemClickListener, View.OnClickListener, PurchasesUpdatedListener {
@@ -75,7 +76,7 @@ public class MainFragment extends BaseFragment implements MenuItem.OnMenuItemCli
     @Override
     public void onClick(View view) {
         BillingFlowParams billingFlowParams = new BillingFlowParams.Builder()
-                .setSku("skuId").setType(BillingClient.SkuType.INAPP)
+                .setSku(Billing.SKU_DONATION_LOWEST).setType(BillingClient.SkuType.INAPP)
                 .build();
 
         int responseCode = billingClient.launchBillingFlow(getActivity(), billingFlowParams);
