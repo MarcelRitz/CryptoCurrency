@@ -5,7 +5,7 @@ android {
     buildToolsVersion config.buildToolsVersion
     defaultConfig {
         minSdkVersion 25
-        targetSdkVersion 25
+        targetSdkVersion 26
         versionCode 3
         versionName "0.7.0"
         resConfigs "en", "de"
@@ -37,16 +37,21 @@ dependencies {
     compile (project(':data')) {
         exclude group: 'com.android.support', module: 'support-v4'
     }
-    compile 'com.google.android.support:wearable:2.0.3'
+    compile ('com.google.android.support:wearable:2.0.4') {
+        exclude group: 'com.android.support', module: 'support-v4'
+    }
+    compile ('com.android.support:wear:26.0.0') {
+        exclude group: 'com.android.support', module: 'support-v4'
+    }
     compile ('com.google.android.gms:play-services-wearable:11.0.4') {
         exclude group: 'com.android.support', module: 'support-v4'
     }
     compile ('com.google.firebase:firebase-core:11.0.4') {
         exclude group: 'com.android.support', module: 'support-v4'
     }
-    compile 'com.android.support:support-v4:25.3.1'
+    compile 'com.android.support:support-v4:26.0.0'
 
-    provided 'com.google.android.support:wearable:2.0.3'
+    provided 'com.google.android.support:wearable:2.0.4'
 }
 
 apply plugin: 'com.google.gms.google-services'

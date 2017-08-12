@@ -9,6 +9,7 @@
     <string name="complication_long_text" translatable="false">%1$s %2$.2f</string>
 
     <!-- Preferences -->
+    <string name="preference_title">Settings</string>
     <string name="preference_currency_title">Currency</string>
     <string name="preference_currency_summary">Choose to convert</string>
     <string name="preference_currency_key" translatable="false">CurrencyKey</string>

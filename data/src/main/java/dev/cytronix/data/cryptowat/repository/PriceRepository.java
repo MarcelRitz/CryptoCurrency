@@ -22,6 +22,7 @@ public class PriceRepository implements IPriceRepository {
     public void getPrice(final String toCurrency) {
         Call<Result> call = service.getPrice(baseCurrency, toCurrency);
         call.enqueue(new Callback<Result>() {
+            @SuppressWarnings("NullableProblems")
             @Override
             public void onResponse(Call<Result> call, Response<Result> response) {
                 if(onPriceRepositoryListener == null) {
@@ -41,6 +42,7 @@ public class PriceRepository implements IPriceRepository {
                 onPriceRepositoryListener.onSuccess(price);
             }
 
+            @SuppressWarnings("NullableProblems")
             @Override
             public void onFailure(Call<Result> call, Throwable throwable) {
                 if(onPriceRepositoryListener == null) {
