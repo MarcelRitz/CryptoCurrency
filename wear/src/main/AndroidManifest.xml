@@ -2,6 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="dev.cytronix.cryptocurrency">
 
+    <!-- Permissions -->
+    <uses-permission android:name="com.android.vending.BILLING" />
+
     <uses-feature android:name="android.hardware.type.watch" />
 
     <application
