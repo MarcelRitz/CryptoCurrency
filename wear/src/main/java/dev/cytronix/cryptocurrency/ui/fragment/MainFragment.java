@@ -82,7 +82,7 @@ public class MainFragment extends BaseFragment implements MenuItem.OnMenuItemCli
                 .setSku(Billing.SKU_DONATION_LOWEST).setType(BillingClient.SkuType.INAPP)
                 .build();
 
-        int responseCode = billingClient.launchBillingFlow(getActivity(), billingFlowParams);
+        billingClient.launchBillingFlow(getActivity(), billingFlowParams);
 
         AnalyticsUtils.trackEvent(getContext(), FirebaseAnalytics.Event.SELECT_CONTENT, Analytics.ITEM_ID_DONATION, Analytics.ITEM_NAME_DONATION, 1);
     }
