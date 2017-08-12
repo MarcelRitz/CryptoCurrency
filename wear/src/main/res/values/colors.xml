@@ -1,0 +1,10 @@
+<resources>
+    <!-- All -->
+    <color name="background_default">#FF000000</color>
+
+    <!-- Text -->
+    <color name="text_default">#FFFFFFFF</color>
+
+    <!-- Drawables -->
+    <color name="drawable_drawer_action">#FFFFFFFF</color>
+</resources>

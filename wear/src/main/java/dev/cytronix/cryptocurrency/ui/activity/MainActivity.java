@@ -2,14 +2,14 @@ package dev.cytronix.cryptocurrency.ui.activity;
 
 import android.os.Bundle;
 
-import dev.cytronix.cryptocurrency.ui.fragment.SettingFragment;
+import dev.cytronix.cryptocurrency.ui.fragment.MainFragment;
 
-public class SettingActivity extends BaseActivity {
+public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        showFragment(new SettingFragment(), SettingFragment.TAG);
+        showFragment(new MainFragment(), MainFragment.TAG);
     }
 }

@@ -1,0 +1,5 @@
+<resources>
+    <style name="Text.Medium" parent="@style/TextAppearance.Wearable.Medium">
+        <item name="android:textColor">@color/text_default</item>
+    </style>
+</resources>
