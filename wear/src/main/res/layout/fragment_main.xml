@@ -4,27 +4,11 @@
     android:layout_height="match_parent"
     android:background="@color/background_default">
 
-    <android.support.wear.widget.BoxInsetLayout
+    <android.support.wear.widget.WearableRecyclerView
+        android:id="@+id/wearablerecyclerview_main_currency"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/boxinsetlayout_padding">
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="@dimen/boxinsetlayout_content_padding"
-            app:boxedEdges="all">
-
-            <Button
-                android:id="@+id/button_main_donation"
-                style="@style/Text.Medium"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:enabled="false"
-                android:text="@string/donation_title" />
-        </FrameLayout>
-    </android.support.wear.widget.BoxInsetLayout>
+        android:scrollbars="vertical" />
 
     <android.support.wear.widget.drawer.WearableActionDrawerView
         android:id="@+id/wearableactiondrawerview_main_action"
