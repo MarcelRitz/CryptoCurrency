@@ -1,0 +1,27 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="@dimen/item_currency_box_padding">
+
+    <TextView
+        android:id="@+id/textview_itemcurrency_baseCurrency"
+        style="@style/Text.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        tools:text="1 BTC" />
+
+    <TextView
+        android:id="@+id/textview_itemcurrency_targetCurrency"
+        style="@style/Text.Medium"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/item_currency_margin_end"
+        android:layout_marginStart="@dimen/item_currency_margin"
+        android:layout_weight="1"
+        android:gravity="end"
+        tools:text="3000.00$" />
+</LinearLayout>
