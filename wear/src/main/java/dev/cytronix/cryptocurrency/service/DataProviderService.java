@@ -14,7 +14,6 @@ import java.util.Locale;
 
 import dev.cytronix.cryptocurrency.R;
 import dev.cytronix.cryptocurrency.analytic.Analytics;
-import dev.cytronix.cryptocurrency.storage.IStorage;
 import dev.cytronix.cryptocurrency.storage.Storage;
 import dev.cytronix.cryptocurrency.util.AnalyticsUtils;
 import dev.cytronix.data.cryptowat.model.Price;
@@ -26,22 +25,15 @@ import dev.cytronix.data.view.PriceView;
 public class DataProviderService extends ComplicationProviderService {
 
     private String toCurrency;
-    private IStorage storage;
 
     public DataProviderService(String toCurrency) {
         super();
 
         this.toCurrency = toCurrency;
-
-        init();
-    }
-
-    private void init() {
-        storage = new Storage(this);
     }
 
     private String getCurrency() {
-        return storage.getCurrency();
+        return new Storage(this).getCurrency();
     }
 
     @Override
