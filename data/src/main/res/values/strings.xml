@@ -6,8 +6,14 @@
     <string name="currency_eur" translatable="false">EUR</string>
     <string name="currency_ltc" translatable="false">LTC</string>
     <string name="currency_usd" translatable="false">USD</string>
-    <string name="currency_bch_text" translatable="false">Bitcoin Cash</string>
-    <string name="currency_btc_text" translatable="false">Bitcoin</string>
-    <string name="currency_eth_text" translatable="false">Ethereum</string>
-    <string name="currency_ltc_text" translatable="false">Litecoin</string>
+
+    <!--Currency symbol-->
+    <string name="currency_symbol_eur" translatable="false">€</string>
+    <string name="currency_symbol_usd" translatable="false">$</string>
+
+    <!-- Currency text -->
+    <string name="currency_text_bch" translatable="false">Bitcoin Cash</string>
+    <string name="currency_text_btc" translatable="false">Bitcoin</string>
+    <string name="currency_text_etc" translatable="false">Ethereum</string>
+    <string name="currency_text_ltc" translatable="false">Litecoin</string>
 </resources>

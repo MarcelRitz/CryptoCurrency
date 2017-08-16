@@ -1,5 +1,10 @@
 <resources>
-    <!-- All -->
+    <!-- Box inset layout -->
     <dimen name="boxinsetlayout_padding">15dp</dimen>
     <dimen name="boxinsetlayout_content_padding">5dp</dimen>
+
+    <!-- Items -->
+    <dimen name="item_currency_box_padding">5dp</dimen>
+    <dimen name="item_currency_margin">5dp</dimen>
+    <dimen name="item_currency_margin_end">20dp</dimen>
 </resources>

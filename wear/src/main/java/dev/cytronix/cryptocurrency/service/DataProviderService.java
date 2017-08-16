@@ -3,8 +3,6 @@ package dev.cytronix.cryptocurrency.service;
 import android.annotation.SuppressLint;
 import android.app.PendingIntent;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.support.wearable.complications.ComplicationData;
 import android.support.wearable.complications.ComplicationManager;
 import android.support.wearable.complications.ComplicationProviderService;
@@ -16,6 +14,8 @@ import java.util.Locale;
 
 import dev.cytronix.cryptocurrency.R;
 import dev.cytronix.cryptocurrency.analytic.Analytics;
+import dev.cytronix.cryptocurrency.storage.IStorage;
+import dev.cytronix.cryptocurrency.storage.Storage;
 import dev.cytronix.cryptocurrency.util.AnalyticsUtils;
 import dev.cytronix.data.cryptowat.model.Price;
 import dev.cytronix.data.presenter.IPricePresenter;
@@ -26,16 +26,22 @@ import dev.cytronix.data.view.PriceView;
 public class DataProviderService extends ComplicationProviderService {
 
     private String toCurrency;
+    private IStorage storage;
 
     public DataProviderService(String toCurrency) {
         super();
 
         this.toCurrency = toCurrency;
+
+        init();
+    }
+
+    private void init() {
+        storage = new Storage(this);
     }
 
     private String getCurrency() {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        return sharedPreferences.getString(getString(R.string.preference_currency_key), getString(R.string.preference_currency_default_value));
+        return storage.getCurrency();
     }
 
     @Override
@@ -47,7 +53,7 @@ public class DataProviderService extends ComplicationProviderService {
 
     @Override
     public void onComplicationUpdate(final int complicationId, final int dataType, final ComplicationManager complicationManager) {
-        update(getString(R.string.complication_loading), complicationId, dataType, complicationManager);
+        update(getString(R.string.all_loading), complicationId, dataType, complicationManager);
 
         IPricePresenter presenter = new PricePresenter(getCurrency(), new PriceView() {
             @Override
@@ -60,7 +66,7 @@ public class DataProviderService extends ComplicationProviderService {
 
             @Override
             public void onError(String message) {
-                update(getString(R.string.complication_error), complicationId, dataType, complicationManager);
+                update(getString(R.string.all_error), complicationId, dataType, complicationManager);
             }
         });
         presenter.getData(toCurrency);

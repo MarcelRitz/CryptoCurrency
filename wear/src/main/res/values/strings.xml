@@ -1,15 +1,23 @@
 <resources>
     <!-- All -->
     <string name="app_name" translatable="false">CryptoCurrency</string>
+    <string name="all_error">Error</string>
+    <string name="all_loading">loading..</string>
 
     <!-- Complication -->
-    <string name="complication_loading">loading..</string>
-    <string name="complication_error">Error</string>
     <string name="complication_short_text" translatable="false">%1$.2f</string>
     <string name="complication_long_text" translatable="false">%1$s %2$.2f</string>
 
+    <!-- Items -->
+    <string name="item_price_currency_base" translatable="false">%1$d %2$s</string>
+    <string name="item_price_currency_target" translatable="false">%1$.2f%2$s</string>
+    <string name="item_price_currency_target_empty" translatable="false">-%1$s</string>
+
     <!-- Donation -->
-    <string name="donation_title">Donate</string>
+    <string name="donation_title">Donation</string>
+
+    <!-- Menu -->
+    <string name="menu_refresh">Refresh</string>
 
     <!-- Preferences -->
     <string name="preference_title">Settings</string>
