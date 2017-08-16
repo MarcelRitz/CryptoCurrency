@@ -2,7 +2,7 @@ package dev.cytronix.cryptocurrency.ui.activity;
 
 import android.os.Bundle;
 
-import dev.cytronix.cryptocurrency.ui.fragment.MainFragment;
+import dev.cytronix.cryptocurrency.ui.fragment.PriceListFragment;
 
 public class MainActivity extends BaseActivity {
 
@@ -10,6 +10,6 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        showFragment(new MainFragment(), MainFragment.TAG);
+        showFragment(new PriceListFragment(), PriceListFragment.TAG);
     }
 }

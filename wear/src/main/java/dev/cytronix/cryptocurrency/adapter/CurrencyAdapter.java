@@ -1,5 +1,6 @@
 package dev.cytronix.cryptocurrency.adapter;
 
+import android.content.Context;
 import android.support.wear.widget.WearableRecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,9 +8,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.List;
+import java.util.Locale;
 
 import dev.cytronix.cryptocurrency.R;
 import dev.cytronix.data.cryptowat.model.Price;
+import dev.cytronix.data.util.CurrencyUtils;
 
 public class CurrencyAdapter extends WearableRecyclerView.Adapter<CurrencyAdapter.CurrencyViewHolder> {
 
@@ -29,8 +32,18 @@ public class CurrencyAdapter extends WearableRecyclerView.Adapter<CurrencyAdapte
     public void onBindViewHolder(CurrencyViewHolder holder, int position) {
         Price price = prices.get(position);
 
-        holder.getTextViewBase().setText(price.getBaseCurrency());
-        holder.getTextViewTarget().setText(price.getTargetCurrency());
+        Context context = holder.getContext();
+
+        String baseText = String.format(Locale.getDefault(), context.getString(R.string.item_price_currency_base), price.getQuantity(), price.getTargetCurrency());
+        holder.getTextViewBase().setText(baseText);
+
+        String targetText;
+        if(Price.PRICE_DEFAULT == price.getPrice()) {
+            targetText = String.format(Locale.getDefault(), context.getString(R.string.item_price_currency_target_empty), CurrencyUtils.getCurrencySymbol(price.getBaseCurrency()));
+        } else {
+            targetText = String.format(Locale.getDefault(), context.getString(R.string.item_price_currency_target), price.getPrice(), CurrencyUtils.getCurrencySymbol(price.getBaseCurrency()));
+        }
+        holder.getTextViewTarget().setText(targetText);
     }
 
     @Override
@@ -56,6 +69,10 @@ public class CurrencyAdapter extends WearableRecyclerView.Adapter<CurrencyAdapte
 
         public TextView getTextViewTarget() {
             return textViewTarget;
+        }
+
+        public Context getContext() {
+            return textViewBase.getContext();
         }
     }
 }

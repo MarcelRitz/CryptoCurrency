@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="start"
-        tools:text="BTC" />
+        tools:text="1 BTC" />
 
     <TextView
         android:id="@+id/textview_itemcurrency_targetCurrency"
@@ -23,5 +23,5 @@
         android:layout_marginStart="@dimen/item_currency_margin"
         android:layout_weight="1"
         android:gravity="end"
-        tools:text="USD" />
+        tools:text="3000.00$" />
 </LinearLayout>

@@ -9,8 +9,8 @@ import retrofit2.Response;
 
 public class PriceRepository implements IPriceRepository {
 
-    private String baseCurrency;
     private RestService service;
+    private String baseCurrency;
     private OnPriceRepositoryListener onPriceRepositoryListener;
 
     public PriceRepository(RestService service, String baseCurrency) {
@@ -19,8 +19,13 @@ public class PriceRepository implements IPriceRepository {
     }
 
     @Override
-    public void getPrice(final String toCurrency) {
-        Call<Result> call = service.getPrice(baseCurrency, toCurrency);
+    public void setBaseCurrency(String baseCurrency) {
+        this.baseCurrency = baseCurrency;
+    }
+
+    @Override
+    public void getPrice(final String targetCurrency) {
+        Call<Result> call = service.getPrice(baseCurrency, targetCurrency);
         call.enqueue(new Callback<Result>() {
             @SuppressWarnings("NullableProblems")
             @Override
@@ -28,7 +33,6 @@ public class PriceRepository implements IPriceRepository {
                 if(onPriceRepositoryListener == null) {
                     return;
                 }
-
                 Result result = response.body();
                 if(result == null) {
                     onFailure(call, new Throwable("Unknown error"));
@@ -37,7 +41,7 @@ public class PriceRepository implements IPriceRepository {
 
                 Price price = result.getPrice();
                 price.setBaseCurrency(baseCurrency);
-                price.setTargetCurrency(toCurrency);
+                price.setTargetCurrency(targetCurrency);
 
                 onPriceRepositoryListener.onSuccess(price);
             }
