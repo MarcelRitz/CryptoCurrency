@@ -1,0 +1,16 @@
+<resources>
+    <!-- All -->
+    <string name="all_error">Error</string>
+    <string name="all_loading">cargando..</string>
+
+    <!-- Donation -->
+    <string name="donation_title">Donación</string>
+
+    <!-- Menu -->
+    <string name="menu_refresh">Refrescar</string>
+
+    <!-- Preferences -->
+    <string name="preference_title">Ajustes</string>
+    <string name="preference_currency_title">Moneda</string>
+    <string name="preference_currency_summary">Elegir para convertir</string>
+</resources>
