@@ -1,0 +1,16 @@
+<resources>
+    <!-- All -->
+    <string name="all_error">Ошибка</string>
+    <string name="all_loading">погрузка..</string>
+
+    <!-- Donation -->
+    <string name="donation_title">Пожертвование</string>
+
+    <!-- Menu -->
+    <string name="menu_refresh">Обновление</string>
+
+    <!-- Preferences -->
+    <string name="preference_title">Настройки</string>
+    <string name="preference_currency_title">Валюта</string>
+    <string name="preference_currency_summary">Выберите конвертировать</string>
+</resources>
