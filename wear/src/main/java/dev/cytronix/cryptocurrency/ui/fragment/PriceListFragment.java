@@ -79,6 +79,7 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
 
         recyclerView = viewRoot.findViewById(R.id.wearablerecyclerview_pricelist_pricelist);
         setPriceList(recyclerView);
+        recyclerView.scrollToPosition(1);
 
         actionDrawer = viewRoot.findViewById(R.id.wearableactiondrawerview_main_action);
         actionDrawer.getController().peekDrawer();
@@ -178,7 +179,7 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
 
         linearLayoutLoading.setVisibility(View.GONE);
         textViewError.setVisibility(View.GONE);
-        recyclerView.smoothScrollToPosition(0);
+        recyclerView.smoothScrollToPosition(1);
         recyclerView.setVisibility(View.VISIBLE);
     }
 
