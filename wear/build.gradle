@@ -6,9 +6,9 @@ android {
     defaultConfig {
         minSdkVersion 25
         targetSdkVersion 26
-        versionCode 8
-        versionName "0.9.0"
-        resConfigs "en", "de"
+        versionCode 9
+        versionName "1.0.0"
+        resConfigs "en", "de", "es", "fr", "ru"
     }
     buildTypes {
         release {
