@@ -14,10 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.billingclient.api.BillingClient;
-import com.android.billingclient.api.BillingClientStateListener;
-import com.android.billingclient.api.BillingFlowParams;
 import com.android.billingclient.api.Purchase;
-import com.android.billingclient.api.PurchasesUpdatedListener;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.util.List;
@@ -26,6 +23,8 @@ import dev.cytronix.cryptocurrency.R;
 import dev.cytronix.cryptocurrency.adapter.CurrencyAdapter;
 import dev.cytronix.cryptocurrency.analytic.Analytics;
 import dev.cytronix.cryptocurrency.billing.Billing;
+import dev.cytronix.cryptocurrency.billing.BillingRepository;
+import dev.cytronix.cryptocurrency.billing.IBillingRepository;
 import dev.cytronix.cryptocurrency.storage.Storage;
 import dev.cytronix.cryptocurrency.ui.activity.SettingActivity;
 import dev.cytronix.cryptocurrency.util.AnalyticsUtils;
@@ -34,13 +33,13 @@ import dev.cytronix.data.presenter.IPriceListPresenter;
 import dev.cytronix.data.presenter.PriceListPresenter;
 import dev.cytronix.data.view.PriceListView;
 
-public class PriceListFragment extends BaseFragment implements PriceListView, MenuItem.OnMenuItemClickListener, View.OnClickListener, PurchasesUpdatedListener {
+public class PriceListFragment extends BaseFragment implements PriceListView, MenuItem.OnMenuItemClickListener, View.OnClickListener, BillingRepository.OnBillingRepositoryListener {
 
     public static final String TAG = "PriceListFragment";
-    private BillingClient billingClient;
-    private IPriceListPresenter presenter;
-    private CurrencyAdapter adapter;
     private Storage storage;
+    private IPriceListPresenter presenter;
+    private IBillingRepository billingRepository;
+    private CurrencyAdapter adapter;
     private TextView textViewError;
     private LinearLayout linearLayoutLoading;
     private WearableRecyclerView recyclerView;
@@ -53,8 +52,8 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
         storage = new Storage(getContext());
         presenter = new PriceListPresenter(this, storage.getCurrency());
 
-        initLayout(viewRoot);
         initBilling();
+        initLayout(viewRoot);
 
         return viewRoot;
     }
@@ -69,6 +68,12 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
 
         presenter.setBaseCurrency(storage.getCurrency());
         refresh();
+    }
+
+    private void initBilling() {
+        billingRepository = new BillingRepository(getActivity());
+        billingRepository.setOnBillingRepositoryListener(this);
+        billingRepository.connect();
     }
 
     private void initLayout(View viewRoot) {
@@ -94,32 +99,12 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
         recyclerView.setAdapter(adapter);
     }
 
-    private void initBilling() {
-        billingClient = new BillingClient.Builder(getContext()).setListener(this).build();
-        billingClient.startConnection(new BillingClientStateListener() {
-            @Override
-            public void onBillingSetupFinished(@BillingClient.BillingResponse int billingResponseCode) {
-                if (billingResponseCode == BillingClient.BillingResponse.OK) {
-                    // ignore
-                }
-            }
-
-            @Override
-            public void onBillingServiceDisconnected() {
-            }
-        });
-    }
-
     private void showDonation() {
-        if(!billingClient.isReady()) {
+        if(!billingRepository.isReady()) {
             return;
         }
 
-        BillingFlowParams billingFlowParams = new BillingFlowParams.Builder()
-                .setSku(Billing.SKU_DONATION_LOWEST).setType(BillingClient.SkuType.INAPP)
-                .build();
-
-        billingClient.launchBillingFlow(getActivity(), billingFlowParams);
+        billingRepository.launchBilling(Billing.SKU_DONATION_LOWEST, BillingClient.SkuType.INAPP);
 
         AnalyticsUtils.trackEvent(getContext(), FirebaseAnalytics.Event.SELECT_CONTENT, Analytics.ITEM_ID_DONATION, Analytics.ITEM_NAME_DONATION, 1);
     }
@@ -135,38 +120,6 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
         linearLayoutLoading.setVisibility(View.VISIBLE);
 
         presenter.getData();
-    }
-
-    @Override
-    public boolean onMenuItemClick(MenuItem menuItem) {
-        switch (menuItem.getItemId()) {
-            case R.id.menu_donation:
-                showDonation();
-                return true;
-            case R.id.menu_refresh:
-                refresh();
-                actionDrawer.getController().closeDrawer();
-                return true;
-            case R.id.menu_settings:
-            default:
-                showSettings();
-                return true;
-        }
-    }
-
-    @Override
-    public void onPurchasesUpdated(int responseCode, List<Purchase> purchases) {
-        // ignore
-    }
-
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.textview_pricelist_error:
-            default:
-                refresh();
-                break;
-        }
     }
 
     @Override
@@ -192,5 +145,36 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
         linearLayoutLoading.setVisibility(View.GONE);
         recyclerView.setVisibility(View.GONE);
         textViewError.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            case R.id.menu_donation:
+                showDonation();
+                return true;
+            case R.id.menu_refresh:
+                refresh();
+                actionDrawer.getController().closeDrawer();
+                return true;
+            case R.id.menu_settings:
+            default:
+                showSettings();
+                return true;
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.textview_pricelist_error:
+            default:
+                refresh();
+                break;
+        }
+    }
+
+    @Override
+    public void onPurchased(List<Purchase> purchases) {
     }
 }
