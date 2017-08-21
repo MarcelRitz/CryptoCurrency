@@ -115,6 +115,10 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
     }
 
     private void refresh() {
+        if(View.VISIBLE == linearLayoutLoading.getVisibility()) {
+            return;
+        }
+
         textViewError.setVisibility(View.GONE);
         recyclerView.setVisibility(View.GONE);
         linearLayoutLoading.setVisibility(View.VISIBLE);
