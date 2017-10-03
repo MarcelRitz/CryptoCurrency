@@ -8,7 +8,7 @@
     <uses-feature android:name="android.hardware.type.watch" />
 
     <application
-        android:name=".MainApplication"
+        android:name=".WearApplication"
         android:allowBackup="true"
         android:fullBackupContent="@xml/backup_descriptor"
         android:icon="@mipmap/ic_launcher"
@@ -99,5 +99,10 @@
                 android:name="android.support.wearable.complications.UPDATE_PERIOD_SECONDS"
                 android:value="3600" />
         </service>
+
+        <!-- Crashlytics -->
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="d553587bf9b2090c8bf7ccaa63885ed66438d957" />
     </application>
 </manifest>
