@@ -51,10 +51,9 @@ public class DataProviderService extends ComplicationProviderService {
         IPricePresenter presenter = new PricePresenter(getCurrency(), new PriceView() {
             @Override
             public void onUpdate(Price price) {
-                String shortText = String.format(Locale.getDefault(), getString(R.string.complication_short_text), CurrencyUtils.getCurrencySymbol(price.getBaseCurrency()), price.getPrice());
-                String longText = String.format(Locale.getDefault(), getString(R.string.complication_long_text), price.getTargetCurrency(), CurrencyUtils.getCurrencySymbol(price.getBaseCurrency()), price.getPrice());
+                String shortText = String.format(Locale.getDefault(), getString(R.string.complication_text), CurrencyUtils.getCurrencySymbol(price.getBaseCurrency()), price.getPrice());
 
-                update(shortText, longText, complicationId, dataType, complicationManager);
+                update(price.getTargetCurrency(), shortText, complicationId, dataType, complicationManager);
             }
 
             @Override
@@ -66,19 +65,21 @@ public class DataProviderService extends ComplicationProviderService {
     }
 
     public void update(String text, int complicationId, int dataType, ComplicationManager complicationManager) {
-        update(text, text, complicationId, dataType, complicationManager);
+        update("", text, complicationId, dataType, complicationManager);
     }
 
-    public void update(String shortText, String longText, int complicationId, int dataType, ComplicationManager complicationManager) {
+    public void update(String title, String text, int complicationId, int dataType, ComplicationManager complicationManager) {
         ComplicationData.Builder builder;
         switch(dataType) {
             case ComplicationData.TYPE_SHORT_TEXT:
                 builder = new ComplicationData.Builder(ComplicationData.TYPE_SHORT_TEXT)
-                        .setShortText(ComplicationText.plainText(shortText));
+                        .setShortTitle(ComplicationText.plainText(title))
+                        .setShortText(ComplicationText.plainText(text));
                 break;
             case ComplicationData.TYPE_LONG_TEXT:
                 builder = new ComplicationData.Builder(ComplicationData.TYPE_LONG_TEXT)
-                        .setLongText(ComplicationText.plainText(longText));
+                        .setLongTitle(ComplicationText.plainText(title))
+                        .setLongText(ComplicationText.plainText(text));
                 break;
             default:
                 return;

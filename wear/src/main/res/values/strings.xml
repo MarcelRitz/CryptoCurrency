@@ -5,8 +5,7 @@
     <string name="all_loading">loading..</string>
 
     <!-- Complication -->
-    <string name="complication_short_text" translatable="false">%1$s%2$.2f</string>
-    <string name="complication_long_text" translatable="false">%1$s %2$s%3$.2f</string>
+    <string name="complication_text" translatable="false">%1$s%2$.2f</string>
 
     <!-- Item -->
     <string name="item_price_currency_base" translatable="false">%1$d %2$s</string>
