@@ -19,6 +19,7 @@ import dev.cytronix.cryptocurrency.util.AnalyticsUtils;
 import dev.cytronix.data.cryptowat.model.Price;
 import dev.cytronix.data.presenter.IPricePresenter;
 import dev.cytronix.data.presenter.PricePresenter;
+import dev.cytronix.data.util.CurrencyUtils;
 import dev.cytronix.data.view.PriceView;
 
 @SuppressLint("Registered")
@@ -50,8 +51,8 @@ public class DataProviderService extends ComplicationProviderService {
         IPricePresenter presenter = new PricePresenter(getCurrency(), new PriceView() {
             @Override
             public void onUpdate(Price price) {
-                String shortText = String.format(Locale.getDefault(), getString(R.string.complication_short_text), price.getPrice());
-                String longText = String.format(Locale.getDefault(), getString(R.string.complication_long_text), price.getTargetCurrency(), price.getPrice());
+                String shortText = String.format(Locale.getDefault(), getString(R.string.complication_short_text), CurrencyUtils.getCurrencySymbol(price.getBaseCurrency()), price.getPrice());
+                String longText = String.format(Locale.getDefault(), getString(R.string.complication_long_text), price.getTargetCurrency(), CurrencyUtils.getCurrencySymbol(price.getBaseCurrency()), price.getPrice());
 
                 update(shortText, longText, complicationId, dataType, complicationManager);
             }
