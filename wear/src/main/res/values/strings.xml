@@ -17,6 +17,7 @@
 
     <!-- Menu -->
     <string name="menu_refresh">Refresh</string>
+    <string name="menu_rating">Rating</string>
 
     <!-- Preference -->
     <string name="preference_title">Settings</string>

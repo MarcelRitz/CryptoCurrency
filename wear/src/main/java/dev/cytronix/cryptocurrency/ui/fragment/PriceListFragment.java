@@ -28,6 +28,8 @@ import dev.cytronix.cryptocurrency.billing.IBillingRepository;
 import dev.cytronix.cryptocurrency.storage.Storage;
 import dev.cytronix.cryptocurrency.ui.activity.SettingActivity;
 import dev.cytronix.cryptocurrency.util.AnalyticsUtils;
+import dev.cytronix.cryptocurrency.util.AppStoreUtils;
+import dev.cytronix.cryptocurrency.util.IntentUtils;
 import dev.cytronix.data.cryptowat.model.Price;
 import dev.cytronix.data.presenter.IPriceListPresenter;
 import dev.cytronix.data.presenter.PriceListPresenter;
@@ -55,6 +57,8 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
         initBilling();
         initLayout(viewRoot);
 
+        refresh();
+
         return viewRoot;
     }
 
@@ -62,12 +66,7 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
     public void onResume() {
         super.onResume();
 
-        if(actionDrawer.isOpened()) {
-            actionDrawer.getController().closeDrawer();
-        }
-
         presenter.setBaseCurrency(storage.getCurrency());
-        refresh();
     }
 
     private void initBilling() {
@@ -160,6 +159,12 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
             case R.id.menu_refresh:
                 refresh();
                 actionDrawer.getController().closeDrawer();
+                return true;
+            case R.id.menu_rating:
+                Intent intent = AppStoreUtils.getAppIntent(getContext().getPackageName());
+                if(IntentUtils.isAvailable(getContext(), intent)) {
+                    startActivity(intent);
+                }
                 return true;
             case R.id.menu_settings:
             default:
