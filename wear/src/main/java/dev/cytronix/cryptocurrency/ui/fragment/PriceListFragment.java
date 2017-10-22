@@ -57,6 +57,8 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
         initBilling();
         initLayout(viewRoot);
 
+        refresh();
+
         return viewRoot;
     }
 
@@ -64,12 +66,7 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
     public void onResume() {
         super.onResume();
 
-        if(actionDrawer.isOpened()) {
-            actionDrawer.getController().closeDrawer();
-        }
-
         presenter.setBaseCurrency(storage.getCurrency());
-        refresh();
     }
 
     private void initBilling() {
@@ -164,12 +161,10 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
                 actionDrawer.getController().closeDrawer();
                 return true;
             case R.id.menu_rating:
-                Intent intent = AppStoreUtils.getAppLink(getContext().getPackageName());
+                Intent intent = AppStoreUtils.getAppIntent(getContext().getPackageName());
                 if(IntentUtils.isAvailable(getContext(), intent)) {
                     startActivity(intent);
                 }
-
-                actionDrawer.getController().closeDrawer();
                 return true;
             case R.id.menu_settings:
             default:
