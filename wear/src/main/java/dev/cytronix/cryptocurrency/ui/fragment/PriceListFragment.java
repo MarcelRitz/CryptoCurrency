@@ -43,6 +43,7 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
     public enum Status {UNKNOWN, DATA, LOADING, ERROR}
 
     private FragmentPricelistBinding binding;
+    private WearableRecyclerView recyclerView;
     private WearableActionDrawerView actionDrawer;
     private Storage storage;
     private IPriceListPresenter presenter;
@@ -93,7 +94,7 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
     private void initLayout() {
         binding.textviewPricelistError.setOnClickListener(this);
 
-        WearableRecyclerView recyclerView = binding.wearablerecyclerviewPricelistPricelist;
+        recyclerView = binding.wearablerecyclerviewPricelistPricelist;
         setPriceList(recyclerView);
 
         actionDrawer = binding.wearableactiondrawerviewMainAction;
@@ -149,6 +150,8 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
         status.set(Status.DATA);
 
         adapter.notifyDataSetChanged();
+
+        recyclerView.scrollToPosition(0);
     }
 
     @Override
