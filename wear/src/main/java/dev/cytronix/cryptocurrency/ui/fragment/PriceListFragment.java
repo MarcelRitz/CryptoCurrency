@@ -121,6 +121,13 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
         AnalyticsUtils.trackEvent(getContext(), FirebaseAnalytics.Event.SELECT_CONTENT, Analytics.ITEM_ID_DONATION, Analytics.ITEM_NAME_DONATION, 1);
     }
 
+    private void showRating() {
+        Intent intent = AppStoreUtils.getAppIntent(getContext().getPackageName());
+        if(IntentUtils.isAvailable(getContext(), intent)) {
+            startActivity(intent);
+        }
+    }
+
     private void showSettings() {
         Intent intent = new Intent(getContext(), SettingActivity.class);
         startActivity(intent);
@@ -161,18 +168,15 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
     @Override
     public boolean onMenuItemClick(MenuItem menuItem) {
         switch (menuItem.getItemId()) {
-            case R.id.menu_donation:
-                showDonation();
-                return true;
             case R.id.menu_refresh:
                 refresh();
                 actionDrawer.getController().closeDrawer();
                 return true;
+            case R.id.menu_donation:
+                showDonation();
+                return true;
             case R.id.menu_rating:
-                Intent intent = AppStoreUtils.getAppIntent(getContext().getPackageName());
-                if(IntentUtils.isAvailable(getContext(), intent)) {
-                    startActivity(intent);
-                }
+                showRating();
                 return true;
             case R.id.menu_settings:
             default:
