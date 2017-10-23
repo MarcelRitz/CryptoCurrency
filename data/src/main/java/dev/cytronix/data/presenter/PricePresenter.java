@@ -1,12 +1,15 @@
 package dev.cytronix.data.presenter;
 
+import java.util.List;
+
 import dev.cytronix.data.cryptowat.model.Price;
 import dev.cytronix.data.cryptowat.repository.IPriceRepository;
+import dev.cytronix.data.cryptowat.repository.OnPriceRepositoryListener;
 import dev.cytronix.data.cryptowat.repository.PriceRepository;
 import dev.cytronix.data.cryptowat.rest.RestClient;
 import dev.cytronix.data.view.PriceView;
 
-public class PricePresenter implements IPricePresenter, PriceRepository.OnPriceRepositoryListener {
+public class PricePresenter implements IPricePresenter, OnPriceRepositoryListener {
 
     private String baseCurrency;
     private PriceView view;
@@ -30,8 +33,8 @@ public class PricePresenter implements IPricePresenter, PriceRepository.OnPriceR
     }
 
     @Override
-    public void onSuccess(Price price) {
-        view.onUpdate(price);
+    public void onSuccess(List<Price> prices) {
+        view.onUpdate(prices);
     }
 
     @Override

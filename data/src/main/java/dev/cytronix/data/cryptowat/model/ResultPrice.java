@@ -2,7 +2,7 @@ package dev.cytronix.data.cryptowat.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Result {
+public class ResultPrice {
 
     @SerializedName("result")
     private Price price = new Price();
@@ -17,7 +17,7 @@ public class Result {
 
     @Override
     public String toString() {
-        return "Result{" +
+        return "ResultPrice{" +
                 "price=" + price +
                 '}';
     }

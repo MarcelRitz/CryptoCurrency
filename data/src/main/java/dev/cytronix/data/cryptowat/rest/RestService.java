@@ -1,6 +1,7 @@
 package dev.cytronix.data.cryptowat.rest;
 
-import dev.cytronix.data.cryptowat.model.Result;
+import dev.cytronix.data.cryptowat.model.ResultPrice;
+import dev.cytronix.data.cryptowat.model.ResultPrices;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -8,5 +9,8 @@ import retrofit2.http.Path;
 public interface RestService {
 
     @GET("markets/kraken/{targetCurrency}{baseCurrency}/price")
-    Call<Result> getPrice(@Path("baseCurrency") String baseCurrency, @Path("targetCurrency") String targetCurrency);
+    Call<ResultPrice> getPrice(@Path("baseCurrency") String baseCurrency, @Path("targetCurrency") String targetCurrency);
+
+    @GET("markets/prices")
+    Call<ResultPrices> getPrices();
 }

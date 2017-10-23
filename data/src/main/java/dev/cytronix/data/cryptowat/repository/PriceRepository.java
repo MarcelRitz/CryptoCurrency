@@ -1,54 +1,50 @@
 package dev.cytronix.data.cryptowat.repository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import dev.cytronix.data.cryptowat.model.Price;
-import dev.cytronix.data.cryptowat.model.Result;
+import dev.cytronix.data.cryptowat.model.ResultPrice;
 import dev.cytronix.data.cryptowat.rest.RestService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PriceRepository implements IPriceRepository {
-
-    private RestService service;
-    private String baseCurrency;
-    private OnPriceRepositoryListener onPriceRepositoryListener;
+public class PriceRepository extends PriceBaseRepository implements IPriceRepository {
 
     public PriceRepository(RestService service, String baseCurrency) {
-        this.service = service;
-        this.baseCurrency = baseCurrency;
-    }
-
-    @Override
-    public void setBaseCurrency(String baseCurrency) {
-        this.baseCurrency = baseCurrency;
+        super(service, baseCurrency);
     }
 
     @Override
     public void getPrice(final String targetCurrency) {
-        Call<Result> call = service.getPrice(baseCurrency, targetCurrency);
-        call.enqueue(new Callback<Result>() {
+        Call<ResultPrice> call = service.getPrice(baseCurrency, targetCurrency);
+        call.enqueue(new Callback<ResultPrice>() {
             @SuppressWarnings("NullableProblems")
             @Override
-            public void onResponse(Call<Result> call, Response<Result> response) {
+            public void onResponse(Call<ResultPrice> call, Response<ResultPrice> response) {
                 if(onPriceRepositoryListener == null) {
                     return;
                 }
-                Result result = response.body();
-                if(result == null) {
+
+                ResultPrice resultPrice = response.body();
+                if(resultPrice == null) {
                     onFailure(call, new Throwable("Unknown error"));
                     return;
                 }
 
-                Price price = result.getPrice();
+                Price price = resultPrice.getPrice();
                 price.setBaseCurrency(baseCurrency);
                 price.setTargetCurrency(targetCurrency);
 
-                onPriceRepositoryListener.onSuccess(price);
+                List<Price> prices = new ArrayList<>(1);
+                prices.add(price);
+                onPriceRepositoryListener.onSuccess(prices);
             }
 
             @SuppressWarnings("NullableProblems")
             @Override
-            public void onFailure(Call<Result> call, Throwable throwable) {
+            public void onFailure(Call<ResultPrice> call, Throwable throwable) {
                 if(onPriceRepositoryListener == null) {
                     return;
                 }
@@ -56,16 +52,5 @@ public class PriceRepository implements IPriceRepository {
                 onPriceRepositoryListener.onError(throwable.getMessage());
             }
         });
-    }
-
-    @Override
-    public void setOnPriceRepositoryListener(OnPriceRepositoryListener onPriceRepositoryListener) {
-        this.onPriceRepositoryListener = onPriceRepositoryListener;
-    }
-
-    public interface OnPriceRepositoryListener {
-        void onSuccess(Price price);
-
-        void onError(String message);
     }
 }
