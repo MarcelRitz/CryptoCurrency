@@ -96,7 +96,6 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
 
         recyclerView = binding.wearablerecyclerviewPricelistPricelist;
         setPriceList(recyclerView);
-        recyclerView.scrollToPosition(1);
 
         actionDrawer = binding.wearableactiondrawerviewMainAction;
         actionDrawer.getController().peekDrawer();
@@ -119,6 +118,13 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
         billingRepository.launchBilling(Billing.SKU_DONATION_LOWEST, BillingClient.SkuType.INAPP);
 
         AnalyticsUtils.trackEvent(getContext(), FirebaseAnalytics.Event.SELECT_CONTENT, Analytics.ITEM_ID_DONATION, Analytics.ITEM_NAME_DONATION, 1);
+    }
+
+    private void showRating() {
+        Intent intent = AppStoreUtils.getAppIntent(getContext().getPackageName());
+        if(IntentUtils.isAvailable(getContext(), intent)) {
+            startActivity(intent);
+        }
     }
 
     private void showSettings() {
@@ -145,8 +151,7 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
 
         adapter.notifyDataSetChanged();
 
-        recyclerView.smoothScrollToPosition(1);
-        recyclerView.setVisibility(View.VISIBLE);
+        recyclerView.scrollToPosition(0);
     }
 
     @Override
@@ -161,18 +166,15 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
     @Override
     public boolean onMenuItemClick(MenuItem menuItem) {
         switch (menuItem.getItemId()) {
-            case R.id.menu_donation:
-                showDonation();
-                return true;
             case R.id.menu_refresh:
                 refresh();
                 actionDrawer.getController().closeDrawer();
                 return true;
+            case R.id.menu_donation:
+                showDonation();
+                return true;
             case R.id.menu_rating:
-                Intent intent = AppStoreUtils.getAppIntent(getContext().getPackageName());
-                if(IntentUtils.isAvailable(getContext(), intent)) {
-                    startActivity(intent);
-                }
+                showRating();
                 return true;
             case R.id.menu_settings:
             default:

@@ -3,17 +3,17 @@ package dev.cytronix.data.presenter;
 import java.util.ArrayList;
 import java.util.List;
 
-import dev.cytronix.data.Currency;
 import dev.cytronix.data.cryptowat.model.Price;
-import dev.cytronix.data.cryptowat.repository.IPriceRepository;
-import dev.cytronix.data.cryptowat.repository.PriceRepository;
+import dev.cytronix.data.cryptowat.repository.IPricesRepository;
+import dev.cytronix.data.cryptowat.repository.OnPriceRepositoryListener;
+import dev.cytronix.data.cryptowat.repository.PricesRepository;
 import dev.cytronix.data.cryptowat.rest.RestClient;
 import dev.cytronix.data.view.PriceListView;
 
-public class PriceListPresenter implements IPriceListPresenter, PriceRepository.OnPriceRepositoryListener {
+public class PriceListPresenter implements IPriceListPresenter, OnPriceRepositoryListener {
 
     private List<Price> prices = new ArrayList<>();
-    private IPriceRepository repository;
+    private IPricesRepository repository;
     private PriceListView view;
     private String baseCurrency;
 
@@ -21,7 +21,6 @@ public class PriceListPresenter implements IPriceListPresenter, PriceRepository.
         this.view = view;
         this.baseCurrency = baseCurrency;
 
-        setPriceList();
         setRepository();
     }
 
@@ -29,7 +28,6 @@ public class PriceListPresenter implements IPriceListPresenter, PriceRepository.
     public void setBaseCurrency(String baseCurrency) {
         this.baseCurrency = baseCurrency;
 
-        setPriceList();
         setRepository();
     }
 
@@ -38,36 +36,22 @@ public class PriceListPresenter implements IPriceListPresenter, PriceRepository.
         return prices;
     }
 
-    private void setPriceList() {
-        prices.clear();
-        prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.BCH).build());
-        prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.BTC).build());
-        prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.ETH).build());
-        prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.LTC).build());
-    }
-
     private void setRepository() {
-        repository = new PriceRepository(new RestClient().getService(), baseCurrency);
+        repository = new PricesRepository(new RestClient().getService(), baseCurrency);
         repository.setOnPriceRepositoryListener(this);
     }
 
     @Override
     public void getData() {
-        for(Price price:prices) {
-            repository.getPrice(price.getTargetCurrency());
-        }
+        repository.getPrices();
     }
 
     @Override
-    public void onSuccess(Price price) {
-        for(Price p:prices) {
-            if(p.getTargetCurrency().equals(price.getTargetCurrency())) {
-                p.setPrice(price.getPrice());
-                break;
-            }
-        }
+    public void onSuccess(List<Price> prices) {
+        this.prices.clear();
+        this.prices.addAll(prices);
 
-        view.onUpdate(prices);
+        view.onUpdate(this.prices);
     }
 
     @Override

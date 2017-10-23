@@ -10,6 +10,7 @@ import android.support.wearable.complications.ComplicationText;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
 
+import java.util.List;
 import java.util.Locale;
 
 import dev.cytronix.cryptocurrency.R;
@@ -50,7 +51,9 @@ public class DataProviderService extends ComplicationProviderService {
 
         IPricePresenter presenter = new PricePresenter(getCurrency(), new PriceView() {
             @Override
-            public void onUpdate(Price price) {
+            public void onUpdate(List<Price> prices) {
+                Price price = prices.get(0);
+
                 String shortText = String.format(Locale.getDefault(), getString(R.string.complication_text), CurrencyUtils.getCurrencySymbol(price.getBaseCurrency()), price.getPrice());
 
                 update(price.getTargetCurrency(), shortText, complicationId, dataType, complicationManager);
