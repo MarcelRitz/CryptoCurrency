@@ -1,18 +1,15 @@
 package dev.cytronix.cryptocurrency.adapter;
 
-import android.content.Context;
+import android.databinding.DataBindingUtil;
 import android.support.wear.widget.WearableRecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import java.util.List;
-import java.util.Locale;
 
 import dev.cytronix.cryptocurrency.R;
+import dev.cytronix.cryptocurrency.databinding.ItemCurrencyBinding;
 import dev.cytronix.data.cryptowat.model.Price;
-import dev.cytronix.data.util.CurrencyUtils;
 
 public class CurrencyAdapter extends WearableRecyclerView.Adapter<CurrencyAdapter.CurrencyViewHolder> {
 
@@ -24,26 +21,14 @@ public class CurrencyAdapter extends WearableRecyclerView.Adapter<CurrencyAdapte
 
     @Override
     public CurrencyAdapter.CurrencyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View viewRoot = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_currency, parent, false);
-        return new CurrencyAdapter.CurrencyViewHolder(viewRoot);
+        ItemCurrencyBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.item_currency, parent, false);
+        return new CurrencyAdapter.CurrencyViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(CurrencyViewHolder holder, int position) {
         Price price = prices.get(position);
-
-        Context context = holder.getContext();
-
-        String baseText = String.format(Locale.getDefault(), context.getString(R.string.item_price_currency_base), price.getQuantity(), price.getTargetCurrency());
-        holder.getTextViewBase().setText(baseText);
-
-        String targetText;
-        if(Price.PRICE_DEFAULT == price.getPrice()) {
-            targetText = String.format(Locale.getDefault(), context.getString(R.string.item_price_currency_target_empty), CurrencyUtils.getCurrencySymbol(price.getBaseCurrency()));
-        } else {
-            targetText = String.format(Locale.getDefault(), context.getString(R.string.item_price_currency_target), price.getPrice(), CurrencyUtils.getCurrencySymbol(price.getBaseCurrency()));
-        }
-        holder.getTextViewTarget().setText(targetText);
+        holder.bind(price);
     }
 
     @Override
@@ -53,26 +38,16 @@ public class CurrencyAdapter extends WearableRecyclerView.Adapter<CurrencyAdapte
 
     public class CurrencyViewHolder extends WearableRecyclerView.ViewHolder {
 
-        private TextView textViewBase;
-        private TextView textViewTarget;
+        private ItemCurrencyBinding binding;
 
-        public CurrencyViewHolder(View viewRoot) {
-            super(viewRoot);
+        public CurrencyViewHolder(ItemCurrencyBinding binding) {
+            super(binding.getRoot());
 
-            textViewBase = viewRoot.findViewById(R.id.textview_itemcurrency_baseCurrency);
-            textViewTarget = viewRoot.findViewById(R.id.textview_itemcurrency_targetCurrency);
+            this.binding = binding;
         }
 
-        public TextView getTextViewBase() {
-            return textViewBase;
-        }
-
-        public TextView getTextViewTarget() {
-            return textViewTarget;
-        }
-
-        public Context getContext() {
-            return textViewBase.getContext();
+        public void bind(Price price) {
+            binding.setPrice(price);
         }
     }
 }
