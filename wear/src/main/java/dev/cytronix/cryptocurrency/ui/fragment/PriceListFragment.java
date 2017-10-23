@@ -57,8 +57,6 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
         initBilling();
         initLayout(viewRoot);
 
-        refresh();
-
         return viewRoot;
     }
 
@@ -66,7 +64,12 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
     public void onResume() {
         super.onResume();
 
+        if(actionDrawer.isOpened()) {
+            actionDrawer.getController().closeDrawer();
+        }
+
         presenter.setBaseCurrency(storage.getCurrency());
+        refresh();
     }
 
     private void initBilling() {
