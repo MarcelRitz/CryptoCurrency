@@ -1,72 +1,88 @@
-<android.support.wear.widget.drawer.WearableDrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/background_default">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.fragment.PriceListFragment">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <data>
 
-        <android.support.wear.widget.BoxInsetLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="@dimen/boxinsetlayout_padding">
+        <import type="dev.cytronix.cryptocurrency.ui.fragment.PriceListFragment.Status" />
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:padding="@dimen/boxinsetlayout_content_padding"
-                app:boxedEdges="all">
+        <import type="android.view.View" />
 
-                <TextView
-                    android:id="@+id/textview_pricelist_error"
-                    style="@style/Text.Medium"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:drawableBottom="@drawable/ic_action_refresh"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical"
-                    android:text="@string/all_error"
-                    android:visibility="gone" />
+        <variable
+            name="fragment"
+            type="dev.cytronix.cryptocurrency.ui.fragment.PriceListFragment" />
+    </data>
 
-                <LinearLayout
-                    android:id="@+id/linearlayout_pricelist_loading"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical"
-                    android:visibility="gone">
-
-                    <ProgressBar
-                        android:id="@+id/progressbar_pricelist_refresh"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center" />
-
-                    <TextView
-                        style="@style/Text.Medium"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/all_loading" />
-                </LinearLayout>
-            </FrameLayout>
-        </android.support.wear.widget.BoxInsetLayout>
-
-        <android.support.wear.widget.WearableRecyclerView
-            android:id="@+id/wearablerecyclerview_pricelist_pricelist"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbars="vertical"
-            android:visibility="gone" />
-    </FrameLayout>
-
-    <android.support.wear.widget.drawer.WearableActionDrawerView
-        android:id="@+id/wearableactiondrawerview_main_action"
+    <android.support.wear.widget.drawer.WearableDrawerLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:actionMenu="@menu/main" />
-</android.support.wear.widget.drawer.WearableDrawerLayout>
+        android:background="@color/background_default">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.wear.widget.BoxInsetLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/boxinsetlayout_padding">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="@dimen/boxinsetlayout_content_padding"
+                    app:boxedEdges="all">
+
+                    <TextView
+                        android:id="@+id/textview_pricelist_error"
+                        style="@style/Text.Medium"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:drawableBottom="@drawable/ic_action_refresh"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:text="@string/all_error"
+                        android:visibility="@{Status.ERROR == fragment.status ? View.VISIBLE : View.GONE}" />
+
+                    <LinearLayout
+                        android:id="@+id/linearlayout_pricelist_loading"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:visibility="@{Status.LOADING == fragment.status ? View.VISIBLE : View.GONE}">
+
+                        <ProgressBar
+                            android:id="@+id/progressbar_pricelist_refresh"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center" />
+
+                        <TextView
+                            style="@style/Text.Medium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/all_loading" />
+                    </LinearLayout>
+                </FrameLayout>
+            </android.support.wear.widget.BoxInsetLayout>
+
+            <android.support.wear.widget.WearableRecyclerView
+                android:id="@+id/wearablerecyclerview_pricelist_pricelist"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical"
+                android:visibility="@{Status.DATA == fragment.status ? View.VISIBLE : View.GONE}" />
+        </FrameLayout>
+
+        <android.support.wear.widget.drawer.WearableActionDrawerView
+            android:id="@+id/wearableactiondrawerview_main_action"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:actionMenu="@menu/main" />
+    </android.support.wear.widget.drawer.WearableDrawerLayout>
+</layout>

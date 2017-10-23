@@ -10,6 +10,6 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        showFragment(new PriceListFragment(), PriceListFragment.TAG);
+        showFragment(PriceListFragment.TAG);
     }
 }

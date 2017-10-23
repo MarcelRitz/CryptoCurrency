@@ -1,6 +1,8 @@
 package dev.cytronix.cryptocurrency.ui.fragment;
 
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
+import android.databinding.ObservableField;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.wear.widget.WearableLinearLayoutManager;
@@ -10,8 +12,6 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.android.billingclient.api.BillingClient;
 import com.android.billingclient.api.Purchase;
@@ -25,6 +25,7 @@ import dev.cytronix.cryptocurrency.analytic.Analytics;
 import dev.cytronix.cryptocurrency.billing.Billing;
 import dev.cytronix.cryptocurrency.billing.BillingRepository;
 import dev.cytronix.cryptocurrency.billing.IBillingRepository;
+import dev.cytronix.cryptocurrency.databinding.FragmentPricelistBinding;
 import dev.cytronix.cryptocurrency.storage.Storage;
 import dev.cytronix.cryptocurrency.ui.activity.SettingActivity;
 import dev.cytronix.cryptocurrency.util.AnalyticsUtils;
@@ -38,26 +39,38 @@ import dev.cytronix.data.view.PriceListView;
 public class PriceListFragment extends BaseFragment implements PriceListView, MenuItem.OnMenuItemClickListener, View.OnClickListener, BillingRepository.OnBillingRepositoryListener {
 
     public static final String TAG = "PriceListFragment";
+
+    public enum Status {UNKNOWN, DATA, LOADING, ERROR}
+
+    private FragmentPricelistBinding binding;
+    private WearableRecyclerView recyclerView;
+    private WearableActionDrawerView actionDrawer;
     private Storage storage;
     private IPriceListPresenter presenter;
     private IBillingRepository billingRepository;
     private CurrencyAdapter adapter;
-    private TextView textViewError;
-    private LinearLayout linearLayoutLoading;
-    private WearableRecyclerView recyclerView;
-    private WearableActionDrawerView actionDrawer;
+    public ObservableField<Status> status = new ObservableField<>(Status.UNKNOWN);
+
+    public static PriceListFragment newInstance() {
+        Bundle bundle = new Bundle();
+
+        PriceListFragment fragment = new PriceListFragment();
+        fragment.setArguments(bundle);
+        return fragment;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View viewRoot = inflater.inflate(R.layout.fragment_pricelist, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_pricelist, container, false);
+        binding.setFragment(this);
 
         storage = new Storage(getContext());
         presenter = new PriceListPresenter(this, storage.getCurrency());
 
         initBilling();
-        initLayout(viewRoot);
+        initLayout();
 
-        return viewRoot;
+        return binding.getRoot();
     }
 
     @Override
@@ -78,17 +91,14 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
         billingRepository.connect();
     }
 
-    private void initLayout(View viewRoot) {
-        textViewError = viewRoot.findViewById(R.id.textview_pricelist_error);
-        textViewError.setOnClickListener(this);
+    private void initLayout() {
+        binding.textviewPricelistError.setOnClickListener(this);
 
-        linearLayoutLoading = viewRoot.findViewById(R.id.linearlayout_pricelist_loading);
-
-        recyclerView = viewRoot.findViewById(R.id.wearablerecyclerview_pricelist_pricelist);
+        recyclerView = binding.wearablerecyclerviewPricelistPricelist;
         setPriceList(recyclerView);
         recyclerView.scrollToPosition(1);
 
-        actionDrawer = viewRoot.findViewById(R.id.wearableactiondrawerview_main_action);
+        actionDrawer = binding.wearableactiondrawerviewMainAction;
         actionDrawer.getController().peekDrawer();
         actionDrawer.setOnMenuItemClickListener(this);
     }
@@ -117,13 +127,10 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
     }
 
     private void refresh() {
-        if(View.VISIBLE == linearLayoutLoading.getVisibility()) {
+        if(Status.LOADING == status.get()) {
             return;
         }
-
-        textViewError.setVisibility(View.GONE);
-        recyclerView.setVisibility(View.GONE);
-        linearLayoutLoading.setVisibility(View.VISIBLE);
+        status.set(Status.LOADING);
 
         presenter.getData();
     }
@@ -134,10 +141,10 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
             return;
         }
 
+        status.set(Status.DATA);
+
         adapter.notifyDataSetChanged();
 
-        linearLayoutLoading.setVisibility(View.GONE);
-        textViewError.setVisibility(View.GONE);
         recyclerView.smoothScrollToPosition(1);
         recyclerView.setVisibility(View.VISIBLE);
     }
@@ -148,9 +155,7 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
             return;
         }
 
-        linearLayoutLoading.setVisibility(View.GONE);
-        recyclerView.setVisibility(View.GONE);
-        textViewError.setVisibility(View.VISIBLE);
+        status.set(Status.ERROR);
     }
 
     @Override
