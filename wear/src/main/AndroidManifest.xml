@@ -104,5 +104,10 @@
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="d553587bf9b2090c8bf7ccaa63885ed66438d957" />
+
+        <!-- Generic -->
+        <meta-data
+            android:name="com.google.android.wearable.standalone"
+            android:value="true" />
     </application>
 </manifest>
