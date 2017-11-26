@@ -1,13 +1,11 @@
 package dev.cytronix.data.cryptowat.repository;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import dev.cytronix.data.cryptowat.model.Price;
 import dev.cytronix.data.cryptowat.model.DataProvider;
+import dev.cytronix.data.cryptowat.model.Price;
 import dev.cytronix.data.cryptowat.model.ResultPrice;
 import dev.cytronix.data.cryptowat.rest.RestService;
 import retrofit2.Call;
@@ -22,7 +20,6 @@ public class PriceRepository extends PriceBaseRepository implements IPriceReposi
 
     @Override
     public void getPrice(final String targetCurrency) {
-        Log.v("CyTronix", "t="+ dataProvider.getName().toLowerCase(Locale.US) + "," + baseCurrency + "," + targetCurrency);
         Call<ResultPrice> call = service.getPrice(dataProvider.getName().toLowerCase(Locale.US), baseCurrency, targetCurrency);
         call.enqueue(new Callback<ResultPrice>() {
             @SuppressWarnings("NullableProblems")
