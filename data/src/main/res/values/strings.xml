@@ -1,4 +1,8 @@
 <resources>
+    <!-- Data provider -->
+    <string name="data_provider_kraken" translatable="false">Kraken</string>
+    <string name="data_provider_gdax" translatable="false">GDAX</string>
+
     <!-- Currency -->
     <string name="currency_bch" translatable="false">BCH</string>
     <string name="currency_btc" translatable="false">BTC</string>

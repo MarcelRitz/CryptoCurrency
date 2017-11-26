@@ -1,7 +1,10 @@
 <resources>
-    <style name="AppTheme" parent="@style/Theme.Wearable">
+    <style name="Theme.App" parent="@style/Theme.Wearable">
         <item name="android:colorAccent">@color/app_accent</item>
         <item name="android:colorPrimary">@color/main_default</item>
         <item name="android:colorPrimaryDark">@color/main_dark</item>
+    </style>
+    <style name="Theme.Launch" parent="@style/Theme.App">
+        <item name="android:windowBackground">@drawable/screen_launch</item>
     </style>
 </resources>

@@ -1,10 +1,11 @@
 buildscript {
     repositories {
         jcenter()
+        google()
         maven { url "https://maven.fabric.io/public" }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath 'com.android.tools.build:gradle:3.0.1'
         classpath 'com.google.gms:google-services:3.1.0'
         classpath 'io.fabric.tools:gradle:1.24.0'
     }
@@ -13,7 +14,7 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
-        maven { url "https://maven.google.com" }
+        google()
     }
 }
 
@@ -24,8 +25,8 @@ task clean(type: Delete) {
 subprojects {
     ext {
         config = [
-                compileSdkVersion: 26,
-                buildToolsVersion: "26.0.2",
+                compileSdkVersion: 27,
+                buildToolsVersion: "27.0.0",
         ]
     }
 }

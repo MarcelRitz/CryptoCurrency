@@ -13,5 +13,5 @@
     <!-- Preferences -->
     <string name="preference_title">Настройки</string>
     <string name="preference_currency_title">Валюта</string>
-    <string name="preference_currency_summary">Выберите конвертировать</string>
+    <string name="preference_data_provider_title">Поставщик</string>
 </resources>

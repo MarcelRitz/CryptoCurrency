@@ -2,14 +2,16 @@ package dev.cytronix.cryptocurrency.ui.activity;
 
 import android.os.Bundle;
 
+import dev.cytronix.cryptocurrency.R;
 import dev.cytronix.cryptocurrency.ui.fragment.PriceListFragment;
 
 public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.Theme_App);
         super.onCreate(savedInstanceState);
 
-        showFragment(new PriceListFragment(), PriceListFragment.TAG);
+        showFragment(PriceListFragment.TAG);
     }
 }

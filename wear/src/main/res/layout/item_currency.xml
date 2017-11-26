@@ -1,27 +1,45 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center_vertical"
-    android:orientation="horizontal"
-    android:padding="@dimen/item_currency_box_padding">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/textview_itemcurrency_baseCurrency"
-        style="@style/Text.Medium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="start"
-        tools:text="1 BTC" />
+    <data>
 
-    <TextView
-        android:id="@+id/textview_itemcurrency_targetCurrency"
-        style="@style/Text.Medium"
-        android:layout_width="0dp"
+        <import type="java.lang.String" />
+
+        <import type="dev.cytronix.data.cryptowat.model.Price" />
+
+        <import type="dev.cytronix.data.util.CurrencyUtils" />
+
+        <variable
+            name="price"
+            type="dev.cytronix.data.cryptowat.model.Price" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/item_currency_margin_end"
-        android:layout_marginStart="@dimen/item_currency_margin"
-        android:layout_weight="1"
-        android:gravity="end"
-        tools:text="3000.00$" />
-</LinearLayout>
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/item_currency_box_padding">
+
+        <TextView
+            android:id="@+id/textview_itemcurrency_baseCurrency"
+            style="@style/Text.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:text="@{price.quantity + ` ` + price.targetCurrency}"
+            tools:text="1 BTC" />
+
+        <TextView
+            android:id="@+id/textview_itemcurrency_targetCurrency"
+            style="@style/Text.Medium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/item_currency_margin_end"
+            android:layout_marginStart="@dimen/item_currency_margin"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:text="@{Price.PRICE_DEFAULT == price.price ? `-` + CurrencyUtils.getCurrencySymbol(price.baseCurrency) : String.format(`%.2f`, price.price) + CurrencyUtils.getCurrencySymbol(price.baseCurrency)}"
+            tools:text="3000.00$" />
+    </LinearLayout>
+</layout>

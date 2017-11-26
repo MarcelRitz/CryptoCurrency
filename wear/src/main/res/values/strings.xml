@@ -7,11 +7,6 @@
     <!-- Complication -->
     <string name="complication_text" translatable="false">%1$s%2$.2f</string>
 
-    <!-- Item -->
-    <string name="item_price_currency_base" translatable="false">%1$d %2$s</string>
-    <string name="item_price_currency_target" translatable="false">%1$.2f%2$s</string>
-    <string name="item_price_currency_target_empty" translatable="false">-%1$s</string>
-
     <!-- Donation -->
     <string name="donation_title">Donation</string>
 
@@ -22,7 +17,9 @@
     <!-- Preference -->
     <string name="preference_title">Settings</string>
     <string name="preference_currency_title">Currency</string>
-    <string name="preference_currency_summary">Choose to convert</string>
     <string name="preference_currency_key" translatable="false">CurrencyKey</string>
     <string name="preference_currency_default_value" translatable="false">@string/currency_usd</string>
+    <string name="preference_data_provider_title">Data provider</string>
+    <string name="preference_data_provider_key" translatable="false">DataProviderKey</string>
+    <string name="preference_data_provider_default_value" translatable="false">@string/data_provider_kraken</string>
 </resources>
