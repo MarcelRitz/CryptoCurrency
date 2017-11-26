@@ -1,7 +1,5 @@
 package dev.cytronix.data.presenter;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,7 +47,6 @@ public class PriceListPresenter implements IPriceListPresenter, OnPriceRepositor
     }
 
     private void setRepository() {
-        Log.v("CyTronix", "setRepository="+dataProvider+","+baseCurrency);
         repository = new PricesRepository(new RestClient().getService(), dataProvider, baseCurrency);
         repository.setOnPriceRepositoryListener(this);
     }
