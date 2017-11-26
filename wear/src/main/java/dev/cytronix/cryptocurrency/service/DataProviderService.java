@@ -18,6 +18,7 @@ import dev.cytronix.cryptocurrency.analytic.Analytics;
 import dev.cytronix.cryptocurrency.storage.Storage;
 import dev.cytronix.cryptocurrency.util.AnalyticsUtils;
 import dev.cytronix.data.cryptowat.model.Price;
+import dev.cytronix.data.cryptowat.model.DataProvider;
 import dev.cytronix.data.presenter.IPricePresenter;
 import dev.cytronix.data.presenter.PricePresenter;
 import dev.cytronix.data.util.CurrencyUtils;
@@ -32,6 +33,10 @@ public class DataProviderService extends ComplicationProviderService {
         super();
 
         this.toCurrency = toCurrency;
+    }
+
+    private DataProvider getProvider() {
+        return new Storage(this).getDataProvider();
     }
 
     private String getCurrency() {
@@ -49,7 +54,7 @@ public class DataProviderService extends ComplicationProviderService {
     public void onComplicationUpdate(final int complicationId, final int dataType, final ComplicationManager complicationManager) {
         update(getString(R.string.all_loading), complicationId, dataType, complicationManager);
 
-        IPricePresenter presenter = new PricePresenter(getCurrency(), new PriceView() {
+        IPricePresenter presenter = new PricePresenter(getProvider(), getCurrency(), new PriceView() {
             @Override
             public void onUpdate(List<Price> prices) {
                 Price price = prices.get(0);

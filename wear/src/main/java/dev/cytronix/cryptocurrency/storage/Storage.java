@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 import dev.cytronix.cryptocurrency.R;
+import dev.cytronix.data.cryptowat.model.DataProvider;
 
 public class Storage implements IStorage {
 
@@ -19,6 +20,14 @@ public class Storage implements IStorage {
 
     private void init() {
         preferences = PreferenceManager.getDefaultSharedPreferences(this.context);
+    }
+
+    @Override
+    public DataProvider getDataProvider() {
+        String key = context.getString(R.string.preference_data_provider_key);
+        String defaultValue = context.getString(R.string.preference_data_provider_default_value);
+        String value = preferences.getString(key, defaultValue);
+        return DataProvider.fromName(value);
     }
 
     @Override

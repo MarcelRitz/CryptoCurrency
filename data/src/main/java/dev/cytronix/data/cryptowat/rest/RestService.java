@@ -8,8 +8,8 @@ import retrofit2.http.Path;
 
 public interface RestService {
 
-    @GET("markets/kraken/{targetCurrency}{baseCurrency}/price")
-    Call<ResultPrice> getPrice(@Path("baseCurrency") String baseCurrency, @Path("targetCurrency") String targetCurrency);
+    @GET("markets/{dataProvider}/{targetCurrency}{baseCurrency}/price")
+    Call<ResultPrice> getPrice(@Path("dataProvider") String provider, @Path("baseCurrency") String baseCurrency, @Path("targetCurrency") String targetCurrency);
 
     @GET("markets/prices")
     Call<ResultPrices> getPrices();

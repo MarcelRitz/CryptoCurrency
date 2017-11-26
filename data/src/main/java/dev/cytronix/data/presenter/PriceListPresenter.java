@@ -1,8 +1,11 @@
 package dev.cytronix.data.presenter;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import dev.cytronix.data.cryptowat.model.DataProvider;
 import dev.cytronix.data.cryptowat.model.Price;
 import dev.cytronix.data.cryptowat.repository.IPricesRepository;
 import dev.cytronix.data.cryptowat.repository.OnPriceRepositoryListener;
@@ -15,11 +18,20 @@ public class PriceListPresenter implements IPriceListPresenter, OnPriceRepositor
     private List<Price> prices = new ArrayList<>();
     private IPricesRepository repository;
     private PriceListView view;
+    private DataProvider dataProvider;
     private String baseCurrency;
 
-    public PriceListPresenter(PriceListView view, String baseCurrency) {
+    public PriceListPresenter(PriceListView view, DataProvider dataProvider, String baseCurrency) {
         this.view = view;
+        this.dataProvider = dataProvider;
         this.baseCurrency = baseCurrency;
+
+        setRepository();
+    }
+
+    @Override
+    public void setDataProvider(DataProvider dataProvider) {
+        this.dataProvider = dataProvider;
 
         setRepository();
     }
@@ -37,7 +49,8 @@ public class PriceListPresenter implements IPriceListPresenter, OnPriceRepositor
     }
 
     private void setRepository() {
-        repository = new PricesRepository(new RestClient().getService(), baseCurrency);
+        Log.v("CyTronix", "setRepository="+dataProvider+","+baseCurrency);
+        repository = new PricesRepository(new RestClient().getService(), dataProvider, baseCurrency);
         repository.setOnPriceRepositoryListener(this);
     }
 

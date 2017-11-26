@@ -13,5 +13,5 @@
     <!-- Preferences -->
     <string name="preference_title">Einstellungen</string>
     <string name="preference_currency_title">Währung</string>
-    <string name="preference_currency_summary">Auswählen zum Umrechnen</string>
+    <string name="preference_data_provider_title">Datenanbieter</string>
 </resources>

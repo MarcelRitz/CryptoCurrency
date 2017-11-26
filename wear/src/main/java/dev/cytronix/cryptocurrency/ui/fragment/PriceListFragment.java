@@ -65,7 +65,7 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
         binding.setFragment(this);
 
         storage = new Storage(getContext());
-        presenter = new PriceListPresenter(this, storage.getCurrency());
+        presenter = new PriceListPresenter(this, storage.getDataProvider(), storage.getCurrency());
 
         initBilling();
         initLayout();
@@ -81,6 +81,7 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
             actionDrawer.getController().closeDrawer();
         }
 
+        presenter.setDataProvider(storage.getDataProvider());
         presenter.setBaseCurrency(storage.getCurrency());
         refresh();
     }
