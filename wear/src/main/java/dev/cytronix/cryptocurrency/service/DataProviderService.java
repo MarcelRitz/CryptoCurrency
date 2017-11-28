@@ -17,8 +17,8 @@ import dev.cytronix.cryptocurrency.R;
 import dev.cytronix.cryptocurrency.analytic.Analytics;
 import dev.cytronix.cryptocurrency.storage.Storage;
 import dev.cytronix.cryptocurrency.util.AnalyticsUtils;
-import dev.cytronix.data.cryptowat.model.Price;
 import dev.cytronix.data.cryptowat.model.DataProvider;
+import dev.cytronix.data.cryptowat.model.Price;
 import dev.cytronix.data.presenter.IPricePresenter;
 import dev.cytronix.data.presenter.PricePresenter;
 import dev.cytronix.data.util.CurrencyUtils;
@@ -98,7 +98,7 @@ public class DataProviderService extends ComplicationProviderService {
         updateIntent.putExtra(UpdateComplicationDataService.EXTRA_COMPLICATION_ID, complicationId);
         updateIntent.putExtra(UpdateComplicationDataService.EXTRA_CURRENCY, toCurrency);
 
-        PendingIntent pendingIntent = PendingIntent.getService(getApplicationContext(), complicationId, updateIntent, 0);
+        PendingIntent pendingIntent = PendingIntent.getService(getApplicationContext(), complicationId, updateIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setTapAction(pendingIntent);
 
         complicationManager.updateComplicationData(complicationId, builder.build());
