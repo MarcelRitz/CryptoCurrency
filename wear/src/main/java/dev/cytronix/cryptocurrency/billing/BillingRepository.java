@@ -93,6 +93,7 @@ public class BillingRepository implements IBillingRepository, PurchasesUpdatedLi
     }
 
     public interface OnBillingRepositoryListener {
+        @SuppressWarnings("EmptyMethod")
         void onPurchased(List<Purchase> purchases);
     }
 }
