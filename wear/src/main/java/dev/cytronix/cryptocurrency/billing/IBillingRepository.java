@@ -14,5 +14,6 @@ public interface IBillingRepository {
 
     boolean isReady();
 
+    @SuppressWarnings("SameParameterValue")
     void launchBilling(String sku, String type);
 }

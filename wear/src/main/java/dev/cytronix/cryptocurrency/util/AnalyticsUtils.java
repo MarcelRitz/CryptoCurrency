@@ -7,6 +7,7 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class AnalyticsUtils {
 
+    @SuppressWarnings("SameParameterValue")
     public static void trackEvent(Context context, String event, String itemId, String itemName, int quantity) {
         Bundle bundle = new Bundle();
         bundle.putString(FirebaseAnalytics.Param.ITEM_ID, itemId);
