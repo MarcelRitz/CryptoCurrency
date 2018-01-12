@@ -5,6 +5,7 @@
         <item>@string/currency_eur</item>
     </string-array>
     <string-array name="preference_data_provider">
+        <item>@string/data_provider_bitstamp</item>
         <item>@string/data_provider_kraken</item>
         <item>@string/data_provider_gdax</item>
     </string-array>

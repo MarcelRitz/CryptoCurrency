@@ -1,5 +1,6 @@
 <resources>
     <!-- Data provider -->
+    <string name="data_provider_bitstamp" translatable="false">Bitstamp</string>
     <string name="data_provider_kraken" translatable="false">Kraken</string>
     <string name="data_provider_gdax" translatable="false">GDAX</string>
 

@@ -2,6 +2,7 @@ package dev.cytronix.data.cryptowat.model;
 
 public enum DataProvider {
 
+    BITSTAMP("Bitstamp"),
     KRAKEN("Kraken"),
     GDAX("GDAX");
 
@@ -21,6 +22,6 @@ public enum DataProvider {
                 return dataProvider;
             }
         }
-        return KRAKEN;
+        return BITSTAMP;
     }
 }
