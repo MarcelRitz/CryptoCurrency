@@ -77,10 +77,6 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
     public void onResume() {
         super.onResume();
 
-        if(actionDrawer.isOpened()) {
-            actionDrawer.getController().closeDrawer();
-        }
-
         presenter.setDataProvider(storage.getDataProvider());
         presenter.setBaseCurrency(storage.getCurrency());
         refresh();
