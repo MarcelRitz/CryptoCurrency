@@ -9,6 +9,7 @@ public class FabricUtils {
     public static final String EVENT_MENU = "Menu";
     public static final String NAME_ACTIVATED = "Activated";
     public static final String NAME_DEACTIVATED = "Deactivated";
+    public static final String NAME_UPDATED = "Updated";
     public static final String MENU_REFRESH = "Menu Refresh";
     public static final String MENU_DONATION = "Menu Donation";
     public static final String MENU_SHARE = "Menu Share";

@@ -64,6 +64,8 @@ public class DataProviderService extends ComplicationProviderService {
                 String shortText = String.format(Locale.getDefault(), getString(R.string.complication_text), CurrencyUtils.getCurrencySymbol(price.getBaseCurrency()), price.getPrice());
 
                 update(price.getTargetCurrency(), shortText, complicationId, dataType, complicationManager);
+
+                FabricUtils.trackEvent(FabricUtils.EVENT_COMPLICATION, FabricUtils.NAME_UPDATED, price.getTargetCurrency());
             }
 
             @Override
