@@ -30,6 +30,7 @@ import dev.cytronix.cryptocurrency.storage.Storage;
 import dev.cytronix.cryptocurrency.ui.activity.SettingActivity;
 import dev.cytronix.cryptocurrency.util.AnalyticsUtils;
 import dev.cytronix.cryptocurrency.util.AppStoreUtils;
+import dev.cytronix.cryptocurrency.util.FabricUtils;
 import dev.cytronix.cryptocurrency.util.IntentUtils;
 import dev.cytronix.data.cryptowat.model.Price;
 import dev.cytronix.data.presenter.IPriceListPresenter;
@@ -107,26 +108,38 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
         recyclerView.setAdapter(adapter);
     }
 
-    private void showDonation() {
+    private void actionRefresh() {
+        refresh();
+        actionDrawer.getController().closeDrawer();
+
+        FabricUtils.trackEvent(FabricUtils.EVENT_MENU, FabricUtils.MENU_REFRESH, 1.0f);
+    }
+
+    private void actionDonation() {
         if(!billingRepository.isReady()) {
             return;
         }
 
         billingRepository.launchBilling(Billing.SKU_DONATION_LOWEST, BillingClient.SkuType.INAPP);
 
+        FabricUtils.trackEvent(FabricUtils.EVENT_MENU, FabricUtils.MENU_DONATION, 1.0f);
         AnalyticsUtils.trackEvent(getContext(), FirebaseAnalytics.Event.SELECT_CONTENT, Analytics.ITEM_ID_DONATION, Analytics.ITEM_NAME_DONATION, 1);
     }
 
-    private void showRating() {
+    private void actionRating() {
         Intent intent = AppStoreUtils.getAppIntent(getContext().getPackageName());
         if(IntentUtils.isAvailable(getContext(), intent)) {
             startActivity(intent);
         }
+
+        FabricUtils.trackEvent(FabricUtils.EVENT_MENU, FabricUtils.MENU_RATING, 1.0f);
     }
 
-    private void showSettings() {
+    private void actionSettings() {
         Intent intent = new Intent(getContext(), SettingActivity.class);
         startActivity(intent);
+
+        FabricUtils.trackEvent(FabricUtils.EVENT_MENU, FabricUtils.MENU_SETTINGS, 1.0f);
     }
 
     private void refresh() {
@@ -164,18 +177,17 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
     public boolean onMenuItemClick(MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.menu_refresh:
-                refresh();
-                actionDrawer.getController().closeDrawer();
+                actionRefresh();
                 return true;
             case R.id.menu_donation:
-                showDonation();
+                actionDonation();
                 return true;
             case R.id.menu_rating:
-                showRating();
+                actionRating();
                 return true;
             case R.id.menu_settings:
             default:
-                showSettings();
+                actionSettings();
                 return true;
         }
     }
