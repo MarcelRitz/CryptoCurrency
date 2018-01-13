@@ -126,6 +126,19 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
         AnalyticsUtils.trackEvent(getContext(), FirebaseAnalytics.Event.SELECT_CONTENT, Analytics.ITEM_ID_DONATION, Analytics.ITEM_NAME_DONATION, 1);
     }
 
+    private void actionShare() {
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_TEXT, AppStoreUtils.getWebLink(getContext().getPackageName()));
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setType("text/plain");
+        if(IntentUtils.isAvailable(getContext(), intent)) {
+            startActivity(intent);
+        }
+
+        FabricUtils.trackEvent(FabricUtils.EVENT_MENU, FabricUtils.MENU_SHARE, 1.0f);
+    }
+
     private void actionRating() {
         Intent intent = AppStoreUtils.getAppIntent(getContext().getPackageName());
         if(IntentUtils.isAvailable(getContext(), intent)) {
@@ -181,6 +194,9 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
                 return true;
             case R.id.menu_donation:
                 actionDonation();
+                return true;
+            case R.id.menu_share:
+                actionShare();
                 return true;
             case R.id.menu_rating:
                 actionRating();
