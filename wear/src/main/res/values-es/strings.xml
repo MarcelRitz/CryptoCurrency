@@ -8,6 +8,7 @@
 
     <!-- Menu -->
     <string name="menu_refresh">Refrescar</string>
+    <string name="menu_share">Compartir</string>
     <string name="menu_rating">Clasificación</string>
 
     <!-- Preferences -->

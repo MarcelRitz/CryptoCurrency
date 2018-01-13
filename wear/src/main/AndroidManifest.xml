@@ -102,7 +102,7 @@
                 android:value="3600" />
         </service>
 
-        <!-- Crashlytics -->
+        <!-- Fabric -->
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="d553587bf9b2090c8bf7ccaa63885ed66438d957" />

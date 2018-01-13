@@ -8,6 +8,7 @@
 
     <!-- Menu -->
     <string name="menu_refresh">Rafraîchir</string>
+    <string name="menu_share">Partager</string>
     <string name="menu_rating">Évaluation</string>
 
     <!-- Preferences -->

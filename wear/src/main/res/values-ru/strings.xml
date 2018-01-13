@@ -8,6 +8,7 @@
 
     <!-- Menu -->
     <string name="menu_refresh">Обновление</string>
+    <string name="menu_share">Доля</string>
     <string name="menu_rating">Рейтинг</string>
 
     <!-- Preferences -->
