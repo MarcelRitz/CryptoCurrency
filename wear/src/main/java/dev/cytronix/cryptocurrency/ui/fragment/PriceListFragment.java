@@ -133,7 +133,7 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.setType("text/plain");
         if(IntentUtils.isAvailable(getContext(), intent)) {
-            startActivity(intent);
+            startActivity(Intent.createChooser(intent, getString(R.string.menu_share)));
         }
 
         FabricUtils.trackEvent(FabricUtils.EVENT_MENU, FabricUtils.MENU_SHARE, 1.0f);

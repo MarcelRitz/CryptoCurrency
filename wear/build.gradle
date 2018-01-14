@@ -6,6 +6,14 @@ repositories {
 }
 
 android {
+    signingConfigs {
+        release {
+            keyAlias 'cytronix'
+            keyPassword '49=mVcDd4%p'
+            storeFile file('../general/keystore/keystore.jks')
+            storePassword 'Nm5&hKw+2'
+        }
+    }
     compileSdkVersion config.compileSdkVersion
     buildToolsVersion config.buildToolsVersion
     defaultConfig {
@@ -20,6 +28,7 @@ android {
             shrinkResources true
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
         debug {
             ext.enableCrashlytics = false

@@ -2,7 +2,7 @@
     <!-- Data provider -->
     <string name="data_provider_bitstamp" translatable="false">Bitstamp</string>
     <string name="data_provider_kraken" translatable="false">Kraken</string>
-    <string name="data_provider_gdax" translatable="false">GDAX</string>
+    <string name="data_provider_gdax" translatable="false">GDAX (Coinbase)</string>
 
     <!-- Currency -->
     <string name="currency_bch" translatable="false">BCH</string>
