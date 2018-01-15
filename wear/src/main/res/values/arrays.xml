@@ -4,9 +4,14 @@
         <item>@string/currency_usd</item>
         <item>@string/currency_eur</item>
     </string-array>
-    <string-array name="preference_data_provider">
-        <item>@string/data_provider_bitstamp</item>
-        <item>@string/data_provider_kraken</item>
-        <item>@string/data_provider_gdax</item>
+    <string-array name="preference_data_provider_entries">
+        <item>@string/data_provider_gdax_entry</item>
+        <item>@string/data_provider_bitstamp_entry</item>
+        <item>@string/data_provider_kraken_entry</item>
+    </string-array>
+    <string-array name="preference_data_provider_values">
+        <item>@string/data_provider_gdax_value</item>
+        <item>@string/data_provider_bitstamp_value</item>
+        <item>@string/data_provider_kraken_value</item>
     </string-array>
 </resources>

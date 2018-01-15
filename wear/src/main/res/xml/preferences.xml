@@ -9,8 +9,8 @@
 
     <ListPreference
         android:defaultValue="@string/preference_data_provider_default_value"
-        android:entries="@array/preference_data_provider"
-        android:entryValues="@array/preference_data_provider"
+        android:entries="@array/preference_data_provider_entries"
+        android:entryValues="@array/preference_data_provider_values"
         android:key="@string/preference_data_provider_key"
         android:title="@string/preference_data_provider_title" />
 </PreferenceScreen>
