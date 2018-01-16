@@ -1,4 +1,4 @@
-package dev.cytronix.cryptocurrency.ui.fragment;
+package dev.cytronix.cryptocurrency.pricelist;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
@@ -27,7 +27,8 @@ import dev.cytronix.cryptocurrency.billing.BillingRepository;
 import dev.cytronix.cryptocurrency.billing.IBillingRepository;
 import dev.cytronix.cryptocurrency.databinding.FragmentPricelistBinding;
 import dev.cytronix.cryptocurrency.storage.Storage;
-import dev.cytronix.cryptocurrency.ui.activity.SettingActivity;
+import dev.cytronix.cryptocurrency.setting.SettingActivity;
+import dev.cytronix.cryptocurrency.ui.fragment.BaseFragment;
 import dev.cytronix.cryptocurrency.util.AnalyticsUtils;
 import dev.cytronix.cryptocurrency.util.AppStoreUtils;
 import dev.cytronix.cryptocurrency.util.FabricUtils;
