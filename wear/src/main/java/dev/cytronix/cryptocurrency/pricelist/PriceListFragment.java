@@ -1,10 +1,12 @@
-package dev.cytronix.cryptocurrency.ui.fragment;
+package dev.cytronix.cryptocurrency.pricelist;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.databinding.ObservableField;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.support.wear.widget.WearableLinearLayoutManager;
 import android.support.wear.widget.WearableRecyclerView;
 import android.support.wear.widget.drawer.WearableActionDrawerView;
@@ -17,17 +19,20 @@ import com.android.billingclient.api.BillingClient;
 import com.android.billingclient.api.Purchase;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
+import java.util.Collections;
 import java.util.List;
 
 import dev.cytronix.cryptocurrency.R;
 import dev.cytronix.cryptocurrency.adapter.CurrencyAdapter;
 import dev.cytronix.cryptocurrency.analytic.Analytics;
+import dev.cytronix.cryptocurrency.analytic.Fabric;
 import dev.cytronix.cryptocurrency.billing.Billing;
 import dev.cytronix.cryptocurrency.billing.BillingRepository;
 import dev.cytronix.cryptocurrency.billing.IBillingRepository;
 import dev.cytronix.cryptocurrency.databinding.FragmentPricelistBinding;
+import dev.cytronix.cryptocurrency.setting.SettingActivity;
 import dev.cytronix.cryptocurrency.storage.Storage;
-import dev.cytronix.cryptocurrency.ui.activity.SettingActivity;
+import dev.cytronix.cryptocurrency.ui.fragment.BaseFragment;
 import dev.cytronix.cryptocurrency.util.AnalyticsUtils;
 import dev.cytronix.cryptocurrency.util.AppStoreUtils;
 import dev.cytronix.cryptocurrency.util.FabricUtils;
@@ -106,13 +111,44 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
         recyclerView.setEdgeItemsCenteringEnabled(true);
         recyclerView.setLayoutManager(new WearableLinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
+
+        ItemTouchHelper helper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP | ItemTouchHelper.DOWN, 0) {
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                int fromPosition = viewHolder.getAdapterPosition();
+                int toPosition = target.getAdapterPosition();
+
+                if (fromPosition < toPosition) {
+                    for (int i = fromPosition; i < toPosition; i++) {
+                        Collections.swap(presenter.getPrices(), i, i + 1);
+                    }
+                } else {
+                    for (int i = fromPosition; i > toPosition; i--) {
+                        Collections.swap(presenter.getPrices(), i, i - 1);
+                    }
+                }
+                adapter.notifyItemMoved(fromPosition, toPosition);
+                storage.setPriceListSort(presenter.getPrices());
+                return true;
+            }
+
+            @Override
+            public boolean isItemViewSwipeEnabled() {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+            }
+        });
+        helper.attachToRecyclerView(recyclerView);
     }
 
     private void actionRefresh() {
         refresh();
         actionDrawer.getController().closeDrawer();
 
-        FabricUtils.trackEvent(FabricUtils.EVENT_MENU, FabricUtils.MENU_REFRESH, 1.0f);
+        FabricUtils.trackEvent(Fabric.EVENT_MENU, Fabric.MENU_REFRESH, 1.0f);
     }
 
     private void actionDonation() {
@@ -122,7 +158,7 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
 
         billingRepository.launchBilling(Billing.SKU_DONATION_LOWEST, BillingClient.SkuType.INAPP);
 
-        FabricUtils.trackEvent(FabricUtils.EVENT_MENU, FabricUtils.MENU_DONATION, 1.0f);
+        FabricUtils.trackEvent(Fabric.EVENT_MENU, Fabric.MENU_DONATION, 1.0f);
         AnalyticsUtils.trackEvent(getContext(), FirebaseAnalytics.Event.SELECT_CONTENT, Analytics.ITEM_ID_DONATION, Analytics.ITEM_NAME_DONATION, 1);
     }
 
@@ -136,7 +172,7 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
             startActivity(Intent.createChooser(intent, getString(R.string.menu_share)));
         }
 
-        FabricUtils.trackEvent(FabricUtils.EVENT_MENU, FabricUtils.MENU_SHARE, 1.0f);
+        FabricUtils.trackEvent(Fabric.EVENT_MENU, Fabric.MENU_SHARE, 1.0f);
     }
 
     private void actionRating() {
@@ -145,14 +181,14 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
             startActivity(intent);
         }
 
-        FabricUtils.trackEvent(FabricUtils.EVENT_MENU, FabricUtils.MENU_RATING, 1.0f);
+        FabricUtils.trackEvent(Fabric.EVENT_MENU, Fabric.MENU_RATING, 1.0f);
     }
 
     private void actionSettings() {
         Intent intent = new Intent(getContext(), SettingActivity.class);
         startActivity(intent);
 
-        FabricUtils.trackEvent(FabricUtils.EVENT_MENU, FabricUtils.MENU_SETTINGS, 1.0f);
+        FabricUtils.trackEvent(Fabric.EVENT_MENU, Fabric.MENU_SETTINGS, 1.0f);
     }
 
     private void refresh() {
@@ -170,11 +206,18 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
             return;
         }
 
+        storage.updatePriceListSort(prices);
+
         status.set(Status.DATA);
 
         adapter.notifyDataSetChanged();
 
         recyclerView.scrollToPosition(0);
+
+        if(storage.showPriceListSortInfo()) {
+            showToast(R.string.price_list_sort_info);
+            storage.setPriceListSortInfo(false);
+        }
     }
 
     @Override

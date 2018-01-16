@@ -3,6 +3,9 @@
     <string name="all_error">Erreur</string>
     <string name="all_loading">chargement..</string>
 
+    <!-- PriceList -->
+    <string name="price_list_sort_info">Drag and drop puor réorganiser (Long press)</string>
+
     <!-- Donation -->
     <string name="donation_title">Don</string>
 

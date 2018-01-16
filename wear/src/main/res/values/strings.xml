@@ -7,6 +7,9 @@
     <!-- Complication -->
     <string name="complication_text" translatable="false">%1$s%2$.2f</string>
 
+    <!-- PriceList -->
+    <string name="price_list_sort_info">Drag and drop to reorder (Long press)</string>
+
     <!-- Donation -->
     <string name="donation_title">Donation</string>
 
@@ -23,4 +26,7 @@
     <string name="preference_data_provider_title">Data provider</string>
     <string name="preference_data_provider_key" translatable="false">DataProviderKey</string>
     <string name="preference_data_provider_default_value" translatable="false">@string/data_provider_gdax_value</string>
+    <string name="preference_price_list_sort_info_key" translatable="false">PriceListSortInfoKey</string>
+    <bool name="preference_price_list_sort_info_default_value" translatable="false">true</bool>
+    <string name="preference_price_list_sort_key" translatable="false">PriceListSortKey</string>
 </resources>

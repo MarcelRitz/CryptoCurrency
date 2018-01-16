@@ -1,15 +1,15 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.fragment.PriceListFragment">
+    tools:context=".pricelist.PriceListFragment">
 
     <data>
 
-        <import type="dev.cytronix.cryptocurrency.ui.fragment.PriceListFragment.Status" />
+        <import type="dev.cytronix.cryptocurrency.pricelist.PriceListFragment.Status" />
 
         <variable
             name="fragment"
-            type="dev.cytronix.cryptocurrency.ui.fragment.PriceListFragment" />
+            type="dev.cytronix.cryptocurrency.pricelist.PriceListFragment" />
     </data>
 
     <android.support.wear.widget.drawer.WearableDrawerLayout
