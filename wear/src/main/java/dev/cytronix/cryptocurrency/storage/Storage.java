@@ -46,6 +46,21 @@ public class Storage implements IStorage {
     }
 
     @Override
+    public boolean showPriceListSortInfo() {
+        String key = context.getString(R.string.preference_price_list_sort_info_key);
+        boolean defaultValue = context.getResources().getBoolean(R.bool.preference_price_list_sort_info_default_value);
+        return preferences.getBoolean(key, defaultValue);
+    }
+
+    @SuppressLint("ApplySharedPref")
+    @Override
+    public void setPriceListSortInfo(boolean showed) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean(context.getString(R.string.preference_price_list_sort_info_key), showed);
+        editor.commit();
+    }
+
+    @Override
     public void updatePriceListSort(List<Price> prices) {
         String joined = preferences.getString(context.getString(R.string.preference_price_list_sort_key), PRICE_LIST_SORT_DEFAULT_VALUE);
         if(PRICE_LIST_SORT_DEFAULT_VALUE.equals(joined)) {

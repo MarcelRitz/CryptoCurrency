@@ -3,6 +3,9 @@
     <string name="all_error">Ошибка</string>
     <string name="all_loading">погрузка..</string>
 
+    <!-- PriceList -->
+    <string name="price_list_sort_info">Перетащите, чтобы изменить порядок (долгое нажатие на валюту)</string>
+
     <!-- Donation -->
     <string name="donation_title">Пожертвование</string>
 

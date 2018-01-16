@@ -213,6 +213,11 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
         adapter.notifyDataSetChanged();
 
         recyclerView.scrollToPosition(0);
+
+        if(storage.showPriceListSortInfo()) {
+            showToast(R.string.price_list_sort_info);
+            storage.setPriceListSortInfo(false);
+        }
     }
 
     @Override

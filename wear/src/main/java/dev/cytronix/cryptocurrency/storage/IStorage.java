@@ -11,6 +11,10 @@ public interface IStorage {
 
     String getCurrency();
 
+    boolean showPriceListSortInfo();
+
+    void setPriceListSortInfo(boolean showed);
+
     void updatePriceListSort(List<Price> prices);
 
     void setPriceListSort(List<Price> prices);
