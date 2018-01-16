@@ -2678,31 +2678,81 @@ android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateBaseImp
     78:78:boolean onRequestSendAccessibilityEvent(android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent) -> onRequestSendAccessibilityEvent
     83:84:void sendAccessibilityEvent(android.view.View,int) -> sendAccessibilityEvent
     88:89:void sendAccessibilityEventUnchecked(android.view.View,android.view.accessibility.AccessibilityEvent) -> sendAccessibilityEventUnchecked
-android.support.v4.view.LayoutInflaterCompat -> android.support.v4.view.c:
+android.support.v4.view.GestureDetectorCompat -> android.support.v4.view.c:
+    android.support.v4.view.GestureDetectorCompat$GestureDetectorCompatImpl mImpl -> a
+    506:507:void <init>(android.content.Context,android.view.GestureDetector$OnGestureListener) -> <init>
+    519:525:void <init>(android.content.Context,android.view.GestureDetector$OnGestureListener,android.os.Handler) -> <init>
+    543:543:boolean onTouchEvent(android.view.MotionEvent) -> a
+android.support.v4.view.GestureDetectorCompat$GestureDetectorCompatImpl -> android.support.v4.view.c$a:
+    boolean onTouchEvent(android.view.MotionEvent) -> a
+android.support.v4.view.GestureDetectorCompat$GestureDetectorCompatImplBase -> android.support.v4.view.c$b:
+    int mTouchSlopSquare -> f
+    int mDoubleTapSlopSquare -> g
+    int mMinimumFlingVelocity -> h
+    int mMaximumFlingVelocity -> i
+    int LONGPRESS_TIMEOUT -> j
+    int TAP_TIMEOUT -> k
+    int DOUBLE_TAP_TIMEOUT -> l
+    android.os.Handler mHandler -> m
+    android.view.GestureDetector$OnGestureListener mListener -> a
+    android.view.GestureDetector$OnDoubleTapListener mDoubleTapListener -> b
+    boolean mStillDown -> c
+    boolean mDeferConfirmSingleTap -> d
+    boolean mInLongPress -> n
+    boolean mAlwaysInTapRegion -> o
+    boolean mAlwaysInBiggerTapRegion -> p
+    android.view.MotionEvent mCurrentDownEvent -> e
+    android.view.MotionEvent mPreviousUpEvent -> q
+    boolean mIsDoubleTapping -> r
+    float mLastFocusX -> s
+    float mLastFocusY -> t
+    float mDownFocusX -> u
+    float mDownFocusY -> v
+    boolean mIsLongpressEnabled -> w
+    android.view.VelocityTracker mVelocityTracker -> x
+    152:163:void <init>(android.content.Context,android.view.GestureDetector$OnGestureListener,android.os.Handler) -> <init>
+    166:182:void init(android.content.Context) -> a
+    193:194:void setOnDoubleTapListener(android.view.GestureDetector$OnDoubleTapListener) -> a
+    228:410:boolean onTouchEvent(android.view.MotionEvent) -> a
+    414:427:void cancel() -> b
+    430:440:void cancelTaps() -> c
+    444:454:boolean isConsideredDoubleTap(android.view.MotionEvent,android.view.MotionEvent,android.view.MotionEvent) -> a
+    458:462:void dispatchLongPress() -> a
+    62:64:void <clinit>() -> <clinit>
+android.support.v4.view.GestureDetectorCompat$GestureDetectorCompatImplBase$GestureHandler -> android.support.v4.view.c$b$a:
+    android.support.v4.view.GestureDetectorCompat$GestureDetectorCompatImplBase this$0 -> a
+    103:105:void <init>(android.support.v4.view.GestureDetectorCompat$GestureDetectorCompatImplBase) -> <init>
+    107:109:void <init>(android.support.v4.view.GestureDetectorCompat$GestureDetectorCompatImplBase,android.os.Handler) -> <init>
+    113:136:void handleMessage(android.os.Message) -> handleMessage
+android.support.v4.view.GestureDetectorCompat$GestureDetectorCompatImplJellybeanMr2 -> android.support.v4.view.c$c:
+    android.view.GestureDetector mDetector -> a
+    469:471:void <init>(android.content.Context,android.view.GestureDetector$OnGestureListener,android.os.Handler) -> <init>
+    480:480:boolean onTouchEvent(android.view.MotionEvent) -> a
+android.support.v4.view.LayoutInflaterCompat -> android.support.v4.view.d:
     java.lang.reflect.Field sLayoutInflaterFactory2Field -> b
     boolean sCheckedField -> c
     android.support.v4.view.LayoutInflaterCompat$LayoutInflaterCompatBaseImpl IMPL -> a
     71:90:void forceSetFactory2(android.view.LayoutInflater,android.view.LayoutInflater$Factory2) -> a
     178:179:void setFactory2(android.view.LayoutInflater,android.view.LayoutInflater$Factory2) -> b
     140:145:void <clinit>() -> <clinit>
-android.support.v4.view.LayoutInflaterCompat$LayoutInflaterCompatApi21Impl -> android.support.v4.view.c$a:
+android.support.v4.view.LayoutInflaterCompat$LayoutInflaterCompatApi21Impl -> android.support.v4.view.d$a:
     125:125:void <init>() -> <init>
     134:135:void setFactory2(android.view.LayoutInflater,android.view.LayoutInflater$Factory2) -> a
-android.support.v4.view.LayoutInflaterCompat$LayoutInflaterCompatBaseImpl -> android.support.v4.view.c$b:
+android.support.v4.view.LayoutInflaterCompat$LayoutInflaterCompatBaseImpl -> android.support.v4.view.d$b:
     92:92:void <init>() -> <init>
     101:112:void setFactory2(android.view.LayoutInflater,android.view.LayoutInflater$Factory2) -> a
-android.support.v4.view.MarginLayoutParamsCompat -> android.support.v4.view.d:
+android.support.v4.view.MarginLayoutParamsCompat -> android.support.v4.view.e:
     42:45:int getMarginStart(android.view.ViewGroup$MarginLayoutParams) -> a
     61:64:int getMarginEnd(android.view.ViewGroup$MarginLayoutParams) -> b
     80:85:void setMarginStart(android.view.ViewGroup$MarginLayoutParams,int) -> a
     99:104:void setMarginEnd(android.view.ViewGroup$MarginLayoutParams,int) -> b
     161:164:void resolveLayoutDirection(android.view.ViewGroup$MarginLayoutParams,int) -> c
-android.support.v4.view.MotionEventCompat -> android.support.v4.view.e:
+android.support.v4.view.MotionEventCompat -> android.support.v4.view.f:
     553:553:boolean isFromSource(android.view.MotionEvent,int) -> a
-android.support.v4.view.NestedScrollingChild -> android.support.v4.view.f:
+android.support.v4.view.NestedScrollingChild -> android.support.v4.view.g:
     void stopNestedScroll() -> stopNestedScroll
-android.support.v4.view.NestedScrollingChild2 -> android.support.v4.view.g:
-android.support.v4.view.NestedScrollingChildHelper -> android.support.v4.view.h:
+android.support.v4.view.NestedScrollingChild2 -> android.support.v4.view.h:
+android.support.v4.view.NestedScrollingChildHelper -> android.support.v4.view.i:
     android.view.ViewParent mNestedScrollingParentTouch -> a
     android.view.ViewParent mNestedScrollingParentNonTouch -> b
     android.view.View mView -> c
@@ -2725,7 +2775,7 @@ android.support.v4.view.NestedScrollingChildHelper -> android.support.v4.view.h:
     346:353:boolean dispatchNestedPreFling(float,float) -> a
     382:388:android.view.ViewParent getNestedScrollingParentForType(int) -> d
     392:400:void setNestedScrollingParentForType(int,android.view.ViewParent) -> a
-android.support.v4.view.NestedScrollingParent -> android.support.v4.view.i:
+android.support.v4.view.NestedScrollingParent -> android.support.v4.view.j:
     boolean onStartNestedScroll(android.view.View,android.view.View,int) -> onStartNestedScroll
     void onNestedScrollAccepted(android.view.View,android.view.View,int) -> onNestedScrollAccepted
     void onStopNestedScroll(android.view.View) -> onStopNestedScroll
@@ -2733,13 +2783,13 @@ android.support.v4.view.NestedScrollingParent -> android.support.v4.view.i:
     void onNestedPreScroll(android.view.View,int,int,int[]) -> onNestedPreScroll
     boolean onNestedFling(android.view.View,float,float,boolean) -> onNestedFling
     boolean onNestedPreFling(android.view.View,float,float) -> onNestedPreFling
-android.support.v4.view.NestedScrollingParent2 -> android.support.v4.view.j:
+android.support.v4.view.NestedScrollingParent2 -> android.support.v4.view.k:
     boolean onStartNestedScroll(android.view.View,android.view.View,int,int) -> a
     void onNestedScrollAccepted(android.view.View,android.view.View,int,int) -> b
     void onStopNestedScroll(android.view.View,int) -> a
     void onNestedScroll(android.view.View,int,int,int,int,int) -> a
     void onNestedPreScroll(android.view.View,int,int,int[],int) -> a
-android.support.v4.view.NestedScrollingParentHelper -> android.support.v4.view.k:
+android.support.v4.view.NestedScrollingParentHelper -> android.support.v4.view.l:
     android.view.ViewGroup mViewGroup -> a
     int mNestedScrollAxes -> b
     49:51:void <init>(android.view.ViewGroup) -> <init>
@@ -2748,9 +2798,9 @@ android.support.v4.view.NestedScrollingParentHelper -> android.support.v4.view.k
     88:88:int getNestedScrollAxes() -> a
     99:100:void onStopNestedScroll(android.view.View) -> a
     110:111:void onStopNestedScroll(android.view.View,int) -> a
-android.support.v4.view.OnApplyWindowInsetsListener -> android.support.v4.view.l:
+android.support.v4.view.OnApplyWindowInsetsListener -> android.support.v4.view.m:
     android.support.v4.view.WindowInsetsCompat onApplyWindowInsets(android.view.View,android.support.v4.view.WindowInsetsCompat) -> a
-android.support.v4.view.PagerAdapter -> android.support.v4.view.m:
+android.support.v4.view.PagerAdapter -> android.support.v4.view.n:
     android.database.DataSetObserver mViewPagerObserver -> a
     int getCount() -> a
     98:99:void startUpdate(android.view.ViewGroup) -> a
@@ -2769,7 +2819,7 @@ android.support.v4.view.PagerAdapter -> android.support.v4.view.m:
     279:279:int getItemPosition(java.lang.Object) -> a
     314:317:void setViewPagerObserver(android.database.DataSetObserver) -> a
     341:341:float getPageWidth(int) -> a
-android.support.v4.view.ViewCompat -> android.support.v4.view.n:
+android.support.v4.view.ViewCompat -> android.support.v4.view.o:
     android.support.v4.view.ViewCompat$ViewCompatBaseImpl IMPL -> a
     1848:1849:void setAccessibilityDelegate(android.view.View,android.support.v4.view.AccessibilityDelegateCompat) -> a
     2017:2017:boolean hasAccessibilityDelegate(android.view.View) -> a
@@ -2782,21 +2832,23 @@ android.support.v4.view.ViewCompat -> android.support.v4.view.n:
     2380:2380:int getLayoutDirection(android.view.View) -> e
     2670:2670:int getMinimumWidth(android.view.View) -> f
     2681:2681:int getMinimumHeight(android.view.View) -> g
+    2956:2957:void setElevation(android.view.View,float) -> a
+    2965:2965:float getElevation(android.view.View) -> h
     2992:2993:void setTransitionName(android.view.View,java.lang.String) -> a
-    3006:3006:java.lang.String getTransitionName(android.view.View) -> h
+    3006:3006:java.lang.String getTransitionName(android.view.View) -> i
     3081:3082:void setOnApplyWindowInsetsListener(android.view.View,android.support.v4.view.OnApplyWindowInsetsListener) -> a
     3097:3097:android.support.v4.view.WindowInsetsCompat onApplyWindowInsets(android.view.View,android.support.v4.view.WindowInsetsCompat) -> a
     3114:3114:android.support.v4.view.WindowInsetsCompat dispatchApplyWindowInsets(android.view.View,android.support.v4.view.WindowInsetsCompat) -> b
-    3162:3162:boolean hasOverlappingRendering(android.view.View) -> i
-    3289:3290:void stopNestedScroll(android.view.View) -> j
+    3162:3162:boolean hasOverlappingRendering(android.view.View) -> j
+    3289:3290:void stopNestedScroll(android.view.View) -> k
     3629:3630:void offsetTopAndBottom(android.view.View,int) -> b
     3638:3639:void offsetLeftAndRight(android.view.View,int) -> c
-    3672:3672:boolean isAttachedToWindow(android.view.View) -> k
-    3766:3766:android.view.Display getDisplay(android.view.View) -> l
+    3672:3672:boolean isAttachedToWindow(android.view.View) -> l
+    3766:3766:android.view.Display getDisplay(android.view.View) -> m
     1636:1657:void <clinit>() -> <clinit>
-android.support.v4.view.ViewCompat$ViewCompatApi15Impl -> android.support.v4.view.n$a:
+android.support.v4.view.ViewCompat$ViewCompatApi15Impl -> android.support.v4.view.o$a:
     1026:1026:void <init>() -> <init>
-android.support.v4.view.ViewCompat$ViewCompatApi16Impl -> android.support.v4.view.n$b:
+android.support.v4.view.ViewCompat$ViewCompatApi16Impl -> android.support.v4.view.o$b:
     1034:1034:void <init>() -> <init>
     1037:1037:boolean hasTransientState(android.view.View) -> a
     1045:1046:void postInvalidateOnAnimation(android.view.View) -> b
@@ -2807,42 +2859,44 @@ android.support.v4.view.ViewCompat$ViewCompatApi16Impl -> android.support.v4.vie
     1094:1094:int getMinimumWidth(android.view.View) -> d
     1099:1099:int getMinimumHeight(android.view.View) -> e
     1115:1115:boolean hasOverlappingRendering(android.view.View) -> f
-android.support.v4.view.ViewCompat$ViewCompatApi17Impl -> android.support.v4.view.n$c:
+android.support.v4.view.ViewCompat$ViewCompatApi17Impl -> android.support.v4.view.o$c:
     1125:1125:void <init>() -> <init>
     1144:1144:int getLayoutDirection(android.view.View) -> g
     1179:1179:android.view.Display getDisplay(android.view.View) -> h
-android.support.v4.view.ViewCompat$ViewCompatApi18Impl -> android.support.v4.view.n$d:
+android.support.v4.view.ViewCompat$ViewCompatApi18Impl -> android.support.v4.view.o$d:
     1184:1184:void <init>() -> <init>
-android.support.v4.view.ViewCompat$ViewCompatApi19Impl -> android.support.v4.view.n$e:
+android.support.v4.view.ViewCompat$ViewCompatApi19Impl -> android.support.v4.view.o$e:
     1202:1202:void <init>() -> <init>
     1215:1216:void setImportantForAccessibility(android.view.View,int) -> a
     1230:1230:boolean isAttachedToWindow(android.view.View) -> i
-android.support.v4.view.ViewCompat$ViewCompatApi21Impl -> android.support.v4.view.n$f:
+android.support.v4.view.ViewCompat$ViewCompatApi21Impl -> android.support.v4.view.o$f:
     java.lang.ThreadLocal sThreadLocalRect -> d
     1235:1235:void <init>() -> <init>
     1240:1241:void setTransitionName(android.view.View,java.lang.String) -> a
     1245:1245:java.lang.String getTransitionName(android.view.View) -> j
+    1255:1256:void setElevation(android.view.View,float) -> a
+    1260:1260:float getElevation(android.view.View) -> k
     1276:1289:void setOnApplyWindowInsetsListener(android.view.View,android.support.v4.view.OnApplyWindowInsetsListener) -> a
-    1308:1309:void stopNestedScroll(android.view.View) -> k
+    1308:1309:void stopNestedScroll(android.view.View) -> l
     1395:1400:android.support.v4.view.WindowInsetsCompat onApplyWindowInsets(android.view.View,android.support.v4.view.WindowInsetsCompat) -> a
     1405:1410:android.support.v4.view.WindowInsetsCompat dispatchApplyWindowInsets(android.view.View,android.support.v4.view.WindowInsetsCompat) -> b
     1425:1447:void offsetLeftAndRight(android.view.View,int) -> b
     1451:1473:void offsetTopAndBottom(android.view.View,int) -> c
     1476:1485:android.graphics.Rect getEmptyTempRect() -> b
-android.support.v4.view.ViewCompat$ViewCompatApi21Impl$1 -> android.support.v4.view.n$f$1:
+android.support.v4.view.ViewCompat$ViewCompatApi21Impl$1 -> android.support.v4.view.o$f$1:
     android.support.v4.view.OnApplyWindowInsetsListener val$listener -> a
     android.support.v4.view.ViewCompat$ViewCompatApi21Impl this$0 -> b
     1281:1281:void <init>(android.support.v4.view.ViewCompat$ViewCompatApi21Impl,android.support.v4.view.OnApplyWindowInsetsListener) -> <init>
     1284:1286:android.view.WindowInsets onApplyWindowInsets(android.view.View,android.view.WindowInsets) -> onApplyWindowInsets
-android.support.v4.view.ViewCompat$ViewCompatApi23Impl -> android.support.v4.view.n$g:
+android.support.v4.view.ViewCompat$ViewCompatApi23Impl -> android.support.v4.view.o$g:
     1490:1490:void <init>() -> <init>
     1509:1510:void offsetLeftAndRight(android.view.View,int) -> b
     1514:1515:void offsetTopAndBottom(android.view.View,int) -> c
-android.support.v4.view.ViewCompat$ViewCompatApi24Impl -> android.support.v4.view.n$h:
+android.support.v4.view.ViewCompat$ViewCompatApi24Impl -> android.support.v4.view.o$h:
     1519:1519:void <init>() -> <init>
-android.support.v4.view.ViewCompat$ViewCompatApi26Impl -> android.support.v4.view.n$i:
+android.support.v4.view.ViewCompat$ViewCompatApi26Impl -> android.support.v4.view.o$i:
     1554:1554:void <init>() -> <init>
-android.support.v4.view.ViewCompat$ViewCompatBaseImpl -> android.support.v4.view.n$j:
+android.support.v4.view.ViewCompat$ViewCompatBaseImpl -> android.support.v4.view.o$j:
     java.lang.reflect.Field sMinWidthField -> d
     boolean sMinWidthFieldFetched -> e
     java.lang.reflect.Field sMinHeightField -> f
@@ -2853,7 +2907,7 @@ android.support.v4.view.ViewCompat$ViewCompatBaseImpl -> android.support.v4.view
     boolean sAccessibilityDelegateCheckFailed -> c
     440:449:void <init>() -> <init>
     460:461:void setAccessibilityDelegate(android.view.View,android.support.v4.view.AccessibilityDelegateCompat) -> a
-    464:481:boolean hasAccessibilityDelegate(android.view.View) -> l
+    464:481:boolean hasAccessibilityDelegate(android.view.View) -> m
     505:505:boolean hasTransientState(android.view.View) -> a
     513:514:void postInvalidateOnAnimation(android.view.View) -> b
     521:522:void postOnAnimation(android.view.View,java.lang.Runnable) -> a
@@ -2867,32 +2921,34 @@ android.support.v4.view.ViewCompat$ViewCompatBaseImpl -> android.support.v4.view
     670:689:int getMinimumHeight(android.view.View) -> e
     705:709:void setTransitionName(android.view.View,java.lang.String) -> a
     712:715:java.lang.String getTransitionName(android.view.View) -> j
+    726:726:void setElevation(android.view.View,float) -> a
+    729:729:float getElevation(android.view.View) -> k
     774:774:void setOnApplyWindowInsetsListener(android.view.View,android.support.v4.view.OnApplyWindowInsetsListener) -> a
     777:777:android.support.v4.view.WindowInsetsCompat onApplyWindowInsets(android.view.View,android.support.v4.view.WindowInsetsCompat) -> a
     781:781:android.support.v4.view.WindowInsetsCompat dispatchApplyWindowInsets(android.view.View,android.support.v4.view.WindowInsetsCompat) -> b
-    837:840:void stopNestedScroll(android.view.View) -> k
+    837:840:void stopNestedScroll(android.view.View) -> l
     904:904:boolean isAttachedToWindow(android.view.View) -> i
     924:933:void offsetLeftAndRight(android.view.View,int) -> b
     936:945:void offsetTopAndBottom(android.view.View,int) -> c
-    948:951:void tickleInvalidationFlag(android.view.View) -> m
+    948:951:void tickleInvalidationFlag(android.view.View) -> n
     958:963:android.view.Display getDisplay(android.view.View) -> h
     452:452:void <clinit>() -> <clinit>
-android.support.v4.view.ViewConfigurationCompat -> android.support.v4.view.o:
+android.support.v4.view.ViewConfigurationCompat -> android.support.v4.view.p:
     java.lang.reflect.Method sGetScaledScrollFactorMethod -> a
     82:85:float getScaledHorizontalScrollFactor(android.view.ViewConfiguration,android.content.Context) -> a
     99:102:float getScaledVerticalScrollFactor(android.view.ViewConfiguration,android.content.Context) -> b
     107:120:float getLegacyScrollFactor(android.view.ViewConfiguration,android.content.Context) -> c
     40:48:void <clinit>() -> <clinit>
-android.support.v4.view.ViewGroupCompat -> android.support.v4.view.p:
+android.support.v4.view.ViewGroupCompat -> android.support.v4.view.q:
     android.support.v4.view.ViewGroupCompat$ViewGroupCompatBaseImpl IMPL -> a
     218:218:boolean isTransitionGroup(android.view.ViewGroup) -> a
     110:117:void <clinit>() -> <clinit>
-android.support.v4.view.ViewGroupCompat$ViewGroupCompatApi18Impl -> android.support.v4.view.p$a:
+android.support.v4.view.ViewGroupCompat$ViewGroupCompatApi18Impl -> android.support.v4.view.q$a:
     78:78:void <init>() -> <init>
-android.support.v4.view.ViewGroupCompat$ViewGroupCompatApi21Impl -> android.support.v4.view.p$b:
+android.support.v4.view.ViewGroupCompat$ViewGroupCompatApi21Impl -> android.support.v4.view.q$b:
     91:91:void <init>() -> <init>
     99:99:boolean isTransitionGroup(android.view.ViewGroup) -> a
-android.support.v4.view.ViewGroupCompat$ViewGroupCompatBaseImpl -> android.support.v4.view.p$c:
+android.support.v4.view.ViewGroupCompat$ViewGroupCompatBaseImpl -> android.support.v4.view.q$c:
     49:49:void <init>() -> <init>
     63:66:boolean isTransitionGroup(android.view.ViewGroup) -> a
 android.support.v4.view.ViewPager -> android.support.v4.view.ViewPager:
@@ -3116,7 +3172,7 @@ android.support.v4.view.ViewPager$ViewPositionComparator -> android.support.v4.v
     3151:3151:void <init>() -> <init>
     3154:3159:int compare(android.view.View,android.view.View) -> a
     3151:3151:int compare(java.lang.Object,java.lang.Object) -> compare
-android.support.v4.view.ViewParentCompat -> android.support.v4.view.q:
+android.support.v4.view.ViewParentCompat -> android.support.v4.view.r:
     android.support.v4.view.ViewParentCompat$ViewParentCompatBaseImpl IMPL -> a
     341:349:boolean onStartNestedScroll(android.view.ViewParent,android.view.View,android.view.View,int,int) -> a
     371:379:void onNestedScrollAccepted(android.view.ViewParent,android.view.View,android.view.View,int,int) -> b
@@ -3126,9 +3182,9 @@ android.support.v4.view.ViewParentCompat -> android.support.v4.view.q:
     490:490:boolean onNestedFling(android.view.ViewParent,android.view.View,float,float,boolean) -> a
     515:515:boolean onNestedPreFling(android.view.ViewParent,android.view.View,float,float) -> a
     192:199:void <clinit>() -> <clinit>
-android.support.v4.view.ViewParentCompat$ViewParentCompatApi19Impl -> android.support.v4.view.q$a:
+android.support.v4.view.ViewParentCompat$ViewParentCompatApi19Impl -> android.support.v4.view.r$a:
     99:99:void <init>() -> <init>
-android.support.v4.view.ViewParentCompat$ViewParentCompatApi21Impl -> android.support.v4.view.q$b:
+android.support.v4.view.ViewParentCompat$ViewParentCompatApi21Impl -> android.support.v4.view.r$b:
     109:109:void <init>() -> <init>
     114:118:boolean onStartNestedScroll(android.view.ViewParent,android.view.View,android.view.View,int) -> a
     126:131:void onNestedScrollAccepted(android.view.ViewParent,android.view.View,android.view.View,int) -> b
@@ -3137,7 +3193,7 @@ android.support.v4.view.ViewParentCompat$ViewParentCompatApi21Impl -> android.su
     158:163:void onNestedPreScroll(android.view.ViewParent,android.view.View,int,int,int[]) -> a
     169:173:boolean onNestedFling(android.view.ViewParent,android.view.View,float,float,boolean) -> a
     181:185:boolean onNestedPreFling(android.view.ViewParent,android.view.View,float,float) -> a
-android.support.v4.view.ViewParentCompat$ViewParentCompatBaseImpl -> android.support.v4.view.q$c:
+android.support.v4.view.ViewParentCompat$ViewParentCompatBaseImpl -> android.support.v4.view.r$c:
     36:36:void <init>() -> <init>
     39:43:boolean onStartNestedScroll(android.view.ViewParent,android.view.View,android.view.View,int) -> a
     48:52:void onNestedScrollAccepted(android.view.ViewParent,android.view.View,android.view.View,int) -> b
@@ -3146,7 +3202,7 @@ android.support.v4.view.ViewParentCompat$ViewParentCompatBaseImpl -> android.sup
     70:73:void onNestedPreScroll(android.view.ViewParent,android.view.View,int,int,int[]) -> a
     77:81:boolean onNestedFling(android.view.ViewParent,android.view.View,float,float,boolean) -> a
     86:90:boolean onNestedPreFling(android.view.ViewParent,android.view.View,float,float) -> a
-android.support.v4.view.WindowInsetsCompat -> android.support.v4.view.r:
+android.support.v4.view.WindowInsetsCompat -> android.support.v4.view.s:
     java.lang.Object mInsets -> a
     34:36:void <init>(java.lang.Object) -> <init>
     61:64:int getSystemWindowInsetLeft() -> a
@@ -3489,7 +3545,35 @@ android.support.v7.recyclerview.R$dimen -> android.support.v7.a.a$a:
     int notification_subtext_size -> notification_subtext_size
     int notification_top_pad -> notification_top_pad
     int notification_top_pad_large_text -> notification_top_pad_large_text
-android.support.v7.recyclerview.R$styleable -> android.support.v7.a.a$b:
+android.support.v7.recyclerview.R$id -> android.support.v7.a.a$b:
+    int action_container -> action_container
+    int action_divider -> action_divider
+    int action_image -> action_image
+    int action_text -> action_text
+    int actions -> actions
+    int async -> async
+    int blocking -> blocking
+    int chronometer -> chronometer
+    int forever -> forever
+    int icon -> icon
+    int icon_group -> icon_group
+    int info -> info
+    int italic -> italic
+    int item_touch_helper_previous_elevation -> item_touch_helper_previous_elevation
+    int line1 -> line1
+    int line3 -> line3
+    int normal -> normal
+    int notification_background -> notification_background
+    int notification_main_column -> notification_main_column
+    int notification_main_column_container -> notification_main_column_container
+    int right_icon -> right_icon
+    int right_side -> right_side
+    int tag_transition_group -> tag_transition_group
+    int text -> text
+    int text2 -> text2
+    int time -> time
+    int title -> title
+android.support.v7.recyclerview.R$styleable -> android.support.v7.a.a$c:
     int[] FontFamily -> FontFamily
     int FontFamily_fontProviderAuthority -> FontFamily_fontProviderAuthority
     int FontFamily_fontProviderCerts -> FontFamily_fontProviderCerts
@@ -3547,6 +3631,7 @@ android.support.v7.widget.AdapterHelper -> android.support.v7.widget.a:
     503:508:boolean onItemRangeChanged(int,int,java.lang.Object) -> a
     515:520:boolean onItemRangeInserted(int,int) -> b
     527:532:boolean onItemRangeRemoved(int,int) -> c
+    539:547:boolean onItemRangeMoved(int,int,int) -> a
     556:584:void consumeUpdatesInOnePass() -> e
     587:619:int applyPendingUpdatesToPosition(int) -> c
     623:623:boolean hasUpdates() -> f
@@ -3993,11 +4078,12 @@ android.support.v7.widget.LinearLayoutManager -> android.support.v7.widget.Linea
     952:953:void updateLayoutStateToFillEnd(android.support.v7.widget.LinearLayoutManager$AnchorInfo) -> a
     956:963:void updateLayoutStateToFillEnd(int,int) -> a
     966:967:void updateLayoutStateToFillStart(android.support.v7.widget.LinearLayoutManager$AnchorInfo) -> b
-    970:978:void updateLayoutStateToFillStart(int,int) -> g
+    970:978:void updateLayoutStateToFillStart(int,int) -> h
     981:981:boolean isLayoutRTL() -> g
     985:991:void ensureLayoutState() -> h
     999:999:android.support.v7.widget.LinearLayoutManager$LayoutState createLayoutState() -> i
     1018:1024:void scrollToPosition(int) -> d
+    1046:1052:void scrollToPositionWithOffset(int,int) -> b
     1061:1064:int scrollHorizontallyBy(int,android.support.v7.widget.RecyclerView$Recycler,android.support.v7.widget.RecyclerView$State) -> a
     1073:1076:int scrollVerticallyBy(int,android.support.v7.widget.RecyclerView$Recycler,android.support.v7.widget.RecyclerView$State) -> b
     1081:1081:int computeHorizontalScrollOffset(android.support.v7.widget.RecyclerView$State) -> c
@@ -4040,9 +4126,10 @@ android.support.v7.widget.LinearLayoutManager -> android.support.v7.widget.Linea
     1858:1859:int findFirstVisibleItemPosition() -> l
     1898:1899:int findLastVisibleItemPosition() -> m
     1925:1942:android.view.View findOneVisibleChild(int,int,boolean,boolean) -> a
-    1947:1969:android.view.View findOnePartiallyOrCompletelyInvisibleChild(int,int) -> b
+    1947:1969:android.view.View findOnePartiallyOrCompletelyInvisibleChild(int,int) -> c
     1976:2017:android.view.View onFocusSearchFailed(android.view.View,int,android.support.v7.widget.RecyclerView$Recycler,android.support.v7.widget.RecyclerView$State) -> a
     2086:2086:boolean supportsPredictiveItemAnimations() -> b
+    2095:2122:void prepareForDrop(android.view.View,android.view.View,int,int) -> a
 android.support.v7.widget.LinearLayoutManager$AnchorInfo -> android.support.v7.widget.LinearLayoutManager$a:
     int mPosition -> a
     int mCoordinate -> b
@@ -4273,6 +4360,8 @@ android.support.v7.widget.RecyclerView -> android.support.v7.widget.i:
     1122:1122:android.support.v7.widget.RecyclerView$Adapter getAdapter() -> getAdapter
     1136:1137:void setRecyclerListener(android.support.v7.widget.RecyclerView$RecyclerListener) -> setRecyclerListener
     1149:1152:int getBaseline() -> getBaseline
+    1168:1172:void addOnChildAttachStateChangeListener(android.support.v7.widget.RecyclerView$OnChildAttachStateChangeListener) -> a
+    1180:1184:void removeOnChildAttachStateChangeListener(android.support.v7.widget.RecyclerView$OnChildAttachStateChangeListener) -> b
     1209:1248:void setLayoutManager(android.support.v7.widget.RecyclerView$LayoutManager) -> setLayoutManager
     1259:1260:void setOnFlingListener(android.support.v7.widget.RecyclerView$OnFlingListener) -> setOnFlingListener
     1269:1269:android.support.v7.widget.RecyclerView$OnFlingListener getOnFlingListener() -> getOnFlingListener
@@ -4416,6 +4505,7 @@ android.support.v7.widget.RecyclerView -> android.support.v7.widget.i:
     4503:4520:android.support.v7.widget.RecyclerView$ViewHolder findViewHolderForAdapterPosition(int) -> c
     4524:4546:android.support.v7.widget.RecyclerView$ViewHolder findViewHolderForPosition(int,boolean) -> a
     4564:4579:android.support.v7.widget.RecyclerView$ViewHolder findViewHolderForItemId(long) -> a
+    4590:4602:android.view.View findChildViewUnder(float,float) -> a
     4607:4607:boolean drawChild(android.graphics.Canvas,android.view.View,long) -> drawChild
     4617:4621:void offsetChildrenVertical(int) -> d
     4634:4634:void onChildAttachedToWindow(android.view.View) -> h
@@ -4529,6 +4619,7 @@ android.support.v7.widget.RecyclerView$Adapter -> android.support.v7.widget.i$a:
     6788:6789:void notifyDataSetChanged() -> c
     6804:6805:void notifyItemChanged(int) -> c
     6897:6898:void notifyItemInserted(int) -> d
+    6912:6913:void notifyItemMoved(int,int) -> a
     6948:6949:void notifyItemRemoved(int) -> e
 android.support.v7.widget.RecyclerView$AdapterDataObservable -> android.support.v7.widget.i$b:
     11555:11555:void <init>() -> <init>
@@ -4537,6 +4628,7 @@ android.support.v7.widget.RecyclerView$AdapterDataObservable -> android.support.
     11579:11582:void notifyItemRangeChanged(int,int,java.lang.Object) -> a
     11589:11592:void notifyItemRangeInserted(int,int) -> b
     11599:11602:void notifyItemRangeRemoved(int,int) -> c
+    11605:11608:void notifyItemMoved(int,int) -> d
 android.support.v7.widget.RecyclerView$AdapterDataObserver -> android.support.v7.widget.i$c:
     11088:11088:void <init>() -> <init>
     11091:11091:void onChanged() -> a
@@ -4544,6 +4636,7 @@ android.support.v7.widget.RecyclerView$AdapterDataObserver -> android.support.v7
     11100:11101:void onItemRangeChanged(int,int,java.lang.Object) -> a
     11105:11105:void onItemRangeInserted(int,int) -> b
     11109:11109:void onItemRangeRemoved(int,int) -> c
+    11113:11113:void onItemRangeMoved(int,int,int) -> a
 android.support.v7.widget.RecyclerView$ChildDrawingOrderCallback -> android.support.v7.widget.i$d:
     int onGetChildDrawingOrder(int,int) -> a
 android.support.v7.widget.RecyclerView$ItemAnimator -> android.support.v7.widget.i$e:
@@ -4572,6 +4665,7 @@ android.support.v7.widget.RecyclerView$ItemAnimator -> android.support.v7.widget
     boolean isRunning() -> b
     12513:12517:void dispatchAnimationFinished(android.support.v7.widget.RecyclerView$ViewHolder) -> f
     12528:12528:void onAnimationFinished(android.support.v7.widget.RecyclerView$ViewHolder) -> g
+    12585:12593:boolean isRunning(android.support.v7.widget.RecyclerView$ItemAnimator$ItemAnimatorFinishedListener) -> a
     12618:12618:boolean canReuseUpdatedViewHolder(android.support.v7.widget.RecyclerView$ViewHolder) -> h
     12648:12648:boolean canReuseUpdatedViewHolder(android.support.v7.widget.RecyclerView$ViewHolder,java.util.List) -> a
     12656:12661:void dispatchAnimationsFinished() -> i
@@ -4621,8 +4715,8 @@ android.support.v7.widget.RecyclerView$LayoutManager -> android.support.v7.widge
     int mHeight -> h
     7013:10066:void <init>() -> <init>
     7188:7201:void setRecyclerView(android.support.v7.widget.RecyclerView) -> b
-    7204:7215:void setMeasureSpecs(int,int) -> c
-    7231:7260:void setMeasuredDimensionFromChildren(int,int) -> d
+    7204:7215:void setMeasureSpecs(int,int) -> d
+    7231:7260:void setMeasuredDimensionFromChildren(int,int) -> e
     7282:7287:void setMeasuredDimension(android.graphics.Rect,int,int) -> a
     7293:7296:void requestLayout() -> n
     7322:7331:int chooseSize(int,int,int) -> a
@@ -4668,7 +4762,7 @@ android.support.v7.widget.RecyclerView$LayoutManager -> android.support.v7.widge
     8218:8219:void detachViewInternal(int,android.view.View) -> a
     8231:8241:void attachView(android.view.View,int,android.support.v7.widget.RecyclerView$LayoutParams) -> a
     8252:8253:void attachView(android.view.View,int) -> c
-    8283:8290:void moveView(int,int) -> e
+    8283:8290:void moveView(int,int) -> f
     8327:8329:void removeAndRecycleView(android.view.View,android.support.v7.widget.RecyclerView$Recycler) -> a
     8338:8341:void removeAndRecycleViewAt(int,android.support.v7.widget.RecyclerView$Recycler) -> a
     8350:8350:int getChildCount() -> u
@@ -4730,7 +4824,7 @@ android.support.v7.widget.RecyclerView$LayoutManager -> android.support.v7.widge
     9614:9614:int computeVerticalScrollOffset(android.support.v7.widget.RecyclerView$State) -> d
     9629:9629:int computeVerticalScrollRange(android.support.v7.widget.RecyclerView$State) -> h
     9647:9648:void onMeasure(android.support.v7.widget.RecyclerView$Recycler,android.support.v7.widget.RecyclerView$State,int,int) -> a
-    9658:9659:void setMeasuredDimension(int,int) -> f
+    9658:9659:void setMeasuredDimension(int,int) -> g
     9665:9665:int getMinimumWidth() -> E
     9672:9672:int getMinimumHeight() -> F
     9685:9685:android.os.Parcelable onSaveInstanceState() -> c
@@ -4891,6 +4985,7 @@ android.support.v7.widget.RecyclerView$RecyclerViewDataObserver -> android.suppo
     5092:5096:void onItemRangeChanged(int,int,java.lang.Object) -> a
     5100:5104:void onItemRangeInserted(int,int) -> b
     5108:5112:void onItemRangeRemoved(int,int) -> c
+    5116:5120:void onItemRangeMoved(int,int,int) -> a
     5123:5129:void triggerUpdateProcessor() -> b
 android.support.v7.widget.RecyclerView$SavedState -> android.support.v7.widget.i$r:
     android.os.Parcelable mLayoutState -> b
@@ -5408,6 +5503,198 @@ android.support.v7.widget.ViewInfoStore$ProcessCallback -> android.support.v7.wi
     void processAppeared(android.support.v7.widget.RecyclerView$ViewHolder,android.support.v7.widget.RecyclerView$ItemAnimator$ItemHolderInfo,android.support.v7.widget.RecyclerView$ItemAnimator$ItemHolderInfo) -> b
     void processPersistent(android.support.v7.widget.RecyclerView$ViewHolder,android.support.v7.widget.RecyclerView$ItemAnimator$ItemHolderInfo,android.support.v7.widget.RecyclerView$ItemAnimator$ItemHolderInfo) -> c
     void unused(android.support.v7.widget.RecyclerView$ViewHolder) -> a
+android.support.v7.widget.helper.ItemTouchHelper -> android.support.v7.widget.a.a:
+    java.util.List mPendingCleanup -> a
+    float[] mTmpPosition -> v
+    android.support.v7.widget.RecyclerView$ViewHolder mSelected -> b
+    float mInitialTouchX -> c
+    float mInitialTouchY -> d
+    float mSwipeEscapeVelocity -> e
+    float mMaxSwipeVelocity -> f
+    float mDx -> g
+    float mDy -> h
+    float mSelectedStartX -> i
+    float mSelectedStartY -> j
+    int mActivePointerId -> k
+    android.support.v7.widget.helper.ItemTouchHelper$Callback mCallback -> l
+    int mActionState -> m
+    int mSelectedFlags -> n
+    java.util.List mRecoverAnimations -> o
+    int mSlop -> w
+    android.support.v7.widget.RecyclerView mRecyclerView -> p
+    java.lang.Runnable mScrollRunnable -> q
+    android.view.VelocityTracker mVelocityTracker -> r
+    java.util.List mSwapTargets -> x
+    java.util.List mDistances -> y
+    android.support.v7.widget.RecyclerView$ChildDrawingOrderCallback mChildDrawingOrderCallback -> z
+    android.view.View mOverdrawChild -> s
+    int mOverdrawChildPosition -> t
+    android.support.v4.view.GestureDetectorCompat mGestureDetector -> u
+    android.support.v7.widget.helper.ItemTouchHelper$ItemTouchHelperGestureListener mItemTouchHelperGestureListener -> A
+    android.support.v7.widget.RecyclerView$OnItemTouchListener mOnItemTouchListener -> B
+    android.graphics.Rect mTmpRect -> C
+    long mDragScrollStartTimeInMs -> D
+    162:434:void <init>(android.support.v7.widget.helper.ItemTouchHelper$Callback) -> <init>
+    437:440:boolean hitTest(android.view.View,float,float,float,float) -> a
+    453:468:void attachToRecyclerView(android.support.v7.widget.RecyclerView) -> a
+    471:477:void setupCallbacks() -> d
+    480:494:void destroyCallbacks() -> e
+    497:500:void startGestureDetection() -> f
+    503:510:void stopGestureDetection() -> g
+    513:523:void getSelectedDxDy(float[]) -> a
+    527:535:void onDrawOver(android.graphics.Canvas,android.support.v7.widget.RecyclerView,android.support.v7.widget.RecyclerView$State) -> a
+    540:549:void onDraw(android.graphics.Canvas,android.support.v7.widget.RecyclerView,android.support.v7.widget.RecyclerView$State) -> b
+    559:676:void select(android.support.v7.widget.RecyclerView$ViewHolder,int) -> a
+    680:699:void postDispatchSwipe(android.support.v7.widget.helper.ItemTouchHelper$RecoverAnimation,int) -> a
+    702:708:boolean hasRunningRecoverAnim() -> a
+    715:774:boolean scrollIfNecessary() -> b
+    778:823:java.util.List findSwapTargets(android.support.v7.widget.RecyclerView$ViewHolder) -> b
+    830:863:void moveIfNecessary(android.support.v7.widget.RecyclerView$ViewHolder) -> a
+    867:867:void onChildViewAttachedToWindow(android.view.View) -> a
+    871:884:void onChildViewDetachedFromWindow(android.view.View) -> b
+    890:902:int endRecoverAnimation(android.support.v7.widget.RecyclerView$ViewHolder,boolean) -> a
+    908:909:void getItemOffsets(android.graphics.Rect,android.view.View,android.support.v7.widget.RecyclerView,android.support.v7.widget.RecyclerView$State) -> a
+    912:916:void obtainVelocityTracker() -> c
+    919:923:void releaseVelocityTracker() -> h
+    926:948:android.support.v7.widget.RecyclerView$ViewHolder findSwipedView(android.view.MotionEvent) -> c
+    955:1009:boolean checkSelectForSwipe(int,android.view.MotionEvent,int) -> a
+    1014:1029:android.view.View findChildView(android.view.MotionEvent) -> a
+    1129:1139:android.support.v7.widget.helper.ItemTouchHelper$RecoverAnimation findAnimation(android.view.MotionEvent) -> b
+    1143:1161:void updateDxDy(android.view.MotionEvent,int,int) -> a
+    1164:1206:int swipeIfNecessary(android.support.v7.widget.RecyclerView$ViewHolder) -> c
+    1210:1233:int checkHorizontalSwipe(android.support.v7.widget.RecyclerView$ViewHolder,int) -> b
+    1237:1259:int checkVerticalSwipe(android.support.v7.widget.RecyclerView$ViewHolder,int) -> c
+    1263:1286:void addChildDrawingOrderCallback() -> i
+    1289:1296:void removeChildDrawingOrderCallbackIfNecessary(android.view.View) -> c
+android.support.v7.widget.helper.ItemTouchHelper$1 -> android.support.v7.widget.a.a$1:
+    android.support.v7.widget.helper.ItemTouchHelper this$0 -> a
+    247:247:void <init>(android.support.v7.widget.helper.ItemTouchHelper) -> <init>
+    250:257:void run() -> run
+android.support.v7.widget.helper.ItemTouchHelper$2 -> android.support.v7.widget.a.a$2:
+    android.support.v7.widget.helper.ItemTouchHelper this$0 -> a
+    300:300:void <init>(android.support.v7.widget.helper.ItemTouchHelper) -> <init>
+    303:343:boolean onInterceptTouchEvent(android.support.v7.widget.RecyclerView,android.view.MotionEvent) -> a
+    348:402:void onTouchEvent(android.support.v7.widget.RecyclerView,android.view.MotionEvent) -> b
+    406:410:void onRequestDisallowInterceptTouchEvent(boolean) -> a
+android.support.v7.widget.helper.ItemTouchHelper$3 -> android.support.v7.widget.a.a$3:
+    int val$swipeDir -> a
+    android.support.v7.widget.RecyclerView$ViewHolder val$prevSelected -> b
+    android.support.v7.widget.helper.ItemTouchHelper this$0 -> c
+    616:616:void <init>(android.support.v7.widget.helper.ItemTouchHelper,android.support.v7.widget.RecyclerView$ViewHolder,int,int,float,float,float,float,int,android.support.v7.widget.RecyclerView$ViewHolder) -> <init>
+    619:641:void onAnimationEnd(android.animation.Animator) -> onAnimationEnd
+android.support.v7.widget.helper.ItemTouchHelper$4 -> android.support.v7.widget.a.a$4:
+    android.support.v7.widget.helper.ItemTouchHelper$RecoverAnimation val$anim -> a
+    int val$swipeDir -> b
+    android.support.v7.widget.helper.ItemTouchHelper this$0 -> c
+    680:680:void <init>(android.support.v7.widget.helper.ItemTouchHelper,android.support.v7.widget.helper.ItemTouchHelper$RecoverAnimation,int) -> <init>
+    683:697:void run() -> run
+android.support.v7.widget.helper.ItemTouchHelper$5 -> android.support.v7.widget.a.a$5:
+    android.support.v7.widget.helper.ItemTouchHelper this$0 -> a
+    1267:1267:void <init>(android.support.v7.widget.helper.ItemTouchHelper) -> <init>
+    1270:1281:int onGetChildDrawingOrder(int,int) -> a
+android.support.v7.widget.helper.ItemTouchHelper$Callback -> android.support.v7.widget.a.a$a:
+    android.support.v7.widget.helper.ItemTouchUIUtil sUICallback -> a
+    android.view.animation.Interpolator sDragScrollInterpolator -> b
+    android.view.animation.Interpolator sDragViewScrollCapInterpolator -> c
+    int mCachedMaxScrollSpeed -> d
+    1357:1393:void <init>() -> <init>
+    1459:1474:int convertToRelativeDirection(int,int) -> a
+    1489:1491:int makeMovementFlags(int,int) -> b
+    1505:1505:int makeFlag(int,int) -> c
+    int getMovementFlags(android.support.v7.widget.RecyclerView,android.support.v7.widget.RecyclerView$ViewHolder) -> a
+    1548:1563:int convertToAbsoluteDirection(int,int) -> d
+    1568:1569:int getAbsoluteMovementFlags(android.support.v7.widget.RecyclerView,android.support.v7.widget.RecyclerView$ViewHolder) -> b
+    1573:1574:boolean hasDragFlag(android.support.v7.widget.RecyclerView,android.support.v7.widget.RecyclerView$ViewHolder) -> c
+    1600:1600:boolean canDropOver(android.support.v7.widget.RecyclerView,android.support.v7.widget.RecyclerView$ViewHolder,android.support.v7.widget.RecyclerView$ViewHolder) -> a
+    boolean onMove(android.support.v7.widget.RecyclerView,android.support.v7.widget.RecyclerView$ViewHolder,android.support.v7.widget.RecyclerView$ViewHolder) -> b
+    1637:1637:boolean isLongPressDragEnabled() -> a
+    1652:1652:boolean isItemViewSwipeEnabled() -> b
+    1663:1663:int getBoundingBoxMargin() -> c
+    1678:1678:float getSwipeThreshold(android.support.v7.widget.RecyclerView$ViewHolder) -> a
+    1691:1691:float getMoveThreshold(android.support.v7.widget.RecyclerView$ViewHolder) -> b
+    1716:1716:float getSwipeEscapeVelocity(float) -> a
+    1739:1739:float getSwipeVelocityThreshold(float) -> b
+    1770:1821:android.support.v7.widget.RecyclerView$ViewHolder chooseDropTarget(android.support.v7.widget.RecyclerView$ViewHolder,java.util.List,int,int) -> a
+    void onSwiped(android.support.v7.widget.RecyclerView$ViewHolder,int) -> a
+    1863:1866:void onSelectedChanged(android.support.v7.widget.RecyclerView$ViewHolder,int) -> b
+    1869:1873:int getMaxDragScroll(android.support.v7.widget.RecyclerView) -> a
+    1912:1941:void onMoved(android.support.v7.widget.RecyclerView,android.support.v7.widget.RecyclerView$ViewHolder,int,android.support.v7.widget.RecyclerView$ViewHolder,int,int,int) -> a
+    1946:1960:void onDraw(android.graphics.Canvas,android.support.v7.widget.RecyclerView,android.support.v7.widget.RecyclerView$ViewHolder,java.util.List,int,float,float) -> a
+    1965:1990:void onDrawOver(android.graphics.Canvas,android.support.v7.widget.RecyclerView,android.support.v7.widget.RecyclerView$ViewHolder,java.util.List,int,float,float) -> b
+    2006:2007:void clearView(android.support.v7.widget.RecyclerView,android.support.v7.widget.RecyclerView$ViewHolder) -> d
+    2039:2041:void onChildDraw(android.graphics.Canvas,android.support.v7.widget.RecyclerView,android.support.v7.widget.RecyclerView$ViewHolder,float,float,int,boolean) -> a
+    2073:2075:void onChildDrawOver(android.graphics.Canvas,android.support.v7.widget.RecyclerView,android.support.v7.widget.RecyclerView$ViewHolder,float,float,int,boolean) -> b
+    2099:2105:long getAnimationDuration(android.support.v7.widget.RecyclerView,int,float,float) -> a
+    2132:2150:int interpolateOutOfBoundsScroll(android.support.v7.widget.RecyclerView,int,int,int,long) -> a
+    1373:1401:void <clinit>() -> <clinit>
+android.support.v7.widget.helper.ItemTouchHelper$Callback$1 -> android.support.v7.widget.a.a$a$1:
+    1373:1373:void <init>() -> <init>
+    1376:1376:float getInterpolation(float) -> getInterpolation
+android.support.v7.widget.helper.ItemTouchHelper$Callback$2 -> android.support.v7.widget.a.a$a$2:
+    1380:1380:void <init>() -> <init>
+    1383:1384:float getInterpolation(float) -> getInterpolation
+android.support.v7.widget.helper.ItemTouchHelper$ItemTouchHelperGestureListener -> android.support.v7.widget.a.a$b:
+    boolean mShouldReactToLongPress -> b
+    android.support.v7.widget.helper.ItemTouchHelper this$0 -> a
+    2273:2276:void <init>(android.support.v7.widget.helper.ItemTouchHelper) -> <init>
+    2283:2284:void doNotReactToLongPress() -> a
+    2288:2288:boolean onDown(android.view.MotionEvent) -> onDown
+    2293:2324:void onLongPress(android.view.MotionEvent) -> onLongPress
+android.support.v7.widget.helper.ItemTouchHelper$RecoverAnimation -> android.support.v7.widget.a.a$c:
+    float mStartDx -> d
+    float mStartDy -> e
+    float mTargetX -> f
+    float mTargetY -> g
+    android.support.v7.widget.RecyclerView$ViewHolder mViewHolder -> h
+    int mActionState -> i
+    android.animation.ValueAnimator mValueAnimator -> a
+    int mAnimationType -> j
+    boolean mIsPendingCleanup -> k
+    float mX -> l
+    float mY -> m
+    boolean mOverridden -> n
+    boolean mEnded -> o
+    float mFraction -> b
+    2353:2379:void <init>(android.support.v7.widget.RecyclerView$ViewHolder,int,int,float,float,float,float) -> <init>
+    2382:2383:void setDuration(long) -> a
+    2386:2388:void start() -> a
+    2391:2392:void cancel() -> b
+    2395:2396:void setFraction(float) -> a
+    2403:2413:void update() -> c
+    2418:2418:void onAnimationStart(android.animation.Animator) -> onAnimationStart
+    2422:2426:void onAnimationEnd(android.animation.Animator) -> onAnimationEnd
+    2430:2431:void onAnimationCancel(android.animation.Animator) -> onAnimationCancel
+    2436:2436:void onAnimationRepeat(android.animation.Animator) -> onAnimationRepeat
+android.support.v7.widget.helper.ItemTouchHelper$RecoverAnimation$1 -> android.support.v7.widget.a.a$c$1:
+    android.support.v7.widget.helper.ItemTouchHelper$RecoverAnimation this$0 -> a
+    2370:2370:void <init>(android.support.v7.widget.helper.ItemTouchHelper$RecoverAnimation) -> <init>
+    2373:2374:void onAnimationUpdate(android.animation.ValueAnimator) -> onAnimationUpdate
+android.support.v7.widget.helper.ItemTouchHelper$SimpleCallback -> android.support.v7.widget.a.a$d:
+    int mDefaultSwipeDirs -> a
+    int mDefaultDragDirs -> b
+    2199:2202:void <init>(int,int) -> <init>
+    2234:2234:int getSwipeDirs(android.support.v7.widget.RecyclerView,android.support.v7.widget.RecyclerView$ViewHolder) -> e
+    2247:2247:int getDragDirs(android.support.v7.widget.RecyclerView,android.support.v7.widget.RecyclerView$ViewHolder) -> f
+    2252:2253:int getMovementFlags(android.support.v7.widget.RecyclerView,android.support.v7.widget.RecyclerView$ViewHolder) -> a
+android.support.v7.widget.helper.ItemTouchHelper$ViewDropHandler -> android.support.v7.widget.a.a$e:
+    void prepareForDrop(android.view.View,android.view.View,int,int) -> a
+android.support.v7.widget.helper.ItemTouchUIUtil -> android.support.v7.widget.a.b:
+    void onDraw(android.graphics.Canvas,android.support.v7.widget.RecyclerView,android.view.View,float,float,int,boolean) -> a
+    void onDrawOver(android.graphics.Canvas,android.support.v7.widget.RecyclerView,android.view.View,float,float,int,boolean) -> b
+    void clearView(android.view.View) -> a
+    void onSelected(android.view.View) -> b
+android.support.v7.widget.helper.ItemTouchUIUtilImpl -> android.support.v7.widget.a.c:
+android.support.v7.widget.helper.ItemTouchUIUtilImpl$Api21Impl -> android.support.v7.widget.a.c$a:
+    30:30:void <init>() -> <init>
+    34:44:void onDraw(android.graphics.Canvas,android.support.v7.widget.RecyclerView,android.view.View,float,float,int,boolean) -> a
+    47:59:float findMaxElevation(android.support.v7.widget.RecyclerView,android.view.View) -> a
+    64:70:void clearView(android.view.View) -> a
+android.support.v7.widget.helper.ItemTouchUIUtilImpl$BaseImpl -> android.support.v7.widget.a.c$b:
+    73:73:void <init>() -> <init>
+    77:79:void clearView(android.view.View) -> a
+    84:84:void onSelected(android.view.View) -> b
+    89:91:void onDraw(android.graphics.Canvas,android.support.v7.widget.RecyclerView,android.view.View,float,float,int,boolean) -> a
+    97:97:void onDrawOver(android.graphics.Canvas,android.support.v7.widget.RecyclerView,android.view.View,float,float,int,boolean) -> b
 android.support.wear.R -> android.support.wear.a:
 android.support.wear.R$dimen -> android.support.wear.a$a:
     int circular_progress_layout_stroke_width -> circular_progress_layout_stroke_width
@@ -16296,10 +16583,10 @@ com.google.gson.stream.JsonWriter -> com.google.a.d.c:
 com.google.gson.stream.MalformedJsonException -> com.google.a.d.d:
     29:30:void <init>(java.lang.String) -> <init>
 dev.cytronix.cryptocurrency.WearApplication -> dev.cytronix.cryptocurrency.WearApplication:
-    11:11:void <init>() -> <init>
-    15:19:void onCreate() -> onCreate
-    22:24:void initAnalytics() -> a
-    27:32:void initCrashlytics() -> b
+    12:12:void <init>() -> <init>
+    16:20:void onCreate() -> onCreate
+    23:25:void initAnalytics() -> a
+    28:33:void initCrashlytics() -> b
 dev.cytronix.cryptocurrency.adapter.CurrencyAdapter -> dev.cytronix.cryptocurrency.a.a:
     java.util.List prices -> a
     18:20:void <init>(java.util.List) -> <init>
@@ -16340,7 +16627,9 @@ dev.cytronix.cryptocurrency.billing.IBillingRepository -> dev.cytronix.cryptocur
     void connect() -> a
     boolean isReady() -> b
     void launchBilling(java.lang.String,java.lang.String) -> a
-dev.cytronix.cryptocurrency.databinding.FragmentPricelistBinding -> dev.cytronix.cryptocurrency.c.a:
+dev.cytronix.cryptocurrency.binding.BindingAdapter -> dev.cytronix.cryptocurrency.c.a:
+    9:10:void setVisible(android.view.View,boolean) -> a
+dev.cytronix.cryptocurrency.databinding.FragmentPricelistBinding -> dev.cytronix.cryptocurrency.d.a:
     android.databinding.ViewDataBinding$IncludedLayouts sIncludes -> h
     android.util.SparseIntArray sViewsWithIds -> i
     android.widget.LinearLayout linearlayoutPricelistLoading -> c
@@ -16349,18 +16638,18 @@ dev.cytronix.cryptocurrency.databinding.FragmentPricelistBinding -> dev.cytronix
     android.widget.TextView textviewPricelistError -> e
     android.support.wear.widget.drawer.WearableActionDrawerView wearableactiondrawerviewMainAction -> f
     android.support.wear.widget.WearableRecyclerView wearablerecyclerviewPricelistPricelist -> g
-    dev.cytronix.cryptocurrency.ui.fragment.PriceListFragment mFragment -> k
+    dev.cytronix.cryptocurrency.pricelist.PriceListFragment mFragment -> k
     long mDirtyFlags -> l
-    42:205:void <init>(android.databinding.DataBindingComponent,android.view.View) -> <init>
+    42:170:void <init>(android.databinding.DataBindingComponent,android.view.View) -> <init>
     61:65:void invalidateAll() -> j
     69:74:boolean hasPendingBindings() -> d
-    90:96:void setFragment(dev.cytronix.cryptocurrency.ui.fragment.PriceListFragment) -> a
+    90:96:void setFragment(dev.cytronix.cryptocurrency.pricelist.PriceListFragment) -> a
     104:108:boolean onFieldChange(int,java.lang.Object,int) -> a
     111:117:boolean onChangeFragmentStatus(android.databinding.ObservableField,int) -> a
-    122:201:void executeBindings() -> c
-    229:232:dev.cytronix.cryptocurrency.databinding.FragmentPricelistBinding bind(android.view.View,android.databinding.DataBindingComponent) -> a
+    122:166:void executeBindings() -> c
+    194:197:dev.cytronix.cryptocurrency.databinding.FragmentPricelistBinding bind(android.view.View,android.databinding.DataBindingComponent) -> a
     16:20:void <clinit>() -> <clinit>
-dev.cytronix.cryptocurrency.databinding.ItemCurrencyBinding -> dev.cytronix.cryptocurrency.c.b:
+dev.cytronix.cryptocurrency.databinding.ItemCurrencyBinding -> dev.cytronix.cryptocurrency.d.b:
     android.databinding.ViewDataBinding$IncludedLayouts sIncludes -> e
     android.util.SparseIntArray sViewsWithIds -> f
     android.widget.LinearLayout mboundView0 -> g
@@ -16376,28 +16665,77 @@ dev.cytronix.cryptocurrency.databinding.ItemCurrencyBinding -> dev.cytronix.cryp
     99:191:void executeBindings() -> c
     219:222:dev.cytronix.cryptocurrency.databinding.ItemCurrencyBinding bind(android.view.View,android.databinding.DataBindingComponent) -> a
     16:18:void <clinit>() -> <clinit>
+dev.cytronix.cryptocurrency.pricelist.MainActivity -> dev.cytronix.cryptocurrency.pricelist.MainActivity:
+    8:8:void <init>() -> <init>
+    12:16:void onCreate(android.os.Bundle) -> onCreate
+dev.cytronix.cryptocurrency.pricelist.PriceListFragment -> dev.cytronix.cryptocurrency.pricelist.a:
+    dev.cytronix.cryptocurrency.databinding.FragmentPricelistBinding binding -> c
+    android.support.wear.widget.WearableRecyclerView recyclerView -> d
+    android.support.wear.widget.drawer.WearableActionDrawerView actionDrawer -> e
+    dev.cytronix.cryptocurrency.storage.Storage storage -> f
+    dev.cytronix.data.presenter.IPriceListPresenter presenter -> g
+    dev.cytronix.cryptocurrency.billing.IBillingRepository billingRepository -> h
+    dev.cytronix.cryptocurrency.adapter.CurrencyAdapter adapter -> i
+    android.databinding.ObservableField status -> a
+    45:58:void <init>() -> <init>
+    61:65:dev.cytronix.cryptocurrency.pricelist.PriceListFragment newInstance() -> a
+    70:79:android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> onCreateView
+    84:89:void onResume() -> onResume
+    92:95:void initBilling() -> b
+    98:106:void initLayout() -> c
+    109:145:void setPriceList(android.support.wear.widget.WearableRecyclerView) -> a
+    148:152:void actionRefresh() -> d
+    155:163:void actionDonation() -> e
+    166:176:void actionShare() -> f
+    179:185:void actionRating() -> g
+    188:192:void actionSettings() -> h
+    195:201:void refresh() -> i
+    205:221:void onUpdate(java.util.List) -> b
+    225:230:void onError(java.lang.String) -> a
+    234:250:boolean onMenuItemClick(android.view.MenuItem) -> onMenuItemClick
+    256:262:void onClick(android.view.View) -> onClick
+    266:266:void onPurchased(java.util.List) -> a
+    45:45:dev.cytronix.data.presenter.IPriceListPresenter access$000(dev.cytronix.cryptocurrency.pricelist.PriceListFragment) -> a
+    45:45:dev.cytronix.cryptocurrency.adapter.CurrencyAdapter access$100(dev.cytronix.cryptocurrency.pricelist.PriceListFragment) -> b
+    45:45:dev.cytronix.cryptocurrency.storage.Storage access$200(dev.cytronix.cryptocurrency.pricelist.PriceListFragment) -> c
+dev.cytronix.cryptocurrency.pricelist.PriceListFragment$1 -> dev.cytronix.cryptocurrency.pricelist.a$1:
+    dev.cytronix.cryptocurrency.pricelist.PriceListFragment this$0 -> a
+    115:115:void <init>(dev.cytronix.cryptocurrency.pricelist.PriceListFragment,int,int) -> <init>
+    118:132:boolean onMove(android.support.v7.widget.RecyclerView,android.support.v7.widget.RecyclerView$ViewHolder,android.support.v7.widget.RecyclerView$ViewHolder) -> b
+    137:137:boolean isItemViewSwipeEnabled() -> b
+    142:142:void onSwiped(android.support.v7.widget.RecyclerView$ViewHolder,int) -> a
+dev.cytronix.cryptocurrency.pricelist.PriceListFragment$Status -> dev.cytronix.cryptocurrency.pricelist.a$a:
+    dev.cytronix.cryptocurrency.pricelist.PriceListFragment$Status UNKNOWN -> a
+    dev.cytronix.cryptocurrency.pricelist.PriceListFragment$Status DATA -> b
+    dev.cytronix.cryptocurrency.pricelist.PriceListFragment$Status LOADING -> c
+    dev.cytronix.cryptocurrency.pricelist.PriceListFragment$Status ERROR -> d
+    dev.cytronix.cryptocurrency.pricelist.PriceListFragment$Status[] $VALUES -> e
+    49:49:dev.cytronix.cryptocurrency.pricelist.PriceListFragment$Status[] values() -> values
+    49:49:dev.cytronix.cryptocurrency.pricelist.PriceListFragment$Status valueOf(java.lang.String) -> valueOf
+    49:49:void <init>(java.lang.String,int) -> <init>
+    49:49:void <clinit>() -> <clinit>
 dev.cytronix.cryptocurrency.service.BchProviderService -> dev.cytronix.cryptocurrency.service.BchProviderService:
     8:9:void <init>() -> <init>
 dev.cytronix.cryptocurrency.service.BtcProviderService -> dev.cytronix.cryptocurrency.service.BtcProviderService:
     8:9:void <init>() -> <init>
 dev.cytronix.cryptocurrency.service.DataProviderService -> dev.cytronix.cryptocurrency.service.a:
     java.lang.String toCurrency -> a
-    33:36:void <init>(java.lang.String) -> <init>
-    39:39:dev.cytronix.data.cryptowat.model.DataProvider getProvider() -> a
-    43:43:java.lang.String getCurrency() -> b
-    48:51:void onComplicationActivated(int,int,android.support.wearable.complications.ComplicationManager) -> a
-    55:73:void onComplicationUpdate(int,int,android.support.wearable.complications.ComplicationManager) -> b
-    76:77:void update(java.lang.String,int,int,android.support.wearable.complications.ComplicationManager) -> a
-    81:105:void update(java.lang.String,java.lang.String,int,int,android.support.wearable.complications.ComplicationManager) -> a
-    109:112:void onComplicationDeactivated(int) -> a
+    35:38:void <init>(java.lang.String) -> <init>
+    41:41:dev.cytronix.data.cryptowat.model.DataProvider getProvider() -> a
+    45:45:java.lang.String getCurrency() -> b
+    50:54:void onComplicationActivated(int,int,android.support.wearable.complications.ComplicationManager) -> a
+    58:78:void onComplicationUpdate(int,int,android.support.wearable.complications.ComplicationManager) -> b
+    81:82:void update(java.lang.String,int,int,android.support.wearable.complications.ComplicationManager) -> a
+    86:110:void update(java.lang.String,java.lang.String,int,int,android.support.wearable.complications.ComplicationManager) -> a
+    114:118:void onComplicationDeactivated(int) -> a
 dev.cytronix.cryptocurrency.service.DataProviderService$1 -> dev.cytronix.cryptocurrency.service.a$1:
     int val$complicationId -> a
     int val$dataType -> b
     android.support.wearable.complications.ComplicationManager val$complicationManager -> c
     dev.cytronix.cryptocurrency.service.DataProviderService this$0 -> d
-    57:57:void <init>(dev.cytronix.cryptocurrency.service.DataProviderService,int,int,android.support.wearable.complications.ComplicationManager) -> <init>
-    60:65:void onUpdate(java.util.List) -> a
-    69:70:void onError(java.lang.String) -> a
+    60:60:void <init>(dev.cytronix.cryptocurrency.service.DataProviderService,int,int,android.support.wearable.complications.ComplicationManager) -> <init>
+    63:70:void onUpdate(java.util.List) -> a
+    74:75:void onError(java.lang.String) -> a
 dev.cytronix.cryptocurrency.service.EthProviderService -> dev.cytronix.cryptocurrency.service.EthProviderService:
     8:9:void <init>() -> <init>
 dev.cytronix.cryptocurrency.service.LtcProviderService -> dev.cytronix.cryptocurrency.service.LtcProviderService:
@@ -16407,73 +16745,44 @@ dev.cytronix.cryptocurrency.service.UpdateComplicationDataService -> dev.cytroni
     24:33:void onHandleIntent(android.content.Intent) -> onHandleIntent
     36:49:void updateComplication(android.content.Intent) -> a
     52:61:java.lang.Class getProviderService(java.lang.String) -> a
-dev.cytronix.cryptocurrency.storage.Storage -> dev.cytronix.cryptocurrency.d.a:
-    android.content.SharedPreferences preferences -> a
-    android.content.Context context -> b
-    15:19:void <init>(android.content.Context) -> <init>
-    22:23:void init() -> c
-    27:30:dev.cytronix.data.cryptowat.model.DataProvider getDataProvider() -> a
-    35:37:java.lang.String getCurrency() -> b
-dev.cytronix.cryptocurrency.ui.activity.BaseActivity -> dev.cytronix.cryptocurrency.ui.activity.a:
-    13:13:void <init>() -> <init>
-    16:32:void showFragment(java.lang.String) -> a
-dev.cytronix.cryptocurrency.ui.activity.MainActivity -> dev.cytronix.cryptocurrency.ui.activity.MainActivity:
-    8:8:void <init>() -> <init>
-    12:16:void onCreate(android.os.Bundle) -> onCreate
-dev.cytronix.cryptocurrency.ui.activity.SettingActivity -> dev.cytronix.cryptocurrency.ui.activity.SettingActivity:
+dev.cytronix.cryptocurrency.setting.SettingActivity -> dev.cytronix.cryptocurrency.setting.SettingActivity:
     7:7:void <init>() -> <init>
     11:14:void onCreate(android.os.Bundle) -> onCreate
-dev.cytronix.cryptocurrency.ui.fragment.BaseFragment -> dev.cytronix.cryptocurrency.ui.a.a:
-    dev.cytronix.cryptocurrency.ui.activity.BaseActivity baseActivity -> a
-    8:8:void <init>() -> <init>
-    14:17:void onAttach(android.content.Context) -> onAttach
-dev.cytronix.cryptocurrency.ui.fragment.PriceListFragment -> dev.cytronix.cryptocurrency.ui.a.b:
-    dev.cytronix.cryptocurrency.databinding.FragmentPricelistBinding binding -> c
-    android.support.wear.widget.WearableRecyclerView recyclerView -> d
-    android.support.wear.widget.drawer.WearableActionDrawerView actionDrawer -> e
-    dev.cytronix.cryptocurrency.storage.Storage storage -> f
-    dev.cytronix.data.presenter.IPriceListPresenter presenter -> g
-    dev.cytronix.cryptocurrency.billing.IBillingRepository billingRepository -> h
-    dev.cytronix.cryptocurrency.adapter.CurrencyAdapter adapter -> i
-    android.databinding.ObservableField status -> b
-    39:52:void <init>() -> <init>
-    55:59:dev.cytronix.cryptocurrency.ui.fragment.PriceListFragment newInstance() -> a
-    64:73:android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> onCreateView
-    78:87:void onResume() -> onResume
-    90:93:void initBilling() -> b
-    96:104:void initLayout() -> c
-    107:112:void setPriceList(android.support.wear.widget.WearableRecyclerView) -> a
-    115:122:void showDonation() -> d
-    125:129:void showRating() -> e
-    132:134:void showSettings() -> f
-    137:143:void refresh() -> g
-    147:156:void onUpdate(java.util.List) -> b
-    160:165:void onError(java.lang.String) -> a
-    169:183:boolean onMenuItemClick(android.view.MenuItem) -> onMenuItemClick
-    189:195:void onClick(android.view.View) -> onClick
-    199:199:void onPurchased(java.util.List) -> a
-dev.cytronix.cryptocurrency.ui.fragment.PriceListFragment$Status -> dev.cytronix.cryptocurrency.ui.a.b$a:
-    dev.cytronix.cryptocurrency.ui.fragment.PriceListFragment$Status UNKNOWN -> a
-    dev.cytronix.cryptocurrency.ui.fragment.PriceListFragment$Status DATA -> b
-    dev.cytronix.cryptocurrency.ui.fragment.PriceListFragment$Status LOADING -> c
-    dev.cytronix.cryptocurrency.ui.fragment.PriceListFragment$Status ERROR -> d
-    dev.cytronix.cryptocurrency.ui.fragment.PriceListFragment$Status[] $VALUES -> e
-    43:43:dev.cytronix.cryptocurrency.ui.fragment.PriceListFragment$Status[] values() -> values
-    43:43:dev.cytronix.cryptocurrency.ui.fragment.PriceListFragment$Status valueOf(java.lang.String) -> valueOf
-    43:43:void <init>(java.lang.String,int) -> <init>
-    43:43:void <clinit>() -> <clinit>
-dev.cytronix.cryptocurrency.ui.fragment.SettingFragment -> dev.cytronix.cryptocurrency.ui.a.c:
+dev.cytronix.cryptocurrency.setting.SettingFragment -> dev.cytronix.cryptocurrency.setting.a:
     9:9:void <init>() -> <init>
-    14:18:dev.cytronix.cryptocurrency.ui.fragment.SettingFragment newInstance() -> a
+    14:18:dev.cytronix.cryptocurrency.setting.SettingFragment newInstance() -> a
     23:26:void onCreate(android.os.Bundle) -> onCreate
-dev.cytronix.cryptocurrency.util.AnalyticsUtils -> dev.cytronix.cryptocurrency.e.a:
+dev.cytronix.cryptocurrency.storage.Storage -> dev.cytronix.cryptocurrency.e.a:
+    android.content.SharedPreferences preferences -> a
+    android.content.Context context -> b
+    23:27:void <init>(android.content.Context) -> <init>
+    30:31:void init() -> d
+    35:38:dev.cytronix.data.cryptowat.model.DataProvider getDataProvider() -> a
+    43:45:java.lang.String getCurrency() -> b
+    50:52:boolean showPriceListSortInfo() -> c
+    58:61:void setPriceListSortInfo(boolean) -> a
+    65:86:void updatePriceListSort(java.util.List) -> a
+    91:99:void setPriceListSort(java.util.List) -> b
+dev.cytronix.cryptocurrency.ui.activity.BaseActivity -> dev.cytronix.cryptocurrency.f.a.a:
+    13:13:void <init>() -> <init>
+    16:32:void showFragment(java.lang.String) -> a
+dev.cytronix.cryptocurrency.ui.fragment.BaseFragment -> dev.cytronix.cryptocurrency.f.b.a:
+    dev.cytronix.cryptocurrency.ui.activity.BaseActivity baseActivity -> b
+    10:10:void <init>() -> <init>
+    16:19:void onAttach(android.content.Context) -> onAttach
+    23:24:void showToast(int) -> a
+dev.cytronix.cryptocurrency.util.AnalyticsUtils -> dev.cytronix.cryptocurrency.g.a:
     12:18:void trackEvent(android.content.Context,java.lang.String,java.lang.String,java.lang.String,int) -> a
-dev.cytronix.cryptocurrency.util.AppStoreUtils -> dev.cytronix.cryptocurrency.e.b:
+dev.cytronix.cryptocurrency.util.AppStoreUtils -> dev.cytronix.cryptocurrency.g.b:
     12:14:android.content.Intent getAppIntent(java.lang.String) -> a
     24:26:android.content.Intent getIntent() -> a
-dev.cytronix.cryptocurrency.util.FlavorUtils -> dev.cytronix.cryptocurrency.e.c:
+    30:30:java.lang.String getWebLink(java.lang.String) -> b
+dev.cytronix.cryptocurrency.util.FabricUtils -> dev.cytronix.cryptocurrency.g.c:
+    10:12:void trackEvent(java.lang.String,java.lang.String,float) -> a
+    16:18:void trackEvent(java.lang.String,java.lang.String,java.lang.String) -> a
+dev.cytronix.cryptocurrency.util.FlavorUtils -> dev.cytronix.cryptocurrency.g.d:
     12:12:boolean isProd() -> a
-dev.cytronix.cryptocurrency.util.IntentUtils -> dev.cytronix.cryptocurrency.e.d:
+dev.cytronix.cryptocurrency.util.IntentUtils -> dev.cytronix.cryptocurrency.g.e:
     9:9:boolean isAvailable(android.content.Context,android.content.Intent) -> a
 dev.cytronix.data.DataApplication -> dev.cytronix.a.a:
     7:7:void <init>() -> <init>

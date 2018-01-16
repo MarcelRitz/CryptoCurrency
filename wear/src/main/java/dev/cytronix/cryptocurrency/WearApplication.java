@@ -1,6 +1,7 @@
 package dev.cytronix.cryptocurrency;
 
 import com.crashlytics.android.Crashlytics;
+import com.crashlytics.android.answers.Answers;
 import com.crashlytics.android.core.CrashlyticsCore;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
@@ -28,6 +29,6 @@ public class WearApplication extends DataApplication {
                 .core(new CrashlyticsCore.Builder().disabled(BuildConfig.DEBUG).build())
                 .build();
 
-        Fabric.with(this, crashlytics);
+        Fabric.with(this, crashlytics, new Answers());
     }
 }

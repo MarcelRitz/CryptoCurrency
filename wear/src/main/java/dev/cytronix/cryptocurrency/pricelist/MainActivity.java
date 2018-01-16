@@ -1,9 +1,9 @@
-package dev.cytronix.cryptocurrency.ui.activity;
+package dev.cytronix.cryptocurrency.pricelist;
 
 import android.os.Bundle;
 
 import dev.cytronix.cryptocurrency.R;
-import dev.cytronix.cryptocurrency.ui.fragment.PriceListFragment;
+import dev.cytronix.cryptocurrency.ui.activity.BaseActivity;
 
 public class MainActivity extends BaseActivity {
 

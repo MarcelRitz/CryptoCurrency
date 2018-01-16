@@ -1,8 +1,8 @@
-package dev.cytronix.cryptocurrency.ui.activity;
+package dev.cytronix.cryptocurrency.setting;
 
 import android.os.Bundle;
 
-import dev.cytronix.cryptocurrency.ui.fragment.SettingFragment;
+import dev.cytronix.cryptocurrency.ui.activity.BaseActivity;
 
 public class SettingActivity extends BaseActivity {
 

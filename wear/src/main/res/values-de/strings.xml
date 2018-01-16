@@ -3,11 +3,15 @@
     <string name="all_error">Fehler</string>
     <string name="all_loading">laden..</string>
 
+    <!-- PriceList -->
+    <string name="price_list_sort_info">Drag and drop zum Sortieren (Long press)</string>
+
     <!-- Donation -->
     <string name="donation_title">Spenden</string>
 
     <!-- Menu -->
     <string name="menu_refresh">Aktualisieren</string>
+    <string name="menu_share">Teilen</string>
     <string name="menu_rating">Bewertung</string>
 
     <!-- Preferences -->

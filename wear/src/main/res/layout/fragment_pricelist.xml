@@ -1,17 +1,15 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.fragment.PriceListFragment">
+    tools:context=".pricelist.PriceListFragment">
 
     <data>
 
-        <import type="dev.cytronix.cryptocurrency.ui.fragment.PriceListFragment.Status" />
-
-        <import type="android.view.View" />
+        <import type="dev.cytronix.cryptocurrency.pricelist.PriceListFragment.Status" />
 
         <variable
             name="fragment"
-            type="dev.cytronix.cryptocurrency.ui.fragment.PriceListFragment" />
+            type="dev.cytronix.cryptocurrency.pricelist.PriceListFragment" />
     </data>
 
     <android.support.wear.widget.drawer.WearableDrawerLayout
@@ -31,7 +29,6 @@
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
                     android:padding="@dimen/boxinsetlayout_content_padding"
                     app:boxedEdges="all">
 
@@ -45,7 +42,7 @@
                         android:gravity="center_horizontal"
                         android:orientation="vertical"
                         android:text="@string/all_error"
-                        android:visibility="@{Status.ERROR == fragment.status ? View.VISIBLE : View.GONE}" />
+                        android:visible="@{Status.ERROR == fragment.status}" />
 
                     <LinearLayout
                         android:id="@+id/linearlayout_pricelist_loading"
@@ -54,7 +51,7 @@
                         android:layout_gravity="center"
                         android:gravity="center_horizontal"
                         android:orientation="vertical"
-                        android:visibility="@{Status.LOADING == fragment.status ? View.VISIBLE : View.GONE}">
+                        android:visible="@{Status.LOADING == fragment.status}">
 
                         <ProgressBar
                             android:id="@+id/progressbar_pricelist_refresh"
@@ -76,7 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scrollbars="vertical"
-                android:visibility="@{Status.DATA == fragment.status ? View.VISIBLE : View.GONE}" />
+                android:visible="@{Status.DATA == fragment.status}" />
         </FrameLayout>
 
         <android.support.wear.widget.drawer.WearableActionDrawerView

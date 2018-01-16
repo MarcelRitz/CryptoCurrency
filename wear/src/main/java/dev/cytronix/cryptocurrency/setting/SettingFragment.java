@@ -1,4 +1,4 @@
-package dev.cytronix.cryptocurrency.ui.fragment;
+package dev.cytronix.cryptocurrency.setting;
 
 import android.os.Bundle;
 import android.preference.PreferenceFragment;

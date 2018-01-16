@@ -1,8 +1,11 @@
 <resources>
     <!-- Data provider -->
-    <string name="data_provider_bitstamp" translatable="false">Bitstamp</string>
-    <string name="data_provider_kraken" translatable="false">Kraken</string>
-    <string name="data_provider_gdax" translatable="false">GDAX</string>
+    <string name="data_provider_gdax_entry" translatable="false">GDAX (Coinbase)</string>
+    <string name="data_provider_gdax_value" translatable="false">GDAX</string>
+    <string name="data_provider_bitstamp_entry" translatable="false">Bitstamp</string>
+    <string name="data_provider_bitstamp_value" translatable="false">Bitstamp</string>
+    <string name="data_provider_kraken_entry" translatable="false">Kraken</string>
+    <string name="data_provider_kraken_value" translatable="false">Kraken</string>
 
     <!-- Currency -->
     <string name="currency_bch" translatable="false">BCH</string>

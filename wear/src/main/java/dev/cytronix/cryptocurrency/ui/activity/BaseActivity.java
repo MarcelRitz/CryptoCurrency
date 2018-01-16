@@ -6,8 +6,8 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.support.wearable.activity.WearableActivity;
 
-import dev.cytronix.cryptocurrency.ui.fragment.PriceListFragment;
-import dev.cytronix.cryptocurrency.ui.fragment.SettingFragment;
+import dev.cytronix.cryptocurrency.pricelist.PriceListFragment;
+import dev.cytronix.cryptocurrency.setting.SettingFragment;
 
 @SuppressLint("Registered")
 public class BaseActivity extends WearableActivity {

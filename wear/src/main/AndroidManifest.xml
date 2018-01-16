@@ -17,14 +17,14 @@
         android:theme="@style/Theme.App"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".ui.activity.MainActivity"
+            android:name=".pricelist.MainActivity"
             android:theme="@style/Theme.Launch">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.SettingActivity" />
+        <activity android:name=".setting.SettingActivity" />
 
         <service
             android:name=".service.UpdateComplicationDataService"
@@ -102,7 +102,7 @@
                 android:value="3600" />
         </service>
 
-        <!-- Crashlytics -->
+        <!-- Fabric -->
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="d553587bf9b2090c8bf7ccaa63885ed66438d957" />
