@@ -18,6 +18,7 @@ public class BaseFragment extends Fragment {
         baseActivity = (BaseActivity) getActivity();
     }
 
+    @SuppressWarnings("SameParameterValue")
     protected void showToast(@StringRes int resId) {
         Toast.makeText(getContext(), resId, Toast.LENGTH_LONG).show();
     }

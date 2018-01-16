@@ -13,6 +13,7 @@ public interface IStorage {
 
     boolean showPriceListSortInfo();
 
+    @SuppressWarnings("SameParameterValue")
     void setPriceListSortInfo(boolean showed);
 
     void updatePriceListSort(List<Price> prices);
