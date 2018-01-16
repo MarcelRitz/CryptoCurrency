@@ -15,6 +15,7 @@ import java.util.Locale;
 
 import dev.cytronix.cryptocurrency.R;
 import dev.cytronix.cryptocurrency.analytic.Analytics;
+import dev.cytronix.cryptocurrency.analytic.Fabric;
 import dev.cytronix.cryptocurrency.storage.Storage;
 import dev.cytronix.cryptocurrency.util.AnalyticsUtils;
 import dev.cytronix.cryptocurrency.util.FabricUtils;
@@ -48,7 +49,7 @@ public class DataProviderService extends ComplicationProviderService {
     public void onComplicationActivated(int complicationId, int type, ComplicationManager manager) {
         super.onComplicationActivated(complicationId, type, manager);
 
-        FabricUtils.trackEvent(FabricUtils.EVENT_COMPLICATION, FabricUtils.NAME_ACTIVATED, 1.0f);
+        FabricUtils.trackEvent(Fabric.EVENT_COMPLICATION, Fabric.NAME_ACTIVATED, 1.0f);
         AnalyticsUtils.trackEvent(this, FirebaseAnalytics.Event.SELECT_CONTENT, Analytics.ITEM_ID_COMPLICATION_ACTIVATED, toCurrency, 1);
     }
 
@@ -65,7 +66,7 @@ public class DataProviderService extends ComplicationProviderService {
 
                 update(price.getTargetCurrency(), shortText, complicationId, dataType, complicationManager);
 
-                FabricUtils.trackEvent(FabricUtils.EVENT_COMPLICATION, FabricUtils.NAME_UPDATED, price.getTargetCurrency());
+                FabricUtils.trackEvent(Fabric.EVENT_COMPLICATION, Fabric.NAME_UPDATED, price.getTargetCurrency());
             }
 
             @Override
@@ -112,7 +113,7 @@ public class DataProviderService extends ComplicationProviderService {
     public void onComplicationDeactivated(int complicationId) {
         super.onComplicationDeactivated(complicationId);
 
-        FabricUtils.trackEvent(FabricUtils.EVENT_COMPLICATION, FabricUtils.NAME_DEACTIVATED, 1.0f);
+        FabricUtils.trackEvent(Fabric.EVENT_COMPLICATION, Fabric.NAME_DEACTIVATED, 1.0f);
         AnalyticsUtils.trackEvent(this, FirebaseAnalytics.Event.SELECT_CONTENT, Analytics.ITEM_ID_COMPLICATION_DEACTIVATED, toCurrency, 1);
     }
 }

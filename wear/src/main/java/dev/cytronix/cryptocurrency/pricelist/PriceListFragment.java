@@ -22,12 +22,13 @@ import java.util.List;
 import dev.cytronix.cryptocurrency.R;
 import dev.cytronix.cryptocurrency.adapter.CurrencyAdapter;
 import dev.cytronix.cryptocurrency.analytic.Analytics;
+import dev.cytronix.cryptocurrency.analytic.Fabric;
 import dev.cytronix.cryptocurrency.billing.Billing;
 import dev.cytronix.cryptocurrency.billing.BillingRepository;
 import dev.cytronix.cryptocurrency.billing.IBillingRepository;
 import dev.cytronix.cryptocurrency.databinding.FragmentPricelistBinding;
-import dev.cytronix.cryptocurrency.storage.Storage;
 import dev.cytronix.cryptocurrency.setting.SettingActivity;
+import dev.cytronix.cryptocurrency.storage.Storage;
 import dev.cytronix.cryptocurrency.ui.fragment.BaseFragment;
 import dev.cytronix.cryptocurrency.util.AnalyticsUtils;
 import dev.cytronix.cryptocurrency.util.AppStoreUtils;
@@ -113,7 +114,7 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
         refresh();
         actionDrawer.getController().closeDrawer();
 
-        FabricUtils.trackEvent(FabricUtils.EVENT_MENU, FabricUtils.MENU_REFRESH, 1.0f);
+        FabricUtils.trackEvent(Fabric.EVENT_MENU, Fabric.MENU_REFRESH, 1.0f);
     }
 
     private void actionDonation() {
@@ -123,7 +124,7 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
 
         billingRepository.launchBilling(Billing.SKU_DONATION_LOWEST, BillingClient.SkuType.INAPP);
 
-        FabricUtils.trackEvent(FabricUtils.EVENT_MENU, FabricUtils.MENU_DONATION, 1.0f);
+        FabricUtils.trackEvent(Fabric.EVENT_MENU, Fabric.MENU_DONATION, 1.0f);
         AnalyticsUtils.trackEvent(getContext(), FirebaseAnalytics.Event.SELECT_CONTENT, Analytics.ITEM_ID_DONATION, Analytics.ITEM_NAME_DONATION, 1);
     }
 
@@ -137,7 +138,7 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
             startActivity(Intent.createChooser(intent, getString(R.string.menu_share)));
         }
 
-        FabricUtils.trackEvent(FabricUtils.EVENT_MENU, FabricUtils.MENU_SHARE, 1.0f);
+        FabricUtils.trackEvent(Fabric.EVENT_MENU, Fabric.MENU_SHARE, 1.0f);
     }
 
     private void actionRating() {
@@ -146,14 +147,14 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
             startActivity(intent);
         }
 
-        FabricUtils.trackEvent(FabricUtils.EVENT_MENU, FabricUtils.MENU_RATING, 1.0f);
+        FabricUtils.trackEvent(Fabric.EVENT_MENU, Fabric.MENU_RATING, 1.0f);
     }
 
     private void actionSettings() {
         Intent intent = new Intent(getContext(), SettingActivity.class);
         startActivity(intent);
 
-        FabricUtils.trackEvent(FabricUtils.EVENT_MENU, FabricUtils.MENU_SETTINGS, 1.0f);
+        FabricUtils.trackEvent(Fabric.EVENT_MENU, Fabric.MENU_SETTINGS, 1.0f);
     }
 
     private void refresh() {
