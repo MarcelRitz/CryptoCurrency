@@ -5,6 +5,8 @@ import android.databinding.DataBindingUtil;
 import android.databinding.ObservableField;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.support.wear.widget.WearableLinearLayoutManager;
 import android.support.wear.widget.WearableRecyclerView;
 import android.support.wear.widget.drawer.WearableActionDrawerView;
@@ -17,6 +19,7 @@ import com.android.billingclient.api.BillingClient;
 import com.android.billingclient.api.Purchase;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
+import java.util.Collections;
 import java.util.List;
 
 import dev.cytronix.cryptocurrency.R;
@@ -108,6 +111,37 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
         recyclerView.setEdgeItemsCenteringEnabled(true);
         recyclerView.setLayoutManager(new WearableLinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
+
+        ItemTouchHelper helper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP | ItemTouchHelper.DOWN, 0) {
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                int fromPosition = viewHolder.getAdapterPosition();
+                int toPosition = target.getAdapterPosition();
+
+                if (fromPosition < toPosition) {
+                    for (int i = fromPosition; i < toPosition; i++) {
+                        Collections.swap(presenter.getPrices(), i, i + 1);
+                    }
+                } else {
+                    for (int i = fromPosition; i > toPosition; i--) {
+                        Collections.swap(presenter.getPrices(), i, i - 1);
+                    }
+                }
+                adapter.notifyItemMoved(fromPosition, toPosition);
+                storage.setPriceListSort(presenter.getPrices());
+                return true;
+            }
+
+            @Override
+            public boolean isItemViewSwipeEnabled() {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+            }
+        });
+        helper.attachToRecyclerView(recyclerView);
     }
 
     private void actionRefresh() {
@@ -171,6 +205,8 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
         if(!isAdded()) {
             return;
         }
+
+        storage.updatePriceListSort(prices);
 
         status.set(Status.DATA);
 

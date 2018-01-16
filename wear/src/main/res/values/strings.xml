@@ -23,4 +23,5 @@
     <string name="preference_data_provider_title">Data provider</string>
     <string name="preference_data_provider_key" translatable="false">DataProviderKey</string>
     <string name="preference_data_provider_default_value" translatable="false">@string/data_provider_gdax_value</string>
+    <string name="preference_price_list_sort_key" translatable="false">PriceListSortKey</string>
 </resources>
