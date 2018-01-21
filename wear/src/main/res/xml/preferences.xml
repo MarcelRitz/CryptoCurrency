@@ -17,29 +17,29 @@
             android:title="@string/preference_data_provider_title" />
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/preference_category_wallet">
+    <PreferenceCategory android:title="@string/preference_category_quantity">
         <dev.cytronix.cryptocurrency.preference.EditTextPreferenceSummary
-            android:defaultValue="@string/preference_wallet_default_value"
+            android:defaultValue="@string/preference_quantity_default_value"
             android:inputType="numberDecimal"
-            android:key="@string/preference_wallet_bch_key"
-            android:title="@string/preference_wallet_bch_title" />
+            android:key="@string/preference_quantity_bch_key"
+            android:title="@string/preference_quantity_bch_title" />
 
         <dev.cytronix.cryptocurrency.preference.EditTextPreferenceSummary
-            android:defaultValue="@string/preference_wallet_default_value"
+            android:defaultValue="@string/preference_quantity_default_value"
             android:inputType="numberDecimal"
-            android:key="@string/preference_wallet_btc_key"
-            android:title="@string/preference_wallet_btc_title" />
+            android:key="@string/preference_quantity_btc_key"
+            android:title="@string/preference_quantity_btc_title" />
 
         <dev.cytronix.cryptocurrency.preference.EditTextPreferenceSummary
-            android:defaultValue="@string/preference_wallet_default_value"
+            android:defaultValue="@string/preference_quantity_default_value"
             android:inputType="numberDecimal"
-            android:key="@string/preference_wallet_eth_key"
-            android:title="@string/preference_wallet_eth_title" />
+            android:key="@string/preference_quantity_eth_key"
+            android:title="@string/preference_quantity_eth_title" />
 
         <dev.cytronix.cryptocurrency.preference.EditTextPreferenceSummary
-            android:defaultValue="@string/preference_wallet_default_value"
+            android:defaultValue="@string/preference_quantity_default_value"
             android:inputType="numberDecimal"
-            android:key="@string/preference_wallet_ltc_key"
-            android:title="@string/preference_wallet_ltc_title" />
+            android:key="@string/preference_quantity_ltc_key"
+            android:title="@string/preference_quantity_ltc_title" />
     </PreferenceCategory>
 </PreferenceScreen>

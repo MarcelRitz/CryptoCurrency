@@ -30,21 +30,21 @@
     <string name="preference_data_provider_title">Data provider</string>
     <string name="preference_data_provider_key" translatable="false">DataProviderKey</string>
     <string name="preference_data_provider_default_value" translatable="false">@string/data_provider_gdax_value</string>
-    <!-- Wallet -->
-    <string name="preference_category_wallet">My Wallet</string>
-    <string name="preference_wallet_default_value" translatable="false">0.0</string>
+    <!-- quantity -->
+    <string name="preference_category_quantity">My wallet</string>
+    <string name="preference_quantity_default_value" translatable="false">0.0</string>
     <!-- BCH -->
-    <string name="preference_wallet_bch_title">BCH balance</string>
-    <string name="preference_wallet_bch_key" translatable="false">BCHBalanceKey</string>
+    <string name="preference_quantity_bch_title">BCH balance</string>
+    <string name="preference_quantity_bch_key" translatable="false">BCHQuantityKey</string>
     <!-- BTC -->
-    <string name="preference_wallet_btc_title">BTC balance</string>
-    <string name="preference_wallet_btc_key" translatable="false">BTCBalanceKey</string>
+    <string name="preference_quantity_btc_title">BTC balance</string>
+    <string name="preference_quantity_btc_key" translatable="false">BTCQuantityKey</string>
     <!-- ETH -->
-    <string name="preference_wallet_eth_title">ETH balance</string>
-    <string name="preference_wallet_eth_key" translatable="false">ETHBalanceKey</string>
+    <string name="preference_quantity_eth_title">ETH balance</string>
+    <string name="preference_quantity_eth_key" translatable="false">ETHQuantityKey</string>
     <!-- LTC -->
-    <string name="preference_wallet_ltc_title">LTC balance</string>
-    <string name="preference_wallet_ltc_key" translatable="false">LTCBalanceKey</string>
+    <string name="preference_quantity_ltc_title">LTC balance</string>
+    <string name="preference_quantity_ltc_key" translatable="false">LTCQuantityKey</string>
     <!-- Price list sort -->
     <string name="preference_price_list_sort_key" translatable="false">PriceListSortKey</string>
     <bool name="preference_price_list_sort_info_default_value" translatable="false">true</bool>
