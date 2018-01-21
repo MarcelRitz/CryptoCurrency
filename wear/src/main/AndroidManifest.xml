@@ -34,7 +34,24 @@
         <service
             android:name=".service.BchProviderService"
             android:icon="@drawable/ic_currency_bch"
-            android:label="@string/currency_text_bch"
+            android:label="@string/preference_category_price"
+            android:permission="com.google.android.wearable.permission.BIND_COMPLICATION_PROVIDER">
+            <intent-filter>
+                <action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.wearable.complications.SUPPORTED_TYPES"
+                android:value="SHORT_TEXT,LONG_TEXT" />
+            <meta-data
+                android:name="android.support.wearable.complications.UPDATE_PERIOD_SECONDS"
+                android:value="3600" />
+        </service>
+        <!-- Quantity -->
+        <service
+            android:name=".service.BchQuantityProviderService"
+            android:icon="@drawable/ic_currency_bch"
+            android:label="@string/preference_category_quantity"
             android:permission="com.google.android.wearable.permission.BIND_COMPLICATION_PROVIDER">
             <intent-filter>
                 <action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />
@@ -52,7 +69,24 @@
         <service
             android:name=".service.BtcProviderService"
             android:icon="@drawable/ic_currency_btc"
-            android:label="@string/currency_text_btc"
+            android:label="@string/preference_category_price"
+            android:permission="com.google.android.wearable.permission.BIND_COMPLICATION_PROVIDER">
+            <intent-filter>
+                <action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.wearable.complications.SUPPORTED_TYPES"
+                android:value="SHORT_TEXT,LONG_TEXT" />
+            <meta-data
+                android:name="android.support.wearable.complications.UPDATE_PERIOD_SECONDS"
+                android:value="3600" />
+        </service>
+        <!-- Quantity -->
+        <service
+            android:name=".service.BtcQuantityProviderService"
+            android:icon="@drawable/ic_currency_btc"
+            android:label="@string/preference_category_quantity"
             android:permission="com.google.android.wearable.permission.BIND_COMPLICATION_PROVIDER">
             <intent-filter>
                 <action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />
@@ -70,7 +104,24 @@
         <service
             android:name=".service.EthProviderService"
             android:icon="@drawable/ic_currency_eth"
-            android:label="@string/currency_text_etc"
+            android:label="@string/preference_category_price"
+            android:permission="com.google.android.wearable.permission.BIND_COMPLICATION_PROVIDER">
+            <intent-filter>
+                <action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.wearable.complications.SUPPORTED_TYPES"
+                android:value="SHORT_TEXT,LONG_TEXT" />
+            <meta-data
+                android:name="android.support.wearable.complications.UPDATE_PERIOD_SECONDS"
+                android:value="3600" />
+        </service>
+        <!-- Quantity -->
+        <service
+            android:name=".service.EthQuantityProviderService"
+            android:icon="@drawable/ic_currency_eth"
+            android:label="@string/preference_category_quantity"
             android:permission="com.google.android.wearable.permission.BIND_COMPLICATION_PROVIDER">
             <intent-filter>
                 <action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />
@@ -88,7 +139,24 @@
         <service
             android:name=".service.LtcProviderService"
             android:icon="@drawable/ic_currency_ltc"
-            android:label="@string/currency_text_ltc"
+            android:label="@string/preference_category_price"
+            android:permission="com.google.android.wearable.permission.BIND_COMPLICATION_PROVIDER">
+            <intent-filter>
+                <action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.wearable.complications.SUPPORTED_TYPES"
+                android:value="SHORT_TEXT,LONG_TEXT" />
+            <meta-data
+                android:name="android.support.wearable.complications.UPDATE_PERIOD_SECONDS"
+                android:value="3600" />
+        </service>
+        <!-- Quantity -->
+        <service
+            android:name=".service.LtcQuantityProviderService"
+            android:icon="@drawable/ic_currency_ltc"
+            android:label="@string/preference_category_quantity"
             android:permission="com.google.android.wearable.permission.BIND_COMPLICATION_PROVIDER">
             <intent-filter>
                 <action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />

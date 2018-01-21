@@ -6,6 +6,7 @@
 
     <!-- Complication -->
     <string name="complication_text" translatable="false">%1$s%2$.2f</string>
+    <string name="complication_wallet" translatable="false">My</string>
 
     <!-- Price List -->
     <string name="price_list_sort_info">Drag and drop to reorder (Long press)</string>

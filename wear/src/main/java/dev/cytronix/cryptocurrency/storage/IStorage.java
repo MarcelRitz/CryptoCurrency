@@ -21,4 +21,6 @@ public interface IStorage {
     void setPriceListSort(List<Price> prices);
 
     void updatePriceListQuantity(List<Price> prices);
+
+    void updatePriceQuantity(Price price);
 }

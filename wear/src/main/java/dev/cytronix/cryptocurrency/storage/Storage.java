@@ -102,25 +102,46 @@ public class Storage implements IStorage {
     @Override
     public void updatePriceListQuantity(List<Price> prices) {
         for (Price price : prices) {
-            String key;
-            switch (price.getTargetCurrency()) {
-                case Currency.BCH:
-                    key = context.getString(R.string.preference_quantity_bch_key);
-                    break;
-                case Currency.ETH:
-                    key = context.getString(R.string.preference_quantity_eth_key);
-                    break;
-                case Currency.LTC:
-                    key = context.getString(R.string.preference_quantity_ltc_key);
-                    break;
-                case Currency.BTC:
-                default:
-                    key = context.getString(R.string.preference_quantity_btc_key);
-                    break;
-            }
-
-            String quantity = preferences.getString(key, "0.0");
-            price.setQuantity(Double.valueOf(quantity));
+            updatePriceQuantity(price);
         }
+    }
+
+    public void updatePriceQuantity(Price price) {
+        switch (price.getTargetCurrency()) {
+            case Currency.BCH:
+                updatePriceBchQuantity(price);
+                break;
+            case Currency.ETH:
+                updatePriceEthQuantity(price);
+                break;
+            case Currency.LTC:
+                updatePriceLtcQuantity(price);
+                break;
+            case Currency.BTC:
+            default:
+                updatePriceBtcQuantity(price);
+                break;
+        }
+    }
+
+    private void updatePriceBchQuantity(Price price) {
+        updatePriceQuantity(price, context.getString(R.string.preference_quantity_bch_key));
+    }
+
+    private void updatePriceBtcQuantity(Price price) {
+        updatePriceQuantity(price, context.getString(R.string.preference_quantity_btc_key));
+    }
+
+    private void updatePriceEthQuantity(Price price) {
+        updatePriceQuantity(price, context.getString(R.string.preference_quantity_eth_key));
+    }
+
+    private void updatePriceLtcQuantity(Price price) {
+        updatePriceQuantity(price, context.getString(R.string.preference_quantity_ltc_key));
+    }
+
+    private void updatePriceQuantity(Price price, String key) {
+        String quantity = preferences.getString(key, "0.0");
+        price.setQuantity(Double.valueOf(quantity));
     }
 }
