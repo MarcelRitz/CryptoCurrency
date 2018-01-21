@@ -34,7 +34,7 @@
         <service
             android:name=".service.BchProviderService"
             android:icon="@drawable/ic_currency_bch"
-            android:label="@string/preference_category_price"
+            android:label="@string/complication_price_bch"
             android:permission="com.google.android.wearable.permission.BIND_COMPLICATION_PROVIDER">
             <intent-filter>
                 <action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />
@@ -50,8 +50,8 @@
         <!-- Quantity -->
         <service
             android:name=".service.BchQuantityProviderService"
-            android:icon="@drawable/ic_currency_bch"
-            android:label="@string/preference_category_quantity"
+            android:icon="@drawable/ic_quantity_bch"
+            android:label="@string/complication_quantity_bch"
             android:permission="com.google.android.wearable.permission.BIND_COMPLICATION_PROVIDER">
             <intent-filter>
                 <action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />
@@ -69,7 +69,7 @@
         <service
             android:name=".service.BtcProviderService"
             android:icon="@drawable/ic_currency_btc"
-            android:label="@string/preference_category_price"
+            android:label="@string/complication_price_btc"
             android:permission="com.google.android.wearable.permission.BIND_COMPLICATION_PROVIDER">
             <intent-filter>
                 <action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />
@@ -85,8 +85,8 @@
         <!-- Quantity -->
         <service
             android:name=".service.BtcQuantityProviderService"
-            android:icon="@drawable/ic_currency_btc"
-            android:label="@string/preference_category_quantity"
+            android:icon="@drawable/ic_quantity_btc"
+            android:label="@string/complication_quantity_btc"
             android:permission="com.google.android.wearable.permission.BIND_COMPLICATION_PROVIDER">
             <intent-filter>
                 <action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />
@@ -104,7 +104,7 @@
         <service
             android:name=".service.EthProviderService"
             android:icon="@drawable/ic_currency_eth"
-            android:label="@string/preference_category_price"
+            android:label="@string/complication_price_eth"
             android:permission="com.google.android.wearable.permission.BIND_COMPLICATION_PROVIDER">
             <intent-filter>
                 <action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />
@@ -120,8 +120,8 @@
         <!-- Quantity -->
         <service
             android:name=".service.EthQuantityProviderService"
-            android:icon="@drawable/ic_currency_eth"
-            android:label="@string/preference_category_quantity"
+            android:icon="@drawable/ic_quantity_eth"
+            android:label="@string/complication_quantity_eth"
             android:permission="com.google.android.wearable.permission.BIND_COMPLICATION_PROVIDER">
             <intent-filter>
                 <action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />
@@ -139,7 +139,7 @@
         <service
             android:name=".service.LtcProviderService"
             android:icon="@drawable/ic_currency_ltc"
-            android:label="@string/preference_category_price"
+            android:label="@string/complication_price_ltc"
             android:permission="com.google.android.wearable.permission.BIND_COMPLICATION_PROVIDER">
             <intent-filter>
                 <action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />
@@ -155,8 +155,8 @@
         <!-- Quantity -->
         <service
             android:name=".service.LtcQuantityProviderService"
-            android:icon="@drawable/ic_currency_ltc"
-            android:label="@string/preference_category_quantity"
+            android:icon="@drawable/ic_quantity_ltc"
+            android:label="@string/complication_quantity_ltc"
             android:permission="com.google.android.wearable.permission.BIND_COMPLICATION_PROVIDER">
             <intent-filter>
                 <action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />

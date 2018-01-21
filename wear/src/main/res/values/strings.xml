@@ -7,7 +7,14 @@
     <!-- Complication -->
     <string name="complication_text" translatable="false">%1$s%2$.2f</string>
     <string name="complication_wallet" translatable="false">My</string>
-
+    <string name="complication_price_bch" translatable="false">Price Bitcoin Cash</string>
+    <string name="complication_price_btc" translatable="false">Price Bitcoin</string>
+    <string name="complication_price_eth" translatable="false">Price Ethereum</string>
+    <string name="complication_price_ltc" translatable="false">Price Litecoin</string>
+    <string name="complication_quantity_bch" translatable="false">My Bitcoin Cash</string>
+    <string name="complication_quantity_btc" translatable="false">My Bitcoin</string>
+    <string name="complication_quantity_eth" translatable="false">My Ethereum</string>
+    <string name="complication_quantity_ltc" translatable="false">My Litecoin</string>
     <!-- Price List -->
     <string name="price_list_sort_info">Drag and drop to reorder (Long press)</string>
 
