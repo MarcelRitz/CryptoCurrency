@@ -53,7 +53,8 @@
                     android:layout_gravity="bottom"
                     android:layout_weight="1"
                     android:gravity="end"
-                    android:text="@{Price.PRICE_DEFAULT == price.price ? `-` + CurrencyUtils.getCurrencySymbol(price.baseCurrency) : String.format(`%.2f`, price.price) + CurrencyUtils.getCurrencySymbol(price.baseCurrency)}"
+                    app:currency="@{CurrencyUtils.getCurrencySymbol(price.baseCurrency)}"
+                    app:price="@{Price.PRICE_DEFAULT == price.price ? `-` : price.price}"
                     tools:text="3.00$" />
             </LinearLayout>
 
@@ -86,7 +87,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="end"
-                    android:text="@{String.format(`%.2f`, price.value) + CurrencyUtils.getCurrencySymbol(price.baseCurrency)}"
+                    app:currency="@{CurrencyUtils.getCurrencySymbol(price.baseCurrency)}"
+                    app:price="@{price.value}"
                     tools:text="3000.00$" />
             </LinearLayout>
         </RelativeLayout>
