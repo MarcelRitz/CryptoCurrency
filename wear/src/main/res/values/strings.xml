@@ -7,7 +7,7 @@
     <!-- Complication -->
     <string name="complication_text" translatable="false">%1$s%2$.2f</string>
 
-    <!-- PriceList -->
+    <!-- Price List -->
     <string name="price_list_sort_info">Drag and drop to reorder (Long press)</string>
 
     <!-- Donation -->
@@ -20,13 +20,33 @@
 
     <!-- Preference -->
     <string name="preference_title">Settings</string>
+    <!-- Price -->
+    <string name="preference_category_price">Price</string>
+    <!-- Currency -->
     <string name="preference_currency_title">Currency</string>
     <string name="preference_currency_key" translatable="false">CurrencyKey</string>
     <string name="preference_currency_default_value" translatable="false">@string/currency_usd</string>
+    <!-- Data Provider -->
     <string name="preference_data_provider_title">Data provider</string>
     <string name="preference_data_provider_key" translatable="false">DataProviderKey</string>
     <string name="preference_data_provider_default_value" translatable="false">@string/data_provider_gdax_value</string>
-    <string name="preference_price_list_sort_info_key" translatable="false">PriceListSortInfoKey</string>
-    <bool name="preference_price_list_sort_info_default_value" translatable="false">true</bool>
+    <!-- Wallet -->
+    <string name="preference_category_wallet">My Wallet</string>
+    <string name="preference_wallet_default_value" translatable="false">0.0</string>
+    <!-- BCH -->
+    <string name="preference_wallet_bch_title">BCH balance</string>
+    <string name="preference_wallet_bch_key" translatable="false">BCHBalanceKey</string>
+    <!-- BTC -->
+    <string name="preference_wallet_btc_title">BTC balance</string>
+    <string name="preference_wallet_btc_key" translatable="false">BTCBalanceKey</string>
+    <!-- ETH -->
+    <string name="preference_wallet_eth_title">ETH balance</string>
+    <string name="preference_wallet_eth_key" translatable="false">ETHBalanceKey</string>
+    <!-- LTC -->
+    <string name="preference_wallet_ltc_title">LTC balance</string>
+    <string name="preference_wallet_ltc_key" translatable="false">LTCBalanceKey</string>
+    <!-- Price list sort -->
     <string name="preference_price_list_sort_key" translatable="false">PriceListSortKey</string>
+    <bool name="preference_price_list_sort_info_default_value" translatable="false">true</bool>
+    <string name="preference_price_list_sort_info_key" translatable="false">PriceListSortInfoKey</string>
 </resources>
