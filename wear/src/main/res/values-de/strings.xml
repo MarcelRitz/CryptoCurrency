@@ -16,6 +16,12 @@
 
     <!-- Preferences -->
     <string name="preference_title">Einstellungen</string>
+    <string name="preference_category_price">Preis</string>
     <string name="preference_currency_title">Währung</string>
     <string name="preference_data_provider_title">Datenanbieter</string>
+    <string name="preference_category_quantity">Mein Konto</string>
+    <string name="preference_quantity_bch_title">BCH Saldo</string>
+    <string name="preference_quantity_btc_title">BTC Saldo</string>
+    <string name="preference_quantity_eth_title">ETH Saldo</string>
+    <string name="preference_quantity_ltc_title">LTC Saldo</string>
 </resources>
