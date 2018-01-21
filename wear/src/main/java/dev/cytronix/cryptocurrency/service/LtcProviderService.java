@@ -5,6 +5,6 @@ import dev.cytronix.data.Currency;
 public class LtcProviderService extends DataProviderService {
 
     public LtcProviderService() {
-        super(Currency.LTC);
+        super(Currency.LTC, false);
     }
 }

@@ -16,6 +16,12 @@
 
     <!-- Preferences -->
     <string name="preference_title">Ajustes</string>
+    <string name="preference_category_price">Precio</string>
     <string name="preference_currency_title">Moneda</string>
     <string name="preference_data_provider_title">Proveedor</string>
+    <string name="preference_category_quantity">Mi billetera</string>
+    <string name="preference_quantity_bch_title">BCH equilibrar</string>
+    <string name="preference_quantity_btc_title">BTC equilibrar</string>
+    <string name="preference_quantity_eth_title">ETH equilibrar</string>
+    <string name="preference_quantity_ltc_title">LTC equilibrar</string>
 </resources>

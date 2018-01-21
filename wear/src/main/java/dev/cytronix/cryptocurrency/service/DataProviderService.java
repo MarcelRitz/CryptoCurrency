@@ -30,11 +30,13 @@ import dev.cytronix.data.view.PriceView;
 public class DataProviderService extends ComplicationProviderService {
 
     private String toCurrency;
+    private boolean wallet;
 
-    public DataProviderService(String toCurrency) {
+    public DataProviderService(String toCurrency, boolean wallet) {
         super();
 
         this.toCurrency = toCurrency;
+        this.wallet = wallet;
     }
 
     private DataProvider getProvider() {
@@ -62,9 +64,20 @@ public class DataProviderService extends ComplicationProviderService {
             public void onUpdate(List<Price> prices) {
                 Price price = prices.get(0);
 
-                String shortText = String.format(Locale.getDefault(), getString(R.string.complication_text), CurrencyUtils.getCurrencySymbol(price.getBaseCurrency()), price.getPrice());
+                double value;
+                String title;
+                if (wallet) {
+                    new Storage(DataProviderService.this).updatePriceQuantity(price);
+                    value = price.getValue();
+                    title = getString(R.string.complication_wallet) + " " + price.getTargetCurrency();
+                } else {
+                    value = price.getPrice();
+                    title = price.getTargetCurrency();
+                }
 
-                update(price.getTargetCurrency(), shortText, complicationId, dataType, complicationManager);
+                String shortText = String.format(Locale.getDefault(), getString(R.string.complication_text), CurrencyUtils.getCurrencySymbol(price.getBaseCurrency()), value);
+
+                update(title, shortText, complicationId, dataType, complicationManager);
 
                 FabricUtils.trackEvent(Fabric.EVENT_COMPLICATION, Fabric.NAME_UPDATED, price.getTargetCurrency());
             }
@@ -102,6 +115,7 @@ public class DataProviderService extends ComplicationProviderService {
         updateIntent.setAction(UpdateComplicationDataService.ACTION_UPDATE_COMPLICATION);
         updateIntent.putExtra(UpdateComplicationDataService.EXTRA_COMPLICATION_ID, complicationId);
         updateIntent.putExtra(UpdateComplicationDataService.EXTRA_CURRENCY, toCurrency);
+        updateIntent.putExtra(UpdateComplicationDataService.EXTRA_WALLET, wallet);
 
         PendingIntent pendingIntent = PendingIntent.getService(getApplicationContext(), complicationId, updateIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setTapAction(pendingIntent);
