@@ -207,6 +207,7 @@ public class PriceListFragment extends BaseFragment implements PriceListView, Me
         }
 
         storage.updatePriceListSort(prices);
+        storage.updatePriceListQuantity(prices);
 
         status.set(Status.DATA);
 
