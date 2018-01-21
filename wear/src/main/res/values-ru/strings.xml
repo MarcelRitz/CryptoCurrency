@@ -16,6 +16,12 @@
 
     <!-- Preferences -->
     <string name="preference_title">Настройки</string>
+    <string name="preference_category_price">Цена</string>
     <string name="preference_currency_title">Валюта</string>
     <string name="preference_data_provider_title">Поставщик</string>
+    <string name="preference_category_quantity">Мой бумажник</string>
+    <string name="preference_quantity_bch_title">BCH баланс</string>
+    <string name="preference_quantity_btc_title">BTC баланс</string>
+    <string name="preference_quantity_eth_title">ETH баланс</string>
+    <string name="preference_quantity_ltc_title">LTC баланс</string>
 </resources>

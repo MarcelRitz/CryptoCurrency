@@ -13,6 +13,7 @@ public class UpdateComplicationDataService extends IntentService {
     public static final String ACTION_UPDATE_COMPLICATION = "dev.cytronix.cryptocurrency.action.UPDATE_COMPLICATION";
     public static final String EXTRA_COMPLICATION_ID = "dev.cytronix.cryptocurrency.extra.COMPLICATION_ID";
     public static final String EXTRA_CURRENCY = "dev.cytronix.cryptocurrency.extra.CURRENCY";
+    public static final String EXTRA_WALLET = "dev.cytronix.cryptocurrency.extra.WALLET";
     public static final int COMPLICATION_ID_UNKNOWN = -1;
 
     public UpdateComplicationDataService() {
@@ -43,22 +44,24 @@ public class UpdateComplicationDataService extends IntentService {
             return;
         }
 
-        ComponentName componentName = new ComponentName(getApplicationContext(), getProviderService(currency));
+        boolean wallet = intent.getBooleanExtra(EXTRA_WALLET, false);
+
+        ComponentName componentName = new ComponentName(getApplicationContext(), getProviderService(currency, wallet));
         ProviderUpdateRequester providerUpdateRequester = new ProviderUpdateRequester(getApplicationContext(), componentName);
         providerUpdateRequester.requestUpdate(complicationId);
     }
 
-    private Class<?> getProviderService(String currency) {
+    private Class<?> getProviderService(String currency, boolean wallet) {
         switch(currency) {
             case Currency.BCH:
-                return BchProviderService.class;
+                return (wallet) ? BchQuantityProviderService.class : BchProviderService.class;
             case Currency.ETH:
-                return EthProviderService.class;
+                return (wallet) ? EthQuantityProviderService.class : EthProviderService.class;
             case Currency.LTC:
-                return LtcProviderService.class;
+                return (wallet) ? LtcQuantityProviderService.class : LtcProviderService.class;
             case Currency.BTC:
             default:
-                return BtcProviderService.class;
+                return (wallet) ? BtcQuantityProviderService.class : BtcProviderService.class;
         }
     }
 }

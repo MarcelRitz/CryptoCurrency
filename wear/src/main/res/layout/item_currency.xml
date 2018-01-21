@@ -1,4 +1,5 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -14,32 +15,82 @@
             type="dev.cytronix.data.cryptowat.model.Price" />
     </data>
 
-    <LinearLayout
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="@dimen/item_currency_box_padding">
+        android:layout_marginBottom="@dimen/item_currency_margin_vertical"
+        android:layout_marginEnd="@dimen/item_currency_margin_horizontal"
+        android:layout_marginStart="@dimen/item_currency_margin_horizontal"
+        android:layout_marginTop="@dimen/item_currency_margin_vertical"
+        android:elevation="@dimen/elevation_default"
+        app:cardCornerRadius="@dimen/item_card_view_corner">
 
-        <TextView
-            android:id="@+id/textview_itemcurrency_baseCurrency"
-            style="@style/Text.Medium"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="start"
-            android:text="@{price.quantity + ` ` + price.targetCurrency}"
-            tools:text="1 BTC" />
+            android:background="@color/main_default"
+            android:orientation="vertical"
+            android:padding="@dimen/item_currency_box_padding">
 
-        <TextView
-            android:id="@+id/textview_itemcurrency_targetCurrency"
-            style="@style/Text.Medium"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/item_currency_margin_end"
-            android:layout_marginStart="@dimen/item_currency_margin"
-            android:layout_weight="1"
-            android:gravity="end"
-            android:text="@{Price.PRICE_DEFAULT == price.price ? `-` + CurrencyUtils.getCurrencySymbol(price.baseCurrency) : String.format(`%.2f`, price.price) + CurrencyUtils.getCurrencySymbol(price.baseCurrency)}"
-            tools:text="3000.00$" />
-    </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linearlayout_itemcurrency_line1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textview_itemcurrency_currency"
+                    style="@style/Text.Large"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{price.targetCurrency}"
+                    tools:text="BTC" />
+
+                <TextView
+                    style="@style/Text.Medium"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    app:currency="@{CurrencyUtils.getCurrencySymbol(price.baseCurrency)}"
+                    app:price="@{Price.PRICE_DEFAULT == price.price ? `-` : price.price}"
+                    tools:text="3.00$" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view_itemcurrency_separator"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_line"
+                android:layout_below="@id/linearlayout_itemcurrency_line1"
+                android:background="@color/text_default" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/view_itemcurrency_separator"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/Text.Medium"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:gravity="start"
+                    android:singleLine="true"
+                    android:text="@{String.valueOf(price.quantity)}"
+                    tools:text="1.59495956" />
+
+                <TextView
+                    style="@style/Text.Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    app:currency="@{CurrencyUtils.getCurrencySymbol(price.baseCurrency)}"
+                    app:price="@{price.value}"
+                    tools:text="3000.00$" />
+            </LinearLayout>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
 </layout>

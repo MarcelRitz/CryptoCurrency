@@ -1,5 +1,12 @@
 <resources>
+    <!-- Text -->
+    <style name="Text.Small" parent="@style/TextAppearance.Wearable.Small">
+        <item name="android:textColor">@color/text_default</item>
+    </style>
     <style name="Text.Medium" parent="@style/TextAppearance.Wearable.Medium">
+        <item name="android:textColor">@color/text_default</item>
+    </style>
+    <style name="Text.Large" parent="@style/TextAppearance.Wearable.Large">
         <item name="android:textColor">@color/text_default</item>
     </style>
 </resources>
