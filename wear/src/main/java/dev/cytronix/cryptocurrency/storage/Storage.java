@@ -141,7 +141,12 @@ public class Storage implements IStorage {
     }
 
     private void updatePriceQuantity(Price price, String key) {
-        String quantity = preferences.getString(key, "0.0");
-        price.setQuantity(Double.valueOf(quantity));
+        Double quantity;
+        try {
+            quantity =  Double.valueOf(preferences.getString(key, String.valueOf(Price.QUANTITY_DEFAULT)));
+        } catch (NumberFormatException e) {
+            quantity = Price.QUANTITY_DEFAULT;
+        }
+        price.setQuantity(quantity);
     }
 }
