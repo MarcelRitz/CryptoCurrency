@@ -499,8 +499,20 @@ android.support.v4.app.ActivityCompat -> android.support.v4.a.a:
     android.support.v4.app.ActivityCompat$PermissionCompatDelegate sDelegate -> a
     165:165:android.support.v4.app.ActivityCompat$PermissionCompatDelegate getPermissionCompatDelegate() -> a
     229:234:void startActivityForResult(android.app.Activity,android.content.Intent,int,android.os.Bundle) -> a
-android.support.v4.app.ActivityCompat$PermissionCompatDelegate -> android.support.v4.a.a$a:
+    468:501:void requestPermissions(android.app.Activity,java.lang.String[],int) -> a
+android.support.v4.app.ActivityCompat$1 -> android.support.v4.a.a$1:
+    java.lang.String[] val$permissions -> a
+    android.app.Activity val$activity -> b
+    int val$requestCode -> c
+    482:482:void <init>(java.lang.String[],android.app.Activity,int) -> <init>
+    485:498:void run() -> run
+android.support.v4.app.ActivityCompat$OnRequestPermissionsResultCallback -> android.support.v4.a.a$a:
+    void onRequestPermissionsResult(int,java.lang.String[],int[]) -> onRequestPermissionsResult
+android.support.v4.app.ActivityCompat$PermissionCompatDelegate -> android.support.v4.a.a$b:
+    boolean requestPermissions(android.app.Activity,java.lang.String[],int) -> a
     boolean onActivityResult(android.app.Activity,int,int,android.content.Intent) -> a
+android.support.v4.app.ActivityCompat$RequestPermissionsRequestCodeValidator -> android.support.v4.a.a$c:
+    void validateRequestPermissionsRequestCode(int) -> a
 android.support.v4.app.BackStackRecord -> android.support.v4.a.b:
     android.support.v4.app.FragmentManagerImpl mManager -> a
     java.util.ArrayList mOps -> b
@@ -589,7 +601,7 @@ android.support.v4.app.BaseFragmentActivityApi14 -> android.support.v4.a.d:
     48:52:android.view.View onCreateView(java.lang.String,android.content.Context,android.util.AttributeSet) -> onCreateView
     android.view.View dispatchFragmentsOnCreateView(android.view.View,java.lang.String,android.content.Context,android.util.AttributeSet) -> a
     64:71:void startIntentSenderForResult(android.content.IntentSender,int,android.content.Intent,int,int,int) -> startIntentSenderForResult
-    78:81:void checkForValidRequestCode(int) -> a
+    78:81:void checkForValidRequestCode(int) -> b
 android.support.v4.app.BaseFragmentActivityApi16 -> android.support.v4.a.e:
     boolean mStartedActivityFromFragment -> b
     34:34:void <init>() -> <init>
@@ -844,8 +856,9 @@ android.support.v4.app.FragmentActivity -> android.support.v4.a.i:
     boolean mStopped -> g
     boolean mReallyStopped -> h
     boolean mRetaining -> i
-    int mNextCandidateRequestIndex -> j
-    android.support.v4.util.SparseArrayCompat mPendingFragmentActivityResults -> k
+    boolean mRequestedPermissionsFromFragment -> j
+    int mNextCandidateRequestIndex -> k
+    android.support.v4.util.SparseArrayCompat mPendingFragmentActivityResults -> l
     67:882:void <init>() -> <init>
     136:164:void onActivityResult(int,int,android.content.Intent) -> onActivityResult
     172:184:void onBackPressed() -> onBackPressed
@@ -880,6 +893,7 @@ android.support.v4.app.FragmentActivity -> android.support.v4.a.i:
     705:705:void onAttachFragment(android.support.v4.app.Fragment) -> a
     712:712:android.support.v4.app.FragmentManager getSupportFragmentManager() -> f
     727:733:void startActivityForResult(android.content.Intent,int) -> startActivityForResult
+    744:748:void validateRequestPermissionsRequestCode(int) -> a
     770:788:void onRequestPermissionsResult(int,java.lang.String[],int[]) -> onRequestPermissionsResult
     803:816:void startActivityFromFragment(android.support.v4.app.Fragment,android.content.Intent,int,android.os.Bundle) -> a
     844:859:int allocateRequestIndex(android.support.v4.app.Fragment) -> b
@@ -1715,6 +1729,7 @@ android.support.v4.content.ContextCompat -> android.support.v4.b.a:
     java.lang.Object sLock -> a
     android.util.TypedValue sTempValue -> b
     357:374:android.graphics.drawable.Drawable getDrawable(android.content.Context,int) -> a
+    435:439:int checkSelfPermission(android.content.Context,java.lang.String) -> a
     551:554:boolean isDeviceProtectedStorage(android.content.Context) -> a
     45:45:void <clinit>() -> <clinit>
 android.support.v4.content.Loader -> android.support.v4.b.b:
@@ -7032,6 +7047,7 @@ android.support.wearable.R$color -> android.support.wearable.a$a:
     int complicationDrawable_rangedValueSecondaryColor -> complicationDrawable_rangedValueSecondaryColor
     int complicationDrawable_textColor -> complicationDrawable_textColor
     int complicationDrawable_titleColor -> complicationDrawable_titleColor
+    int config_scrim_color -> config_scrim_color
     int dark_blue -> dark_blue
     int dark_grey -> dark_grey
     int dark_red -> dark_red
@@ -7074,6 +7090,8 @@ android.support.wearable.R$dimen -> android.support.wearable.a$b:
     int action_drawer_item_top_padding -> action_drawer_item_top_padding
     int action_drawer_peek_top_padding -> action_drawer_peek_top_padding
     int action_drawer_peek_view_height -> action_drawer_peek_view_height
+    int blank_config_dash_gap -> blank_config_dash_gap
+    int blank_config_dash_width -> blank_config_dash_width
     int card_content_padding_rect_top -> card_content_padding_rect_top
     int circular_button_elevation -> circular_button_elevation
     int circular_button_elevation_pressed -> circular_button_elevation_pressed
@@ -7090,6 +7108,7 @@ android.support.wearable.R$dimen -> android.support.wearable.a$b:
     int complicationDrawable_rangedValueRingWidth -> complicationDrawable_rangedValueRingWidth
     int complicationDrawable_textSize -> complicationDrawable_textSize
     int complicationDrawable_titleSize -> complicationDrawable_titleSize
+    int config_margin -> config_margin
     int confirmation_overlay_image_size -> confirmation_overlay_image_size
     int confirmation_overlay_text_size -> confirmation_overlay_text_size
     int diag_button_bottom_padding -> diag_button_bottom_padding
@@ -7144,7 +7163,46 @@ android.support.wearable.R$dimen -> android.support.wearable.a$b:
     int screen_percentage_15 -> screen_percentage_15
     int wearable_drawer_view_elevation -> wearable_drawer_view_elevation
     int wrv_curve_default_x_offset -> wrv_curve_default_x_offset
-android.support.wearable.R$integer -> android.support.wearable.a$c:
+android.support.wearable.R$drawable -> android.support.wearable.a$c:
+    int accept_deny_dialog_negative_bg -> accept_deny_dialog_negative_bg
+    int accept_deny_dialog_positive_bg -> accept_deny_dialog_positive_bg
+    int action_item_background -> action_item_background
+    int action_item_icon_background -> action_item_icon_background
+    int card_background -> card_background
+    int card_frame -> card_frame
+    int card_frame_pressed -> card_frame_pressed
+    int close_button -> close_button
+    int generic_confirmation -> generic_confirmation
+    int generic_confirmation_animation -> generic_confirmation_animation
+    int ic_add_white_24dp -> ic_add_white_24dp
+    int ic_cc_checkmark -> ic_cc_checkmark
+    int ic_cc_clear -> ic_cc_clear
+    int ic_cc_settings_button_bottom -> ic_cc_settings_button_bottom
+    int ic_cc_settings_button_center -> ic_cc_settings_button_center
+    int ic_cc_settings_button_e -> ic_cc_settings_button_e
+    int ic_cc_settings_button_top -> ic_cc_settings_button_top
+    int ic_expand_less_white_22 -> ic_expand_less_white_22
+    int ic_expand_more_white_22 -> ic_expand_more_white_22
+    int ic_full_cancel -> ic_full_cancel
+    int ic_full_sad -> ic_full_sad
+    int ic_more_horiz_24dp_wht -> ic_more_horiz_24dp_wht
+    int ic_more_vert_24dp_wht -> ic_more_vert_24dp_wht
+    int notification_action_background -> notification_action_background
+    int notification_bg -> notification_bg
+    int notification_bg_low -> notification_bg_low
+    int notification_bg_low_normal -> notification_bg_low_normal
+    int notification_bg_low_pressed -> notification_bg_low_pressed
+    int notification_bg_normal -> notification_bg_normal
+    int notification_bg_normal_pressed -> notification_bg_normal_pressed
+    int notification_icon_background -> notification_icon_background
+    int notification_template_icon_bg -> notification_template_icon_bg
+    int notification_template_icon_low_bg -> notification_template_icon_low_bg
+    int notification_tile_bg -> notification_tile_bg
+    int notify_panel_notification_icon_bg -> notify_panel_notification_icon_bg
+    int open_on_phone -> open_on_phone
+    int open_on_phone_animation -> open_on_phone_animation
+    int preference_wrapped_icon -> preference_wrapped_icon
+android.support.wearable.R$integer -> android.support.wearable.a$d:
     int action_choose_expand_full_duration -> action_choose_expand_full_duration
     int action_chooser_anim_duration -> action_chooser_anim_duration
     int action_chooser_bounce_delay -> action_chooser_bounce_delay
@@ -7153,14 +7211,17 @@ android.support.wearable.R$integer -> android.support.wearable.a$c:
     int complicationDrawable_borderStyle -> complicationDrawable_borderStyle
     int complicationDrawable_highlightDurationMs -> complicationDrawable_highlightDurationMs
     int status_bar_notification_info_maxnum -> status_bar_notification_info_maxnum
-android.support.wearable.R$plurals -> android.support.wearable.a$d:
+android.support.wearable.R$plurals -> android.support.wearable.a$e:
     int time_difference_short_days -> time_difference_short_days
     int time_difference_short_hours -> time_difference_short_hours
     int time_difference_short_minutes -> time_difference_short_minutes
     int time_difference_words_days -> time_difference_words_days
     int time_difference_words_hours -> time_difference_words_hours
     int time_difference_words_minutes -> time_difference_words_minutes
-android.support.wearable.R$string -> android.support.wearable.a$e:
+android.support.wearable.R$string -> android.support.wearable.a$f:
+    int a11y_no_data -> a11y_no_data
+    int a11y_no_permission -> a11y_no_permission
+    int a11y_template_range -> a11y_template_range
     int buttons_rect_bottom_center -> buttons_rect_bottom_center
     int buttons_rect_bottom_left -> buttons_rect_bottom_left
     int buttons_rect_bottom_right -> buttons_rect_bottom_right
@@ -7200,7 +7261,7 @@ android.support.wearable.R$string -> android.support.wearable.a$e:
     int time_difference_now -> time_difference_now
     int time_difference_short_days_and_hours -> time_difference_short_days_and_hours
     int time_difference_short_hours_and_minutes -> time_difference_short_hours_and_minutes
-android.support.wearable.R$style -> android.support.wearable.a$f:
+android.support.wearable.R$style -> android.support.wearable.a$g:
     int CardText -> CardText
     int CardTextBase -> CardTextBase
     int CardTitle -> CardTitle
@@ -7247,7 +7308,7 @@ android.support.wearable.R$style -> android.support.wearable.a$f:
     int Widget_WearDiag_TextView -> Widget_WearDiag_TextView
     int Widget_WearDiag_TextView_Message -> Widget_WearDiag_TextView_Message
     int Widget_WearDiag_TextView_Title -> Widget_WearDiag_TextView_Title
-android.support.wearable.R$styleable -> android.support.wearable.a$g:
+android.support.wearable.R$styleable -> android.support.wearable.a$h:
     int[] AcceptDenyDialogPreference -> AcceptDenyDialogPreference
     int AcceptDenyDialogPreference_dialogIcon -> AcceptDenyDialogPreference_dialogIcon
     int AcceptDenyDialogPreference_dialogMessage -> AcceptDenyDialogPreference_dialogMessage
@@ -7480,7 +7541,7 @@ android.support.wearable.R$styleable -> android.support.wearable.a$g:
     int WearableRecyclerView_circular_scrolling_gesture_enabled -> WearableRecyclerView_circular_scrolling_gesture_enabled
     int WearableRecyclerView_scrollDegreesPerScreen -> WearableRecyclerView_scrollDegreesPerScreen
     int WearableRecyclerView_scroll_degrees_per_screen -> WearableRecyclerView_scroll_degrees_per_screen
-    596:821:void <clinit>() -> <clinit>
+    606:831:void <clinit>() -> <clinit>
 android.support.wearable.activity.WearableActivity -> android.support.wearable.a.a:
     boolean mSuperCalled -> a
     android.support.wearable.activity.WearableActivityDelegate$AmbientCallback callback -> b
@@ -7533,63 +7594,76 @@ android.support.wearable.complications.ComplicationData -> android.support.weara
     android.os.Parcelable$Creator CREATOR -> CREATOR
     int mType -> c
     android.os.Bundle mFields -> d
-    302:305:void <init>(android.support.wearable.complications.ComplicationData$Builder) -> <init>
-    307:310:void <init>(android.os.Parcel) -> <init>
-    314:314:int describeContents() -> describeContents
-    319:321:void writeToParcel(android.os.Parcel,int) -> writeToParcel
-    332:332:int getType() -> a
-    342:343:boolean isActive(long) -> a
-    352:353:float getValue() -> b
-    362:363:float getMinValue() -> c
-    372:373:float getMaxValue() -> d
-    393:394:android.support.wearable.complications.ComplicationText getShortTitle() -> e
-    414:415:android.support.wearable.complications.ComplicationText getShortText() -> f
-    428:429:android.support.wearable.complications.ComplicationText getLongTitle() -> g
-    441:442:android.support.wearable.complications.ComplicationText getLongText() -> h
-    458:459:android.graphics.drawable.Icon getIcon() -> i
-    477:478:android.graphics.drawable.Icon getBurnInProtectionIcon() -> j
-    497:498:android.graphics.drawable.Icon getSmallImage() -> k
-    515:516:android.graphics.drawable.Icon getBurnInProtectionSmallImage() -> l
-    532:533:int getImageStyle() -> m
-    547:548:android.graphics.drawable.Icon getLargeImage() -> n
-    559:560:android.app.PendingIntent getTapAction() -> o
-    574:584:boolean isFieldValidForType(java.lang.String,int) -> b
-    588:588:boolean isTypeSupported(int) -> a
-    593:602:void checkFieldValidForTypeWithoutThrowingException(java.lang.String,int) -> c
-    606:613:void checkFieldValidForTypeThrowingException(java.lang.String,int) -> d
-    618:625:android.os.Parcelable getParcelableField(java.lang.String) -> a
-    631:631:java.lang.String toString() -> toString
+    315:318:void <init>(android.support.wearable.complications.ComplicationData$Builder) -> <init>
+    320:323:void <init>(android.os.Parcel) -> <init>
+    327:327:int describeContents() -> describeContents
+    332:334:void writeToParcel(android.os.Parcel,int) -> writeToParcel
+    345:345:int getType() -> a
+    355:356:boolean isActive(long) -> a
+    365:366:float getValue() -> b
+    375:376:float getMinValue() -> c
+    385:386:float getMaxValue() -> d
+    406:407:android.support.wearable.complications.ComplicationText getShortTitle() -> e
+    427:428:android.support.wearable.complications.ComplicationText getShortText() -> f
+    441:442:android.support.wearable.complications.ComplicationText getLongTitle() -> g
+    454:455:android.support.wearable.complications.ComplicationText getLongText() -> h
+    471:472:android.graphics.drawable.Icon getIcon() -> i
+    490:491:android.graphics.drawable.Icon getBurnInProtectionIcon() -> j
+    510:511:android.graphics.drawable.Icon getSmallImage() -> k
+    528:529:android.graphics.drawable.Icon getBurnInProtectionSmallImage() -> l
+    545:546:int getImageStyle() -> m
+    560:561:android.graphics.drawable.Icon getLargeImage() -> n
+    572:573:android.app.PendingIntent getTapAction() -> o
+    618:628:boolean isFieldValidForType(java.lang.String,int) -> b
+    632:632:boolean isTypeSupported(int) -> a
+    637:646:void checkFieldValidForTypeWithoutThrowingException(java.lang.String,int) -> c
+    650:657:void checkFieldValidForTypeThrowingException(java.lang.String,int) -> d
+    662:669:android.os.Parcelable getParcelableField(java.lang.String) -> a
+    675:675:java.lang.String toString() -> toString
     37:37:void <init>(android.os.Parcel,android.support.wearable.complications.ComplicationData$1) -> <init>
     37:37:java.lang.String[][] access$400() -> p
     37:37:void <init>(android.support.wearable.complications.ComplicationData$Builder,android.support.wearable.complications.ComplicationData$1) -> <init>
     37:37:void access$600(java.lang.String,int) -> a
-    226:286:void <clinit>() -> <clinit>
+    227:299:void <clinit>() -> <clinit>
 android.support.wearable.complications.ComplicationData$1 -> android.support.wearable.complications.ComplicationData$1:
-    287:287:void <init>() -> <init>
-    290:290:android.support.wearable.complications.ComplicationData createFromParcel(android.os.Parcel) -> a
-    295:295:android.support.wearable.complications.ComplicationData[] newArray(int) -> a
-    287:287:java.lang.Object[] newArray(int) -> newArray
-    287:287:java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
+    300:300:void <init>() -> <init>
+    303:303:android.support.wearable.complications.ComplicationData createFromParcel(android.os.Parcel) -> a
+    308:308:android.support.wearable.complications.ComplicationData[] newArray(int) -> a
+    300:300:java.lang.Object[] newArray(int) -> newArray
+    300:300:java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
 android.support.wearable.complications.ComplicationData$Builder -> android.support.wearable.complications.ComplicationData$a:
     int mType -> a
     android.os.Bundle mFields -> b
-    649:655:void <init>(int) -> <init>
-    736:737:android.support.wearable.complications.ComplicationData$Builder setLongTitle(android.support.wearable.complications.ComplicationText) -> a
-    752:753:android.support.wearable.complications.ComplicationData$Builder setLongText(android.support.wearable.complications.ComplicationText) -> b
-    773:774:android.support.wearable.complications.ComplicationData$Builder setShortTitle(android.support.wearable.complications.ComplicationText) -> c
-    794:795:android.support.wearable.complications.ComplicationData$Builder setShortText(android.support.wearable.complications.ComplicationText) -> d
-    884:885:android.support.wearable.complications.ComplicationData$Builder setImageStyle(int) -> a
-    912:913:android.support.wearable.complications.ComplicationData$Builder setTapAction(android.app.PendingIntent) -> a
-    946:966:android.support.wearable.complications.ComplicationData build() -> a
-    970:972:void putIntField(java.lang.String,int) -> a
-    980:992:void putFieldIfNotNull(java.lang.String,java.lang.Object) -> a
-    635:635:int access$100(android.support.wearable.complications.ComplicationData$Builder) -> a
-    635:635:android.os.Bundle access$200(android.support.wearable.complications.ComplicationData$Builder) -> b
-android.support.wearable.complications.ComplicationManager -> android.support.wearable.complications.a:
+    693:699:void <init>(int) -> <init>
+    780:781:android.support.wearable.complications.ComplicationData$Builder setLongTitle(android.support.wearable.complications.ComplicationText) -> a
+    796:797:android.support.wearable.complications.ComplicationData$Builder setLongText(android.support.wearable.complications.ComplicationText) -> b
+    817:818:android.support.wearable.complications.ComplicationData$Builder setShortTitle(android.support.wearable.complications.ComplicationText) -> c
+    838:839:android.support.wearable.complications.ComplicationData$Builder setShortText(android.support.wearable.complications.ComplicationText) -> d
+    858:859:android.support.wearable.complications.ComplicationData$Builder setIcon(android.graphics.drawable.Icon) -> a
+    928:929:android.support.wearable.complications.ComplicationData$Builder setImageStyle(int) -> a
+    956:957:android.support.wearable.complications.ComplicationData$Builder setTapAction(android.app.PendingIntent) -> a
+    1023:1043:android.support.wearable.complications.ComplicationData build() -> a
+    1047:1049:void putIntField(java.lang.String,int) -> a
+    1057:1069:void putFieldIfNotNull(java.lang.String,java.lang.Object) -> a
+    679:679:int access$100(android.support.wearable.complications.ComplicationData$Builder) -> a
+    679:679:android.os.Bundle access$200(android.support.wearable.complications.ComplicationData$Builder) -> b
+android.support.wearable.complications.ComplicationHelperActivity -> android.support.wearable.complications.a:
+    android.content.ComponentName mWatchFace -> a
+    int mWfComplicationId -> b
+    int[] mTypes -> c
+    35:35:void <init>() -> <init>
+    71:105:void onCreate(android.os.Bundle) -> onCreate
+    110:124:void onRequestPermissionsResult(int,java.lang.String[],int[]) -> onRequestPermissionsResult
+    128:132:void onActivityResult(int,int,android.content.Intent) -> onActivityResult
+    135:137:boolean checkPermission() -> a
+    209:212:android.content.Intent createPermissionRequestHelperIntent(android.content.Context,android.content.ComponentName) -> a
+    216:219:void startProviderChooser() -> b
+    223:231:void requestUpdateAll(android.content.ComponentName) -> a
+android.support.wearable.complications.ComplicationManager -> android.support.wearable.complications.b:
     android.support.wearable.complications.IComplicationManager mService -> a
     23:25:void <init>(android.support.wearable.complications.IComplicationManager) -> <init>
     40:50:void updateComplicationData(int,android.support.wearable.complications.ComplicationData) -> a
-android.support.wearable.complications.ComplicationProviderService -> android.support.wearable.complications.b:
+android.support.wearable.complications.ComplicationProviderService -> android.support.wearable.complications.c:
     android.support.wearable.complications.ComplicationProviderService$IComplicationProviderWrapper mWrapper -> a
     android.os.Handler mMainThreadHandler -> b
     34:185:void <init>() -> <init>
@@ -7598,27 +7672,27 @@ android.support.wearable.complications.ComplicationProviderService -> android.su
     void onComplicationUpdate(int,int,android.support.wearable.complications.ComplicationManager) -> b
     245:245:void onComplicationDeactivated(int) -> a
     34:34:android.os.Handler access$100(android.support.wearable.complications.ComplicationProviderService) -> a
-android.support.wearable.complications.ComplicationProviderService$1 -> android.support.wearable.complications.b$1:
-android.support.wearable.complications.ComplicationProviderService$IComplicationProviderWrapper -> android.support.wearable.complications.b$a:
+android.support.wearable.complications.ComplicationProviderService$1 -> android.support.wearable.complications.c$1:
+android.support.wearable.complications.ComplicationProviderService$IComplicationProviderWrapper -> android.support.wearable.complications.c$a:
     android.support.wearable.complications.ComplicationProviderService this$0 -> a
     247:247:void <init>(android.support.wearable.complications.ComplicationProviderService) -> <init>
     250:259:void onUpdate(int,int,android.os.IBinder) -> a
     263:270:void onComplicationDeactivated(int) -> a
     274:284:void onComplicationActivated(int,int,android.os.IBinder) -> b
     247:247:void <init>(android.support.wearable.complications.ComplicationProviderService,android.support.wearable.complications.ComplicationProviderService$1) -> <init>
-android.support.wearable.complications.ComplicationProviderService$IComplicationProviderWrapper$1 -> android.support.wearable.complications.b$a$1:
+android.support.wearable.complications.ComplicationProviderService$IComplicationProviderWrapper$1 -> android.support.wearable.complications.c$a$1:
     int val$complicationId -> a
     int val$type -> b
     android.support.wearable.complications.ComplicationManager val$complicationManager -> c
     android.support.wearable.complications.ComplicationProviderService$IComplicationProviderWrapper this$1 -> d
     253:253:void <init>(android.support.wearable.complications.ComplicationProviderService$IComplicationProviderWrapper,int,int,android.support.wearable.complications.ComplicationManager) -> <init>
     256:257:void run() -> run
-android.support.wearable.complications.ComplicationProviderService$IComplicationProviderWrapper$2 -> android.support.wearable.complications.b$a$2:
+android.support.wearable.complications.ComplicationProviderService$IComplicationProviderWrapper$2 -> android.support.wearable.complications.c$a$2:
     int val$complicationId -> a
     android.support.wearable.complications.ComplicationProviderService$IComplicationProviderWrapper this$1 -> b
     264:264:void <init>(android.support.wearable.complications.ComplicationProviderService$IComplicationProviderWrapper,int) -> <init>
     267:268:void run() -> run
-android.support.wearable.complications.ComplicationProviderService$IComplicationProviderWrapper$3 -> android.support.wearable.complications.b$a$3:
+android.support.wearable.complications.ComplicationProviderService$IComplicationProviderWrapper$3 -> android.support.wearable.complications.c$a$3:
     int val$complicationId -> a
     int val$type -> b
     android.support.wearable.complications.ComplicationManager val$complicationManager -> c
@@ -7628,89 +7702,103 @@ android.support.wearable.complications.ComplicationProviderService$IComplication
 android.support.wearable.complications.ComplicationText -> android.support.wearable.complications.ComplicationText:
     android.os.Parcelable$Creator CREATOR -> CREATOR
     java.lang.CharSequence mSurroundingText -> a
-    android.support.wearable.complications.ComplicationText$TimeDependentText mTimeDependentText -> b
+    android.support.wearable.complications.TimeDependentText mTimeDependentText -> b
     java.lang.CharSequence[] mTemplateValues -> c
     long mDependentTextCacheTime -> d
     java.lang.CharSequence mDependentTextCache -> e
-    196:208:void <init>(java.lang.CharSequence,android.support.wearable.complications.ComplicationText$TimeDependentText) -> <init>
-    196:239:void <init>(android.os.Parcel) -> <init>
-    246:252:java.util.concurrent.TimeUnit timeUnitFromName(java.lang.String) -> a
-    257:261:void checkFields() -> a
-    265:288:void writeToParcel(android.os.Parcel,int) -> writeToParcel
-    292:311:java.lang.CharSequence getText(android.content.Context,long) -> a
-    316:316:int describeContents() -> describeContents
-    325:325:android.support.wearable.complications.ComplicationText plainText(java.lang.CharSequence) -> a
+    185:197:void <init>(java.lang.CharSequence,android.support.wearable.complications.TimeDependentText) -> <init>
+    185:228:void <init>(android.os.Parcel) -> <init>
+    235:241:java.util.concurrent.TimeUnit timeUnitFromName(java.lang.String) -> a
+    246:250:void checkFields() -> a
+    254:277:void writeToParcel(android.os.Parcel,int) -> writeToParcel
+    281:300:java.lang.CharSequence getText(android.content.Context,long) -> a
+    305:309:boolean returnsSameText(long,long) -> a
+    324:324:int describeContents() -> describeContents
+    333:333:android.support.wearable.complications.ComplicationText plainText(java.lang.CharSequence) -> a
     27:27:void <init>(android.os.Parcel,android.support.wearable.complications.ComplicationText$1) -> <init>
-    167:167:void <clinit>() -> <clinit>
+    156:156:void <clinit>() -> <clinit>
 android.support.wearable.complications.ComplicationText$1 -> android.support.wearable.complications.ComplicationText$1:
-    168:168:void <init>() -> <init>
-    171:171:android.support.wearable.complications.ComplicationText createFromParcel(android.os.Parcel) -> a
-    176:176:android.support.wearable.complications.ComplicationText[] newArray(int) -> a
-    168:168:java.lang.Object[] newArray(int) -> newArray
-    168:168:java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
-android.support.wearable.complications.ComplicationText$TimeDependentText -> android.support.wearable.complications.ComplicationText$a:
-    java.lang.CharSequence getText(android.content.Context,long) -> a
-    boolean returnsSameText(long,long) -> a
-android.support.wearable.complications.IComplicationManager -> android.support.wearable.complications.c:
+    157:157:void <init>() -> <init>
+    160:160:android.support.wearable.complications.ComplicationText createFromParcel(android.os.Parcel) -> a
+    165:165:android.support.wearable.complications.ComplicationText[] newArray(int) -> a
+    157:157:java.lang.Object[] newArray(int) -> newArray
+    157:157:java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
+android.support.wearable.complications.IComplicationManager -> android.support.wearable.complications.d:
     void updateComplicationData(int,android.support.wearable.complications.ComplicationData) -> a
-android.support.wearable.complications.IComplicationManager$Stub -> android.support.wearable.complications.c$a:
-    35:42:android.support.wearable.complications.IComplicationManager asInterface(android.os.IBinder) -> a
-    48:58:boolean onTransact(int,android.os.Parcel,android.os.Parcel,int) -> onTransact
-android.support.wearable.complications.IComplicationManager$Stub$Proxy -> android.support.wearable.complications.c$a$a:
-    64:65:void <init>(android.os.IBinder) -> <init>
-    70:74:void updateComplicationData(int,android.support.wearable.complications.ComplicationData) -> a
-android.support.wearable.complications.IComplicationProvider -> android.support.wearable.complications.d:
+android.support.wearable.complications.IComplicationManager$Stub -> android.support.wearable.complications.d$a:
+    37:44:android.support.wearable.complications.IComplicationManager asInterface(android.os.IBinder) -> a
+    50:60:boolean onTransact(int,android.os.Parcel,android.os.Parcel,int) -> onTransact
+android.support.wearable.complications.IComplicationManager$Stub$Proxy -> android.support.wearable.complications.d$a$a:
+    66:67:void <init>(android.os.IBinder) -> <init>
+    72:76:void updateComplicationData(int,android.support.wearable.complications.ComplicationData) -> a
+android.support.wearable.complications.IComplicationProvider -> android.support.wearable.complications.e:
     void onUpdate(int,int,android.os.IBinder) -> a
     void onComplicationDeactivated(int) -> a
     void onComplicationActivated(int,int,android.os.IBinder) -> b
-android.support.wearable.complications.IComplicationProvider$Stub -> android.support.wearable.complications.d$a:
-    33:35:void <init>() -> <init>
-    51:79:boolean onTransact(int,android.os.Parcel,android.os.Parcel,int) -> onTransact
-android.support.wearable.complications.ProviderUpdateRequester -> android.support.wearable.complications.e:
+android.support.wearable.complications.IComplicationProvider$Stub -> android.support.wearable.complications.e$a:
+    35:37:void <init>() -> <init>
+    53:81:boolean onTransact(int,android.os.Parcel,android.os.Parcel,int) -> onTransact
+android.support.wearable.complications.ProviderChooserIntent -> android.support.wearable.complications.f:
+    101:105:android.content.Intent createProviderChooserIntent(android.content.ComponentName,int,int[]) -> a
+android.support.wearable.complications.ProviderUpdateRequester -> android.support.wearable.complications.g:
     android.content.Context mContext -> a
     android.content.ComponentName mProviderComponent -> b
     48:57:void <init>(android.content.Context,android.content.ComponentName) -> <init>
     93:102:void requestUpdate(int[]) -> a
-android.support.wearable.complications.TimeDifferenceText -> android.support.wearable.complications.f:
+android.support.wearable.complications.TimeDependentText -> android.support.wearable.complications.TimeDependentText:
+    java.lang.CharSequence getText(android.content.Context,long) -> a
+    boolean returnsSameText(long,long) -> a
+android.support.wearable.complications.TimeDifferenceText -> android.support.wearable.complications.TimeDifferenceText:
     long mReferencePeriodStart -> a
     long mReferencePeriodEnd -> b
     int mStyle -> c
     boolean mShowNowText -> d
     java.util.concurrent.TimeUnit mMinimumUnit -> e
-    37:43:void <init>(long,long,int,boolean,java.util.concurrent.TimeUnit) -> <init>
-    47:67:java.lang.CharSequence getText(android.content.Context,long) -> a
-    73:76:boolean returnsSameText(long,long) -> a
-    81:95:long getPrecision() -> a
-    100:100:long getReferencePeriodStart() -> b
-    105:105:long getReferencePeriodEnd() -> c
-    110:110:int getStyle() -> d
-    115:115:boolean shouldShowNowText() -> e
-    121:121:java.util.concurrent.TimeUnit getMinimumUnit() -> f
-    125:131:long getTimeDifference(long) -> a
-    135:149:java.lang.String buildShortSingleUnitText(long,android.content.res.Resources) -> a
-    153:189:java.lang.String buildShortDualUnitText(long,android.content.res.Resources) -> b
-    193:197:java.lang.String shortDualUnlessTooLong(long,android.content.res.Resources) -> c
-    201:219:java.lang.String buildStopwatchText(long,android.content.res.Resources) -> d
-    223:238:java.lang.String buildWordsSingleUnitText(long,android.content.res.Resources) -> e
-    242:246:java.lang.String wordsSingleUnlessTooLong(long,android.content.res.Resources) -> f
-    250:250:java.lang.String buildShortDaysText(int,android.content.res.Resources) -> a
-    254:254:java.lang.String buildShortHoursText(int,android.content.res.Resources) -> b
-    258:258:java.lang.String buildShortMinsText(int,android.content.res.Resources) -> c
-    262:265:java.lang.String buildShortDaysHoursText(int,int,android.content.res.Resources) -> a
-    269:272:java.lang.String buildShortHoursMinsText(int,int,android.content.res.Resources) -> b
-    280:281:long roundUpToUnit(long,java.util.concurrent.TimeUnit) -> a
-    289:289:long divRoundingUp(long,long) -> b
-    298:298:int modToUnit(long,java.util.concurrent.TimeUnit) -> b
-    303:303:int days(long) -> b
-    308:308:int hours(long) -> c
-    313:313:int minutes(long) -> d
-    318:318:int seconds(long) -> e
-    326:329:boolean isGreaterOrEqual(java.util.concurrent.TimeUnit,java.util.concurrent.TimeUnit) -> a
-    337:349:int getUnitMaximum(java.util.concurrent.TimeUnit) -> a
-android.support.wearable.complications.TimeDifferenceText$1 -> android.support.wearable.complications.f$1:
+    android.os.Parcelable$Creator CREATOR -> CREATOR
+    40:46:void <init>(long,long,int,boolean,java.util.concurrent.TimeUnit) -> <init>
+    50:70:java.lang.CharSequence getText(android.content.Context,long) -> a
+    76:79:boolean returnsSameText(long,long) -> a
+    84:98:long getPrecision() -> a
+    103:103:long getReferencePeriodStart() -> b
+    108:108:long getReferencePeriodEnd() -> c
+    113:113:int getStyle() -> d
+    118:118:boolean shouldShowNowText() -> e
+    124:124:java.util.concurrent.TimeUnit getMinimumUnit() -> f
+    128:134:long getTimeDifference(long) -> a
+    138:152:java.lang.String buildShortSingleUnitText(long,android.content.res.Resources) -> a
+    156:192:java.lang.String buildShortDualUnitText(long,android.content.res.Resources) -> b
+    196:200:java.lang.String shortDualUnlessTooLong(long,android.content.res.Resources) -> c
+    204:222:java.lang.String buildStopwatchText(long,android.content.res.Resources) -> d
+    226:241:java.lang.String buildWordsSingleUnitText(long,android.content.res.Resources) -> e
+    245:249:java.lang.String wordsSingleUnlessTooLong(long,android.content.res.Resources) -> f
+    253:253:java.lang.String buildShortDaysText(int,android.content.res.Resources) -> a
+    257:257:java.lang.String buildShortHoursText(int,android.content.res.Resources) -> b
+    261:261:java.lang.String buildShortMinsText(int,android.content.res.Resources) -> c
+    265:268:java.lang.String buildShortDaysHoursText(int,int,android.content.res.Resources) -> a
+    272:275:java.lang.String buildShortHoursMinsText(int,int,android.content.res.Resources) -> b
+    283:284:long roundUpToUnit(long,java.util.concurrent.TimeUnit) -> a
+    292:292:long divRoundingUp(long,long) -> b
+    301:301:int modToUnit(long,java.util.concurrent.TimeUnit) -> b
+    306:306:int days(long) -> b
+    311:311:int hours(long) -> c
+    316:316:int minutes(long) -> d
+    321:321:int seconds(long) -> e
+    329:332:boolean isGreaterOrEqual(java.util.concurrent.TimeUnit,java.util.concurrent.TimeUnit) -> a
+    340:352:int getUnitMaximum(java.util.concurrent.TimeUnit) -> a
+    358:358:int describeContents() -> describeContents
+    363:369:void writeToParcel(android.os.Parcel,int) -> writeToParcel
+    371:381:void <init>(android.os.Parcel) -> <init>
+    383:383:void <clinit>() -> <clinit>
+android.support.wearable.complications.TimeDifferenceText$1 -> android.support.wearable.complications.TimeDifferenceText$1:
+    384:384:void <init>() -> <init>
+    387:387:android.support.wearable.complications.TimeDifferenceText createFromParcel(android.os.Parcel) -> a
+    392:392:android.support.wearable.complications.TimeDifferenceText[] newArray(int) -> a
+    384:384:java.lang.Object[] newArray(int) -> newArray
+    384:384:java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
+android.support.wearable.complications.TimeDifferenceText$2 -> android.support.wearable.complications.TimeDifferenceText$2:
     int[] $SwitchMap$java$util$concurrent$TimeUnit -> a
-    337:337:void <clinit>() -> <clinit>
-android.support.wearable.complications.TimeFormatText -> android.support.wearable.complications.g:
+    340:340:void <clinit>() -> <clinit>
+android.support.wearable.complications.TimeFormatText -> android.support.wearable.complications.TimeFormatText:
     java.lang.String[][] DATE_TIME_FORMAT_SYMBOLS -> a
     long[] DATE_TIME_FORMAT_PRECISION -> b
     java.text.SimpleDateFormat mDateFormat -> c
@@ -7718,18 +7806,35 @@ android.support.wearable.complications.TimeFormatText -> android.support.wearabl
     java.util.TimeZone mTimeZone -> e
     java.util.Date mDate -> f
     long mTimePrecision -> g
-    48:59:void <init>(java.lang.String,int,java.util.TimeZone) -> <init>
-    65:73:java.lang.CharSequence getText(android.content.Context,long) -> a
-    79:82:boolean returnsSameText(long,long) -> a
-    86:97:long getPrecision() -> a
-    101:101:java.lang.String getFormatString() -> b
-    105:105:int getStyle() -> c
-    109:109:java.util.TimeZone getTimeZone() -> d
-    113:117:long getOffset(long) -> a
-    121:139:java.lang.String getDateFormatWithoutText(java.lang.String) -> a
-    25:36:void <clinit>() -> <clinit>
+    android.os.Parcelable$Creator CREATOR -> CREATOR
+    49:60:void <init>(java.lang.String,int,java.util.TimeZone) -> <init>
+    66:74:java.lang.CharSequence getText(android.content.Context,long) -> a
+    80:83:boolean returnsSameText(long,long) -> a
+    87:98:long getPrecision() -> a
+    102:102:java.lang.String getFormatString() -> b
+    106:106:int getStyle() -> c
+    110:110:java.util.TimeZone getTimeZone() -> d
+    114:118:long getOffset(long) -> a
+    122:140:java.lang.String getDateFormatWithoutText(java.lang.String) -> a
+    145:145:int describeContents() -> describeContents
+    150:153:void writeToParcel(android.os.Parcel,int) -> writeToParcel
+    155:161:void <init>(android.os.Parcel) -> <init>
+    26:163:void <clinit>() -> <clinit>
+android.support.wearable.complications.TimeFormatText$1 -> android.support.wearable.complications.TimeFormatText$1:
+    164:164:void <init>() -> <init>
+    167:167:android.support.wearable.complications.TimeFormatText createFromParcel(android.os.Parcel) -> a
+    172:172:android.support.wearable.complications.TimeFormatText[] newArray(int) -> a
+    164:164:java.lang.Object[] newArray(int) -> newArray
+    164:164:java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
 android.support.wearable.complications.rendering.ComplicationDrawable -> android.support.wearable.complications.rendering.ComplicationDrawable:
     java.lang.String TAG -> TAG
+    java.lang.String FIELD_ACTIVE_STYLE_BUILDER -> FIELD_ACTIVE_STYLE_BUILDER
+    java.lang.String FIELD_AMBIENT_STYLE_BUILDER -> FIELD_AMBIENT_STYLE_BUILDER
+    java.lang.String FIELD_NO_DATA_TEXT -> FIELD_NO_DATA_TEXT
+    java.lang.String FIELD_HIGHLIGHT_DURATION -> FIELD_HIGHLIGHT_DURATION
+    java.lang.String FIELD_RANGED_VALUE_PROGRESS_HIDDEN -> FIELD_RANGED_VALUE_PROGRESS_HIDDEN
+    java.lang.String FIELD_BOUNDS -> FIELD_BOUNDS
+    android.os.Parcelable$Creator CREATOR -> CREATOR
     int BORDER_STYLE_NONE -> BORDER_STYLE_NONE
     int BORDER_STYLE_SOLID -> BORDER_STYLE_SOLID
     int BORDER_STYLE_DASHED -> BORDER_STYLE_DASHED
@@ -7737,89 +7842,114 @@ android.support.wearable.complications.rendering.ComplicationDrawable -> android
     android.support.wearable.complications.rendering.ComplicationRenderer mComplicationRenderer -> mComplicationRenderer
     android.support.wearable.complications.rendering.ComplicationStyle$Builder mActiveStyleBuilder -> mActiveStyleBuilder
     android.support.wearable.complications.rendering.ComplicationStyle$Builder mAmbientStyleBuilder -> mAmbientStyleBuilder
+    android.os.Handler mMainThreadHandler -> mMainThreadHandler
+    java.lang.Runnable mUnhighlightRunnable -> mUnhighlightRunnable
+    android.support.wearable.complications.rendering.ComplicationRenderer$OnInvalidateListener mRendererInvalidateListener -> mRendererInvalidateListener
     java.lang.CharSequence mNoDataText -> mNoDataText
     long mHighlightDuration -> mHighlightDuration
-    long mHighlightExpiryMillis -> mHighlightExpiryMillis
     long mCurrentTimeMillis -> mCurrentTimeMillis
     boolean mInAmbientMode -> mInAmbientMode
     boolean mLowBitAmbient -> mLowBitAmbient
     boolean mBurnInProtection -> mBurnInProtection
     boolean mIsHighlighted -> mIsHighlighted
     boolean mIsStyleUpToDate -> mIsStyleUpToDate
-    boolean mIsInflatedFromXml -> mIsInflatedFromXml
     boolean mRangedValueProgressHidden -> mRangedValueProgressHidden
-    259:262:void <init>() -> <init>
-    269:271:void <init>(android.content.Context) -> <init>
-    275:301:void setStyleToDefaultValues(android.support.wearable.complications.rendering.ComplicationStyle$Builder,android.content.res.Resources) -> setStyleToDefaultValues
-    317:343:void setContext(android.content.Context) -> setContext
-    346:350:void inflateAttributes(android.content.res.Resources,org.xmlpull.v1.XmlPullParser) -> inflateAttributes
-    353:466:void inflateStyle(boolean,android.content.res.Resources,org.xmlpull.v1.XmlPullParser) -> inflateStyle
-    481:509:void inflate(android.content.res.Resources,org.xmlpull.v1.XmlPullParser,android.util.AttributeSet,android.content.res.Resources$Theme) -> inflate
-    521:524:void draw(android.graphics.Canvas,long) -> draw
-    535:544:void draw(android.graphics.Canvas) -> draw
-    550:550:void setAlpha(int) -> setAlpha
-    560:560:void setColorFilter(android.graphics.ColorFilter) -> setColorFilter
-    564:564:int getOpacity() -> getOpacity
-    569:572:void onBoundsChange(android.graphics.Rect) -> onBoundsChange
-    579:587:void setNoDataText(java.lang.CharSequence) -> setNoDataText
-    598:602:void setRangedValueProgressHidden(boolean) -> setRangedValueProgressHidden
-    606:606:boolean isRangedValueProgressHidden() -> isRangedValueProgressHidden
-    614:616:void setComplicationData(android.support.wearable.complications.ComplicationData) -> setComplicationData
-    625:626:void setInAmbientMode(boolean) -> setInAmbientMode
-    635:636:void setLowBitAmbient(boolean) -> setLowBitAmbient
-    645:646:void setBurnInProtection(boolean) -> setBurnInProtection
-    656:662:void setCurrentTimeMillis(long) -> setCurrentTimeMillis
-    674:675:void setIsHighlighted(boolean) -> setIsHighlighted
-    683:685:void setBackgroundColorActive(int) -> setBackgroundColorActive
-    693:695:void setBackgroundDrawableActive(android.graphics.drawable.Drawable) -> setBackgroundDrawableActive
-    704:706:void setTextColorActive(int) -> setTextColorActive
-    715:717:void setTitleColorActive(int) -> setTitleColorActive
-    724:726:void setImageColorFilterActive(android.graphics.ColorFilter) -> setImageColorFilterActive
-    734:736:void setIconColorActive(int) -> setIconColorActive
-    744:746:void setTextTypefaceActive(android.graphics.Typeface) -> setTextTypefaceActive
-    754:756:void setTitleTypefaceActive(android.graphics.Typeface) -> setTitleTypefaceActive
-    764:766:void setTextSizeActive(int) -> setTextSizeActive
-    774:776:void setTitleSizeActive(int) -> setTitleSizeActive
-    784:786:void setBorderColorActive(int) -> setBorderColorActive
-    798:800:void setBorderStyleActive(int) -> setBorderStyleActive
-    810:812:void setBorderDashWidthActive(int) -> setBorderDashWidthActive
-    822:824:void setBorderDashGapActive(int) -> setBorderDashGapActive
-    835:837:void setBorderRadiusActive(int) -> setBorderRadiusActive
-    846:848:void setBorderWidthActive(int) -> setBorderWidthActive
-    857:859:void setRangedValueRingWidthActive(int) -> setRangedValueRingWidthActive
-    867:869:void setRangedValuePrimaryColorActive(int) -> setRangedValuePrimaryColorActive
-    877:879:void setRangedValueSecondaryColorActive(int) -> setRangedValueSecondaryColorActive
-    889:891:void setHighlightColorActive(int) -> setHighlightColorActive
-    899:901:void setBackgroundColorAmbient(int) -> setBackgroundColorAmbient
-    909:911:void setBackgroundDrawableAmbient(android.graphics.drawable.Drawable) -> setBackgroundDrawableAmbient
-    920:922:void setTextColorAmbient(int) -> setTextColorAmbient
-    931:933:void setTitleColorAmbient(int) -> setTitleColorAmbient
-    940:942:void setImageColorFilterAmbient(android.graphics.ColorFilter) -> setImageColorFilterAmbient
-    950:952:void setIconColorAmbient(int) -> setIconColorAmbient
-    960:962:void setTextTypefaceAmbient(android.graphics.Typeface) -> setTextTypefaceAmbient
-    970:972:void setTitleTypefaceAmbient(android.graphics.Typeface) -> setTitleTypefaceAmbient
-    980:982:void setTextSizeAmbient(int) -> setTextSizeAmbient
-    990:992:void setTitleSizeAmbient(int) -> setTitleSizeAmbient
-    1000:1002:void setBorderColorAmbient(int) -> setBorderColorAmbient
-    1014:1016:void setBorderStyleAmbient(int) -> setBorderStyleAmbient
-    1026:1028:void setBorderDashWidthAmbient(int) -> setBorderDashWidthAmbient
-    1038:1040:void setBorderDashGapAmbient(int) -> setBorderDashGapAmbient
-    1051:1053:void setBorderRadiusAmbient(int) -> setBorderRadiusAmbient
-    1062:1064:void setBorderWidthAmbient(int) -> setBorderWidthAmbient
-    1073:1075:void setRangedValueRingWidthAmbient(int) -> setRangedValueRingWidthAmbient
-    1083:1085:void setRangedValuePrimaryColorAmbient(int) -> setRangedValuePrimaryColorAmbient
-    1093:1095:void setRangedValueSecondaryColorAmbient(int) -> setRangedValueSecondaryColorAmbient
-    1105:1107:void setHighlightColorAmbient(int) -> setHighlightColorAmbient
-    1126:1143:boolean onTap(int,int,long) -> onTap
-    1148:1148:boolean isHighlighted() -> isHighlighted
-    1159:1163:void setHighlightDuration(long) -> setHighlightDuration
-    1167:1167:long getHighlightDuration() -> getHighlightDuration
-    1171:1171:android.support.wearable.complications.rendering.ComplicationStyle$Builder getComplicationStyleBuilder(boolean) -> getComplicationStyleBuilder
-    1176:1180:void updateStyleIfRequired() -> updateStyleIfRequired
-    1187:1191:void assertInitialized() -> assertInitialized
-    1196:1196:android.support.wearable.complications.rendering.ComplicationStyle getActiveStyle() -> getActiveStyle
-    1202:1202:android.support.wearable.complications.rendering.ComplicationStyle getAmbientStyle() -> getAmbientStyle
-    1208:1208:android.support.wearable.complications.rendering.ComplicationRenderer getComplicationRenderer() -> getComplicationRenderer
+    boolean mIsInflatedFromXml -> mIsInflatedFromXml
+    boolean mAlreadyStyled -> mAlreadyStyled
+    280:316:void <init>() -> <init>
+    323:325:void <init>(android.content.Context) -> <init>
+    280:336:void <init>(android.support.wearable.complications.rendering.ComplicationDrawable) -> <init>
+    280:349:void <init>(android.os.Parcel) -> <init>
+    354:364:void writeToParcel(android.os.Parcel,int) -> writeToParcel
+    369:369:int describeContents() -> describeContents
+    374:400:void setStyleToDefaultValues(android.support.wearable.complications.rendering.ComplicationStyle$Builder,android.content.res.Resources) -> setStyleToDefaultValues
+    420:450:void setContext(android.content.Context) -> setContext
+    453:457:void inflateAttributes(android.content.res.Resources,org.xmlpull.v1.XmlPullParser) -> inflateAttributes
+    460:573:void inflateStyle(boolean,android.content.res.Resources,org.xmlpull.v1.XmlPullParser) -> inflateStyle
+    588:616:void inflate(android.content.res.Resources,org.xmlpull.v1.XmlPullParser,android.util.AttributeSet,android.content.res.Resources$Theme) -> inflate
+    628:631:void draw(android.graphics.Canvas,long) -> draw
+    642:651:void draw(android.graphics.Canvas) -> draw
+    657:657:void setAlpha(int) -> setAlpha
+    667:667:void setColorFilter(android.graphics.ColorFilter) -> setColorFilter
+    671:671:int getOpacity() -> getOpacity
+    676:679:void onBoundsChange(android.graphics.Rect) -> onBoundsChange
+    686:694:void setNoDataText(java.lang.CharSequence) -> setNoDataText
+    705:709:void setRangedValueProgressHidden(boolean) -> setRangedValueProgressHidden
+    713:713:boolean isRangedValueProgressHidden() -> isRangedValueProgressHidden
+    721:723:void setComplicationData(android.support.wearable.complications.ComplicationData) -> setComplicationData
+    730:731:void setInAmbientMode(boolean) -> setInAmbientMode
+    739:740:void setLowBitAmbient(boolean) -> setLowBitAmbient
+    748:749:void setBurnInProtection(boolean) -> setBurnInProtection
+    758:759:void setCurrentTimeMillis(long) -> setCurrentTimeMillis
+    769:770:void setIsHighlighted(boolean) -> setIsHighlighted
+    778:780:void setBackgroundColorActive(int) -> setBackgroundColorActive
+    788:790:void setBackgroundDrawableActive(android.graphics.drawable.Drawable) -> setBackgroundDrawableActive
+    799:801:void setTextColorActive(int) -> setTextColorActive
+    810:812:void setTitleColorActive(int) -> setTitleColorActive
+    819:821:void setImageColorFilterActive(android.graphics.ColorFilter) -> setImageColorFilterActive
+    829:831:void setIconColorActive(int) -> setIconColorActive
+    839:841:void setTextTypefaceActive(android.graphics.Typeface) -> setTextTypefaceActive
+    849:851:void setTitleTypefaceActive(android.graphics.Typeface) -> setTitleTypefaceActive
+    859:861:void setTextSizeActive(int) -> setTextSizeActive
+    869:871:void setTitleSizeActive(int) -> setTitleSizeActive
+    879:881:void setBorderColorActive(int) -> setBorderColorActive
+    893:895:void setBorderStyleActive(int) -> setBorderStyleActive
+    905:907:void setBorderDashWidthActive(int) -> setBorderDashWidthActive
+    917:919:void setBorderDashGapActive(int) -> setBorderDashGapActive
+    930:932:void setBorderRadiusActive(int) -> setBorderRadiusActive
+    941:943:void setBorderWidthActive(int) -> setBorderWidthActive
+    952:954:void setRangedValueRingWidthActive(int) -> setRangedValueRingWidthActive
+    962:964:void setRangedValuePrimaryColorActive(int) -> setRangedValuePrimaryColorActive
+    972:974:void setRangedValueSecondaryColorActive(int) -> setRangedValueSecondaryColorActive
+    984:986:void setHighlightColorActive(int) -> setHighlightColorActive
+    994:996:void setBackgroundColorAmbient(int) -> setBackgroundColorAmbient
+    1004:1006:void setBackgroundDrawableAmbient(android.graphics.drawable.Drawable) -> setBackgroundDrawableAmbient
+    1015:1017:void setTextColorAmbient(int) -> setTextColorAmbient
+    1026:1028:void setTitleColorAmbient(int) -> setTitleColorAmbient
+    1035:1037:void setImageColorFilterAmbient(android.graphics.ColorFilter) -> setImageColorFilterAmbient
+    1045:1047:void setIconColorAmbient(int) -> setIconColorAmbient
+    1055:1057:void setTextTypefaceAmbient(android.graphics.Typeface) -> setTextTypefaceAmbient
+    1065:1067:void setTitleTypefaceAmbient(android.graphics.Typeface) -> setTitleTypefaceAmbient
+    1075:1077:void setTextSizeAmbient(int) -> setTextSizeAmbient
+    1085:1087:void setTitleSizeAmbient(int) -> setTitleSizeAmbient
+    1095:1097:void setBorderColorAmbient(int) -> setBorderColorAmbient
+    1109:1111:void setBorderStyleAmbient(int) -> setBorderStyleAmbient
+    1121:1123:void setBorderDashWidthAmbient(int) -> setBorderDashWidthAmbient
+    1133:1135:void setBorderDashGapAmbient(int) -> setBorderDashGapAmbient
+    1146:1148:void setBorderRadiusAmbient(int) -> setBorderRadiusAmbient
+    1157:1159:void setBorderWidthAmbient(int) -> setBorderWidthAmbient
+    1168:1170:void setRangedValueRingWidthAmbient(int) -> setRangedValueRingWidthAmbient
+    1178:1180:void setRangedValuePrimaryColorAmbient(int) -> setRangedValuePrimaryColorAmbient
+    1188:1190:void setRangedValueSecondaryColorAmbient(int) -> setRangedValueSecondaryColorAmbient
+    1200:1202:void setHighlightColorAmbient(int) -> setHighlightColorAmbient
+    1207:1207:boolean onTap(int,int,long) -> onTap
+    1230:1260:boolean onTap(int,int) -> onTap
+    1265:1265:boolean isHighlighted() -> isHighlighted
+    1276:1280:void setHighlightDuration(long) -> setHighlightDuration
+    1284:1284:long getHighlightDuration() -> getHighlightDuration
+    1288:1288:android.support.wearable.complications.rendering.ComplicationStyle$Builder getComplicationStyleBuilder(boolean) -> getComplicationStyleBuilder
+    1293:1297:void updateStyleIfRequired() -> updateStyleIfRequired
+    1304:1308:void assertInitialized() -> assertInitialized
+    1313:1313:android.support.wearable.complications.rendering.ComplicationStyle getActiveStyle() -> getActiveStyle
+    1319:1319:android.support.wearable.complications.rendering.ComplicationStyle getAmbientStyle() -> getAmbientStyle
+    1325:1325:android.support.wearable.complications.rendering.ComplicationRenderer getComplicationRenderer() -> getComplicationRenderer
+    1330:1330:java.lang.CharSequence getNoDataText() -> getNoDataText
+    232:232:void <init>(android.os.Parcel,android.support.wearable.complications.rendering.ComplicationDrawable$1) -> <init>
+    244:244:void <clinit>() -> <clinit>
+android.support.wearable.complications.rendering.ComplicationDrawable$1 -> android.support.wearable.complications.rendering.ComplicationDrawable$1:
+    245:245:void <init>() -> <init>
+    248:248:android.support.wearable.complications.rendering.ComplicationDrawable createFromParcel(android.os.Parcel) -> a
+    253:253:android.support.wearable.complications.rendering.ComplicationDrawable[] newArray(int) -> a
+    245:245:java.lang.Object[] newArray(int) -> newArray
+    245:245:java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
+android.support.wearable.complications.rendering.ComplicationDrawable$2 -> android.support.wearable.complications.rendering.ComplicationDrawable$2:
+    android.support.wearable.complications.rendering.ComplicationDrawable this$0 -> a
+    283:283:void <init>(android.support.wearable.complications.rendering.ComplicationDrawable) -> <init>
+    286:288:void run() -> run
+android.support.wearable.complications.rendering.ComplicationDrawable$3 -> android.support.wearable.complications.rendering.ComplicationDrawable$3:
+    android.support.wearable.complications.rendering.ComplicationDrawable this$0 -> a
+    292:292:void <init>(android.support.wearable.complications.rendering.ComplicationDrawable) -> <init>
+    295:296:void onInvalidate() -> a
 android.support.wearable.complications.rendering.ComplicationRenderer -> android.support.wearable.complications.rendering.a:
     android.content.Context mContext -> c
     android.support.wearable.complications.ComplicationData mComplicationData -> d
@@ -7852,57 +7982,63 @@ android.support.wearable.complications.rendering.ComplicationRenderer -> android
     android.text.TextPaint mSubTextPaint -> C
     android.support.wearable.complications.rendering.ComplicationStyle mActiveStyle -> D
     android.support.wearable.complications.rendering.ComplicationStyle mAmbientStyle -> E
-    82:148:void <init>(android.content.Context,android.support.wearable.complications.rendering.ComplicationStyle,android.support.wearable.complications.rendering.ComplicationStyle) -> <init>
-    157:163:void updateStyle(android.support.wearable.complications.rendering.ComplicationStyle,android.support.wearable.complications.rendering.ComplicationStyle) -> a
-    171:196:void setComplicationData(android.support.wearable.complications.ComplicationData) -> a
-    206:214:boolean setBounds(android.graphics.Rect) -> a
-    222:232:void setNoDataText(java.lang.CharSequence) -> a
-    236:240:void setRangedValueProgressHidden(boolean) -> a
-    267:304:void draw(android.graphics.Canvas,long,boolean,boolean,boolean,boolean) -> a
-    307:332:void updateComplicationTexts(long) -> a
-    335:343:void drawBackground(android.graphics.Canvas,android.support.wearable.complications.rendering.ComplicationRenderer$PaintSet) -> a
-    346:350:void drawBorders(android.graphics.Canvas,android.support.wearable.complications.rendering.ComplicationRenderer$PaintSet) -> b
-    353:358:void drawHighlight(android.graphics.Canvas,android.support.wearable.complications.rendering.ComplicationRenderer$PaintSet) -> c
-    361:373:void drawMainText(android.graphics.Canvas,android.support.wearable.complications.rendering.ComplicationRenderer$PaintSet) -> d
-    376:388:void drawSubText(android.graphics.Canvas,android.support.wearable.complications.rendering.ComplicationRenderer$PaintSet) -> e
-    391:425:void drawRangedValue(android.graphics.Canvas,android.support.wearable.complications.rendering.ComplicationRenderer$PaintSet) -> f
-    428:442:void drawIcon(android.graphics.Canvas,android.support.wearable.complications.rendering.ComplicationRenderer$PaintSet) -> g
-    445:472:void drawSmallImage(android.graphics.Canvas,android.support.wearable.complications.rendering.ComplicationRenderer$PaintSet) -> h
-    475:490:void drawLargeImage(android.graphics.Canvas,android.support.wearable.complications.rendering.ComplicationRenderer$PaintSet) -> i
-    493:498:void drawIconOnCanvas(android.graphics.Canvas,android.graphics.Rect,android.graphics.drawable.Drawable) -> a
-    501:505:int getBorderRadius(android.support.wearable.complications.rendering.ComplicationStyle) -> a
-    511:518:int getImageBorderRadius(android.support.wearable.complications.rendering.ComplicationStyle,android.graphics.Rect) -> a
-    524:626:void calculateBounds() -> b
-    629:724:void loadDrawableIconAndImages() -> c
-    897:897:android.support.wearable.complications.ComplicationData getComplicationData() -> a
-    43:43:android.graphics.drawable.Drawable access$002(android.support.wearable.complications.rendering.ComplicationRenderer,android.graphics.drawable.Drawable) -> a
-    43:43:android.graphics.drawable.Drawable access$000(android.support.wearable.complications.rendering.ComplicationRenderer) -> a
-    43:43:android.graphics.drawable.Drawable access$102(android.support.wearable.complications.rendering.ComplicationRenderer,android.graphics.drawable.Drawable) -> b
-    43:43:android.graphics.drawable.Drawable access$100(android.support.wearable.complications.rendering.ComplicationRenderer) -> b
-    43:43:android.graphics.drawable.Drawable access$202(android.support.wearable.complications.rendering.ComplicationRenderer,android.graphics.drawable.Drawable) -> c
-    43:43:android.graphics.drawable.Drawable access$302(android.support.wearable.complications.rendering.ComplicationRenderer,android.graphics.drawable.Drawable) -> d
-    43:43:android.graphics.drawable.Drawable access$402(android.support.wearable.complications.rendering.ComplicationRenderer,android.graphics.drawable.Drawable) -> e
+    android.support.wearable.complications.rendering.ComplicationRenderer$OnInvalidateListener mInvalidateListener -> F
+    88:156:void <init>(android.content.Context,android.support.wearable.complications.rendering.ComplicationStyle,android.support.wearable.complications.rendering.ComplicationStyle) -> <init>
+    165:171:void updateStyle(android.support.wearable.complications.rendering.ComplicationStyle,android.support.wearable.complications.rendering.ComplicationStyle) -> a
+    179:204:void setComplicationData(android.support.wearable.complications.ComplicationData) -> a
+    214:222:boolean setBounds(android.graphics.Rect) -> a
+    230:240:void setNoDataText(java.lang.CharSequence) -> a
+    244:248:void setRangedValueProgressHidden(boolean) -> a
+    275:312:void draw(android.graphics.Canvas,long,boolean,boolean,boolean,boolean) -> a
+    315:316:void setOnInvalidateListener(android.support.wearable.complications.rendering.ComplicationRenderer$OnInvalidateListener) -> a
+    319:322:void invalidate() -> b
+    325:350:void updateComplicationTexts(long) -> a
+    353:361:void drawBackground(android.graphics.Canvas,android.support.wearable.complications.rendering.ComplicationRenderer$PaintSet) -> a
+    364:368:void drawBorders(android.graphics.Canvas,android.support.wearable.complications.rendering.ComplicationRenderer$PaintSet) -> b
+    371:376:void drawHighlight(android.graphics.Canvas,android.support.wearable.complications.rendering.ComplicationRenderer$PaintSet) -> c
+    379:391:void drawMainText(android.graphics.Canvas,android.support.wearable.complications.rendering.ComplicationRenderer$PaintSet) -> d
+    394:406:void drawSubText(android.graphics.Canvas,android.support.wearable.complications.rendering.ComplicationRenderer$PaintSet) -> e
+    409:443:void drawRangedValue(android.graphics.Canvas,android.support.wearable.complications.rendering.ComplicationRenderer$PaintSet) -> f
+    446:460:void drawIcon(android.graphics.Canvas,android.support.wearable.complications.rendering.ComplicationRenderer$PaintSet) -> g
+    463:490:void drawSmallImage(android.graphics.Canvas,android.support.wearable.complications.rendering.ComplicationRenderer$PaintSet) -> h
+    493:508:void drawLargeImage(android.graphics.Canvas,android.support.wearable.complications.rendering.ComplicationRenderer$PaintSet) -> i
+    511:516:void drawIconOnCanvas(android.graphics.Canvas,android.graphics.Rect,android.graphics.drawable.Drawable) -> a
+    519:523:int getBorderRadius(android.support.wearable.complications.rendering.ComplicationStyle) -> a
+    529:536:int getImageBorderRadius(android.support.wearable.complications.rendering.ComplicationStyle,android.graphics.Rect) -> a
+    542:644:void calculateBounds() -> c
+    647:747:void loadDrawableIconAndImages() -> d
+    941:941:android.support.wearable.complications.ComplicationData getComplicationData() -> a
+    45:45:android.graphics.drawable.Drawable access$002(android.support.wearable.complications.rendering.ComplicationRenderer,android.graphics.drawable.Drawable) -> a
+    45:45:android.graphics.drawable.Drawable access$000(android.support.wearable.complications.rendering.ComplicationRenderer) -> a
+    45:45:void access$100(android.support.wearable.complications.rendering.ComplicationRenderer) -> b
+    45:45:android.graphics.drawable.Drawable access$202(android.support.wearable.complications.rendering.ComplicationRenderer,android.graphics.drawable.Drawable) -> b
+    45:45:android.graphics.drawable.Drawable access$200(android.support.wearable.complications.rendering.ComplicationRenderer) -> c
+    45:45:android.graphics.drawable.Drawable access$302(android.support.wearable.complications.rendering.ComplicationRenderer,android.graphics.drawable.Drawable) -> c
+    45:45:android.graphics.drawable.Drawable access$402(android.support.wearable.complications.rendering.ComplicationRenderer,android.graphics.drawable.Drawable) -> d
+    45:45:android.graphics.drawable.Drawable access$502(android.support.wearable.complications.rendering.ComplicationRenderer,android.graphics.drawable.Drawable) -> e
 android.support.wearable.complications.rendering.ComplicationRenderer$1 -> android.support.wearable.complications.rendering.a$1:
     android.support.wearable.complications.rendering.ComplicationRenderer this$0 -> a
-    651:651:void <init>(android.support.wearable.complications.rendering.ComplicationRenderer) -> <init>
-    654:659:void onDrawableLoaded(android.graphics.drawable.Drawable) -> onDrawableLoaded
+    669:669:void <init>(android.support.wearable.complications.rendering.ComplicationRenderer) -> <init>
+    672:678:void onDrawableLoaded(android.graphics.drawable.Drawable) -> onDrawableLoaded
 android.support.wearable.complications.rendering.ComplicationRenderer$2 -> android.support.wearable.complications.rendering.a$2:
     android.support.wearable.complications.rendering.ComplicationRenderer this$0 -> a
-    667:667:void <init>(android.support.wearable.complications.rendering.ComplicationRenderer) -> <init>
-    670:675:void onDrawableLoaded(android.graphics.drawable.Drawable) -> onDrawableLoaded
+    686:686:void <init>(android.support.wearable.complications.rendering.ComplicationRenderer) -> <init>
+    689:695:void onDrawableLoaded(android.graphics.drawable.Drawable) -> onDrawableLoaded
 android.support.wearable.complications.rendering.ComplicationRenderer$3 -> android.support.wearable.complications.rendering.a$3:
     android.support.wearable.complications.rendering.ComplicationRenderer this$0 -> a
-    683:683:void <init>(android.support.wearable.complications.rendering.ComplicationRenderer) -> <init>
-    686:690:void onDrawableLoaded(android.graphics.drawable.Drawable) -> onDrawableLoaded
+    703:703:void <init>(android.support.wearable.complications.rendering.ComplicationRenderer) -> <init>
+    706:711:void onDrawableLoaded(android.graphics.drawable.Drawable) -> onDrawableLoaded
 android.support.wearable.complications.rendering.ComplicationRenderer$4 -> android.support.wearable.complications.rendering.a$4:
     android.support.wearable.complications.rendering.ComplicationRenderer this$0 -> a
-    698:698:void <init>(android.support.wearable.complications.rendering.ComplicationRenderer) -> <init>
-    701:705:void onDrawableLoaded(android.graphics.drawable.Drawable) -> onDrawableLoaded
+    719:719:void <init>(android.support.wearable.complications.rendering.ComplicationRenderer) -> <init>
+    722:727:void onDrawableLoaded(android.graphics.drawable.Drawable) -> onDrawableLoaded
 android.support.wearable.complications.rendering.ComplicationRenderer$5 -> android.support.wearable.complications.rendering.a$5:
     android.support.wearable.complications.rendering.ComplicationRenderer this$0 -> a
-    713:713:void <init>(android.support.wearable.complications.rendering.ComplicationRenderer) -> <init>
-    716:720:void onDrawableLoaded(android.graphics.drawable.Drawable) -> onDrawableLoaded
-android.support.wearable.complications.rendering.ComplicationRenderer$PaintSet -> android.support.wearable.complications.rendering.a$a:
+    735:735:void <init>(android.support.wearable.complications.rendering.ComplicationRenderer) -> <init>
+    738:743:void onDrawableLoaded(android.graphics.drawable.Drawable) -> onDrawableLoaded
+android.support.wearable.complications.rendering.ComplicationRenderer$OnInvalidateListener -> android.support.wearable.complications.rendering.a$a:
+    void onInvalidate() -> a
+android.support.wearable.complications.rendering.ComplicationRenderer$PaintSet -> android.support.wearable.complications.rendering.a$b:
     android.text.TextPaint primaryTextPaint -> a
     android.text.TextPaint secondaryTextPaint -> b
     android.graphics.Paint inProgressPaint -> c
@@ -7915,9 +8051,10 @@ android.support.wearable.complications.rendering.ComplicationRenderer$PaintSet -
     boolean lowBitAmbient -> j
     boolean burnInProtection -> k
     android.graphics.ColorFilter iconColorFilter -> l
-    769:826:void <init>(android.support.wearable.complications.rendering.ComplicationStyle,boolean,boolean,boolean) -> <init>
-    829:829:boolean isInBurnInProtectionMode() -> a
-android.support.wearable.complications.rendering.ComplicationStyle -> android.support.wearable.complications.rendering.b:
+    794:854:void <init>(android.support.wearable.complications.rendering.ComplicationStyle,boolean,boolean,boolean) -> <init>
+    857:857:boolean isInBurnInProtectionMode() -> a
+    867:871:android.graphics.ColorMatrix createSingleColorMatrix(int) -> a
+android.support.wearable.complications.rendering.ComplicationStyle -> android.support.wearable.complications.rendering.ComplicationStyle:
     android.graphics.Typeface TYPEFACE_DEFAULT -> a
     int mBackgroundColor -> b
     android.graphics.drawable.Drawable mBackgroundDrawable -> c
@@ -7939,32 +8076,33 @@ android.support.wearable.complications.rendering.ComplicationStyle -> android.su
     int mRangedValuePrimaryColor -> s
     int mRangedValueSecondaryColor -> t
     int mHighlightColor -> u
-    104:126:void <init>(int,android.graphics.drawable.Drawable,int,int,android.graphics.Typeface,android.graphics.Typeface,int,int,android.graphics.ColorFilter,int,int,int,int,int,int,int,int,int,int,int) -> <init>
-    130:130:int getBackgroundColor() -> a
-    136:136:android.graphics.drawable.Drawable getBackgroundDrawable() -> b
-    141:141:int getTextColor() -> c
-    146:146:int getTitleColor() -> d
-    155:155:android.graphics.ColorFilter getColorFilter() -> e
-    160:160:int getIconColor() -> f
-    165:165:android.graphics.Typeface getTextTypeface() -> g
-    170:170:android.graphics.Typeface getTitleTypeface() -> h
-    175:175:int getTextSize() -> i
-    180:180:int getTitleSize() -> j
-    185:185:int getBorderColor() -> k
-    193:193:int getBorderStyle() -> l
-    201:201:int getBorderDashWidth() -> m
-    209:209:int getBorderDashGap() -> n
-    216:216:int getBorderRadius() -> o
-    221:221:int getBorderWidth() -> p
-    226:226:int getRangedValueRingWidth() -> q
-    231:231:int getRangedValuePrimaryColor() -> r
-    236:236:int getRangedValueSecondaryColor() -> s
-    241:241:int getHighlightColor() -> t
-    15:15:android.graphics.Typeface access$000() -> u
-    15:15:void <init>(int,android.graphics.drawable.Drawable,int,int,android.graphics.Typeface,android.graphics.Typeface,int,int,android.graphics.ColorFilter,int,int,int,int,int,int,int,int,int,int,int,android.support.wearable.complications.rendering.ComplicationStyle$1) -> <init>
-    36:37:void <clinit>() -> <clinit>
-android.support.wearable.complications.rendering.ComplicationStyle$1 -> android.support.wearable.complications.rendering.b$1:
-android.support.wearable.complications.rendering.ComplicationStyle$Builder -> android.support.wearable.complications.rendering.b$a:
+    107:129:void <init>(int,android.graphics.drawable.Drawable,int,int,android.graphics.Typeface,android.graphics.Typeface,int,int,android.graphics.ColorFilter,int,int,int,int,int,int,int,int,int,int,int) -> <init>
+    133:133:int getBackgroundColor() -> a
+    139:139:android.graphics.drawable.Drawable getBackgroundDrawable() -> b
+    144:144:int getTextColor() -> c
+    149:149:int getTitleColor() -> d
+    158:158:android.graphics.ColorFilter getColorFilter() -> e
+    163:163:int getIconColor() -> f
+    168:168:android.graphics.Typeface getTextTypeface() -> g
+    173:173:android.graphics.Typeface getTitleTypeface() -> h
+    178:178:int getTextSize() -> i
+    183:183:int getTitleSize() -> j
+    188:188:int getBorderColor() -> k
+    196:196:int getBorderStyle() -> l
+    204:204:int getBorderDashWidth() -> m
+    212:212:int getBorderDashGap() -> n
+    219:219:int getBorderRadius() -> o
+    224:224:int getBorderWidth() -> p
+    229:229:int getRangedValueRingWidth() -> q
+    234:234:int getRangedValuePrimaryColor() -> r
+    239:239:int getRangedValueSecondaryColor() -> s
+    244:244:int getHighlightColor() -> t
+    18:18:android.graphics.Typeface access$100() -> u
+    18:18:void <init>(int,android.graphics.drawable.Drawable,int,int,android.graphics.Typeface,android.graphics.Typeface,int,int,android.graphics.ColorFilter,int,int,int,int,int,int,int,int,int,int,int,android.support.wearable.complications.rendering.ComplicationStyle$1) -> <init>
+    39:40:void <clinit>() -> <clinit>
+android.support.wearable.complications.rendering.ComplicationStyle$1 -> android.support.wearable.complications.rendering.ComplicationStyle$1:
+android.support.wearable.complications.rendering.ComplicationStyle$Builder -> android.support.wearable.complications.rendering.ComplicationStyle$Builder:
+    android.os.Parcelable$Creator CREATOR -> CREATOR
     int backgroundColor -> a
     android.graphics.drawable.Drawable backgroundDrawable -> b
     int textColor -> c
@@ -7985,34 +8123,46 @@ android.support.wearable.complications.rendering.ComplicationStyle$Builder -> an
     int rangedValuePrimaryColor -> r
     int rangedValueSecondaryColor -> s
     int highlightColor -> t
-    247:268:void <init>() -> <init>
-    271:272:android.support.wearable.complications.rendering.ComplicationStyle$Builder setBackgroundColor(int) -> a
-    276:277:android.support.wearable.complications.rendering.ComplicationStyle$Builder setBackgroundDrawable(android.graphics.drawable.Drawable) -> a
-    281:282:android.support.wearable.complications.rendering.ComplicationStyle$Builder setTextColor(int) -> b
-    286:287:android.support.wearable.complications.rendering.ComplicationStyle$Builder setTitleColor(int) -> c
-    291:292:android.support.wearable.complications.rendering.ComplicationStyle$Builder setColorFilter(android.graphics.ColorFilter) -> a
-    296:297:android.support.wearable.complications.rendering.ComplicationStyle$Builder setIconColor(int) -> d
-    301:302:android.support.wearable.complications.rendering.ComplicationStyle$Builder setTextTypeface(android.graphics.Typeface) -> a
-    306:307:android.support.wearable.complications.rendering.ComplicationStyle$Builder setTitleTypeface(android.graphics.Typeface) -> b
-    311:312:android.support.wearable.complications.rendering.ComplicationStyle$Builder setTextSize(int) -> e
-    316:317:android.support.wearable.complications.rendering.ComplicationStyle$Builder setTitleSize(int) -> f
-    321:322:android.support.wearable.complications.rendering.ComplicationStyle$Builder setBorderColor(int) -> g
-    326:333:android.support.wearable.complications.rendering.ComplicationStyle$Builder setBorderStyle(int) -> h
-    337:338:android.support.wearable.complications.rendering.ComplicationStyle$Builder setBorderDashWidth(int) -> i
-    342:343:android.support.wearable.complications.rendering.ComplicationStyle$Builder setBorderDashGap(int) -> j
-    347:348:android.support.wearable.complications.rendering.ComplicationStyle$Builder setBorderRadius(int) -> k
-    352:353:android.support.wearable.complications.rendering.ComplicationStyle$Builder setBorderWidth(int) -> l
-    357:358:android.support.wearable.complications.rendering.ComplicationStyle$Builder setRangedValueRingWidth(int) -> m
-    362:363:android.support.wearable.complications.rendering.ComplicationStyle$Builder setRangedValuePrimaryColor(int) -> n
-    367:368:android.support.wearable.complications.rendering.ComplicationStyle$Builder setRangedValueSecondaryColor(int) -> o
-    372:373:android.support.wearable.complications.rendering.ComplicationStyle$Builder setHighlightColor(int) -> p
-    377:377:android.support.wearable.complications.rendering.ComplicationStyle build() -> a
-android.support.wearable.complications.rendering.EmojiHelper -> android.support.wearable.complications.rendering.c:
+    282:303:void <init>() -> <init>
+    282:326:void <init>(android.support.wearable.complications.rendering.ComplicationStyle$Builder) -> <init>
+    282:352:void <init>(android.os.Parcel) -> <init>
+    356:376:void writeToParcel(android.os.Parcel,int) -> writeToParcel
+    380:380:int describeContents() -> describeContents
+    384:385:android.support.wearable.complications.rendering.ComplicationStyle$Builder setBackgroundColor(int) -> a
+    389:390:android.support.wearable.complications.rendering.ComplicationStyle$Builder setBackgroundDrawable(android.graphics.drawable.Drawable) -> a
+    394:395:android.support.wearable.complications.rendering.ComplicationStyle$Builder setTextColor(int) -> b
+    399:400:android.support.wearable.complications.rendering.ComplicationStyle$Builder setTitleColor(int) -> c
+    404:405:android.support.wearable.complications.rendering.ComplicationStyle$Builder setColorFilter(android.graphics.ColorFilter) -> a
+    409:410:android.support.wearable.complications.rendering.ComplicationStyle$Builder setIconColor(int) -> d
+    414:415:android.support.wearable.complications.rendering.ComplicationStyle$Builder setTextTypeface(android.graphics.Typeface) -> a
+    419:420:android.support.wearable.complications.rendering.ComplicationStyle$Builder setTitleTypeface(android.graphics.Typeface) -> b
+    424:425:android.support.wearable.complications.rendering.ComplicationStyle$Builder setTextSize(int) -> e
+    429:430:android.support.wearable.complications.rendering.ComplicationStyle$Builder setTitleSize(int) -> f
+    434:435:android.support.wearable.complications.rendering.ComplicationStyle$Builder setBorderColor(int) -> g
+    439:446:android.support.wearable.complications.rendering.ComplicationStyle$Builder setBorderStyle(int) -> h
+    450:451:android.support.wearable.complications.rendering.ComplicationStyle$Builder setBorderDashWidth(int) -> i
+    455:456:android.support.wearable.complications.rendering.ComplicationStyle$Builder setBorderDashGap(int) -> j
+    460:461:android.support.wearable.complications.rendering.ComplicationStyle$Builder setBorderRadius(int) -> k
+    465:466:android.support.wearable.complications.rendering.ComplicationStyle$Builder setBorderWidth(int) -> l
+    470:471:android.support.wearable.complications.rendering.ComplicationStyle$Builder setRangedValueRingWidth(int) -> m
+    475:476:android.support.wearable.complications.rendering.ComplicationStyle$Builder setRangedValuePrimaryColor(int) -> n
+    480:481:android.support.wearable.complications.rendering.ComplicationStyle$Builder setRangedValueSecondaryColor(int) -> o
+    485:486:android.support.wearable.complications.rendering.ComplicationStyle$Builder setHighlightColor(int) -> p
+    490:490:android.support.wearable.complications.rendering.ComplicationStyle build() -> a
+    248:248:void <init>(android.os.Parcel,android.support.wearable.complications.rendering.ComplicationStyle$1) -> <init>
+    269:269:void <clinit>() -> <clinit>
+android.support.wearable.complications.rendering.ComplicationStyle$Builder$1 -> android.support.wearable.complications.rendering.ComplicationStyle$Builder$1:
+    270:270:void <init>() -> <init>
+    273:273:android.support.wearable.complications.rendering.ComplicationStyle$Builder createFromParcel(android.os.Parcel) -> a
+    278:278:android.support.wearable.complications.rendering.ComplicationStyle$Builder[] newArray(int) -> a
+    270:270:java.lang.Object[] newArray(int) -> newArray
+    270:270:java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
+android.support.wearable.complications.rendering.EmojiHelper -> android.support.wearable.complications.rendering.b:
     int[][] EMOJI_RANGES -> a
     40:45:boolean isEmoji(int) -> a
     54:70:java.lang.String replaceEmoji(java.lang.CharSequence,int) -> a
     15:15:void <clinit>() -> <clinit>
-android.support.wearable.complications.rendering.RoundedDrawable -> android.support.wearable.complications.rendering.d:
+android.support.wearable.complications.rendering.RoundedDrawable -> android.support.wearable.complications.rendering.c:
     android.graphics.Paint mPaint -> a
     android.graphics.drawable.Drawable mDrawable -> b
     int mRadius -> c
@@ -8027,7 +8177,7 @@ android.support.wearable.complications.rendering.RoundedDrawable -> android.supp
     94:95:void setRadius(int) -> a
     102:112:void updateBitmapShader() -> a
     116:121:android.graphics.Bitmap drawableToBitmap(android.graphics.drawable.Drawable,int,int) -> a
-android.support.wearable.complications.rendering.TextRenderer -> android.support.wearable.complications.rendering.e:
+android.support.wearable.complications.rendering.TextRenderer -> android.support.wearable.complications.rendering.d:
     android.graphics.Rect mBounds -> a
     android.text.TextPaint mPaint -> b
     java.lang.String mAmbientModeText -> c
@@ -8374,39 +8524,39 @@ android.support.wearable.view.CircularButton -> android.support.wearable.view.b:
     android.graphics.drawable.Drawable mImage -> g
     int mDiameter -> h
     int mScaleMode -> i
-    46:46:int inscribedSize(int) -> a
-    51:51:int encircledRadius(int) -> b
-    71:72:void <init>(android.content.Context) -> <init>
-    75:76:void <init>(android.content.Context,android.util.AttributeSet) -> <init>
-    79:80:void <init>(android.content.Context,android.util.AttributeSet,int) -> <init>
-    61:116:void <init>(android.content.Context,android.util.AttributeSet,int,int) -> <init>
-    120:122:void setColor(int) -> setColor
-    126:128:void setColor(android.content.res.ColorStateList) -> setColor
-    132:145:void setRippleColor(int) -> setRippleColor
-    149:150:void setImageResource(int) -> setImageResource
-    154:154:android.graphics.drawable.Drawable getImageDrawable() -> getImageDrawable
-    159:170:void setImageDrawable(android.graphics.drawable.Drawable) -> setImageDrawable
-    185:185:int getImageScaleMode() -> getImageScaleMode
-    201:206:void setImageScaleMode(int) -> setImageScaleMode
-    210:210:boolean verifyDrawable(android.graphics.drawable.Drawable) -> verifyDrawable
-    217:217:void setBackgroundDrawable(android.graphics.drawable.Drawable) -> setBackgroundDrawable
-    221:228:void drawableStateChanged() -> drawableStateChanged
-    231:232:int dpToPx(float) -> a
-    237:280:void onMeasure(int,int) -> onMeasure
-    283:283:boolean hasIntrinsicSize(android.graphics.drawable.Drawable) -> a
-    288:324:void onLayout(boolean,int,int,int,int) -> onLayout
-    328:332:void onDraw(android.graphics.Canvas) -> onDraw
-    335:348:void setPressedTranslationZ(float) -> setPressedTranslationZ
-    351:352:android.animation.Animator setupAnimator(android.animation.Animator) -> a
-    364:372:boolean onTouchEvent(android.view.MotionEvent) -> onTouchEvent
-    41:41:int access$100(android.support.wearable.view.CircularButton) -> a
-    42:42:void <clinit>() -> <clinit>
+    47:47:int inscribedSize(int) -> a
+    52:52:int encircledRadius(int) -> b
+    72:73:void <init>(android.content.Context) -> <init>
+    76:77:void <init>(android.content.Context,android.util.AttributeSet) -> <init>
+    80:81:void <init>(android.content.Context,android.util.AttributeSet,int) -> <init>
+    62:117:void <init>(android.content.Context,android.util.AttributeSet,int,int) -> <init>
+    121:123:void setColor(int) -> setColor
+    127:129:void setColor(android.content.res.ColorStateList) -> setColor
+    133:146:void setRippleColor(int) -> setRippleColor
+    150:151:void setImageResource(int) -> setImageResource
+    155:155:android.graphics.drawable.Drawable getImageDrawable() -> getImageDrawable
+    160:171:void setImageDrawable(android.graphics.drawable.Drawable) -> setImageDrawable
+    186:186:int getImageScaleMode() -> getImageScaleMode
+    202:207:void setImageScaleMode(int) -> setImageScaleMode
+    211:211:boolean verifyDrawable(android.graphics.drawable.Drawable) -> verifyDrawable
+    218:218:void setBackgroundDrawable(android.graphics.drawable.Drawable) -> setBackgroundDrawable
+    222:229:void drawableStateChanged() -> drawableStateChanged
+    232:233:int dpToPx(float) -> a
+    238:281:void onMeasure(int,int) -> onMeasure
+    284:284:boolean hasIntrinsicSize(android.graphics.drawable.Drawable) -> a
+    289:325:void onLayout(boolean,int,int,int,int) -> onLayout
+    329:333:void onDraw(android.graphics.Canvas) -> onDraw
+    336:349:void setPressedTranslationZ(float) -> setPressedTranslationZ
+    352:353:android.animation.Animator setupAnimator(android.animation.Animator) -> a
+    365:373:boolean onTouchEvent(android.view.MotionEvent) -> onTouchEvent
+    42:42:int access$100(android.support.wearable.view.CircularButton) -> a
+    43:43:void <clinit>() -> <clinit>
 android.support.wearable.view.CircularButton$1 -> android.support.wearable.view.b$1:
 android.support.wearable.view.CircularButton$CircleOutlineProvider -> android.support.wearable.view.b$a:
     android.support.wearable.view.CircularButton this$0 -> a
-    355:355:void <init>(android.support.wearable.view.CircularButton) -> <init>
-    358:359:void getOutline(android.view.View,android.graphics.Outline) -> getOutline
-    355:355:void <init>(android.support.wearable.view.CircularButton,android.support.wearable.view.CircularButton$1) -> <init>
+    356:356:void <init>(android.support.wearable.view.CircularButton) -> <init>
+    359:360:void getOutline(android.view.View,android.graphics.Outline) -> getOutline
+    356:356:void <init>(android.support.wearable.view.CircularButton,android.support.wearable.view.CircularButton$1) -> <init>
 android.support.wearable.view.CurvedChildLayoutManager -> android.support.wearable.view.CurvedChildLayoutManager:
     android.graphics.Path mCurvePath -> a
     android.graphics.PathMeasure mPathMeasure -> b
@@ -8600,6 +8750,225 @@ android.support.wearable.view.drawer.PageIndicatorView$1 -> android.support.wear
     android.support.wearable.view.drawer.PageIndicatorView this$0 -> a
     483:483:void <init>(android.support.wearable.view.drawer.PageIndicatorView) -> <init>
     486:493:void onAnimationComplete(android.animation.Animator) -> a
+android.support.wearable.watchface.WatchFaceService -> android.support.wearable.watchface.a:
+    java.lang.String[] STATUS_KEYS -> a
+    88:88:void <init>() -> <init>
+    275:275:void <clinit>() -> <clinit>
+android.support.wearable.watchface.decomposition.ComplicationComponent -> android.support.wearable.watchface.decomposition.ComplicationComponent:
+    android.os.Parcelable$Creator CREATOR -> CREATOR
+    android.os.Bundle fields -> a
+    53:55:void <init>(android.os.Parcel) -> <init>
+    59:59:int describeContents() -> describeContents
+    64:65:void writeToParcel(android.os.Parcel,int) -> writeToParcel
+    78:78:android.graphics.RectF getBounds() -> a
+    83:83:int getZOrder() -> b
+    88:88:android.support.wearable.complications.rendering.ComplicationDrawable getComplicationDrawable() -> c
+    96:96:int getWatchFaceComplicationId() -> d
+    105:109:int[] getComplicationTypes() -> e
+    25:25:void <init>(android.os.Parcel,android.support.wearable.watchface.decomposition.ComplicationComponent$1) -> <init>
+    27:27:void <clinit>() -> <clinit>
+android.support.wearable.watchface.decomposition.ComplicationComponent$1 -> android.support.wearable.watchface.decomposition.ComplicationComponent$1:
+    28:28:void <init>() -> <init>
+    31:31:android.support.wearable.watchface.decomposition.ComplicationComponent createFromParcel(android.os.Parcel) -> a
+    36:36:android.support.wearable.watchface.decomposition.ComplicationComponent[] newArray(int) -> a
+    28:28:java.lang.Object[] newArray(int) -> newArray
+    28:28:java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
+android.support.wearable.watchface.decomposition.FontComponent -> android.support.wearable.watchface.decomposition.FontComponent:
+    android.os.Parcelable$Creator CREATOR -> CREATOR
+    android.os.Bundle fields -> a
+    41:43:void <init>(android.os.Parcel) -> <init>
+    47:47:int describeContents() -> describeContents
+    52:53:void writeToParcel(android.os.Parcel,int) -> writeToParcel
+    57:57:int getComponentId() -> a
+    62:62:android.graphics.drawable.Icon getImage() -> b
+    71:71:int getDigitCount() -> c
+    16:16:void <init>(android.os.Parcel,android.support.wearable.watchface.decomposition.FontComponent$1) -> <init>
+    18:18:void <clinit>() -> <clinit>
+android.support.wearable.watchface.decomposition.FontComponent$1 -> android.support.wearable.watchface.decomposition.FontComponent$1:
+    19:19:void <init>() -> <init>
+    22:22:android.support.wearable.watchface.decomposition.FontComponent createFromParcel(android.os.Parcel) -> a
+    27:27:android.support.wearable.watchface.decomposition.FontComponent[] newArray(int) -> a
+    19:19:java.lang.Object[] newArray(int) -> newArray
+    19:19:java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
+android.support.wearable.watchface.decomposition.ImageComponent -> android.support.wearable.watchface.decomposition.ImageComponent:
+    android.os.Parcelable$Creator CREATOR -> CREATOR
+    android.os.Bundle fields -> a
+    49:51:void <init>(android.os.Parcel) -> <init>
+    55:55:int describeContents() -> describeContents
+    60:61:void writeToParcel(android.os.Parcel,int) -> writeToParcel
+    70:70:android.graphics.drawable.Icon getImage() -> a
+    79:79:android.graphics.RectF getBounds() -> c
+    84:84:int getZOrder() -> b
+    92:92:float getDegreesPerDay() -> d
+    107:111:android.graphics.PointF getPivot() -> e
+    116:116:float getOffsetDegrees() -> f
+    19:19:void <init>(android.os.Parcel,android.support.wearable.watchface.decomposition.ImageComponent$1) -> <init>
+    21:21:void <clinit>() -> <clinit>
+android.support.wearable.watchface.decomposition.ImageComponent$1 -> android.support.wearable.watchface.decomposition.ImageComponent$1:
+    22:22:void <init>() -> <init>
+    25:25:android.support.wearable.watchface.decomposition.ImageComponent createFromParcel(android.os.Parcel) -> a
+    30:30:android.support.wearable.watchface.decomposition.ImageComponent[] newArray(int) -> a
+    22:22:java.lang.Object[] newArray(int) -> newArray
+    22:22:java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
+android.support.wearable.watchface.decomposition.NumberComponent -> android.support.wearable.watchface.decomposition.NumberComponent:
+    android.os.Parcelable$Creator CREATOR -> CREATOR
+    android.os.Bundle fields -> a
+    50:52:void <init>(android.os.Parcel) -> <init>
+    56:56:int describeContents() -> describeContents
+    61:62:void writeToParcel(android.os.Parcel,int) -> writeToParcel
+    75:75:long getMsPerIncrement() -> a
+    83:83:long getLowestValue() -> c
+    91:91:long getHighestValue() -> d
+    102:102:long getTimeOffsetMs() -> e
+    112:112:int getMinDigitsShown() -> f
+    120:120:int getFontComponentId() -> g
+    125:125:int getZOrder() -> b
+    135:139:android.graphics.PointF getPosition() -> h
+    147:160:java.lang.String getDisplayStringForTime(long) -> a
+    19:19:void <init>(android.os.Parcel,android.support.wearable.watchface.decomposition.NumberComponent$1) -> <init>
+    21:21:void <clinit>() -> <clinit>
+android.support.wearable.watchface.decomposition.NumberComponent$1 -> android.support.wearable.watchface.decomposition.NumberComponent$1:
+    22:22:void <init>() -> <init>
+    25:25:android.support.wearable.watchface.decomposition.NumberComponent createFromParcel(android.os.Parcel) -> a
+    30:30:android.support.wearable.watchface.decomposition.NumberComponent[] newArray(int) -> a
+    22:22:java.lang.Object[] newArray(int) -> newArray
+    22:22:java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
+android.support.wearable.watchface.decomposition.WatchFaceDecomposition -> android.support.wearable.watchface.decomposition.WatchFaceDecomposition:
+    android.os.Parcelable$Creator CREATOR -> CREATOR
+    java.util.List images -> a
+    java.util.List numbers -> b
+    java.util.List fonts -> c
+    java.util.List complications -> d
+    71:81:void <init>(android.os.Parcel) -> <init>
+    85:85:int describeContents() -> describeContents
+    90:96:void writeToParcel(android.os.Parcel,int) -> writeToParcel
+    100:100:java.util.List getImageComponents() -> a
+    105:105:java.util.List getNumberComponents() -> b
+    110:110:java.util.List getFontComponents() -> c
+    115:115:java.util.List getComplicationComponents() -> d
+    12:12:void <init>(android.os.Parcel,android.support.wearable.watchface.decomposition.WatchFaceDecomposition$1) -> <init>
+    35:35:void <clinit>() -> <clinit>
+android.support.wearable.watchface.decomposition.WatchFaceDecomposition$1 -> android.support.wearable.watchface.decomposition.WatchFaceDecomposition$1:
+    36:36:void <init>() -> <init>
+    39:39:android.support.wearable.watchface.decomposition.WatchFaceDecomposition createFromParcel(android.os.Parcel) -> a
+    44:44:android.support.wearable.watchface.decomposition.WatchFaceDecomposition[] newArray(int) -> a
+    36:36:java.lang.Object[] newArray(int) -> newArray
+    36:36:java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
+android.support.wearable.watchface.decomposition.WatchFaceDecomposition$DrawnComponent -> android.support.wearable.watchface.decomposition.WatchFaceDecomposition$a:
+    int getZOrder() -> b
+android.support.wearable.watchface.decompositionface.CoordConverter -> android.support.wearable.watchface.decompositionface.a:
+    android.graphics.Rect mPixelBounds -> a
+    11:13:void <init>() -> <init>
+    21:22:void setPixelBounds(android.graphics.Rect) -> a
+    30:31:void setPixelBounds(int,int,int,int) -> a
+    38:43:void getPixelRectFromProportional(android.graphics.RectF,android.graphics.Rect) -> a
+    47:47:int getPixelX(float) -> a
+    52:52:int getPixelY(float) -> b
+android.support.wearable.watchface.decompositionface.DecompositionConfigView -> android.support.wearable.watchface.decompositionface.DecompositionConfigView:
+    android.support.wearable.watchface.decompositionface.DecompositionDrawable decompositionDrawable -> a
+    android.support.wearable.watchface.decompositionface.CoordConverter converter -> b
+    android.view.GestureDetector$SimpleOnGestureListener gestureListener -> c
+    android.view.GestureDetector gestureDetector -> d
+    android.graphics.Rect boundsRect -> e
+    java.util.ArrayList complications -> f
+    android.support.wearable.watchface.decompositionface.DecompositionConfigView$OnComplicationTapListener tapListener -> g
+    42:80:void <init>(android.content.Context) -> <init>
+    42:84:void <init>(android.content.Context,android.util.AttributeSet) -> <init>
+    88:88:boolean onTouchEvent(android.view.MotionEvent) -> onTouchEvent
+    93:94:void setOnComplicationTapListener(android.support.wearable.watchface.decompositionface.DecompositionConfigView$OnComplicationTapListener) -> setOnComplicationTapListener
+    101:114:void setDecomposition(android.support.wearable.watchface.decomposition.WatchFaceDecomposition) -> setDecomposition
+    118:120:void setDisplayTime(long) -> setDisplayTime
+    148:152:int[] getWatchFaceComplicationIds() -> getWatchFaceComplicationIds
+    30:30:java.util.ArrayList access$000(android.support.wearable.watchface.decompositionface.DecompositionConfigView) -> a
+    30:30:android.support.wearable.watchface.decompositionface.DecompositionConfigView$OnComplicationTapListener access$100(android.support.wearable.watchface.decompositionface.DecompositionConfigView) -> b
+    30:30:android.support.wearable.watchface.decompositionface.CoordConverter access$200(android.support.wearable.watchface.decompositionface.DecompositionConfigView) -> c
+    30:30:android.graphics.Rect access$300(android.support.wearable.watchface.decompositionface.DecompositionConfigView) -> d
+android.support.wearable.watchface.decompositionface.DecompositionConfigView$1 -> android.support.wearable.watchface.decompositionface.DecompositionConfigView$1:
+    android.support.wearable.watchface.decompositionface.DecompositionConfigView this$0 -> a
+    47:47:void <init>(android.support.wearable.watchface.decompositionface.DecompositionConfigView) -> <init>
+    50:50:boolean onDown(android.view.MotionEvent) -> onDown
+    55:67:boolean onSingleTapUp(android.view.MotionEvent) -> onSingleTapUp
+android.support.wearable.watchface.decompositionface.DecompositionConfigView$2 -> android.support.wearable.watchface.decompositionface.DecompositionConfigView$2:
+    108:108:void <init>(android.support.wearable.watchface.decompositionface.DecompositionConfigView) -> <init>
+    111:111:int compare(android.support.wearable.watchface.decomposition.ComplicationComponent,android.support.wearable.watchface.decomposition.ComplicationComponent) -> a
+    108:108:int compare(java.lang.Object,java.lang.Object) -> compare
+android.support.wearable.watchface.decompositionface.DecompositionConfigView$OnComplicationTapListener -> android.support.wearable.watchface.decompositionface.DecompositionConfigView$a:
+    void onComplicationTap(int,int[]) -> a
+android.support.wearable.watchface.decompositionface.DecompositionDrawable -> android.support.wearable.watchface.decompositionface.b:
+    android.content.Context context -> a
+    android.os.Handler handler -> b
+    android.support.wearable.watchface.decompositionface.CoordConverter converter -> c
+    android.graphics.Rect boundsRect -> d
+    android.graphics.Path roundPath -> e
+    android.support.wearable.watchface.decomposition.WatchFaceDecomposition decomposition -> f
+    boolean inConfigMode -> g
+    java.util.ArrayList drawnComponents -> h
+    java.util.Map imageDrawables -> i
+    android.util.SparseArray fontDrawables -> j
+    android.util.SparseArray complicationDrawables -> k
+    android.support.wearable.complications.ComplicationData blankConfigComplicationData -> l
+    long currentTimeMillis -> m
+    boolean inAmbientMode -> n
+    boolean burnInProtection -> o
+    boolean lowBitAmbient -> p
+    boolean clipToCircle -> q
+    android.graphics.drawable.Drawable$Callback drawableCallback -> r
+    53:89:void <init>(android.content.Context) -> <init>
+    93:127:void draw(android.graphics.Canvas) -> draw
+    135:151:void setDecomposition(android.support.wearable.watchface.decomposition.WatchFaceDecomposition,boolean) -> a
+    155:157:void onBoundsChange(android.graphics.Rect) -> onBoundsChange
+    160:184:void drawImage(android.support.wearable.watchface.decomposition.ImageComponent,android.graphics.Canvas,android.support.wearable.watchface.decompositionface.CoordConverter) -> a
+    188:190:float angleForTime(float,float) -> a
+    195:221:void drawNumber(android.support.wearable.watchface.decomposition.NumberComponent,android.graphics.Canvas,android.support.wearable.watchface.decompositionface.CoordConverter) -> a
+    225:237:void drawComplication(android.support.wearable.watchface.decomposition.ComplicationComponent,android.graphics.Canvas,android.support.wearable.watchface.decompositionface.CoordConverter) -> a
+    240:240:void setAlpha(int) -> setAlpha
+    243:243:void setColorFilter(android.graphics.ColorFilter) -> setColorFilter
+    247:247:int getOpacity() -> getOpacity
+    252:253:void setCurrentTimeMillis(long) -> a
+    272:285:void setComplicationData(int,android.support.wearable.complications.ComplicationData) -> a
+    293:294:void setClipToCircle(boolean) -> a
+    311:311:long getTimeZoneAdjustedTime() -> a
+    315:378:void loadDrawables() -> b
+    381:387:android.support.wearable.complications.rendering.ComplicationDrawable buildConfigComplicationDrawable() -> c
+    391:397:android.support.wearable.complications.ComplicationData getBlankConfigComplicationData() -> d
+    50:50:java.util.Map access$000(android.support.wearable.watchface.decompositionface.DecompositionDrawable) -> a
+    50:50:android.util.SparseArray access$100(android.support.wearable.watchface.decompositionface.DecompositionDrawable) -> b
+android.support.wearable.watchface.decompositionface.DecompositionDrawable$1 -> android.support.wearable.watchface.decompositionface.b$1:
+    android.support.wearable.watchface.decompositionface.DecompositionDrawable this$0 -> a
+    74:74:void <init>(android.support.wearable.watchface.decompositionface.DecompositionDrawable) -> <init>
+    77:78:void invalidateDrawable(android.graphics.drawable.Drawable) -> invalidateDrawable
+    81:81:void scheduleDrawable(android.graphics.drawable.Drawable,java.lang.Runnable,long) -> scheduleDrawable
+    84:84:void unscheduleDrawable(android.graphics.drawable.Drawable,java.lang.Runnable) -> unscheduleDrawable
+android.support.wearable.watchface.decompositionface.DecompositionDrawable$2 -> android.support.wearable.watchface.decompositionface.b$2:
+    144:144:void <init>(android.support.wearable.watchface.decompositionface.DecompositionDrawable) -> <init>
+    147:147:int compare(android.support.wearable.watchface.decomposition.WatchFaceDecomposition$DrawnComponent,android.support.wearable.watchface.decomposition.WatchFaceDecomposition$DrawnComponent) -> a
+    144:144:int compare(java.lang.Object,java.lang.Object) -> compare
+android.support.wearable.watchface.decompositionface.DecompositionDrawable$3 -> android.support.wearable.watchface.decompositionface.b$3:
+    android.graphics.drawable.Icon val$image -> a
+    android.support.wearable.watchface.decompositionface.DecompositionDrawable this$0 -> b
+    320:320:void <init>(android.support.wearable.watchface.decompositionface.DecompositionDrawable,android.graphics.drawable.Icon) -> <init>
+    323:329:void onDrawableLoaded(android.graphics.drawable.Drawable) -> onDrawableLoaded
+android.support.wearable.watchface.decompositionface.DecompositionDrawable$4 -> android.support.wearable.watchface.decompositionface.b$4:
+    android.support.wearable.watchface.decomposition.FontComponent val$fontComponent -> a
+    android.support.wearable.watchface.decompositionface.DecompositionDrawable this$0 -> b
+    339:339:void <init>(android.support.wearable.watchface.decompositionface.DecompositionDrawable,android.support.wearable.watchface.decomposition.FontComponent) -> <init>
+    342:347:void onDrawableLoaded(android.graphics.drawable.Drawable) -> onDrawableLoaded
+android.support.wearable.watchface.decompositionface.DigitDrawable -> android.support.wearable.watchface.decompositionface.c:
+    android.graphics.Rect fontBounds -> a
+    android.graphics.drawable.Drawable fontDrawable -> b
+    int digitCount -> c
+    int currentDigit -> d
+    13:15:void <init>() -> <init>
+    23:34:void draw(android.graphics.Canvas) -> draw
+    38:41:void setAlpha(int) -> setAlpha
+    45:48:void setColorFilter(android.graphics.ColorFilter) -> setColorFilter
+    52:52:int getOpacity() -> getOpacity
+    56:59:void setFontDrawable(android.graphics.drawable.Drawable) -> a
+    62:63:void setDigitCount(int) -> a
+    66:67:void setCurrentDigit(int) -> b
+    71:75:int getIntrinsicWidth() -> getIntrinsicWidth
+    80:84:int getIntrinsicHeight() -> getIntrinsicHeight
+    88:97:void updateFontImageBounds() -> a
 com.android.billingclient.api.BillingBroadcastManager -> com.android.billingclient.a.a:
     android.content.Context mContext -> a
     com.android.billingclient.api.BillingBroadcastManager$BillingBroadcastReceiver mReceiver -> b
@@ -17035,7 +17404,7 @@ dev.cytronix.cryptocurrency.storage.Storage -> dev.cytronix.cryptocurrency.e.a:
     132:133:void updatePriceBtcQuantity(dev.cytronix.data.cryptowat.model.Price) -> c
     136:137:void updatePriceEthQuantity(dev.cytronix.data.cryptowat.model.Price) -> d
     140:141:void updatePriceLtcQuantity(dev.cytronix.data.cryptowat.model.Price) -> e
-    144:146:void updatePriceQuantity(dev.cytronix.data.cryptowat.model.Price,java.lang.String) -> a
+    146:151:void updatePriceQuantity(dev.cytronix.data.cryptowat.model.Price,java.lang.String) -> a
 dev.cytronix.cryptocurrency.ui.activity.BaseActivity -> dev.cytronix.cryptocurrency.f.a.a:
     13:13:void <init>() -> <init>
     16:32:void showFragment(java.lang.String) -> a

@@ -14,4 +14,5 @@
 
     <!-- Drawable -->
     <color name="drawable_drawer_action">#FFFFFFFF</color>
+    <color name="drawable_preferences">#FFFFFFFF</color>
 </resources>
