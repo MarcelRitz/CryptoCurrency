@@ -13,6 +13,10 @@ public interface IStorage {
 
     Long getComplicationInverval();
 
+    Long getComplicationInvervalLastTimestamp();
+
+    void setComplicationInvervalLastTimestamp(long timestamp);
+
     boolean showPriceListSortInfo();
 
     @SuppressWarnings("SameParameterValue")

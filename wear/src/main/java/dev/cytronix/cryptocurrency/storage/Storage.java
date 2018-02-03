@@ -54,6 +54,21 @@ public class Storage implements IStorage {
     }
 
     @Override
+    public Long getComplicationInvervalLastTimestamp() {
+        String key = context.getString(R.string.preference_complication_interval_last_timestamp_key);
+        String defaultValue = context.getString(R.string.preference_complication_interval_last_timestamp_default_value);
+        return preferences.getLong(key, Long.parseLong(defaultValue));
+    }
+
+    @SuppressLint("ApplySharedPref")
+    @Override
+    public void setComplicationInvervalLastTimestamp(long timestamp) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putLong(context.getString(R.string.preference_complication_interval_last_timestamp_key), timestamp);
+        editor.commit();
+    }
+
+    @Override
     public boolean showPriceListSortInfo() {
         String key = context.getString(R.string.preference_price_list_sort_info_key);
         boolean defaultValue = context.getResources().getBoolean(R.bool.preference_price_list_sort_info_default_value);
