@@ -14,4 +14,20 @@
         <item>@string/data_provider_bitstamp_value</item>
         <item>@string/data_provider_kraken_value</item>
     </string-array>
+    <string-array name="preference_complication_interval_entries">
+        <item>@string/preference_complication_interval_1hour</item>
+        <item>@string/preference_complication_interval_2hour</item>
+        <item>@string/preference_complication_interval_3hour</item>
+        <item>@string/preference_complication_interval_6hour</item>
+        <item>@string/preference_complication_interval_12hour</item>
+        <item>@string/preference_complication_interval_24hour</item>
+    </string-array>
+    <string-array name="preference_complication_interval_values">
+        <item>3600000</item>
+        <item>7200000</item>
+        <item>10800000</item>
+        <item>21600000</item>
+        <item>43200000</item>
+        <item>86400000</item>
+    </string-array>
 </resources>

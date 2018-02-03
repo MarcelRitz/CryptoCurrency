@@ -6,7 +6,7 @@
             android:defaultValue="@string/preference_currency_default_value"
             android:entries="@array/preference_currency"
             android:entryValues="@array/preference_currency"
-            android:icon="@drawable/ic_currency"
+            android:icon="@drawable/ic_preference_currency"
             android:key="@string/preference_currency_key"
             android:title="@string/preference_currency_title" />
 
@@ -14,7 +14,7 @@
             android:defaultValue="@string/preference_data_provider_default_value"
             android:entries="@array/preference_data_provider_entries"
             android:entryValues="@array/preference_data_provider_values"
-            android:icon="@drawable/ic_dataprovider"
+            android:icon="@drawable/ic_preference_dataprovider"
             android:key="@string/preference_data_provider_key"
             android:title="@string/preference_data_provider_title" />
     </PreferenceCategory>
@@ -22,30 +22,40 @@
     <PreferenceCategory android:title="@string/preference_category_quantity">
         <dev.cytronix.cryptocurrency.preference.EditTextPreferenceSummary
             android:defaultValue="@string/preference_quantity_default_value"
-            android:icon="@drawable/ic_quantity"
+            android:icon="@drawable/ic_preference_quantity"
             android:inputType="numberDecimal"
             android:key="@string/preference_quantity_bch_key"
             android:title="@string/preference_quantity_bch_title" />
 
         <dev.cytronix.cryptocurrency.preference.EditTextPreferenceSummary
             android:defaultValue="@string/preference_quantity_default_value"
-            android:icon="@drawable/ic_quantity"
+            android:icon="@drawable/ic_preference_quantity"
             android:inputType="numberDecimal"
             android:key="@string/preference_quantity_btc_key"
             android:title="@string/preference_quantity_btc_title" />
 
         <dev.cytronix.cryptocurrency.preference.EditTextPreferenceSummary
             android:defaultValue="@string/preference_quantity_default_value"
-            android:icon="@drawable/ic_quantity"
+            android:icon="@drawable/ic_preference_quantity"
             android:inputType="numberDecimal"
             android:key="@string/preference_quantity_eth_key"
             android:title="@string/preference_quantity_eth_title" />
 
         <dev.cytronix.cryptocurrency.preference.EditTextPreferenceSummary
             android:defaultValue="@string/preference_quantity_default_value"
-            android:icon="@drawable/ic_quantity"
+            android:icon="@drawable/ic_preference_quantity"
             android:inputType="numberDecimal"
             android:key="@string/preference_quantity_ltc_key"
             android:title="@string/preference_quantity_ltc_title" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/preference_category_complication">
+        <dev.cytronix.cryptocurrency.preference.ListPreferenceSummary
+            android:defaultValue="@string/preference_complication_interval_default_value"
+            android:entries="@array/preference_complication_interval_entries"
+            android:entryValues="@array/preference_complication_interval_values"
+            android:icon="@drawable/ic_preference_interval"
+            android:key="@string/preference_complication_interval_key"
+            android:title="@string/preference_complication_interval_title" />
     </PreferenceCategory>
 </PreferenceScreen>
