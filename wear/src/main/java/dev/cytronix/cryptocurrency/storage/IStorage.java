@@ -23,6 +23,8 @@ public interface IStorage {
 
     void setComplicationIntervalLocked(int complicationId, boolean bool);
 
+    void removeComplicationIntervalLocked(int complicationId);
+
     boolean showPriceListSortInfo();
 
     @SuppressWarnings("SameParameterValue")

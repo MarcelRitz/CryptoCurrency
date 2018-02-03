@@ -14,6 +14,7 @@ import dev.cytronix.data.Currency;
 import dev.cytronix.data.cryptowat.model.DataProvider;
 import dev.cytronix.data.cryptowat.model.Price;
 
+@SuppressLint("ApplySharedPref")
 public class Storage implements IStorage {
 
     private static final String KEY_SEPARTOR = "_";
@@ -61,7 +62,6 @@ public class Storage implements IStorage {
         return preferences.getLong(key, Long.valueOf(defaultValue));
     }
 
-    @SuppressLint("ApplySharedPref")
     @Override
     public void setComplicationInvervalLastTimestamp(int complicationId, long timestamp) {
         SharedPreferences.Editor editor = preferences.edit();
@@ -69,7 +69,6 @@ public class Storage implements IStorage {
         editor.commit();
     }
 
-    @SuppressLint("ApplySharedPref")
     @Override
     public void removeComplicationInvervalLastTimestamp(int... complicationIds) {
         SharedPreferences.Editor editor = preferences.edit();
@@ -90,11 +89,17 @@ public class Storage implements IStorage {
         return preferences.getBoolean(key, defaultValue);
     }
 
-    @SuppressLint("ApplySharedPref")
     @Override
     public void setComplicationIntervalLocked(int complicationId, boolean bool) {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean(getComplicationIntervalLockedKey(complicationId), bool);
+        editor.commit();
+    }
+
+    @Override
+    public void removeComplicationIntervalLocked(int complicationId) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.remove(getComplicationIntervalLockedKey(complicationId));
         editor.commit();
     }
 
@@ -109,7 +114,6 @@ public class Storage implements IStorage {
         return preferences.getBoolean(key, defaultValue);
     }
 
-    @SuppressLint("ApplySharedPref")
     @Override
     public void setPriceListSortInfo(boolean showed) {
         SharedPreferences.Editor editor = preferences.edit();
@@ -142,7 +146,6 @@ public class Storage implements IStorage {
         prices.addAll(temp);
     }
 
-    @SuppressLint("ApplySharedPref")
     @Override
     public void setPriceListSort(List<Price> prices) {
         StringJoiner joiner = new StringJoiner(PRICE_LIST_SORT_DELIMETER);

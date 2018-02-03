@@ -65,6 +65,7 @@ public class DataProviderService extends ComplicationProviderService {
 
         IStorage storage = new Storage(this);
         storage.removeComplicationInvervalLastTimestamp(complicationId);
+        storage.removeComplicationIntervalLocked(complicationId);
 
         FabricUtils.trackEvent(Fabric.EVENT_COMPLICATION, Fabric.NAME_ACTIVATED, 1.0f);
         AnalyticsUtils.trackEvent(this, FirebaseAnalytics.Event.SELECT_CONTENT, Analytics.ITEM_ID_COMPLICATION_ACTIVATED, toCurrency, 1);
