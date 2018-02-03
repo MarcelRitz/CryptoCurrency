@@ -17,7 +17,7 @@ public interface IStorage {
 
     void setComplicationInvervalLastTimestamp(int complicationId, long timestamp);
 
-    void removeComplicationInvervalLastTimestamp(int... complicationIds);
+    void removeComplicationInvervalLastTimestamp(int complicationIds);
 
     boolean getComplicationIntervalLocked(int complicationId);
 
