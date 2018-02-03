@@ -17390,14 +17390,13 @@ dev.cytronix.cryptocurrency.setting.SettingActivity -> dev.cytronix.cryptocurren
     11:14:void onCreate(android.os.Bundle) -> onCreate
 dev.cytronix.cryptocurrency.setting.SettingFragment -> dev.cytronix.cryptocurrency.setting.a:
     android.content.SharedPreferences sharedPreferences -> a
-    25:25:void <init>() -> <init>
-    31:35:dev.cytronix.cryptocurrency.setting.SettingFragment newInstance() -> a
-    40:45:void onCreate(android.os.Bundle) -> onCreate
-    49:52:void onResume() -> onResume
-    56:59:void onPause() -> onPause
-    62:65:void update(java.util.List) -> a
-    68:72:void update(java.lang.Class) -> a
-    76:100:void onSharedPreferenceChanged(android.content.SharedPreferences,java.lang.String) -> onSharedPreferenceChanged
+    28:28:void <init>() -> <init>
+    34:38:dev.cytronix.cryptocurrency.setting.SettingFragment newInstance() -> a
+    43:48:void onCreate(android.os.Bundle) -> onCreate
+    52:55:void onResume() -> onResume
+    59:62:void onPause() -> onPause
+    65:74:void updateComplication(java.util.List) -> a
+    78:105:void onSharedPreferenceChanged(android.content.SharedPreferences,java.lang.String) -> onSharedPreferenceChanged
 dev.cytronix.cryptocurrency.storage.IStorage -> dev.cytronix.cryptocurrency.e.a:
     dev.cytronix.data.cryptowat.model.DataProvider getDataProvider() -> a
     java.lang.String getCurrency() -> b
@@ -17406,7 +17405,7 @@ dev.cytronix.cryptocurrency.storage.IStorage -> dev.cytronix.cryptocurrency.e.a:
     void setComplicationInvervalLastTimestamp(int,long) -> a
     void removeComplicationInvervalLastTimestamp(int) -> b
     boolean getComplicationIntervalLocked(int) -> c
-    void setComplicationIntervalLocked(int,boolean) -> a
+    void setComplicationIntervalLocked(boolean,int[]) -> a
     void removeComplicationIntervalLocked(int) -> d
     void updatePriceQuantity(dev.cytronix.data.cryptowat.model.Price) -> a
 dev.cytronix.cryptocurrency.storage.Storage -> dev.cytronix.cryptocurrency.e.b:
@@ -17422,20 +17421,20 @@ dev.cytronix.cryptocurrency.storage.Storage -> dev.cytronix.cryptocurrency.e.b:
     74:77:void removeComplicationInvervalLastTimestamp(int) -> b
     80:80:java.lang.String getComplicationIntervalLastTimeStampKey(int) -> e
     85:87:boolean getComplicationIntervalLocked(int) -> c
-    92:95:void setComplicationIntervalLocked(int,boolean) -> a
-    99:102:void removeComplicationIntervalLocked(int) -> d
-    105:105:java.lang.String getComplicationIntervalLockedKey(int) -> f
-    110:112:boolean showPriceListSortInfo() -> d
-    117:120:void setPriceListSortInfo(boolean) -> a
-    124:145:void updatePriceListSort(java.util.List) -> a
-    149:157:void setPriceListSort(java.util.List) -> b
-    161:164:void updatePriceListQuantity(java.util.List) -> c
-    167:182:void updatePriceQuantity(dev.cytronix.data.cryptowat.model.Price) -> a
-    185:186:void updatePriceBchQuantity(dev.cytronix.data.cryptowat.model.Price) -> b
-    189:190:void updatePriceBtcQuantity(dev.cytronix.data.cryptowat.model.Price) -> c
-    193:194:void updatePriceEthQuantity(dev.cytronix.data.cryptowat.model.Price) -> d
-    197:198:void updatePriceLtcQuantity(dev.cytronix.data.cryptowat.model.Price) -> e
-    203:208:void updatePriceQuantity(dev.cytronix.data.cryptowat.model.Price,java.lang.String) -> a
+    92:97:void setComplicationIntervalLocked(boolean,int[]) -> a
+    101:104:void removeComplicationIntervalLocked(int) -> d
+    107:107:java.lang.String getComplicationIntervalLockedKey(int) -> f
+    112:114:boolean showPriceListSortInfo() -> d
+    119:122:void setPriceListSortInfo(boolean) -> a
+    126:147:void updatePriceListSort(java.util.List) -> a
+    151:159:void setPriceListSort(java.util.List) -> b
+    163:166:void updatePriceListQuantity(java.util.List) -> c
+    169:184:void updatePriceQuantity(dev.cytronix.data.cryptowat.model.Price) -> a
+    187:188:void updatePriceBchQuantity(dev.cytronix.data.cryptowat.model.Price) -> b
+    191:192:void updatePriceBtcQuantity(dev.cytronix.data.cryptowat.model.Price) -> c
+    195:196:void updatePriceEthQuantity(dev.cytronix.data.cryptowat.model.Price) -> d
+    199:200:void updatePriceLtcQuantity(dev.cytronix.data.cryptowat.model.Price) -> e
+    205:210:void updatePriceQuantity(dev.cytronix.data.cryptowat.model.Price,java.lang.String) -> a
 dev.cytronix.cryptocurrency.ui.activity.BaseActivity -> dev.cytronix.cryptocurrency.f.a.a:
     13:13:void <init>() -> <init>
     16:32:void showFragment(java.lang.String) -> a
