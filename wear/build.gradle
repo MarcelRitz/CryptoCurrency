@@ -21,7 +21,7 @@ android {
         targetSdkVersion 27
         versionCode 18
         versionName "2.1.0"
-        resConfigs "en", "de", "es", "fr", "ru"
+        resConfigs "en", "de", "es", "fr", "ru", "ja"
     }
     buildTypes {
         release {
