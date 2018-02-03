@@ -22,7 +22,7 @@
         <item>@string/preference_complication_interval_12hour</item>
         <item>@string/preference_complication_interval_24hour</item>
     </string-array>
-    <string-array name="preference_complication_interval_values">
+    <string-array name="preference_complication_interval_values" translatable="false">
         <item>@string/preference_complication_interval_default_value</item>
         <item>7200000</item>
         <item>10800000</item>
