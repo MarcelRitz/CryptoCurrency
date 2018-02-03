@@ -53,7 +53,23 @@
     <!-- LTC -->
     <string name="preference_quantity_ltc_title">LTC balance</string>
     <string name="preference_quantity_ltc_key" translatable="false">LTCQuantityKey</string>
-    <!-- Price list sort -->
+    <!-- Complication -->
+    <string name="preference_category_complication">Complication</string>
+    <!-- Interval -->
+    <string name="preference_complication_interval_title">Interval</string>
+    <string name="preference_complication_interval_key" translatable="false">ComplicationIntervalKey</string>
+    <string name="preference_complication_interval_default_value" translatable="false">3600000</string>
+    <string name="preference_complication_interval_1hour">1 hour</string>
+    <string name="preference_complication_interval_2hour">2 hours</string>
+    <string name="preference_complication_interval_3hour">3 hours</string>
+    <string name="preference_complication_interval_6hour">6 hours</string>
+    <string name="preference_complication_interval_12hour">12 hours</string>
+    <string name="preference_complication_interval_24hour">24 hours</string>
+    <string name="preference_complication_interval_last_timestamp_key" translatable="false">ComplicationIntervalLastTimestampKey</string>
+    <string name="preference_complication_interval_last_timestamp_default_value" translatable="false">0</string>
+    <string name="preference_complication_interval_locked_key" translatable="false">ComplicationIntervalLockedKey</string>
+    <bool name="preference_complication_interval_locked_default_value" translatable="false">true</bool>
+    <!-- Price List Sort -->
     <string name="preference_price_list_sort_key" translatable="false">PriceListSortKey</string>
     <bool name="preference_price_list_sort_info_default_value" translatable="false">true</bool>
     <string name="preference_price_list_sort_info_key" translatable="false">PriceListSortInfoKey</string>

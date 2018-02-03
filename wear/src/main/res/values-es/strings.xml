@@ -24,4 +24,12 @@
     <string name="preference_quantity_btc_title">BTC equilibrar</string>
     <string name="preference_quantity_eth_title">ETH equilibrar</string>
     <string name="preference_quantity_ltc_title">LTC equilibrar</string>
+    <string name="preference_category_complication">Complicación</string>
+    <string name="preference_complication_interval_title">Intervalo</string>
+    <string name="preference_complication_interval_1hour">1 hora</string>
+    <string name="preference_complication_interval_2hour">2 horas</string>
+    <string name="preference_complication_interval_3hour">3 horas</string>
+    <string name="preference_complication_interval_6hour">6 horas</string>
+    <string name="preference_complication_interval_12hour">12 horas</string>
+    <string name="preference_complication_interval_24hour">24 horas</string>
 </resources>

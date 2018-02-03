@@ -11,6 +11,20 @@ public interface IStorage {
 
     String getCurrency();
 
+    Long getComplicationInverval();
+
+    Long getComplicationInvervalLastTimestamp(int complicationId);
+
+    void setComplicationInvervalLastTimestamp(int complicationId, long timestamp);
+
+    void removeComplicationInvervalLastTimestamp(int... complicationIds);
+
+    boolean getComplicationIntervalLocked(int complicationId);
+
+    void setComplicationIntervalLocked(int complicationId, boolean bool);
+
+    void removeComplicationIntervalLocked(int complicationId);
+
     boolean showPriceListSortInfo();
 
     @SuppressWarnings("SameParameterValue")

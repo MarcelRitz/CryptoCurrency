@@ -1,0 +1,35 @@
+<resources>
+    <!-- All -->
+    <string name="all_error">エラー</string>
+    <string name="all_loading">読み込んでいます..</string>
+
+    <!-- PriceList -->
+    <string name="price_list_sort_info">ドラッグ＆ドロップで並べ替え（長押し）</string>
+
+    <!-- Donation -->
+    <string name="donation_title">寄付</string>
+
+    <!-- Menu -->
+    <string name="menu_refresh">リフレッシュ</string>
+    <string name="menu_share">シェア</string>
+    <string name="menu_rating">評価</string>
+
+    <!-- Preferences -->
+    <string name="preference_title">設定</string>
+    <string name="preference_category_price">価格</string>
+    <string name="preference_currency_title">通貨</string>
+    <string name="preference_data_provider_title">データプロバイダ</string>
+    <string name="preference_category_quantity">私の財布</string>
+    <string name="preference_quantity_bch_title">BCH バランス</string>
+    <string name="preference_quantity_btc_title">BTC バランス</string>
+    <string name="preference_quantity_eth_title">ETH バランス</string>
+    <string name="preference_quantity_ltc_title">LTC バランス</string>
+    <string name="preference_category_complication">合併症</string>
+    <string name="preference_complication_interval_title">間隔</string>
+    <string name="preference_complication_interval_1hour">1 時間</string>
+    <string name="preference_complication_interval_2hour">2 時間</string>
+    <string name="preference_complication_interval_3hour">3 時間</string>
+    <string name="preference_complication_interval_6hour">6 時間</string>
+    <string name="preference_complication_interval_12hour">12 時間</string>
+    <string name="preference_complication_interval_24hour">24 時間</string>
+</resources>
