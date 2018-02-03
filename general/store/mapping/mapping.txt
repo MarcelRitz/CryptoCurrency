@@ -7744,6 +7744,7 @@ android.support.wearable.complications.ProviderUpdateRequester -> android.suppor
     android.content.Context mContext -> a
     android.content.ComponentName mProviderComponent -> b
     48:57:void <init>(android.content.Context,android.content.ComponentName) -> <init>
+    70:77:void requestUpdateAll() -> a
     93:102:void requestUpdate(int[]) -> a
 android.support.wearable.complications.TimeDependentText -> android.support.wearable.complications.TimeDependentText:
     java.lang.CharSequence getText(android.content.Context,long) -> a
@@ -17351,25 +17352,26 @@ dev.cytronix.cryptocurrency.service.DataProviderService -> dev.cytronix.cryptocu
     java.lang.String toCurrency -> a
     boolean wallet -> b
     dev.cytronix.cryptocurrency.storage.IStorage storage -> c
-    41:45:void <init>(java.lang.String,boolean) -> <init>
-    49:51:android.os.IBinder onBind(android.content.Intent) -> onBind
-    55:55:dev.cytronix.data.cryptowat.model.DataProvider getProvider() -> a
-    59:59:java.lang.String getCurrency() -> b
-    64:72:void onComplicationActivated(int,int,android.support.wearable.complications.ComplicationManager) -> a
-    76:90:void onComplicationUpdate(int,int,android.support.wearable.complications.ComplicationManager) -> b
-    93:124:void processUpdate(int,int,android.support.wearable.complications.ComplicationManager) -> c
-    127:128:void update(java.lang.String,int,int,android.support.wearable.complications.ComplicationManager) -> a
-    132:157:void update(java.lang.String,java.lang.String,int,int,android.support.wearable.complications.ComplicationManager) -> a
-    161:165:void onComplicationDeactivated(int) -> a
-    33:33:boolean access$000(dev.cytronix.cryptocurrency.service.DataProviderService) -> a
+    40:44:void <init>(java.lang.String,boolean) -> <init>
+    48:49:android.os.IBinder onBind(android.content.Intent) -> onBind
+    53:53:dev.cytronix.data.cryptowat.model.DataProvider getProvider() -> a
+    57:57:java.lang.String getCurrency() -> b
+    62:69:void onComplicationActivated(int,int,android.support.wearable.complications.ComplicationManager) -> a
+    73:87:void onComplicationUpdate(int,int,android.support.wearable.complications.ComplicationManager) -> b
+    90:121:void processUpdate(int,int,android.support.wearable.complications.ComplicationManager) -> c
+    124:125:void update(java.lang.String,int,int,android.support.wearable.complications.ComplicationManager) -> a
+    129:154:void update(java.lang.String,java.lang.String,int,int,android.support.wearable.complications.ComplicationManager) -> a
+    158:162:void onComplicationDeactivated(int) -> a
+    32:32:boolean access$000(dev.cytronix.cryptocurrency.service.DataProviderService) -> a
+    32:32:dev.cytronix.cryptocurrency.storage.IStorage access$100(dev.cytronix.cryptocurrency.service.DataProviderService) -> b
 dev.cytronix.cryptocurrency.service.DataProviderService$1 -> dev.cytronix.cryptocurrency.service.a$1:
     int val$complicationId -> a
     int val$dataType -> b
     android.support.wearable.complications.ComplicationManager val$complicationManager -> c
     dev.cytronix.cryptocurrency.service.DataProviderService this$0 -> d
-    95:95:void <init>(dev.cytronix.cryptocurrency.service.DataProviderService,int,int,android.support.wearable.complications.ComplicationManager) -> <init>
-    98:116:void onUpdate(java.util.List) -> a
-    120:121:void onError(java.lang.String) -> a
+    92:92:void <init>(dev.cytronix.cryptocurrency.service.DataProviderService,int,int,android.support.wearable.complications.ComplicationManager) -> <init>
+    95:113:void onUpdate(java.util.List) -> a
+    117:118:void onError(java.lang.String) -> a
 dev.cytronix.cryptocurrency.service.EthProviderService -> dev.cytronix.cryptocurrency.service.EthProviderService:
     8:9:void <init>() -> <init>
 dev.cytronix.cryptocurrency.service.EthQuantityProviderService -> dev.cytronix.cryptocurrency.service.EthQuantityProviderService:
@@ -17387,19 +17389,26 @@ dev.cytronix.cryptocurrency.setting.SettingActivity -> dev.cytronix.cryptocurren
     7:7:void <init>() -> <init>
     11:14:void onCreate(android.os.Bundle) -> onCreate
 dev.cytronix.cryptocurrency.setting.SettingFragment -> dev.cytronix.cryptocurrency.setting.a:
-    9:9:void <init>() -> <init>
-    14:18:dev.cytronix.cryptocurrency.setting.SettingFragment newInstance() -> a
-    23:26:void onCreate(android.os.Bundle) -> onCreate
+    android.content.SharedPreferences sharedPreferences -> a
+    25:25:void <init>() -> <init>
+    31:35:dev.cytronix.cryptocurrency.setting.SettingFragment newInstance() -> a
+    40:45:void onCreate(android.os.Bundle) -> onCreate
+    49:52:void onResume() -> onResume
+    56:59:void onPause() -> onPause
+    62:65:void update(java.util.List) -> a
+    68:72:void update(java.lang.Class) -> a
+    76:100:void onSharedPreferenceChanged(android.content.SharedPreferences,java.lang.String) -> onSharedPreferenceChanged
 dev.cytronix.cryptocurrency.storage.IStorage -> dev.cytronix.cryptocurrency.e.a:
     dev.cytronix.data.cryptowat.model.DataProvider getDataProvider() -> a
     java.lang.String getCurrency() -> b
     java.lang.Long getComplicationInverval() -> c
     java.lang.Long getComplicationInvervalLastTimestamp(int) -> a
     void setComplicationInvervalLastTimestamp(int,long) -> a
-    void removeComplicationInvervalLastTimestamp(int[]) -> a
-    boolean getComplicationIntervalLocked(int) -> b
+    void removeComplicationInvervalLastTimestamp(int) -> b
+    boolean getComplicationIntervalLocked(int) -> c
     void setComplicationIntervalLocked(int,boolean) -> a
-    void removeComplicationIntervalLocked(int) -> c
+    void removeComplicationIntervalLocked(int) -> d
+    void updatePriceQuantity(dev.cytronix.data.cryptowat.model.Price) -> a
 dev.cytronix.cryptocurrency.storage.Storage -> dev.cytronix.cryptocurrency.e.b:
     android.content.SharedPreferences preferences -> a
     android.content.Context context -> b
@@ -17410,23 +17419,23 @@ dev.cytronix.cryptocurrency.storage.Storage -> dev.cytronix.cryptocurrency.e.b:
     53:55:java.lang.Long getComplicationInverval() -> c
     60:62:java.lang.Long getComplicationInvervalLastTimestamp(int) -> a
     67:70:void setComplicationInvervalLastTimestamp(int,long) -> a
-    74:79:void removeComplicationInvervalLastTimestamp(int[]) -> a
-    82:82:java.lang.String getComplicationIntervalLastTimeStampKey(int) -> d
-    87:89:boolean getComplicationIntervalLocked(int) -> b
-    94:97:void setComplicationIntervalLocked(int,boolean) -> a
-    101:104:void removeComplicationIntervalLocked(int) -> c
-    107:107:java.lang.String getComplicationIntervalLockedKey(int) -> e
-    112:114:boolean showPriceListSortInfo() -> d
-    119:122:void setPriceListSortInfo(boolean) -> a
-    126:147:void updatePriceListSort(java.util.List) -> a
-    151:159:void setPriceListSort(java.util.List) -> b
-    163:166:void updatePriceListQuantity(java.util.List) -> c
-    169:184:void updatePriceQuantity(dev.cytronix.data.cryptowat.model.Price) -> a
-    187:188:void updatePriceBchQuantity(dev.cytronix.data.cryptowat.model.Price) -> b
-    191:192:void updatePriceBtcQuantity(dev.cytronix.data.cryptowat.model.Price) -> c
-    195:196:void updatePriceEthQuantity(dev.cytronix.data.cryptowat.model.Price) -> d
-    199:200:void updatePriceLtcQuantity(dev.cytronix.data.cryptowat.model.Price) -> e
-    205:210:void updatePriceQuantity(dev.cytronix.data.cryptowat.model.Price,java.lang.String) -> a
+    74:77:void removeComplicationInvervalLastTimestamp(int) -> b
+    80:80:java.lang.String getComplicationIntervalLastTimeStampKey(int) -> e
+    85:87:boolean getComplicationIntervalLocked(int) -> c
+    92:95:void setComplicationIntervalLocked(int,boolean) -> a
+    99:102:void removeComplicationIntervalLocked(int) -> d
+    105:105:java.lang.String getComplicationIntervalLockedKey(int) -> f
+    110:112:boolean showPriceListSortInfo() -> d
+    117:120:void setPriceListSortInfo(boolean) -> a
+    124:145:void updatePriceListSort(java.util.List) -> a
+    149:157:void setPriceListSort(java.util.List) -> b
+    161:164:void updatePriceListQuantity(java.util.List) -> c
+    167:182:void updatePriceQuantity(dev.cytronix.data.cryptowat.model.Price) -> a
+    185:186:void updatePriceBchQuantity(dev.cytronix.data.cryptowat.model.Price) -> b
+    189:190:void updatePriceBtcQuantity(dev.cytronix.data.cryptowat.model.Price) -> c
+    193:194:void updatePriceEthQuantity(dev.cytronix.data.cryptowat.model.Price) -> d
+    197:198:void updatePriceLtcQuantity(dev.cytronix.data.cryptowat.model.Price) -> e
+    203:208:void updatePriceQuantity(dev.cytronix.data.cryptowat.model.Price,java.lang.String) -> a
 dev.cytronix.cryptocurrency.ui.activity.BaseActivity -> dev.cytronix.cryptocurrency.f.a.a:
     13:13:void <init>() -> <init>
     16:32:void showFragment(java.lang.String) -> a
