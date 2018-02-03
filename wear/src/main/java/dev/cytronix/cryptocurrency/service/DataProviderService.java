@@ -3,6 +3,7 @@ package dev.cytronix.cryptocurrency.service;
 import android.annotation.SuppressLint;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.os.IBinder;
 import android.support.wearable.complications.ComplicationData;
 import android.support.wearable.complications.ComplicationManager;
 import android.support.wearable.complications.ComplicationProviderService;
@@ -12,10 +13,12 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.util.List;
 import java.util.Locale;
+import java.util.stream.IntStream;
 
 import dev.cytronix.cryptocurrency.R;
 import dev.cytronix.cryptocurrency.analytic.Analytics;
 import dev.cytronix.cryptocurrency.analytic.Fabric;
+import dev.cytronix.cryptocurrency.storage.IStorage;
 import dev.cytronix.cryptocurrency.storage.Storage;
 import dev.cytronix.cryptocurrency.util.AnalyticsUtils;
 import dev.cytronix.cryptocurrency.util.FabricUtils;
@@ -29,8 +32,10 @@ import dev.cytronix.data.view.PriceView;
 @SuppressLint("Registered")
 public class DataProviderService extends ComplicationProviderService {
 
+    private static final long TIMESTAMP_OFFSET = 10000L;
     private String toCurrency;
     private boolean wallet;
+    private IStorage storage;
 
     public DataProviderService(String toCurrency, boolean wallet) {
         super();
@@ -39,24 +44,52 @@ public class DataProviderService extends ComplicationProviderService {
         this.wallet = wallet;
     }
 
+    @Override
+    public IBinder onBind(Intent intent) {
+        storage = new Storage(this);
+        storage.removeComplicationInvervalLastTimestamp(IntStream.range(1, 100).toArray());
+        return super.onBind(intent);
+    }
+
     private DataProvider getProvider() {
-        return new Storage(this).getDataProvider();
+        return storage.getDataProvider();
     }
 
     private String getCurrency() {
-        return new Storage(this).getCurrency();
+        return storage.getCurrency();
     }
 
     @Override
     public void onComplicationActivated(int complicationId, int type, ComplicationManager manager) {
         super.onComplicationActivated(complicationId, type, manager);
 
+        IStorage storage = new Storage(this);
+        storage.removeComplicationInvervalLastTimestamp(complicationId);
+        storage.removeComplicationIntervalLocked(complicationId);
+
         FabricUtils.trackEvent(Fabric.EVENT_COMPLICATION, Fabric.NAME_ACTIVATED, 1.0f);
         AnalyticsUtils.trackEvent(this, FirebaseAnalytics.Event.SELECT_CONTENT, Analytics.ITEM_ID_COMPLICATION_ACTIVATED, toCurrency, 1);
     }
 
     @Override
-    public void onComplicationUpdate(final int complicationId, final int dataType, final ComplicationManager complicationManager) {
+    public void onComplicationUpdate(int complicationId, int dataType, ComplicationManager complicationManager) {
+        boolean locked = storage.getComplicationIntervalLocked(complicationId);
+        if(!locked) {
+            processUpdate(complicationId, dataType, complicationManager);
+            storage.setComplicationIntervalLocked(complicationId, true);
+            return;
+        }
+
+        long lastTimestamp = storage.getComplicationInvervalLastTimestamp(complicationId);
+        long inverval = storage.getComplicationInverval();
+        long currentTimestamp = System.currentTimeMillis() - TIMESTAMP_OFFSET;
+        if(lastTimestamp + inverval < currentTimestamp) {
+            processUpdate(complicationId, dataType, complicationManager);
+            storage.setComplicationInvervalLastTimestamp(complicationId, System.currentTimeMillis());
+        }
+    }
+
+    private void processUpdate(int complicationId, int dataType, ComplicationManager complicationManager) {
         update(getString(R.string.all_loading), complicationId, dataType, complicationManager);
 
         IPricePresenter presenter = new PricePresenter(getProvider(), getCurrency(), new PriceView() {

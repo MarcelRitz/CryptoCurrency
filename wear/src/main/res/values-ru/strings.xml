@@ -24,4 +24,11 @@
     <string name="preference_quantity_btc_title">BTC баланс</string>
     <string name="preference_quantity_eth_title">ETH баланс</string>
     <string name="preference_quantity_ltc_title">LTC баланс</string>
+    <string name="preference_category_complication">Yсложнение</string>
+    <string name="preference_complication_interval_1hour">1 час</string>
+    <string name="preference_complication_interval_2hour">2 часов</string>
+    <string name="preference_complication_interval_3hour">3 часов</string>
+    <string name="preference_complication_interval_6hour">6 часов</string>
+    <string name="preference_complication_interval_12hour">12 часов</string>
+    <string name="preference_complication_interval_24hour">24 часов</string>
 </resources>
