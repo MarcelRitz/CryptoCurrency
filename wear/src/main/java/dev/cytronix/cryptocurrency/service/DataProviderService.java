@@ -116,6 +116,7 @@ public class DataProviderService extends ComplicationProviderService {
         updateIntent.putExtra(UpdateComplicationDataService.EXTRA_COMPLICATION_ID, complicationId);
         updateIntent.putExtra(UpdateComplicationDataService.EXTRA_CURRENCY, toCurrency);
         updateIntent.putExtra(UpdateComplicationDataService.EXTRA_WALLET, wallet);
+        updateIntent.putExtra(UpdateComplicationDataService.EXTRA_TRIGGER, UpdateComplicationDataService.Trigger.MANUALLY);
 
         PendingIntent pendingIntent = PendingIntent.getService(getApplicationContext(), complicationId, updateIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setTapAction(pendingIntent);

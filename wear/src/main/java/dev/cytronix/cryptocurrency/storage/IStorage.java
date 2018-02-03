@@ -11,6 +11,8 @@ public interface IStorage {
 
     String getCurrency();
 
+    Long getComplicationInverval();
+
     boolean showPriceListSortInfo();
 
     @SuppressWarnings("SameParameterValue")

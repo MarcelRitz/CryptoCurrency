@@ -14,7 +14,9 @@ public class UpdateComplicationDataService extends IntentService {
     public static final String EXTRA_COMPLICATION_ID = "dev.cytronix.cryptocurrency.extra.COMPLICATION_ID";
     public static final String EXTRA_CURRENCY = "dev.cytronix.cryptocurrency.extra.CURRENCY";
     public static final String EXTRA_WALLET = "dev.cytronix.cryptocurrency.extra.WALLET";
+    public static final String EXTRA_TRIGGER = "dev.cytronix.cryptocurrency.extra.TRIGGER";
     public static final int COMPLICATION_ID_UNKNOWN = -1;
+    public enum Trigger {INTERVAL, MANUALLY}
 
     public UpdateComplicationDataService() {
         super("UpdateComplicationDataService");

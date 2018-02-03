@@ -47,6 +47,13 @@ public class Storage implements IStorage {
     }
 
     @Override
+    public Long getComplicationInverval() {
+        String key = context.getString(R.string.preference_complication_interval_key);
+        String defaultValue = context.getString(R.string.preference_complication_interval_default_value);
+        return preferences.getLong(key, Long.parseLong(defaultValue));
+    }
+
+    @Override
     public boolean showPriceListSortInfo() {
         String key = context.getString(R.string.preference_price_list_sort_info_key);
         boolean defaultValue = context.getResources().getBoolean(R.bool.preference_price_list_sort_info_default_value);
