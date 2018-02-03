@@ -13,7 +13,6 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.util.List;
 import java.util.Locale;
-import java.util.stream.IntStream;
 
 import dev.cytronix.cryptocurrency.R;
 import dev.cytronix.cryptocurrency.analytic.Analytics;
@@ -47,7 +46,6 @@ public class DataProviderService extends ComplicationProviderService {
     @Override
     public IBinder onBind(Intent intent) {
         storage = new Storage(this);
-        storage.removeComplicationInvervalLastTimestamp(IntStream.range(1, 100).toArray());
         return super.onBind(intent);
     }
 
@@ -63,7 +61,6 @@ public class DataProviderService extends ComplicationProviderService {
     public void onComplicationActivated(int complicationId, int type, ComplicationManager manager) {
         super.onComplicationActivated(complicationId, type, manager);
 
-        IStorage storage = new Storage(this);
         storage.removeComplicationInvervalLastTimestamp(complicationId);
         storage.removeComplicationIntervalLocked(complicationId);
 
@@ -100,7 +97,7 @@ public class DataProviderService extends ComplicationProviderService {
                 double value;
                 String title;
                 if (wallet) {
-                    new Storage(DataProviderService.this).updatePriceQuantity(price);
+                    storage.updatePriceQuantity(price);
                     value = price.getValue();
                     title = getString(R.string.complication_wallet) + " " + price.getTargetCurrency();
                 } else {

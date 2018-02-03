@@ -70,11 +70,9 @@ public class Storage implements IStorage {
     }
 
     @Override
-    public void removeComplicationInvervalLastTimestamp(int... complicationIds) {
+    public void removeComplicationInvervalLastTimestamp(int complicationId) {
         SharedPreferences.Editor editor = preferences.edit();
-        for(int complicationId:complicationIds) {
-            editor.remove(getComplicationIntervalLastTimeStampKey(complicationId));
-        }
+        editor.remove(getComplicationIntervalLastTimeStampKey(complicationId));
         editor.commit();
     }
 
