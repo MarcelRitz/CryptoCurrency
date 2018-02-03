@@ -25,6 +25,7 @@
     <string name="preference_quantity_eth_title">ETH バランス</string>
     <string name="preference_quantity_ltc_title">LTC バランス</string>
     <string name="preference_category_complication">合併症</string>
+    <string name="preference_complication_interval_title">間隔</string>
     <string name="preference_complication_interval_1hour">1 時間</string>
     <string name="preference_complication_interval_2hour">2 時間</string>
     <string name="preference_complication_interval_3hour">3 時間</string>

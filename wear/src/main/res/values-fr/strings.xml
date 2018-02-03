@@ -25,6 +25,7 @@
     <string name="preference_quantity_eth_title">ETH équilibre</string>
     <string name="preference_quantity_ltc_title">LTC équilibre</string>
     <string name="preference_category_complication">Complication</string>
+    <string name="preference_complication_interval_title">Intervalle</string>
     <string name="preference_complication_interval_1hour">1 heure</string>
     <string name="preference_complication_interval_2hour">2 heures</string>
     <string name="preference_complication_interval_3hour">3 heures</string>
