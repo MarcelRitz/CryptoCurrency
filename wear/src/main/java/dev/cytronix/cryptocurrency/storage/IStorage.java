@@ -13,9 +13,15 @@ public interface IStorage {
 
     Long getComplicationInverval();
 
-    Long getComplicationInvervalLastTimestamp();
+    Long getComplicationInvervalLastTimestamp(int complicationId);
 
-    void setComplicationInvervalLastTimestamp(long timestamp);
+    void setComplicationInvervalLastTimestamp(int complicationId, long timestamp);
+
+    void removeComplicationInvervalLastTimestamp(int... complicationIds);
+
+    boolean getComplicationIntervalLocked(int complicationId);
+
+    void setComplicationIntervalLocked(int complicationId, boolean bool);
 
     boolean showPriceListSortInfo();
 

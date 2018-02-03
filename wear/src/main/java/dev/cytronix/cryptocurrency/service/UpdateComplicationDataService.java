@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.support.wearable.complications.ProviderUpdateRequester;
 import android.text.TextUtils;
 
+import dev.cytronix.cryptocurrency.storage.IStorage;
+import dev.cytronix.cryptocurrency.storage.Storage;
 import dev.cytronix.data.Currency;
 
 public class UpdateComplicationDataService extends IntentService {
@@ -14,9 +16,7 @@ public class UpdateComplicationDataService extends IntentService {
     public static final String EXTRA_COMPLICATION_ID = "dev.cytronix.cryptocurrency.extra.COMPLICATION_ID";
     public static final String EXTRA_CURRENCY = "dev.cytronix.cryptocurrency.extra.CURRENCY";
     public static final String EXTRA_WALLET = "dev.cytronix.cryptocurrency.extra.WALLET";
-    public static final String EXTRA_TRIGGER = "dev.cytronix.cryptocurrency.extra.TRIGGER";
     public static final int COMPLICATION_ID_UNKNOWN = -1;
-    public enum Trigger {INTERVAL, MANUALLY}
 
     public UpdateComplicationDataService() {
         super("UpdateComplicationDataService");
@@ -46,9 +46,10 @@ public class UpdateComplicationDataService extends IntentService {
             return;
         }
 
-        boolean wallet = intent.getBooleanExtra(EXTRA_WALLET, false);
+        IStorage storage = new Storage(this);
+        storage.setComplicationIntervalLocked(complicationId, false);
 
-        ComponentName componentName = new ComponentName(getApplicationContext(), getProviderService(currency, wallet));
+        ComponentName componentName = new ComponentName(getApplicationContext(), getProviderService(currency, intent.getBooleanExtra(EXTRA_WALLET, false)));
         ProviderUpdateRequester providerUpdateRequester = new ProviderUpdateRequester(getApplicationContext(), componentName);
         providerUpdateRequester.requestUpdate(complicationId);
     }

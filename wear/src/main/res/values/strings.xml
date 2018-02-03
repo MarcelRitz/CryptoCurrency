@@ -67,6 +67,8 @@
     <string name="preference_complication_interval_24hour">24 hours</string>
     <string name="preference_complication_interval_last_timestamp_key" translatable="false">ComplicationIntervalLastTimestampKey</string>
     <string name="preference_complication_interval_last_timestamp_default_value" translatable="false">0</string>
+    <string name="preference_complication_interval_locked_key" translatable="false">ComplicationIntervalLockedKey</string>
+    <bool name="preference_complication_interval_locked_default_value" translatable="false">true</bool>
     <!-- Price List Sort -->
     <string name="preference_price_list_sort_key" translatable="false">PriceListSortKey</string>
     <bool name="preference_price_list_sort_info_default_value" translatable="false">true</bool>

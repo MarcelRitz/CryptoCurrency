@@ -16,6 +16,7 @@ import dev.cytronix.data.cryptowat.model.Price;
 
 public class Storage implements IStorage {
 
+    private static final String KEY_SEPARTOR = "_";
     private static final String PRICE_LIST_SORT_DELIMETER = ",";
     private static final String PRICE_LIST_SORT_DEFAULT_VALUE = "";
     private SharedPreferences preferences;
@@ -50,22 +51,55 @@ public class Storage implements IStorage {
     public Long getComplicationInverval() {
         String key = context.getString(R.string.preference_complication_interval_key);
         String defaultValue = context.getString(R.string.preference_complication_interval_default_value);
-        return preferences.getLong(key, Long.parseLong(defaultValue));
+        return Long.valueOf(preferences.getString(key, defaultValue));
     }
 
     @Override
-    public Long getComplicationInvervalLastTimestamp() {
-        String key = context.getString(R.string.preference_complication_interval_last_timestamp_key);
+    public Long getComplicationInvervalLastTimestamp(int complicationId) {
+        String key = getComplicationIntervalLastTimeStampKey(complicationId);
         String defaultValue = context.getString(R.string.preference_complication_interval_last_timestamp_default_value);
-        return preferences.getLong(key, Long.parseLong(defaultValue));
+        return preferences.getLong(key, Long.valueOf(defaultValue));
     }
 
     @SuppressLint("ApplySharedPref")
     @Override
-    public void setComplicationInvervalLastTimestamp(long timestamp) {
+    public void setComplicationInvervalLastTimestamp(int complicationId, long timestamp) {
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putLong(context.getString(R.string.preference_complication_interval_last_timestamp_key), timestamp);
+        editor.putLong(getComplicationIntervalLastTimeStampKey(complicationId), timestamp);
         editor.commit();
+    }
+
+    @SuppressLint("ApplySharedPref")
+    @Override
+    public void removeComplicationInvervalLastTimestamp(int... complicationIds) {
+        SharedPreferences.Editor editor = preferences.edit();
+        for(int complicationId:complicationIds) {
+            editor.remove(getComplicationIntervalLastTimeStampKey(complicationId));
+        }
+        editor.commit();
+    }
+
+    private String getComplicationIntervalLastTimeStampKey(int complicationId) {
+        return context.getString(R.string.preference_complication_interval_last_timestamp_key) + KEY_SEPARTOR + complicationId;
+    }
+
+    @Override
+    public boolean getComplicationIntervalLocked(int complicationId) {
+        String key = getComplicationIntervalLockedKey(complicationId);
+        boolean defaultValue = context.getResources().getBoolean(R.bool. preference_complication_interval_locked_default_value);
+        return preferences.getBoolean(key, defaultValue);
+    }
+
+    @SuppressLint("ApplySharedPref")
+    @Override
+    public void setComplicationIntervalLocked(int complicationId, boolean bool) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean(getComplicationIntervalLockedKey(complicationId), bool);
+        editor.commit();
+    }
+
+    private String getComplicationIntervalLockedKey(int complicationId) {
+        return context.getString(R.string.preference_complication_interval_locked_key) + KEY_SEPARTOR + complicationId;
     }
 
     @Override
