@@ -47,7 +47,7 @@ public class UpdateComplicationDataService extends IntentService {
         }
 
         IStorage storage = new Storage(this);
-        storage.setComplicationIntervalLocked(complicationId, false);
+        storage.setComplicationIntervalLocked(false, complicationId);
 
         ComponentName componentName = new ComponentName(getApplicationContext(), getProviderService(currency, intent.getBooleanExtra(EXTRA_WALLET, false)));
         ProviderUpdateRequester providerUpdateRequester = new ProviderUpdateRequester(getApplicationContext(), componentName);
