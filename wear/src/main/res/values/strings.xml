@@ -58,7 +58,7 @@
     <!-- Interval -->
     <string name="preference_complication_interval_title">Interval</string>
     <string name="preference_complication_interval_key" translatable="false">ComplicationIntervalKey</string>
-    <string name="preference_complication_interval_default_value" translatable="false">@string/preference_complication_interval_1hour</string>
+    <string name="preference_complication_interval_default_value" translatable="false">3600000</string>
     <string name="preference_complication_interval_1hour">1 hour</string>
     <string name="preference_complication_interval_2hour">2 hours</string>
     <string name="preference_complication_interval_3hour">3 hours</string>
