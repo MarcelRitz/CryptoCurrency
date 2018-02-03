@@ -21,7 +21,7 @@ public interface IStorage {
 
     boolean getComplicationIntervalLocked(int complicationId);
 
-    void setComplicationIntervalLocked(int complicationId, boolean bool);
+    void setComplicationIntervalLocked(boolean bool, int... complicationId);
 
     void removeComplicationIntervalLocked(int complicationId);
 

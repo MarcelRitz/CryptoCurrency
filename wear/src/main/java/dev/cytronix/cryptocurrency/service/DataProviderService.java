@@ -73,7 +73,7 @@ public class DataProviderService extends ComplicationProviderService {
         boolean locked = storage.getComplicationIntervalLocked(complicationId);
         if(!locked) {
             processUpdate(complicationId, dataType, complicationManager);
-            storage.setComplicationIntervalLocked(complicationId, true);
+            storage.setComplicationIntervalLocked(true, complicationId);
             return;
         }
 

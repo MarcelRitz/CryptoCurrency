@@ -88,9 +88,11 @@ public class Storage implements IStorage {
     }
 
     @Override
-    public void setComplicationIntervalLocked(int complicationId, boolean bool) {
+    public void setComplicationIntervalLocked(boolean bool, int... complicationIds) {
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putBoolean(getComplicationIntervalLockedKey(complicationId), bool);
+        for(int complicationId:complicationIds) {
+            editor.putBoolean(getComplicationIntervalLockedKey(complicationId), bool);
+        }
         editor.commit();
     }
 

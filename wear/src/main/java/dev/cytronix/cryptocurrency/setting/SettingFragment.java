@@ -11,6 +11,7 @@ import android.text.TextUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import dev.cytronix.cryptocurrency.R;
 import dev.cytronix.cryptocurrency.service.BchProviderService;
@@ -21,6 +22,8 @@ import dev.cytronix.cryptocurrency.service.EthProviderService;
 import dev.cytronix.cryptocurrency.service.EthQuantityProviderService;
 import dev.cytronix.cryptocurrency.service.LtcProviderService;
 import dev.cytronix.cryptocurrency.service.LtcQuantityProviderService;
+import dev.cytronix.cryptocurrency.storage.IStorage;
+import dev.cytronix.cryptocurrency.storage.Storage;
 
 public class SettingFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
 
@@ -58,17 +61,16 @@ public class SettingFragment extends PreferenceFragment implements SharedPrefere
         sharedPreferences.unregisterOnSharedPreferenceChangeListener(this);
     }
 
-    private void update(List<Class<?>> classes) {
+    private void updateComplication(List<Class<?>> classes) {
+        IStorage storage = new Storage(getContext());
+        storage.setComplicationIntervalLocked( false, IntStream.range(0, 100).toArray());
+
         for(Class<?> cls:classes) {
-            update(cls);
+            ComponentName componentName = new ComponentName(getContext(), cls);
+
+            ProviderUpdateRequester providerUpdateRequester = new ProviderUpdateRequester(getContext(), componentName);
+            providerUpdateRequester.requestUpdateAll();
         }
-    }
-
-    private void update(Class<?> cls) {
-        ComponentName componentName = new ComponentName(getContext(), cls);
-
-        ProviderUpdateRequester providerUpdateRequester = new ProviderUpdateRequester(getContext(), componentName);
-        providerUpdateRequester.requestUpdateAll();
     }
 
     @Override
@@ -77,8 +79,8 @@ public class SettingFragment extends PreferenceFragment implements SharedPrefere
             return;
         }
 
+        List<Class<?>> classes = new ArrayList<>();
         if(key.equals(getString(R.string.preference_currency_key)) || key.equals(getString(R.string.preference_data_provider_key)) || key.equals(getString(R.string.preference_complication_interval_key))) {
-            List<Class<?>> classes = new ArrayList<>();
             classes.add(BchProviderService.class);
             classes.add(BchQuantityProviderService.class);
             classes.add(BtcProviderService.class);
@@ -87,15 +89,18 @@ public class SettingFragment extends PreferenceFragment implements SharedPrefere
             classes.add(EthQuantityProviderService.class);
             classes.add(LtcProviderService.class);
             classes.add(LtcQuantityProviderService.class);
-            update(classes);
         } else if(key.equals(getString(R.string.preference_quantity_bch_key))) {
-            update(BchQuantityProviderService.class);
+            classes.add(BchQuantityProviderService.class);
         } else if(key.equals(getString(R.string.preference_quantity_btc_key))) {
-            update(BtcQuantityProviderService.class);
+            classes.add(BtcQuantityProviderService.class);
         } else if(key.equals(getString(R.string.preference_quantity_eth_key))) {
-            update(EthQuantityProviderService.class);
+            classes.add(EthQuantityProviderService.class);
         } else if(key.equals(getString(R.string.preference_quantity_ltc_key))) {
-            update(LtcQuantityProviderService.class);
+            classes.add(LtcQuantityProviderService.class);
+        }
+
+        if(classes.size() > 0) {
+            updateComplication(classes);
         }
     }
 }
