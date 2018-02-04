@@ -17340,6 +17340,17 @@ dev.cytronix.cryptocurrency.pricelist.PriceListFragment$Status -> dev.cytronix.c
     49:49:dev.cytronix.cryptocurrency.pricelist.PriceListFragment$Status valueOf(java.lang.String) -> valueOf
     49:49:void <init>(java.lang.String,int) -> <init>
     49:49:void <clinit>() -> <clinit>
+dev.cytronix.cryptocurrency.service.AccountBalanceProviderService -> dev.cytronix.cryptocurrency.service.AccountBalanceProviderService:
+    21:22:void <init>() -> <init>
+    26:51:void processUpdate(int,int,android.support.wearable.complications.ComplicationManager) -> c
+dev.cytronix.cryptocurrency.service.AccountBalanceProviderService$1 -> dev.cytronix.cryptocurrency.service.AccountBalanceProviderService$1:
+    int val$complicationId -> a
+    int val$dataType -> b
+    android.support.wearable.complications.ComplicationManager val$complicationManager -> c
+    dev.cytronix.cryptocurrency.service.AccountBalanceProviderService this$0 -> d
+    28:28:void <init>(dev.cytronix.cryptocurrency.service.AccountBalanceProviderService,int,int,android.support.wearable.complications.ComplicationManager) -> <init>
+    31:43:void onUpdate(java.util.List) -> b
+    47:48:void onError(java.lang.String) -> a
 dev.cytronix.cryptocurrency.service.BchProviderService -> dev.cytronix.cryptocurrency.service.BchProviderService:
     8:9:void <init>() -> <init>
 dev.cytronix.cryptocurrency.service.BchQuantityProviderService -> dev.cytronix.cryptocurrency.service.BchQuantityProviderService:
@@ -17350,28 +17361,38 @@ dev.cytronix.cryptocurrency.service.BtcQuantityProviderService -> dev.cytronix.c
     8:9:void <init>() -> <init>
 dev.cytronix.cryptocurrency.service.DataProviderService -> dev.cytronix.cryptocurrency.service.a:
     java.lang.String toCurrency -> a
-    boolean wallet -> b
+    dev.cytronix.cryptocurrency.service.DataProviderService$ComplicationType complicationType -> b
     dev.cytronix.cryptocurrency.storage.IStorage storage -> c
-    40:44:void <init>(java.lang.String,boolean) -> <init>
-    48:49:android.os.IBinder onBind(android.content.Intent) -> onBind
-    53:53:dev.cytronix.data.cryptowat.model.DataProvider getProvider() -> a
-    57:57:java.lang.String getCurrency() -> b
-    62:69:void onComplicationActivated(int,int,android.support.wearable.complications.ComplicationManager) -> a
-    73:87:void onComplicationUpdate(int,int,android.support.wearable.complications.ComplicationManager) -> b
-    90:121:void processUpdate(int,int,android.support.wearable.complications.ComplicationManager) -> c
-    124:125:void update(java.lang.String,int,int,android.support.wearable.complications.ComplicationManager) -> a
-    129:154:void update(java.lang.String,java.lang.String,int,int,android.support.wearable.complications.ComplicationManager) -> a
-    158:162:void onComplicationDeactivated(int) -> a
-    32:32:boolean access$000(dev.cytronix.cryptocurrency.service.DataProviderService) -> a
-    32:32:dev.cytronix.cryptocurrency.storage.IStorage access$100(dev.cytronix.cryptocurrency.service.DataProviderService) -> b
+    41:45:void <init>(java.lang.String,dev.cytronix.cryptocurrency.service.DataProviderService$ComplicationType) -> <init>
+    49:50:android.os.IBinder onBind(android.content.Intent) -> onBind
+    54:54:dev.cytronix.data.cryptowat.model.DataProvider getProvider() -> a
+    58:58:java.lang.String getCurrency() -> b
+    63:70:void onComplicationActivated(int,int,android.support.wearable.complications.ComplicationManager) -> a
+    74:88:void onComplicationUpdate(int,int,android.support.wearable.complications.ComplicationManager) -> b
+    91:126:void processUpdate(int,int,android.support.wearable.complications.ComplicationManager) -> c
+    129:130:void update(java.lang.String,int,int,android.support.wearable.complications.ComplicationManager) -> a
+    134:159:void update(java.lang.String,java.lang.String,int,int,android.support.wearable.complications.ComplicationManager) -> a
+    163:167:void onComplicationDeactivated(int) -> a
 dev.cytronix.cryptocurrency.service.DataProviderService$1 -> dev.cytronix.cryptocurrency.service.a$1:
     int val$complicationId -> a
     int val$dataType -> b
     android.support.wearable.complications.ComplicationManager val$complicationManager -> c
     dev.cytronix.cryptocurrency.service.DataProviderService this$0 -> d
-    92:92:void <init>(dev.cytronix.cryptocurrency.service.DataProviderService,int,int,android.support.wearable.complications.ComplicationManager) -> <init>
-    95:113:void onUpdate(java.util.List) -> a
-    117:118:void onError(java.lang.String) -> a
+    93:93:void <init>(dev.cytronix.cryptocurrency.service.DataProviderService,int,int,android.support.wearable.complications.ComplicationManager) -> <init>
+    96:118:void onUpdate(java.util.List) -> a
+    122:123:void onError(java.lang.String) -> a
+dev.cytronix.cryptocurrency.service.DataProviderService$2 -> dev.cytronix.cryptocurrency.service.a$2:
+    int[] $SwitchMap$dev$cytronix$cryptocurrency$service$DataProviderService$ComplicationType -> a
+    100:100:void <clinit>() -> <clinit>
+dev.cytronix.cryptocurrency.service.DataProviderService$ComplicationType -> dev.cytronix.cryptocurrency.service.a$a:
+    dev.cytronix.cryptocurrency.service.DataProviderService$ComplicationType PRICE -> a
+    dev.cytronix.cryptocurrency.service.DataProviderService$ComplicationType WALLET -> b
+    dev.cytronix.cryptocurrency.service.DataProviderService$ComplicationType ACCOUNT_BALANCE -> c
+    dev.cytronix.cryptocurrency.service.DataProviderService$ComplicationType[] $VALUES -> d
+    34:34:dev.cytronix.cryptocurrency.service.DataProviderService$ComplicationType[] values() -> values
+    34:34:dev.cytronix.cryptocurrency.service.DataProviderService$ComplicationType valueOf(java.lang.String) -> valueOf
+    34:34:void <init>(java.lang.String,int) -> <init>
+    34:34:void <clinit>() -> <clinit>
 dev.cytronix.cryptocurrency.service.EthProviderService -> dev.cytronix.cryptocurrency.service.EthProviderService:
     8:9:void <init>() -> <init>
 dev.cytronix.cryptocurrency.service.EthQuantityProviderService -> dev.cytronix.cryptocurrency.service.EthQuantityProviderService:
@@ -17384,19 +17405,22 @@ dev.cytronix.cryptocurrency.service.UpdateComplicationDataService -> dev.cytroni
     22:23:void <init>() -> <init>
     27:36:void onHandleIntent(android.content.Intent) -> onHandleIntent
     39:55:void updateComplication(android.content.Intent) -> a
-    58:67:java.lang.Class getProviderService(java.lang.String,boolean) -> a
+    58:92:java.lang.Class getProviderService(java.lang.String,dev.cytronix.cryptocurrency.service.DataProviderService$ComplicationType) -> a
+dev.cytronix.cryptocurrency.service.UpdateComplicationDataService$1 -> dev.cytronix.cryptocurrency.service.UpdateComplicationDataService$1:
+    int[] $SwitchMap$dev$cytronix$cryptocurrency$service$DataProviderService$ComplicationType -> a
+    62:62:void <clinit>() -> <clinit>
 dev.cytronix.cryptocurrency.setting.SettingActivity -> dev.cytronix.cryptocurrency.setting.SettingActivity:
     7:7:void <init>() -> <init>
     11:14:void onCreate(android.os.Bundle) -> onCreate
 dev.cytronix.cryptocurrency.setting.SettingFragment -> dev.cytronix.cryptocurrency.setting.a:
     android.content.SharedPreferences sharedPreferences -> a
-    28:28:void <init>() -> <init>
-    34:38:dev.cytronix.cryptocurrency.setting.SettingFragment newInstance() -> a
-    43:48:void onCreate(android.os.Bundle) -> onCreate
-    52:55:void onResume() -> onResume
-    59:62:void onPause() -> onPause
-    65:74:void updateComplication(java.util.List) -> a
-    78:105:void onSharedPreferenceChanged(android.content.SharedPreferences,java.lang.String) -> onSharedPreferenceChanged
+    29:29:void <init>() -> <init>
+    35:39:dev.cytronix.cryptocurrency.setting.SettingFragment newInstance() -> a
+    44:49:void onCreate(android.os.Bundle) -> onCreate
+    53:56:void onResume() -> onResume
+    60:63:void onPause() -> onPause
+    66:75:void updateComplication(java.util.List) -> a
+    79:106:void onSharedPreferenceChanged(android.content.SharedPreferences,java.lang.String) -> onSharedPreferenceChanged
 dev.cytronix.cryptocurrency.storage.IStorage -> dev.cytronix.cryptocurrency.e.a:
     dev.cytronix.data.cryptowat.model.DataProvider getDataProvider() -> a
     java.lang.String getCurrency() -> b
