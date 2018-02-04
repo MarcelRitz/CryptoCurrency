@@ -5,6 +5,6 @@ import dev.cytronix.data.Currency;
 public class EthQuantityProviderService extends DataProviderService {
 
     public EthQuantityProviderService() {
-        super(Currency.ETH, true);
+        super(Currency.ETH, ComplicationType.WALLET);
     }
 }

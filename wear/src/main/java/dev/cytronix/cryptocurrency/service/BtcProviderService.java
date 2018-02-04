@@ -5,6 +5,6 @@ import dev.cytronix.data.Currency;
 public class BtcProviderService extends DataProviderService {
 
     public BtcProviderService() {
-        super(Currency.BTC, false);
+        super(Currency.BTC, ComplicationType.PRICE);
     }
 }
