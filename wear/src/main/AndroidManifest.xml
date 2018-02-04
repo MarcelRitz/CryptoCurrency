@@ -170,6 +170,24 @@
                 android:value="3600" />
         </service>
 
+        <!-- Account Balance -->
+        <service
+            android:name=".service.AccountBalanceProviderService"
+            android:icon="@drawable/ic_account_balance"
+            android:label="@string/complication_account_balance"
+            android:permission="com.google.android.wearable.permission.BIND_COMPLICATION_PROVIDER">
+            <intent-filter>
+                <action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.wearable.complications.SUPPORTED_TYPES"
+                android:value="SHORT_TEXT,LONG_TEXT" />
+            <meta-data
+                android:name="android.support.wearable.complications.UPDATE_PERIOD_SECONDS"
+                android:value="3600" />
+        </service>
+
         <!-- Fabric -->
         <meta-data
             android:name="io.fabric.ApiKey"

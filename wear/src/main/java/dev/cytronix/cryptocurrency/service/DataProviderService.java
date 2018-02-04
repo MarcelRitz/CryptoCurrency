@@ -31,16 +31,17 @@ import dev.cytronix.data.view.PriceView;
 @SuppressLint("Registered")
 public class DataProviderService extends ComplicationProviderService {
 
+    public enum ComplicationType {PRICE, WALLET, ACCOUNT_BALANCE}
     private static final long TIMESTAMP_OFFSET = 10000L;
-    private String toCurrency;
-    private boolean wallet;
-    private IStorage storage;
+    protected String toCurrency;
+    protected ComplicationType complicationType;
+    protected IStorage storage;
 
-    public DataProviderService(String toCurrency, boolean wallet) {
+    public DataProviderService(String toCurrency, ComplicationType complicationType) {
         super();
 
         this.toCurrency = toCurrency;
-        this.wallet = wallet;
+        this.complicationType = complicationType;
     }
 
     @Override
@@ -49,11 +50,11 @@ public class DataProviderService extends ComplicationProviderService {
         return super.onBind(intent);
     }
 
-    private DataProvider getProvider() {
+    protected DataProvider getProvider() {
         return storage.getDataProvider();
     }
 
-    private String getCurrency() {
+    protected String getCurrency() {
         return storage.getCurrency();
     }
 
@@ -86,7 +87,7 @@ public class DataProviderService extends ComplicationProviderService {
         }
     }
 
-    private void processUpdate(int complicationId, int dataType, ComplicationManager complicationManager) {
+    protected void processUpdate(int complicationId, int dataType, ComplicationManager complicationManager) {
         update(getString(R.string.all_loading), complicationId, dataType, complicationManager);
 
         IPricePresenter presenter = new PricePresenter(getProvider(), getCurrency(), new PriceView() {
@@ -96,13 +97,17 @@ public class DataProviderService extends ComplicationProviderService {
 
                 double value;
                 String title;
-                if (wallet) {
-                    storage.updatePriceQuantity(price);
-                    value = price.getValue();
-                    title = getString(R.string.complication_wallet) + " " + price.getTargetCurrency();
-                } else {
-                    value = price.getPrice();
-                    title = price.getTargetCurrency();
+                switch (complicationType) {
+                    case WALLET:
+                        storage.updatePriceQuantity(price);
+                        value = price.getValue();
+                        title = getString(R.string.complication_wallet) + " " + price.getTargetCurrency();
+                        break;
+                    case PRICE:
+                    default:
+                        value = price.getPrice();
+                        title = price.getTargetCurrency();
+                        break;
                 }
 
                 String shortText = String.format(Locale.getDefault(), getString(R.string.complication_text), CurrencyUtils.getCurrencySymbol(price.getBaseCurrency()), value);
@@ -120,11 +125,11 @@ public class DataProviderService extends ComplicationProviderService {
         presenter.getData(toCurrency);
     }
 
-    public void update(String text, int complicationId, int dataType, ComplicationManager complicationManager) {
+    protected void update(String text, int complicationId, int dataType, ComplicationManager complicationManager) {
         update("", text, complicationId, dataType, complicationManager);
     }
 
-    public void update(String title, String text, int complicationId, int dataType, ComplicationManager complicationManager) {
+    protected void update(String title, String text, int complicationId, int dataType, ComplicationManager complicationManager) {
         ComplicationData.Builder builder;
         switch(dataType) {
             case ComplicationData.TYPE_SHORT_TEXT:
@@ -145,7 +150,7 @@ public class DataProviderService extends ComplicationProviderService {
         updateIntent.setAction(UpdateComplicationDataService.ACTION_UPDATE_COMPLICATION);
         updateIntent.putExtra(UpdateComplicationDataService.EXTRA_COMPLICATION_ID, complicationId);
         updateIntent.putExtra(UpdateComplicationDataService.EXTRA_CURRENCY, toCurrency);
-        updateIntent.putExtra(UpdateComplicationDataService.EXTRA_WALLET, wallet);
+        updateIntent.putExtra(UpdateComplicationDataService.EXTRA_COMPLICATION_TYPE, complicationType);
 
         PendingIntent pendingIntent = PendingIntent.getService(getApplicationContext(), complicationId, updateIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setTapAction(pendingIntent);

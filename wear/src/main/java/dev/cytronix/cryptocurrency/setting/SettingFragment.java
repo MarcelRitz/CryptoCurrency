@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 import dev.cytronix.cryptocurrency.R;
+import dev.cytronix.cryptocurrency.service.AccountBalanceProviderService;
 import dev.cytronix.cryptocurrency.service.BchProviderService;
 import dev.cytronix.cryptocurrency.service.BchQuantityProviderService;
 import dev.cytronix.cryptocurrency.service.BtcProviderService;
@@ -80,6 +81,8 @@ public class SettingFragment extends PreferenceFragment implements SharedPrefere
         }
 
         List<Class<?>> classes = new ArrayList<>();
+        classes.add(AccountBalanceProviderService.class);
+
         if(key.equals(getString(R.string.preference_currency_key)) || key.equals(getString(R.string.preference_data_provider_key)) || key.equals(getString(R.string.preference_complication_interval_key))) {
             classes.add(BchProviderService.class);
             classes.add(BchQuantityProviderService.class);
@@ -99,8 +102,6 @@ public class SettingFragment extends PreferenceFragment implements SharedPrefere
             classes.add(LtcQuantityProviderService.class);
         }
 
-        if(classes.size() > 0) {
-            updateComplication(classes);
-        }
+        updateComplication(classes);
     }
 }

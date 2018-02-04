@@ -15,6 +15,8 @@
     <string name="complication_quantity_btc" translatable="false">My Bitcoin</string>
     <string name="complication_quantity_eth" translatable="false">My Ethereum</string>
     <string name="complication_quantity_ltc" translatable="false">My Litecoin</string>
+    <string name="complication_account_balance" translatable="false">My Account Balance</string>
+    <string name="complication_my_total" translatable="false">My Total</string>
     <!-- Price List -->
     <string name="price_list_sort_info">Drag and drop to reorder (Long press)</string>
 
