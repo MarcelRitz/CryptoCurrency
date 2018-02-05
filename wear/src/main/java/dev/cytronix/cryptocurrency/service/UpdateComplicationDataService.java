@@ -49,7 +49,10 @@ public class UpdateComplicationDataService extends IntentService {
         IStorage storage = new Storage(this);
         storage.setComplicationIntervalLocked(false, complicationId);
 
-        ComponentName componentName = new ComponentName(getApplicationContext(), getProviderService(currency, (DataProviderService.ComplicationType) intent.getSerializableExtra(EXTRA_COMPLICATION_TYPE)));
+        DataProviderService.ComplicationType complicationType = (DataProviderService.ComplicationType) intent.getSerializableExtra(EXTRA_COMPLICATION_TYPE);
+        complicationType = (complicationType == null) ? DataProviderService.ComplicationType.PRICE : complicationType;
+
+        ComponentName componentName = new ComponentName(getApplicationContext(), getProviderService(currency, complicationType));
         ProviderUpdateRequester providerUpdateRequester = new ProviderUpdateRequester(getApplicationContext(), componentName);
         providerUpdateRequester.requestUpdate(complicationId);
     }
