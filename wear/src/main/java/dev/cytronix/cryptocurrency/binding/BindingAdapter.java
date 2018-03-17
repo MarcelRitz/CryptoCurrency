@@ -14,7 +14,7 @@ public class BindingAdapter {
     }
 
     @SuppressLint("SetTextI18n")
-    @android.databinding.BindingAdapter({"app:price", "app:currency"})
+    @android.databinding.BindingAdapter({"android:price", "android:currency"})
     public static void setPrice(TextView textView, double price, String currency) {
         textView.setText(PriceUtils.format(price) + currency);
     }
