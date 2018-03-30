@@ -1,6 +1,7 @@
 package dev.cytronix.cryptocurrency.adapter;
 
 import android.databinding.DataBindingUtil;
+import android.support.annotation.NonNull;
 import android.support.wear.widget.WearableRecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -19,14 +20,15 @@ public class CurrencyAdapter extends WearableRecyclerView.Adapter<CurrencyAdapte
         this.prices = prices;
     }
 
+    @NonNull
     @Override
-    public CurrencyAdapter.CurrencyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CurrencyAdapter.CurrencyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ItemCurrencyBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.item_currency, parent, false);
         return new CurrencyAdapter.CurrencyViewHolder(binding);
     }
 
     @Override
-    public void onBindViewHolder(CurrencyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CurrencyViewHolder holder, int position) {
         Price price = prices.get(position);
         holder.bind(price);
     }

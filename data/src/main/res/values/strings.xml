@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Data provider -->
     <string name="data_provider_gdax_entry" translatable="false">GDAX (Coinbase)</string>
     <string name="data_provider_gdax_value" translatable="false">GDAX</string>
@@ -8,20 +8,20 @@
     <string name="data_provider_kraken_value" translatable="false">Kraken</string>
 
     <!-- Currency -->
-    <string name="currency_bch" translatable="false">BCH</string>
-    <string name="currency_btc" translatable="false">BTC</string>
-    <string name="currency_eth" translatable="false">ETH</string>
+    <string name="currency_bch" translatable="false" tools:keep="@string/currency_bch">BCH</string>
+    <string name="currency_btc" translatable="false" tools:keep="@string/currency_btc">BTC</string>
+    <string name="currency_eth" translatable="false" tools:keep="@string/currency_eth">ETH</string>
     <string name="currency_eur" translatable="false">EUR</string>
-    <string name="currency_ltc" translatable="false">LTC</string>
+    <string name="currency_ltc" translatable="false" tools:keep="@string/currency_ltc">LTC</string>
     <string name="currency_usd" translatable="false">USD</string>
 
     <!--Currency symbol-->
-    <string name="currency_symbol_eur" translatable="false">€</string>
-    <string name="currency_symbol_usd" translatable="false">$</string>
+    <string name="currency_symbol_eur" translatable="false" tools:keep="@string/currency_symbol_eur">€</string>
+    <string name="currency_symbol_usd" translatable="false" tools:keep="@string/currency_symbol_usd">$</string>
 
     <!-- Currency text -->
-    <string name="currency_text_bch" translatable="false">Bitcoin Cash</string>
-    <string name="currency_text_btc" translatable="false">Bitcoin</string>
-    <string name="currency_text_etc" translatable="false">Ethereum</string>
-    <string name="currency_text_ltc" translatable="false">Litecoin</string>
+    <string name="currency_text_bch" translatable="false" tools:keep="@string/currency_text_bch">Bitcoin Cash</string>
+    <string name="currency_text_btc" translatable="false" tools:keep="@string/currency_text_btc">Bitcoin</string>
+    <string name="currency_text_etc" translatable="false" tools:keep="@string/currency_text_etc">Ethereum</string>
+    <string name="currency_text_ltc" translatable="false" tools:keep="@string/currency_text_ltc">Litecoin</string>
 </resources>
