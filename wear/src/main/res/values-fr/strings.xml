@@ -33,4 +33,5 @@
     <string name="preference_complication_interval_12hour">12 heures</string>
     <string name="preference_complication_interval_24hour">24 heures</string>
     <string name="preference_complication_currency_title_title">"Titre d'affichage"</string>
+    <string name="preference_complication_currency_cent_title">Afficher les cents</string>
 </resources>

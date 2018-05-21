@@ -35,7 +35,8 @@ public class AccountBalanceProviderService extends DataProviderService {
                     value += price.getValue();
                 }
 
-                String shortText = String.format(Locale.getDefault(), getString(R.string.complication_text), CurrencyUtils.getCurrencySymbol(prices.get(0).getBaseCurrency()), value);
+                String format = getString((storage.isComplicationCurrencyCent()) ? R.string.complication_text_cent : R.string.complication_text);
+                String shortText = String.format(Locale.getDefault(), format, CurrencyUtils.getCurrencySymbol(prices.get(0).getBaseCurrency()), value);
 
                 update(getString(R.string.complication_my_total), shortText, complicationId, dataType, complicationManager);
 

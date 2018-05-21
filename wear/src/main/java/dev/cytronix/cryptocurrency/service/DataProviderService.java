@@ -110,7 +110,8 @@ public class DataProviderService extends ComplicationProviderService {
                         break;
                 }
 
-                String shortText = String.format(Locale.getDefault(), getString(R.string.complication_text), CurrencyUtils.getCurrencySymbol(price.getBaseCurrency()), value);
+                String format = getString((storage.isComplicationCurrencyCent()) ? R.string.complication_text_cent : R.string.complication_text);
+                String shortText = String.format(Locale.getDefault(), format, CurrencyUtils.getCurrencySymbol(price.getBaseCurrency()), value);
 
                 update(title, shortText, complicationId, dataType, complicationManager);
 

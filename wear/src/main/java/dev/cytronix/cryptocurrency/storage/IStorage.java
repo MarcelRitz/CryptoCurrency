@@ -27,6 +27,8 @@ public interface IStorage {
 
     boolean isComplicationCurrencyTitle();
 
+    boolean isComplicationCurrencyCent();
+
     boolean showPriceListSortInfo();
 
     @SuppressWarnings("SameParameterValue")
