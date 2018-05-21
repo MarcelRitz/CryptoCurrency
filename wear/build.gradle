@@ -20,8 +20,8 @@ android {
     defaultConfig {
         minSdkVersion 25
         targetSdkVersion 27
-        versionCode 22
-        versionName "2.3.0"
+        versionCode 23
+        versionName "2.3.1"
         resConfigs "en", "de", "es", "fr", "ru", "ja"
     }
     buildTypes {
