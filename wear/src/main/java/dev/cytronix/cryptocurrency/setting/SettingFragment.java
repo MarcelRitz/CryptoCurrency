@@ -68,7 +68,6 @@ public class SettingFragment extends PreferenceFragment implements SharedPrefere
 
         for(Class<?> cls:classes) {
             ComponentName componentName = new ComponentName(getContext(), cls);
-
             ProviderUpdateRequester providerUpdateRequester = new ProviderUpdateRequester(getContext(), componentName);
             providerUpdateRequester.requestUpdateAll();
         }
@@ -80,10 +79,24 @@ public class SettingFragment extends PreferenceFragment implements SharedPrefere
             return;
         }
 
+        List<String> keys = new ArrayList<>();
+        keys.add(getString(R.string.preference_currency_key));
+        keys.add(getString(R.string.preference_data_provider_key));
+        keys.add(getString(R.string.preference_complication_interval_key));
+        keys.add(getString(R.string.preference_complication_currency_title_key));
+        keys.add(getString(R.string.preference_complication_currency_cent_key));
+        keys.add(getString(R.string.preference_quantity_bch_key));
+        keys.add(getString(R.string.preference_quantity_btc_key));
+        keys.add(getString(R.string.preference_quantity_eth_key));
+        keys.add(getString(R.string.preference_quantity_ltc_key));
+        if(!keys.contains(key)) {
+            return;
+        }
+
         List<Class<?>> classes = new ArrayList<>();
         classes.add(AccountBalanceProviderService.class);
 
-        if(key.equals(getString(R.string.preference_currency_key)) || key.equals(getString(R.string.preference_data_provider_key)) || key.equals(getString(R.string.preference_complication_interval_key))) {
+        if(key.equals(getString(R.string.preference_currency_key)) || key.equals(getString(R.string.preference_data_provider_key)) || key.equals(getString(R.string.preference_complication_interval_key)) || key.equals(getString(R.string.preference_complication_currency_title_key)) || key.equals(getString(R.string.preference_complication_currency_cent_key))) {
             classes.add(BchProviderService.class);
             classes.add(BchQuantityProviderService.class);
             classes.add(BtcProviderService.class);
