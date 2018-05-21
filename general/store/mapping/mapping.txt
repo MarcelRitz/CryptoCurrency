@@ -18622,8 +18622,8 @@ dev.cytronix.cryptocurrency.setting.SettingFragment -> dev.cytronix.cryptocurren
     44:49:void onCreate(android.os.Bundle) -> onCreate
     53:56:void onResume() -> onResume
     60:63:void onPause() -> onPause
-    66:75:void updateComplication(java.util.List) -> a
-    79:106:void onSharedPreferenceChanged(android.content.SharedPreferences,java.lang.String) -> onSharedPreferenceChanged
+    66:74:void updateComplication(java.util.List) -> a
+    78:119:void onSharedPreferenceChanged(android.content.SharedPreferences,java.lang.String) -> onSharedPreferenceChanged
 dev.cytronix.cryptocurrency.storage.IStorage -> dev.cytronix.cryptocurrency.e.a:
     dev.cytronix.data.cryptowat.model.DataProvider getDataProvider() -> a
     java.lang.String getCurrency() -> b
