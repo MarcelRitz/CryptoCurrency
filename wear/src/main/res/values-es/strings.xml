@@ -32,4 +32,5 @@
     <string name="preference_complication_interval_6hour">6 horas</string>
     <string name="preference_complication_interval_12hour">12 horas</string>
     <string name="preference_complication_interval_24hour">24 horas</string>
+    <string name="preference_complication_currency_title_title">Mostrar título</string>
 </resources>

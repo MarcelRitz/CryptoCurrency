@@ -134,13 +134,19 @@ public class DataProviderService extends ComplicationProviderService {
         switch(dataType) {
             case ComplicationData.TYPE_SHORT_TEXT:
                 builder = new ComplicationData.Builder(ComplicationData.TYPE_SHORT_TEXT)
-                        .setShortTitle(ComplicationText.plainText(title))
                         .setShortText(ComplicationText.plainText(text));
+
+                if(storage.isComplicationCurrencyTitle()) {
+                        builder.setShortTitle(ComplicationText.plainText(title));
+                }
                 break;
             case ComplicationData.TYPE_LONG_TEXT:
                 builder = new ComplicationData.Builder(ComplicationData.TYPE_LONG_TEXT)
-                        .setLongTitle(ComplicationText.plainText(title))
                         .setLongText(ComplicationText.plainText(text));
+
+                if(storage.isComplicationCurrencyTitle()) {
+                        builder.setLongTitle(ComplicationText.plainText(title));
+                }
                 break;
             default:
                 return;

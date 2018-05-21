@@ -64,13 +64,13 @@ dependencies {
     }
 
     // Support
-    implementation 'com.android.support:wear:27.1.0'
-    implementation 'com.android.support:cardview-v7:27.1.0'
+    implementation 'com.android.support:wear:27.1.1'
+    implementation 'com.android.support:cardview-v7:27.1.1'
     implementation ('com.google.android.support:wearable:2.3.0') {
         exclude group: 'com.android.support', module: 'percent'
     }
-    implementation 'com.android.support:percent:27.1.0'
-    implementation 'com.android.support:support-v4:27.1.0'
+    implementation 'com.android.support:percent:27.1.1'
+    implementation 'com.android.support:support-v4:27.1.1'
 
     // Google Play Services
     implementation ('com.google.android.gms:play-services-wearable:11.8.0') {

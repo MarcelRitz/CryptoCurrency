@@ -71,6 +71,10 @@
     <string name="preference_complication_interval_last_timestamp_default_value" translatable="false">0</string>
     <string name="preference_complication_interval_locked_key" translatable="false">ComplicationIntervalLockedKey</string>
     <bool name="preference_complication_interval_locked_default_value" translatable="false">true</bool>
+    <!-- Currency Title -->
+    <string name="preference_complication_currency_title_title">Display title</string>
+    <string name="preference_complication_currency_title_key" translatable="false">ComplicationCurrencyTitleKey</string>
+    <bool name="preference_complication_currency_title_default_value" translatable="false">true</bool>
     <!-- Price List Sort -->
     <string name="preference_price_list_sort_key" translatable="false">PriceListSortKey</string>
     <bool name="preference_price_list_sort_info_default_value" translatable="false">true</bool>

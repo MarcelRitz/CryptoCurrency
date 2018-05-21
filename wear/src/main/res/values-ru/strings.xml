@@ -32,4 +32,5 @@
     <string name="preference_complication_interval_6hour">6 часов</string>
     <string name="preference_complication_interval_12hour">12 часов</string>
     <string name="preference_complication_interval_24hour">24 часов</string>
+    <string name="preference_complication_currency_title_title">Показать название</string>
 </resources>
