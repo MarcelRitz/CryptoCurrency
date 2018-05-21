@@ -32,4 +32,6 @@
     <string name="preference_complication_interval_6hour">6 時間</string>
     <string name="preference_complication_interval_12hour">12 時間</string>
     <string name="preference_complication_interval_24hour">24 時間</string>
+    <string name="preference_complication_currency_title_title">タイトルを表示</string>
+    <string name="preference_complication_currency_cent_title">表示セント</string>
 </resources>

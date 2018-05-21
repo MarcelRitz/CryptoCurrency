@@ -57,5 +57,13 @@
             android:icon="@drawable/ic_preference_interval"
             android:key="@string/preference_complication_interval_key"
             android:title="@string/preference_complication_interval_title" />
+        <CheckBoxPreference
+            android:defaultValue="@bool/preference_complication_currency_title_default_value"
+            android:key="@string/preference_complication_currency_title_key"
+            android:title="@string/preference_complication_currency_title_title" />
+        <CheckBoxPreference
+            android:defaultValue="@bool/preference_complication_currency_cent_default_value"
+            android:key="@string/preference_complication_currency_cent_key"
+            android:title="@string/preference_complication_currency_cent_title" />
     </PreferenceCategory>
 </PreferenceScreen>

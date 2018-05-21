@@ -5,7 +5,8 @@
     <string name="all_loading">loading..</string>
 
     <!-- Complication -->
-    <string name="complication_text" translatable="false">%1$s%2$.2f</string>
+    <string name="complication_text" translatable="false">%1$s%2$.0f</string>
+    <string name="complication_text_cent" translatable="false">%1$s%2$.2f</string>
     <string name="complication_wallet" translatable="false">My</string>
     <string name="complication_price_bch" translatable="false">Price Bitcoin Cash</string>
     <string name="complication_price_btc" translatable="false">Price Bitcoin</string>
@@ -71,6 +72,14 @@
     <string name="preference_complication_interval_last_timestamp_default_value" translatable="false">0</string>
     <string name="preference_complication_interval_locked_key" translatable="false">ComplicationIntervalLockedKey</string>
     <bool name="preference_complication_interval_locked_default_value" translatable="false">true</bool>
+    <!-- Currency Title -->
+    <string name="preference_complication_currency_title_title">Display title</string>
+    <string name="preference_complication_currency_title_key" translatable="false">ComplicationCurrencyTitleKey</string>
+    <bool name="preference_complication_currency_title_default_value" translatable="false">true</bool>
+    <!-- Currency Cent -->
+    <string name="preference_complication_currency_cent_title">Display cents</string>
+    <string name="preference_complication_currency_cent_key" translatable="false">ComplicationCurrencyCentKey</string>
+    <bool name="preference_complication_currency_cent_default_value" translatable="false">true</bool>
     <!-- Price List Sort -->
     <string name="preference_price_list_sort_key" translatable="false">PriceListSortKey</string>
     <bool name="preference_price_list_sort_info_default_value" translatable="false">true</bool>
