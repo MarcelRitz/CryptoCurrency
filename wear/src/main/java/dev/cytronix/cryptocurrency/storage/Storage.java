@@ -103,6 +103,20 @@ public class Storage implements IStorage {
         editor.commit();
     }
 
+    @Override
+    public boolean isComplicationCurrencyTitle() {
+        String key = context.getString(R.string.preference_complication_currency_title_key);
+        boolean defaultValue = context.getResources().getBoolean(R.bool. preference_complication_currency_title_default_value);
+        return preferences.getBoolean(key, defaultValue);
+    }
+
+    @Override
+    public boolean isComplicationCurrencyCent() {
+        String key = context.getString(R.string.preference_complication_currency_cent_key);
+        boolean defaultValue = context.getResources().getBoolean(R.bool. preference_complication_currency_cent_default_value);
+        return preferences.getBoolean(key, defaultValue);
+    }
+
     private String getComplicationIntervalLockedKey(int complicationId) {
         return context.getString(R.string.preference_complication_interval_locked_key) + KEY_SEPARTOR + complicationId;
     }

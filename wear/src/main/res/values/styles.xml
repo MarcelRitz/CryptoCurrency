@@ -1,6 +1,6 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Text -->
-    <style name="Text.Small" parent="@style/TextAppearance.Wearable.Small">
+    <style name="Text.Small" parent="@style/TextAppearance.Wearable.Small" tools:keep="@style/Text_Small">
         <item name="android:textColor">@color/text_default</item>
     </style>
     <style name="Text.Medium" parent="@style/TextAppearance.Wearable.Medium">

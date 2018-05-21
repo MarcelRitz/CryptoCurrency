@@ -52,9 +52,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:layout_weight="1"
+                    android:currency="@{CurrencyUtils.getCurrencySymbol(price.baseCurrency)}"
                     android:gravity="end"
-                    app:currency="@{CurrencyUtils.getCurrencySymbol(price.baseCurrency)}"
-                    app:price="@{Price.PRICE_DEFAULT == price.price ? `-` : price.price}"
+                    android:price="@{Price.PRICE_DEFAULT == price.price ? `-` : price.price}"
                     tools:text="3.00$" />
             </LinearLayout>
 
@@ -86,9 +86,9 @@
                     style="@style/Text.Medium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:currency="@{CurrencyUtils.getCurrencySymbol(price.baseCurrency)}"
                     android:gravity="end"
-                    app:currency="@{CurrencyUtils.getCurrencySymbol(price.baseCurrency)}"
-                    app:price="@{price.value}"
+                    android:price="@{price.value}"
                     tools:text="3000.00$" />
             </LinearLayout>
         </RelativeLayout>

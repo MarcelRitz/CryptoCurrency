@@ -27,6 +27,12 @@
 #General
 -dontwarn javax.annotation.**
 
+#Kotlin
+-dontwarn kotlin.**
+-dontwarn org.jetbrains.**
+-keep class org.jetbrains.kotlin.** { *; }
+-keep class org.jetbrains.annotations.** { *; }
+
 #Retrofit
 -dontnote retrofit2.Platform
 -dontwarn retrofit2.Platform$Java8
