@@ -8,7 +8,6 @@ import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.wearable.complications.ProviderUpdateRequester;
 import android.text.TextUtils;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
