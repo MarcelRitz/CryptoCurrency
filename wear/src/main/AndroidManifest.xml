@@ -193,6 +193,9 @@
             android:name="io.fabric.ApiKey"
             android:value="d553587bf9b2090c8bf7ccaa63885ed66438d957" />
 
+        <!-- Appsee -->
+        <meta-data android:name="com.appsee.ApiKey" android:value="b90e99a437e24ce49c0830dbdfb25175" />
+
         <!-- Generic -->
         <meta-data
             android:name="com.google.android.wearable.standalone"
