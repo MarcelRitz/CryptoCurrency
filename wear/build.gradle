@@ -93,6 +93,9 @@ dependencies {
         transitive = true
     }
 
+    // Appsee
+    implementation 'com.appsee:appsee-android:2.4.1'
+
     compileOnly 'com.google.android.wearable:wearable:2.3.0'
 }
 
