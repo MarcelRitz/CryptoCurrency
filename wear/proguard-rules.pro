@@ -33,17 +33,15 @@
 -keep class org.jetbrains.kotlin.** { *; }
 -keep class org.jetbrains.annotations.** { *; }
 
-#Retrofit
--dontnote retrofit2.Platform
--dontwarn retrofit2.Platform$Java8
--keepattributes Signature
--keepattributes Exceptions
-
-#Okio
--dontwarn okio.**
-
 #Crashlytics
 -keepattributes *Annotation*
 -keepattributes SourceFile,LineNumberTable
 -keep class com.crashlytics.** { *; }
 -dontwarn com.crashlytics.**
+
+#Appsee
+-keep class com.appsee.** { *; }
+-dontwarn com.appsee.**
+-keep class android.support.** { *; }
+-keep interface android.support.** { *; }
+-keepattributes SourceFile,LineNumberTable
