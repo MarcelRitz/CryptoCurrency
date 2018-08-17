@@ -23,6 +23,7 @@
     <string name="preference_quantity_bch_title">BCH баланс</string>
     <string name="preference_quantity_btc_title">BTC баланс</string>
     <string name="preference_quantity_eth_title">ETH баланс</string>
+    <string name="preference_quantity_etc_title">ETC баланс</string>
     <string name="preference_quantity_ltc_title">LTC баланс</string>
     <string name="preference_category_complication">Yсложнение</string>
     <string name="preference_complication_interval_title">Интервал</string>

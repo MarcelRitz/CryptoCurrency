@@ -11,10 +11,12 @@
     <string name="complication_price_bch" translatable="false">Price Bitcoin Cash</string>
     <string name="complication_price_btc" translatable="false">Price Bitcoin</string>
     <string name="complication_price_eth" translatable="false">Price Ethereum</string>
+    <string name="complication_price_etc" translatable="false">Price Ethereum Classic</string>
     <string name="complication_price_ltc" translatable="false">Price Litecoin</string>
     <string name="complication_quantity_bch" translatable="false">My Bitcoin Cash</string>
     <string name="complication_quantity_btc" translatable="false">My Bitcoin</string>
     <string name="complication_quantity_eth" translatable="false">My Ethereum</string>
+    <string name="complication_quantity_etc" translatable="false">My Ethereum Classic</string>
     <string name="complication_quantity_ltc" translatable="false">My Litecoin</string>
     <string name="complication_account_balance" translatable="false">My Account Balance</string>
     <string name="complication_my_total" translatable="false">My Total</string>
@@ -53,6 +55,9 @@
     <!-- ETH -->
     <string name="preference_quantity_eth_title">ETH balance</string>
     <string name="preference_quantity_eth_key" translatable="false">ETHQuantityKey</string>
+    <!-- ETC -->
+    <string name="preference_quantity_etc_title">ETC balance</string>
+    <string name="preference_quantity_etc_key" translatable="false">ETCQuantityKey</string>
     <!-- LTC -->
     <string name="preference_quantity_ltc_title">LTC balance</string>
     <string name="preference_quantity_ltc_key" translatable="false">LTCQuantityKey</string>

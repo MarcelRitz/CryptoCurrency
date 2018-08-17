@@ -135,6 +135,41 @@
                 android:value="3600" />
         </service>
 
+        <!-- ETC -->
+        <service
+            android:name=".service.EtcProviderService"
+            android:icon="@drawable/ic_currency_etc"
+            android:label="@string/complication_price_etc"
+            android:permission="com.google.android.wearable.permission.BIND_COMPLICATION_PROVIDER">
+            <intent-filter>
+                <action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.wearable.complications.SUPPORTED_TYPES"
+                android:value="SHORT_TEXT,LONG_TEXT" />
+            <meta-data
+                android:name="android.support.wearable.complications.UPDATE_PERIOD_SECONDS"
+                android:value="3600" />
+        </service>
+        <!-- Quantity -->
+        <service
+            android:name=".service.EtcQuantityProviderService"
+            android:icon="@drawable/ic_quantity_etc"
+            android:label="@string/complication_quantity_etc"
+            android:permission="com.google.android.wearable.permission.BIND_COMPLICATION_PROVIDER">
+            <intent-filter>
+                <action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.wearable.complications.SUPPORTED_TYPES"
+                android:value="SHORT_TEXT,LONG_TEXT" />
+            <meta-data
+                android:name="android.support.wearable.complications.UPDATE_PERIOD_SECONDS"
+                android:value="3600" />
+        </service>
+
         <!-- LTC -->
         <service
             android:name=".service.LtcProviderService"

@@ -77,6 +77,14 @@ public class UpdateComplicationDataService extends IntentService {
                     default:
                         return EthProviderService.class;
                 }
+            case Currency.ETC:
+                switch (complicationType) {
+                    case WALLET:
+                        return EtcQuantityProviderService.class;
+                    case PRICE:
+                    default:
+                        return EtcProviderService.class;
+                }
             case Currency.LTC:
                 switch (complicationType) {
                     case WALLET:

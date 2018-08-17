@@ -11,6 +11,7 @@
     <string name="currency_bch" translatable="false" tools:keep="@string/currency_bch">BCH</string>
     <string name="currency_btc" translatable="false" tools:keep="@string/currency_btc">BTC</string>
     <string name="currency_eth" translatable="false" tools:keep="@string/currency_eth">ETH</string>
+    <string name="currency_etc" translatable="false" tools:keep="@string/currency_etc">ETC</string>
     <string name="currency_eur" translatable="false">EUR</string>
     <string name="currency_ltc" translatable="false" tools:keep="@string/currency_ltc">LTC</string>
     <string name="currency_usd" translatable="false">USD</string>
@@ -22,6 +23,7 @@
     <!-- Currency text -->
     <string name="currency_text_bch" translatable="false" tools:keep="@string/currency_text_bch">Bitcoin Cash</string>
     <string name="currency_text_btc" translatable="false" tools:keep="@string/currency_text_btc">Bitcoin</string>
-    <string name="currency_text_etc" translatable="false" tools:keep="@string/currency_text_etc">Ethereum</string>
+    <string name="currency_text_eth" translatable="false" tools:keep="@string/currency_text_eth">Ethereum</string>
+    <string name="currency_text_etc" translatable="false" tools:keep="@string/currency_text_etc">Ethereum Classic</string>
     <string name="currency_text_ltc" translatable="false" tools:keep="@string/currency_text_ltc">Litecoin</string>
 </resources>

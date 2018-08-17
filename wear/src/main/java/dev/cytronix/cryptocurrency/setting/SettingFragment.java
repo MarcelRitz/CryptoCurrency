@@ -19,6 +19,8 @@ import dev.cytronix.cryptocurrency.service.BchProviderService;
 import dev.cytronix.cryptocurrency.service.BchQuantityProviderService;
 import dev.cytronix.cryptocurrency.service.BtcProviderService;
 import dev.cytronix.cryptocurrency.service.BtcQuantityProviderService;
+import dev.cytronix.cryptocurrency.service.EtcProviderService;
+import dev.cytronix.cryptocurrency.service.EtcQuantityProviderService;
 import dev.cytronix.cryptocurrency.service.EthProviderService;
 import dev.cytronix.cryptocurrency.service.EthQuantityProviderService;
 import dev.cytronix.cryptocurrency.service.LtcProviderService;
@@ -88,6 +90,7 @@ public class SettingFragment extends PreferenceFragment implements SharedPrefere
         keys.add(getString(R.string.preference_quantity_bch_key));
         keys.add(getString(R.string.preference_quantity_btc_key));
         keys.add(getString(R.string.preference_quantity_eth_key));
+        keys.add(getString(R.string.preference_quantity_etc_key));
         keys.add(getString(R.string.preference_quantity_ltc_key));
         if(!keys.contains(key)) {
             return;
@@ -103,6 +106,8 @@ public class SettingFragment extends PreferenceFragment implements SharedPrefere
             classes.add(BtcQuantityProviderService.class);
             classes.add(EthProviderService.class);
             classes.add(EthQuantityProviderService.class);
+            classes.add(EtcProviderService.class);
+            classes.add(EtcQuantityProviderService.class);
             classes.add(LtcProviderService.class);
             classes.add(LtcQuantityProviderService.class);
         } else if(key.equals(getString(R.string.preference_quantity_bch_key))) {
@@ -111,6 +116,8 @@ public class SettingFragment extends PreferenceFragment implements SharedPrefere
             classes.add(BtcQuantityProviderService.class);
         } else if(key.equals(getString(R.string.preference_quantity_eth_key))) {
             classes.add(EthQuantityProviderService.class);
+        } else if(key.equals(getString(R.string.preference_quantity_etc_key))) {
+            classes.add(EtcQuantityProviderService.class);
         } else if(key.equals(getString(R.string.preference_quantity_ltc_key))) {
             classes.add(LtcQuantityProviderService.class);
         }
