@@ -23,6 +23,7 @@
     <string name="preference_quantity_bch_title">BCH Saldo</string>
     <string name="preference_quantity_btc_title">BTC Saldo</string>
     <string name="preference_quantity_eth_title">ETH Saldo</string>
+    <string name="preference_quantity_etc_title">ETC Saldo</string>
     <string name="preference_quantity_ltc_title">LTC Saldo</string>
     <string name="preference_category_complication">Komplikation</string>
     <string name="preference_complication_interval_title">Intervall</string>

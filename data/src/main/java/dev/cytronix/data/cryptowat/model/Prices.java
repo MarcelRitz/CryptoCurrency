@@ -29,6 +29,12 @@ public class Prices {
     @SerializedName("bitstamp:ethusd")
     private double priceBitstampEthUsd = PRICE_DEFAULT;
 
+    @SerializedName("bitstamp:etceur")
+    private double priceBitstampEtcEur = PRICE_DEFAULT;
+
+    @SerializedName("bitstamp:etcusd")
+    private double priceBitstampEtcUsd = PRICE_DEFAULT;
+
     @SerializedName("bitstamp:ltceur")
     private double priceBitstampLtcEur = PRICE_DEFAULT;
 
@@ -52,6 +58,12 @@ public class Prices {
 
     @SerializedName("kraken:ethusd")
     private double priceKrakenEthUsd = PRICE_DEFAULT;
+
+    @SerializedName("kraken:etceur")
+    private double priceKrakenEtcEur = PRICE_DEFAULT;
+
+    @SerializedName("kraken:etcusd")
+    private double priceKrakenEtcUsd = PRICE_DEFAULT;
 
     @SerializedName("kraken:ltceur")
     private double priceKrakenLtcEur = PRICE_DEFAULT;
@@ -77,6 +89,12 @@ public class Prices {
     @SerializedName("gdax:ethusd")
     private double priceGdaxEthUsd = PRICE_DEFAULT;
 
+    @SerializedName("gdax:etceur")
+    private double priceGdaxEtcEur = PRICE_DEFAULT;
+
+    @SerializedName("gdax:etcusd")
+    private double priceGdaxEtcUsd = PRICE_DEFAULT;
+
     @SerializedName("gdax:ltceur")
     private double priceGdaxLtcEur = PRICE_DEFAULT;
 
@@ -96,12 +114,13 @@ public class Prices {
     }
 
     private List<Price> getListBitstamp(String baseCurrency) {
-        List<Price> prices = new ArrayList<>(4);
+        List<Price> prices = new ArrayList<>();
         switch (baseCurrency) {
             case Currency.EUR:
                 prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.BCH).addPrice(priceBitstampBchEur).build());
                 prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.BTC).addPrice(priceBitstampBtcEur).build());
                 prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.ETH).addPrice(priceBitstampEthEur).build());
+                prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.ETC).addPrice(priceBitstampEtcEur).build());
                 prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.LTC).addPrice(priceBitstampLtcEur).build());
                 break;
             case Currency.USD:
@@ -109,6 +128,7 @@ public class Prices {
                 prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.BCH).addPrice(priceBitstampBchUsd).build());
                 prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.BTC).addPrice(priceBitstampBtcUsd).build());
                 prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.ETH).addPrice(priceBitstampEthUsd).build());
+                prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.ETC).addPrice(priceBitstampEtcUsd).build());
                 prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.LTC).addPrice(priceBitstampLtcUsd).build());
                 break;
         }
@@ -116,12 +136,13 @@ public class Prices {
     }
 
     private List<Price> getListKraken(String baseCurrency) {
-        List<Price> prices = new ArrayList<>(4);
+        List<Price> prices = new ArrayList<>();
         switch (baseCurrency) {
             case Currency.EUR:
                 prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.BCH).addPrice(priceKrakenBchEur).build());
                 prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.BTC).addPrice(priceKrakenBtcEur).build());
                 prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.ETH).addPrice(priceKrakenEthEur).build());
+                prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.ETC).addPrice(priceKrakenEtcEur).build());
                 prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.LTC).addPrice(priceKrakenLtcEur).build());
                 break;
             case Currency.USD:
@@ -129,6 +150,7 @@ public class Prices {
                 prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.BCH).addPrice(priceKrakenBchUsd).build());
                 prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.BTC).addPrice(priceKrakenBtcUsd).build());
                 prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.ETH).addPrice(priceKrakenEthUsd).build());
+                prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.ETC).addPrice(priceKrakenEtcUsd).build());
                 prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.LTC).addPrice(priceKrakenLtcUsd).build());
                 break;
         }
@@ -136,12 +158,13 @@ public class Prices {
     }
 
     private List<Price> getListGdax(String baseCurrency) {
-        List<Price> prices = new ArrayList<>(4);
+        List<Price> prices = new ArrayList<>();
         switch (baseCurrency) {
             case Currency.EUR:
                 prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.BCH).addPrice(priceGdaxBchEur).build());
                 prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.BTC).addPrice(priceGdaxBtcEur).build());
                 prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.ETH).addPrice(priceGdaxEthEur).build());
+                prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.ETC).addPrice(priceGdaxEtcEur).build());
                 prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.LTC).addPrice(priceGdaxLtcEur).build());
                 break;
             case Currency.USD:
@@ -149,6 +172,7 @@ public class Prices {
                 prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.BCH).addPrice(priceGdaxBchUsd).build());
                 prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.BTC).addPrice(priceGdaxBtcUsd).build());
                 prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.ETH).addPrice(priceGdaxEthUsd).build());
+                prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.ETC).addPrice(priceGdaxEtcUsd).build());
                 prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.LTC).addPrice(priceGdaxLtcUsd).build());
                 break;
         }
@@ -164,6 +188,8 @@ public class Prices {
                 ", priceBitstampBtcUsd=" + priceBitstampBtcUsd +
                 ", priceBitstampEthEur=" + priceBitstampEthEur +
                 ", priceBitstampEthUsd=" + priceBitstampEthUsd +
+                ", priceBitstampEtcEur=" + priceBitstampEtcEur +
+                ", priceBitstampEtcUsd=" + priceBitstampEtcUsd +
                 ", priceBitstampLtcEur=" + priceBitstampLtcEur +
                 ", priceBitstampLtcUsd=" + priceBitstampLtcUsd +
                 ", priceKrakenBchEur=" + priceKrakenBchEur +
@@ -172,6 +198,8 @@ public class Prices {
                 ", priceKrakenBtcUsd=" + priceKrakenBtcUsd +
                 ", priceKrakenEthEur=" + priceKrakenEthEur +
                 ", priceKrakenEthUsd=" + priceKrakenEthUsd +
+                ", priceKrakenEtcEur=" + priceKrakenEtcEur +
+                ", priceKrakenEtcUsd=" + priceKrakenEtcUsd +
                 ", priceKrakenLtcEur=" + priceKrakenLtcEur +
                 ", priceKrakenLtcUsd=" + priceKrakenLtcUsd +
                 ", priceGdaxBchEur=" + priceGdaxBchEur +
@@ -180,6 +208,8 @@ public class Prices {
                 ", priceGdaxBtcUsd=" + priceGdaxBtcUsd +
                 ", priceGdaxEthEur=" + priceGdaxEthEur +
                 ", priceGdaxEthUsd=" + priceGdaxEthUsd +
+                ", priceGdaxEtcEur=" + priceGdaxEtcEur +
+                ", priceGdaxEtcUsd=" + priceGdaxEtcUsd +
                 ", priceGdaxLtcEur=" + priceGdaxLtcEur +
                 ", priceGdaxLtcUsd=" + priceGdaxLtcUsd +
                 '}';
