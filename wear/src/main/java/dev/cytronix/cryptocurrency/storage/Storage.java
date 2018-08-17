@@ -187,6 +187,9 @@ public class Storage implements IStorage {
             case Currency.ETH:
                 updatePriceEthQuantity(price);
                 break;
+            case Currency.ETC:
+                updatePriceEtcQuantity(price);
+                break;
             case Currency.LTC:
                 updatePriceLtcQuantity(price);
                 break;
@@ -207,6 +210,10 @@ public class Storage implements IStorage {
 
     private void updatePriceEthQuantity(Price price) {
         updatePriceQuantity(price, context.getString(R.string.preference_quantity_eth_key));
+    }
+
+    private void updatePriceEtcQuantity(Price price) {
+        updatePriceQuantity(price, context.getString(R.string.preference_quantity_etc_key));
     }
 
     private void updatePriceLtcQuantity(Price price) {

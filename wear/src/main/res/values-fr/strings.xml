@@ -23,6 +23,7 @@
     <string name="preference_quantity_bch_title">BCH équilibre</string>
     <string name="preference_quantity_btc_title">BTC équilibre</string>
     <string name="preference_quantity_eth_title">ETH équilibre</string>
+    <string name="preference_quantity_etc_title">ETC équilibre</string>
     <string name="preference_quantity_ltc_title">LTC équilibre</string>
     <string name="preference_category_complication">Complication</string>
     <string name="preference_complication_interval_title">Intervalle</string>

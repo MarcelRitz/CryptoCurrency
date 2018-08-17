@@ -45,6 +45,13 @@
             android:defaultValue="@string/preference_quantity_default_value"
             android:icon="@drawable/ic_preference_quantity"
             android:inputType="numberDecimal"
+            android:key="@string/preference_quantity_etc_key"
+            android:title="@string/preference_quantity_etc_title" />
+
+        <dev.cytronix.cryptocurrency.preference.EditTextPreferenceSummary
+            android:defaultValue="@string/preference_quantity_default_value"
+            android:icon="@drawable/ic_preference_quantity"
+            android:inputType="numberDecimal"
             android:key="@string/preference_quantity_ltc_key"
             android:title="@string/preference_quantity_ltc_title" />
     </PreferenceCategory>
