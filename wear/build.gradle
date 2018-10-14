@@ -16,7 +16,6 @@ android {
         }
     }
     compileSdkVersion config.compileSdkVersion
-    buildToolsVersion config.buildToolsVersion
     defaultConfig {
         minSdkVersion 25
         targetSdkVersion 27
