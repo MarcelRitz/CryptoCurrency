@@ -45,3 +45,11 @@
 -keep class android.support.** { *; }
 -keep interface android.support.** { *; }
 -keepattributes SourceFile,LineNumberTable
+
+#Retrofit
+# Retain service method parameters when optimizing.
+-keepclassmembers,allowshrinking,allowobfuscation interface * {
+    @retrofit2.http.* <methods>;
+}
+-dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
+-dontwarn retrofit2.-KotlinExtensions
