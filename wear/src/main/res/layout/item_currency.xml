@@ -18,10 +18,10 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/item_currency_margin_vertical"
-        android:layout_marginEnd="@dimen/item_currency_margin_horizontal"
         android:layout_marginStart="@dimen/item_currency_margin_horizontal"
         android:layout_marginTop="@dimen/item_currency_margin_vertical"
+        android:layout_marginEnd="@dimen/item_currency_margin_horizontal"
+        android:layout_marginBottom="@dimen/item_currency_margin_vertical"
         android:elevation="@dimen/elevation_default"
         app:cardCornerRadius="@dimen/item_card_view_corner">
 
@@ -52,9 +52,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:layout_weight="1"
-                    android:currency="@{CurrencyUtils.getCurrencySymbol(price.baseCurrency)}"
                     android:gravity="end"
-                    android:price="@{price.price}"
+                    app:currency="@{CurrencyUtils.getCurrencySymbol(price.baseCurrency)}"
+                    app:price="@{price.price}"
                     tools:text="3.00$" />
             </LinearLayout>
 
@@ -86,9 +86,9 @@
                     style="@style/Text.Medium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:currency="@{CurrencyUtils.getCurrencySymbol(price.baseCurrency)}"
                     android:gravity="end"
-                    android:price="@{price.value}"
+                    app:currency="@{CurrencyUtils.getCurrencySymbol(price.baseCurrency)}"
+                    app:price="@{price.value}"
                     tools:text="3000.00$" />
             </LinearLayout>
         </RelativeLayout>
