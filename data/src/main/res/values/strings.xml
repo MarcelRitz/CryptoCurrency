@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Data provider -->
-    <string name="data_provider_gdax_entry" translatable="false">GDAX (Coinbase)</string>
+    <string name="data_provider_gdax_entry" translatable="false">Coinbase</string>
     <string name="data_provider_gdax_value" translatable="false">GDAX</string>
     <string name="data_provider_bitstamp_entry" translatable="false">Bitstamp</string>
     <string name="data_provider_bitstamp_value" translatable="false">Bitstamp</string>

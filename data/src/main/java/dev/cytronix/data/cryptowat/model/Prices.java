@@ -71,42 +71,42 @@ public class Prices {
     @SerializedName("kraken:ltcusd")
     private double priceKrakenLtcUsd = PRICE_DEFAULT;
 
-    @SerializedName("gdax:bcheur")
-    private double priceGdaxBchEur = PRICE_DEFAULT;
+    @SerializedName("coinbase-pro:bcheur")
+    private double priceCoinbaseBchEur = PRICE_DEFAULT;
 
-    @SerializedName("gdax:bchusd")
-    private double priceGdaxBchUsd = PRICE_DEFAULT;
+    @SerializedName("coinbase-pro:bchusd")
+    private double priceCoinbaseBchUsd = PRICE_DEFAULT;
 
-    @SerializedName("gdax:btceur")
-    private double priceGdaxBtcEur = PRICE_DEFAULT;
+    @SerializedName("coinbase-pro:btceur")
+    private double priceCoinbaseBtcEur = PRICE_DEFAULT;
 
-    @SerializedName("gdax:btcusd")
-    private double priceGdaxBtcUsd = PRICE_DEFAULT;
+    @SerializedName("coinbase-pro:btcusd")
+    private double priceCoinbaseBtcUsd = PRICE_DEFAULT;
 
-    @SerializedName("gdax:etheur")
-    private double priceGdaxEthEur = PRICE_DEFAULT;
+    @SerializedName("coinbase-pro:etheur")
+    private double priceCoinbaseEthEur = PRICE_DEFAULT;
 
-    @SerializedName("gdax:ethusd")
-    private double priceGdaxEthUsd = PRICE_DEFAULT;
+    @SerializedName("coinbase-pro:ethusd")
+    private double priceCoinbaseEthUsd = PRICE_DEFAULT;
 
-    @SerializedName("gdax:etceur")
-    private double priceGdaxEtcEur = PRICE_DEFAULT;
+    @SerializedName("coinbase-pro:etceur")
+    private double priceCoinbaseEtcEur = PRICE_DEFAULT;
 
-    @SerializedName("gdax:etcusd")
-    private double priceGdaxEtcUsd = PRICE_DEFAULT;
+    @SerializedName("coinbase-pro:etcusd")
+    private double priceCoinbaseEtcUsd = PRICE_DEFAULT;
 
-    @SerializedName("gdax:ltceur")
-    private double priceGdaxLtcEur = PRICE_DEFAULT;
+    @SerializedName("coinbase-pro:ltceur")
+    private double priceCoinbaseLtcEur = PRICE_DEFAULT;
 
-    @SerializedName("gdax:ltcusd")
-    private double priceGdaxLtcUsd = PRICE_DEFAULT;
+    @SerializedName("coinbase-pro:ltcusd")
+    private double priceCoinbaseLtcUsd = PRICE_DEFAULT;
 
     public List<Price> getList(DataProvider dataProvider, String baseCurrency) {
         switch (dataProvider) {
             case KRAKEN:
                 return getListKraken(baseCurrency);
-            case GDAX:
-                return getListGdax(baseCurrency);
+            case COINBASE:
+                return getListCoinbase(baseCurrency);
             case BITSTAMP:
             default:
                 return getListBitstamp(baseCurrency);
@@ -157,23 +157,23 @@ public class Prices {
         return prices;
     }
 
-    private List<Price> getListGdax(String baseCurrency) {
+    private List<Price> getListCoinbase(String baseCurrency) {
         List<Price> prices = new ArrayList<>();
         switch (baseCurrency) {
             case Currency.EUR:
-                prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.BCH).addPrice(priceGdaxBchEur).build());
-                prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.BTC).addPrice(priceGdaxBtcEur).build());
-                prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.ETH).addPrice(priceGdaxEthEur).build());
-                prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.ETC).addPrice(priceGdaxEtcEur).build());
-                prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.LTC).addPrice(priceGdaxLtcEur).build());
+                prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.BCH).addPrice(priceCoinbaseBchEur).build());
+                prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.BTC).addPrice(priceCoinbaseBtcEur).build());
+                prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.ETH).addPrice(priceCoinbaseEthEur).build());
+                prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.ETC).addPrice(priceCoinbaseEtcEur).build());
+                prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.LTC).addPrice(priceCoinbaseLtcEur).build());
                 break;
             case Currency.USD:
             default:
-                prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.BCH).addPrice(priceGdaxBchUsd).build());
-                prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.BTC).addPrice(priceGdaxBtcUsd).build());
-                prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.ETH).addPrice(priceGdaxEthUsd).build());
-                prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.ETC).addPrice(priceGdaxEtcUsd).build());
-                prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.LTC).addPrice(priceGdaxLtcUsd).build());
+                prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.BCH).addPrice(priceCoinbaseBchUsd).build());
+                prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.BTC).addPrice(priceCoinbaseBtcUsd).build());
+                prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.ETH).addPrice(priceCoinbaseEthUsd).build());
+                prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.ETC).addPrice(priceCoinbaseEtcUsd).build());
+                prices.add(new Price.Builder().addBaseCurrency(baseCurrency).addTargetCurrency(Currency.LTC).addPrice(priceCoinbaseLtcUsd).build());
                 break;
         }
         return prices;
@@ -202,16 +202,16 @@ public class Prices {
                 ", priceKrakenEtcUsd=" + priceKrakenEtcUsd +
                 ", priceKrakenLtcEur=" + priceKrakenLtcEur +
                 ", priceKrakenLtcUsd=" + priceKrakenLtcUsd +
-                ", priceGdaxBchEur=" + priceGdaxBchEur +
-                ", priceGdaxBchUsd=" + priceGdaxBchUsd +
-                ", priceGdaxBtcEur=" + priceGdaxBtcEur +
-                ", priceGdaxBtcUsd=" + priceGdaxBtcUsd +
-                ", priceGdaxEthEur=" + priceGdaxEthEur +
-                ", priceGdaxEthUsd=" + priceGdaxEthUsd +
-                ", priceGdaxEtcEur=" + priceGdaxEtcEur +
-                ", priceGdaxEtcUsd=" + priceGdaxEtcUsd +
-                ", priceGdaxLtcEur=" + priceGdaxLtcEur +
-                ", priceGdaxLtcUsd=" + priceGdaxLtcUsd +
+                ", priceCoinbaseBchEur=" + priceCoinbaseBchEur +
+                ", priceCoinbaseBchUsd=" + priceCoinbaseBchUsd +
+                ", priceCoinbaseBtcEur=" + priceCoinbaseBtcEur +
+                ", priceCoinbaseBtcUsd=" + priceCoinbaseBtcUsd +
+                ", priceCoinbaseEthEur=" + priceCoinbaseEthEur +
+                ", priceCoinbaseEthUsd=" + priceCoinbaseEthUsd +
+                ", priceCoinbaseEtcEur=" + priceCoinbaseEtcEur +
+                ", priceCoinbaseEtcUsd=" + priceCoinbaseEtcUsd +
+                ", priceCoinbaseLtcEur=" + priceCoinbaseLtcEur +
+                ", priceCoinbaseLtcUsd=" + priceCoinbaseLtcUsd +
                 '}';
     }
 }

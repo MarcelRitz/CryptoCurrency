@@ -4,7 +4,7 @@ public enum DataProvider {
 
     BITSTAMP("Bitstamp"),
     KRAKEN("Kraken"),
-    GDAX("GDAX");
+    COINBASE("Coinbase");
 
     private String name;
 
@@ -22,6 +22,6 @@ public enum DataProvider {
                 return dataProvider;
             }
         }
-        return BITSTAMP;
+        return COINBASE;
     }
 }
