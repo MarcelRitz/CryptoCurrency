@@ -1,16 +1,16 @@
 package dev.cytronix.cryptocurrency.pricelist;
 
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
-import android.databinding.ObservableField;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ObservableField;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
-import android.support.wear.widget.WearableLinearLayoutManager;
-import android.support.wear.widget.WearableRecyclerView;
-import android.support.wear.widget.drawer.WearableActionDrawerView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.wear.widget.WearableLinearLayoutManager;
+import androidx.wear.widget.WearableRecyclerView;
+import androidx.wear.widget.drawer.WearableActionDrawerView;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;

@@ -15,7 +15,7 @@
             type="dev.cytronix.data.cryptowat.model.Price" />
     </data>
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/item_currency_margin_vertical"
@@ -54,7 +54,7 @@
                     android:layout_weight="1"
                     android:currency="@{CurrencyUtils.getCurrencySymbol(price.baseCurrency)}"
                     android:gravity="end"
-                    android:price="@{Price.PRICE_DEFAULT == price.price ? `-` : price.price}"
+                    android:price="@{price.price}"
                     tools:text="3.00$" />
             </LinearLayout>
 
@@ -92,5 +92,5 @@
                     tools:text="3000.00$" />
             </LinearLayout>
         </RelativeLayout>
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 </layout>

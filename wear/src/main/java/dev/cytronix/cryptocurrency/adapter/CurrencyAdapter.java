@@ -1,8 +1,8 @@
 package dev.cytronix.cryptocurrency.adapter;
 
-import android.databinding.DataBindingUtil;
-import android.support.annotation.NonNull;
-import android.support.wear.widget.WearableRecyclerView;
+import androidx.databinding.DataBindingUtil;
+import androidx.annotation.NonNull;
+import androidx.wear.widget.WearableRecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 

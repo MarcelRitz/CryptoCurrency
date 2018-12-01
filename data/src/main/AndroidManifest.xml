@@ -1,7 +1,11 @@
-<manifest package="dev.cytronix.data"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="dev.cytronix.data">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <application />
+    <application>
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+    </application>
 </manifest>
